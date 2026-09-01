@@ -138,12 +138,12 @@
 
 /* Page header */
 .page-header {
-  padding-top: calc(72px + var(--space-section-lg));
+  padding-top: calc(64px + var(--space-section-lg));
   padding-bottom: var(--space-8);
 }
 
 @media (min-width: 768px) {
   .page-header {
-    padding-top: calc(72px + var(--space-section-lg));
+    padding-top: calc(64px + var(--space-section-lg));
   }
 }

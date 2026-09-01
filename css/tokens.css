@@ -1,45 +1,45 @@
 /* ============================================
    tokens.css - Design Tokens
-   Modern Tech / Neon Palette
+   Light Professional Palette
    ============================================ */
 
 :root {
   /* ---- Colors ---- */
-  --color-bg: #050510;
-  --color-bg-raised: #0a0a1a;
-  --color-bg-card: rgba(255, 255, 255, 0.03);
-  --color-bg-card-hover: rgba(255, 255, 255, 0.06);
+  --color-bg: #ffffff;
+  --color-bg-raised: #f8fafc;
+  --color-bg-card: #ffffff;
+  --color-bg-card-hover: #f1f5f9;
 
-  --color-text: #f0f0f5;
-  --color-text-secondary: #8888a0;
-  --color-text-muted: #55556a;
+  --color-text: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-text-muted: #94a3b8;
 
-  --color-primary: #00d4ff;
-  --color-primary-hover: #33dfff;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
 
-  --color-accent: #a855f7;
-  --color-accent-hover: #c084fc;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
   --color-accent-on-primary: #ffffff;
-  --color-accent-subtle: rgba(168, 85, 247, 0.10);
+  --color-accent-subtle: rgba(37, 99, 235, 0.08);
 
-  --color-cyan: #00d4ff;
-  --color-cyan-subtle: rgba(0, 212, 255, 0.08);
-  --color-purple: #a855f7;
-  --color-purple-subtle: rgba(168, 85, 247, 0.08);
+  --color-cyan: #2563eb;
+  --color-cyan-subtle: rgba(37, 99, 235, 0.06);
+  --color-purple: #7c3aed;
+  --color-purple-subtle: rgba(124, 58, 237, 0.06);
 
-  --color-border: rgba(255, 255, 255, 0.06);
-  --color-border-strong: rgba(255, 255, 255, 0.12);
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
 
-  --color-success: #22c55e;
-  --color-error: #ef4444;
-  --color-focus: #00d4ff;
-  --color-overlay: rgba(5, 5, 16, 0.92);
+  --color-success: #16a34a;
+  --color-error: #dc2626;
+  --color-focus: #2563eb;
+  --color-overlay: rgba(255, 255, 255, 0.92);
 
   /* ---- Gradient ---- */
-  --gradient-hero: linear-gradient(160deg, #050510 0%, #0a0a2e 50%, #0f0520 100%);
-  --gradient-accent: linear-gradient(135deg, var(--color-cyan), var(--color-purple));
-  --gradient-card-border: linear-gradient(160deg, rgba(0, 212, 255, 0.15), rgba(168, 85, 247, 0.10));
-  --gradient-glow: radial-gradient(ellipse at 50% 0%, rgba(0, 212, 255, 0.08) 0%, transparent 60%);
+  --gradient-hero: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  --gradient-accent: linear-gradient(135deg, #2563eb, #3b82f6);
+  --gradient-card-border: linear-gradient(160deg, rgba(37, 99, 235, 0.12), rgba(37, 99, 235, 0.04));
+  --gradient-glow: radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.04) 0%, transparent 60%);
 
   /* ---- Typography ---- */
   --font-family: 'Space Grotesk', sans-serif;
@@ -76,10 +76,10 @@
   --space-20: 5rem;
   --space-24: 6rem;
   --space-32: 8rem;
-  --space-section: 5rem;
-  --space-section-lg: 7rem;
-  --space-gutter: clamp(1.25rem, 4vw, 3rem);
-  --space-page: clamp(1.25rem, 5vw, 3.5rem);
+  --space-section: 4rem;
+  --space-section-lg: 5rem;
+  --space-gutter: clamp(1rem, 4vw, 2rem);
+  --space-page: clamp(1rem, 5vw, 3rem);
 
   /* ---- Border Radius ---- */
   --radius-none: 0;
@@ -91,15 +91,15 @@
   --radius-full: 9999px;
 
   /* ---- Shadows ---- */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-glow-cyan: 0 0 30px rgba(0, 212, 255, 0.15);
-  --shadow-glow-purple: 0 0 30px rgba(168, 85, 247, 0.15);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.10);
+  --shadow-glow-cyan: 0 0 20px rgba(37, 99, 235, 0.10);
+  --shadow-glow-purple: 0 0 20px rgba(124, 58, 237, 0.10);
 
-  /* ---- Glassmorphism ---- */
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  /* ---- Glassmorphism (light) ---- */
+  --glass-bg: rgba(255, 255, 255, 0.70);
+  --glass-border: rgba(0, 0, 0, 0.06);
   --glass-blur: 12px;
 
   /* ---- Transitions ---- */
