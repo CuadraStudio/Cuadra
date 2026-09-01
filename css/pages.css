@@ -19,6 +19,7 @@
   overflow: hidden;
 }
 
+/* Radial glow */
 .hero::before {
   content: '';
   position: absolute;
@@ -28,6 +29,36 @@
   height: 700px;
   background: radial-gradient(circle, rgba(0, 212, 255, 0.06) 0%, rgba(168, 85, 247, 0.03) 40%, transparent 70%);
   pointer-events: none;
+}
+
+/* Animated grid */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at 50% 30%, rgba(0,0,0,0.5) 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 30%, rgba(0,0,0,0.5) 0%, transparent 70%);
+  animation: grid-drift 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes grid-drift {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(60px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::after {
+    animation: none;
+  }
 }
 
 .hero__grid {
