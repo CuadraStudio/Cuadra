@@ -548,10 +548,11 @@
   align-items: center;
   justify-content: center;
   color: var(--color-accent);
+  transform: rotate(90deg);
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) {
   .comparison-arrow {
-    transform: rotate(90deg);
+    transform: rotate(0deg);
   }
 }
