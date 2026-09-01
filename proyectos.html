@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos - CUADRA | Desarrollo Web</title>
+  <meta name="description" content="Demos de sitios web que CUADRA ha diseñado para barberías y negocios locales en Montevideo, Uruguay.">
+  <link rel="canonical" href="https://lucianomartin.onrender.com/proyectos.html">
+  <meta name="theme-color" content="#08090d">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Proyectos - CUADRA">
+  <meta property="og:description" content="Demos de sitios web para barberías y negocios locales en Montevideo.">
+  <meta property="og:url" content="https://lucianomartin.onrender.com/proyectos.html">
+  <meta property="og:locale" content="es_UY">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Navegacion principal">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">CUADRA</a>
+
+      <div class="nav__links">
+        <a href="/" class="nav__link">Inicio</a>
+        <a href="/proyectos.html" class="nav__link" aria-current="page">Proyectos</a>
+        <a href="/servicios.html" class="nav__link">Servicios</a>
+        <a href="/sobre.html" class="nav__link">Sobre</a>
+        <a href="/contacto.html" class="nav__link">Contacto</a>
+      </div>
+
+      <button class="nav__hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu de navegacion">
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="nav__mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu de navegacion">
+      <a href="/" class="nav__mobile-link">Inicio</a>
+      <a href="/proyectos.html" class="nav__mobile-link" aria-current="page">Proyectos</a>
+      <a href="/servicios.html" class="nav__mobile-link">Servicios</a>
+      <a href="/sobre.html" class="nav__mobile-link">Sobre</a>
+      <a href="/contacto.html" class="nav__mobile-link">Contacto</a>
+    </div>
+  </nav>
+
+  <main id="contenido" tabindex="-1">
+
+    <!-- Page header -->
+    <header class="page-header">
+      <div class="container">
+        <p class="hero__label reveal">Portfolio</p>
+        <h1 class="hero__title reveal">Proyectos que <span class="highlight">hablan</span><br>por sí mismos</h1>
+        <p class="hero__subtitle reveal">Demos de sitios web diseñados para barberías y negocios locales.</p>
+      </div>
+    </header>
+
+    <!-- Project grid -->
+    <section class="section" aria-labelledby="grid-proyectos">
+      <div class="container">
+        <h2 class="sr-only" id="grid-proyectos">Lista de proyectos</h2>
+        <div class="grid grid--2">
+
+          <!-- The Faleros -->
+          <article class="card card--project reveal" style="--reveal-index: 0">
+            <div class="card__image" aria-hidden="true">The Faleros</div>
+            <div class="project-card__body">
+              <h3 class="card__title">The Faleros</h3>
+              <p class="card__desc" style="-webkit-line-clamp: 4;">Barbería premium en Av. 18 de Julio 2042, Montevideo. Cortes con oficio, barba, promos y servicio a domicilio. Reserva online.</p>
+              <div class="project-card__pills">
+                <span class="pill">HTML</span>
+                <span class="pill">CSS</span>
+                <span class="pill">JavaScript</span>
+              </div>
+              <span class="project-card__link project-card__link--demo">
+                Demo <span aria-hidden="true">&rarr;</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- Saga Studio -->
+          <article class="card card--project reveal" style="--reveal-index: 1">
+            <div class="card__image" aria-hidden="true">Saga Studio</div>
+            <div class="project-card__body">
+              <h3 class="card__title">Saga Studio</h3>
+              <p class="card__desc" style="-webkit-line-clamp: 4;">Barbería en el barrio Unión, Montevideo. Cortes con oficio, asesoramiento de imagen y precios fijos. Estilo moderno con acentos dorados.</p>
+              <div class="project-card__pills">
+                <span class="pill">HTML</span>
+                <span class="pill">CSS</span>
+                <span class="pill">JavaScript</span>
+              </div>
+              <span class="project-card__link project-card__link--demo">
+                Demo <span aria-hidden="true">&rarr;</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- Ccesco Studio -->
+          <article class="card card--project reveal" style="--reveal-index: 2">
+            <div class="card__image" aria-hidden="true">Ccesco Studio</div>
+            <div class="project-card__body">
+              <h3 class="card__title">Ccesco Studio</h3>
+              <p class="card__desc" style="-webkit-line-clamp: 4;">Barbería moderna y elegante en Montevideo. Estética minimalista, cortes y estilos personalizados. Galería de trabajo.</p>
+              <div class="project-card__pills">
+                <span class="pill">HTML</span>
+                <span class="pill">CSS</span>
+                <span class="pill">JavaScript</span>
+              </div>
+              <span class="project-card__link project-card__link--demo">
+                Demo <span aria-hidden="true">&rarr;</span>
+              </span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__copy">&copy; 2026 CUADRA</p>
+      <div class="footer__links">
+        <a href="https://github.com/fedmiranda" target="_blank" rel="noopener noreferrer" class="footer__link">GitHub</a>
+        <a href="mailto:fedemiranda2198@gmail.com" class="footer__link">Email</a>
+        <a href="tel:+59899331909" class="footer__link">099 331 909</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+/* ============================================
+   animations.css - Scroll reveal, hover states, transitions
+   ============================================ */
+
+/* ---- Scroll reveal ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger support via custom property */
+.reveal--stagger {
+  transition-delay: calc(var(--reveal-index, 0) * 80ms);
+}
+
+/* Respect reduced motion - show everything immediately */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---- Focus states ---- */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ---- Page load animation ---- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Respect reduced motion for page load animations */
+@media (prefers-reduced-motion: reduce) {
+  .animate-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- Subtle glow pulse for accent elements ---- */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 40px rgba(37, 99, 235, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(37, 99, 235, 0.2);
+  }
+}

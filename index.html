@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CUADRA - Desarrollo Web con Sistema de Reservas</title>
+  <meta name="description" content="CUADRA diseña sitios web profesionales con sistemas de reservas para barberías y negocios locales. Creamos primero, te lo mostramos después.">
+  <link rel="canonical" href="https://lucianomartin.onrender.com/">
+  <meta name="theme-color" content="#08090d">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CUADRA - Desarrollo Web con Sistema de Reservas">
+  <meta property="og:description" content="Sitios web profesionales con sistemas de reservas. Diseñamos primero, te lo mostramos después.">
+  <meta property="og:url" content="https://lucianomartin.onrender.com/">
+  <meta property="og:locale" content="es_UY">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Navegacion principal">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">CUADRA</a>
+
+      <div class="nav__links">
+        <a href="/" class="nav__link" aria-current="page">Inicio</a>
+        <a href="/proyectos.html" class="nav__link">Proyectos</a>
+        <a href="/servicios.html" class="nav__link">Servicios</a>
+        <a href="/sobre.html" class="nav__link">Sobre</a>
+        <a href="/contacto.html" class="nav__link">Contacto</a>
+      </div>
+
+      <button class="nav__hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu de navegacion">
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="nav__mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu de navegacion">
+      <a href="/" class="nav__mobile-link" aria-current="page">Inicio</a>
+      <a href="/proyectos.html" class="nav__mobile-link">Proyectos</a>
+      <a href="/servicios.html" class="nav__mobile-link">Servicios</a>
+      <a href="/sobre.html" class="nav__mobile-link">Sobre</a>
+      <a href="/contacto.html" class="nav__mobile-link">Contacto</a>
+    </div>
+  </nav>
+
+  <main id="contenido" tabindex="-1">
+
+    <!-- Hero -->
+    <section class="hero section">
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__content">
+            <p class="hero__label reveal">Desarrollo Web</p>
+            <h1 class="hero__title reveal">Sitios web que<br><span class="highlight">funcionan</span> y<br>generan <span class="highlight">resultados.</span></h1>
+            <p class="hero__subtitle reveal">Identificamos negocios que necesitan presencia online, diseñamos la solución y te la presentamos lista para usar. Sin esperar a que nos busquen.</p>
+            <div class="hero__ctas reveal">
+              <a href="/proyectos.html" class="btn btn--primary">Ver proyectos</a>
+              <a href="/contacto.html" class="btn btn--secondary">Contactanos</a>
+            </div>
+          </div>
+          <div class="hero__avatar-wrap reveal">
+            <div class="avatar" role="img" aria-label="CUADRA">C</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="section" aria-labelledby="stats-title">
+      <div class="container">
+        <h2 class="sr-only" id="stats-title">Números que hablan</h2>
+        <div class="stats-grid">
+          <div class="stat-card reveal" style="--reveal-index: 0">
+            <p class="stat-card__number">3+</p>
+            <p class="stat-card__label">Demos listas para vender</p>
+          </div>
+          <div class="stat-card reveal" style="--reveal-index: 1">
+            <p class="stat-card__number">100%</p>
+            <p class="stat-card__label">Responsive y mobile-first</p>
+          </div>
+          <div class="stat-card reveal" style="--reveal-index: 2">
+            <p class="stat-card__number">0</p>
+            <p class="stat-card__label">Dependencias innecesarias</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before / After -->
+    <section class="section" aria-labelledby="before-after-title">
+      <div class="container">
+        <div class="container--narrow" style="margin-bottom: var(--space-12);">
+          <h2 class="section-title reveal text-center" id="before-after-title">De invisible a <span class="highlight">online</span></h2>
+        </div>
+        <div class="comparison-grid">
+          <div class="comparison-card comparison-card--before reveal" style="--reveal-index: 0">
+            <p class="comparison-card__label">Antes</p>
+            <h3 class="comparison-card__title">Sin presencia online</h3>
+            <ul class="comparison-card__list">
+              <li class="comparison-card__item">Clientes no te encuentran en Google</li>
+              <li class="comparison-card__item">Reservas por WhatsApp o llamadas</li>
+              <li class="comparison-card__item">Dependés del boca en boca</li>
+              <li class="comparison-card__item">Sin imagen profesional en internet</li>
+            </ul>
+          </div>
+          <div class="comparison-arrow reveal" style="--reveal-index: 1" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M8 24h32m0 0l-10-10m10 10l-10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="comparison-card comparison-card--after reveal" style="--reveal-index: 2">
+            <p class="comparison-card__label">Después</p>
+            <h3 class="comparison-card__title">Sitio web funcionando</h3>
+            <ul class="comparison-card__list">
+              <li class="comparison-card__item">Aparecés en búsquedas de Google</li>
+              <li class="comparison-card__item">Clientes reservan desde el celular</li>
+              <li class="comparison-card__item">Imagen profesional 24/7</li>
+              <li class="comparison-card__item">Más clientes, menos tiempo perdido</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyectos destacados -->
+    <section class="section" aria-labelledby="proyectos-destacados">
+      <div class="container">
+        <h2 class="section-title reveal" id="proyectos-destacados">Proyectos <span class="highlight">destacados</span></h2>
+        <div class="grid grid--3">
+
+          <!-- The Faleros -->
+          <article class="card reveal" style="--reveal-index: 0">
+            <div class="card__image">
+              The Faleros
+            </div>
+            <h3 class="card__title">The Faleros</h3>
+            <p class="card__desc">Barbería premium en Montevideo. Cortes con oficio, barba, promos y servicio a domicilio.</p>
+            <span class="card__link card__link--demo">
+              Demo <span class="card__link-arrow" aria-hidden="true">&rarr;</span>
+            </span>
+          </article>
+
+          <!-- Saga Studio -->
+          <article class="card reveal" style="--reveal-index: 1">
+            <div class="card__image">
+              Saga Studio
+            </div>
+            <h3 class="card__title">Saga Studio</h3>
+            <p class="card__desc">Barbería en el barrio Unión, Montevideo. Estilo moderno con acentos dorados.</p>
+            <span class="card__link card__link--demo">
+              Demo <span class="card__link-arrow" aria-hidden="true">&rarr;</span>
+            </span>
+          </article>
+
+          <!-- Ccesco Studio -->
+          <article class="card reveal" style="--reveal-index: 2">
+            <div class="card__image">
+              Ccesco Studio
+            </div>
+            <h3 class="card__title">Ccesco Studio</h3>
+            <p class="card__desc">Barbería moderna y elegante en Montevideo. Estética minimalista y estilos personalizados.</p>
+            <span class="card__link card__link--demo">
+              Demo <span class="card__link-arrow" aria-hidden="true">&rarr;</span>
+            </span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works (Solveo-style steps) -->
+    <section class="section" aria-labelledby="como-funciona">
+      <div class="container">
+        <div class="container--narrow" style="margin-bottom: var(--space-12);">            <h2 class="section-title reveal text-center" id="como-funciona">Nuestro <span class="highlight">proceso</span></h2>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card reveal" style="--reveal-index: 0">
+            <p class="step-card__number">01</p>
+            <h3 class="step-card__title">Identificamos tu negocio</h3>
+            <p class="step-card__desc">Seleccionamos negocios que pueden crecer con una presencia online. Analizamos qué necesitan y a quién le sirve.</p>
+          </div>
+          <div class="step-card reveal" style="--reveal-index: 1">
+            <p class="step-card__number">02</p>
+            <h3 class="step-card__title">Diseñamos la solución</h3>
+            <p class="step-card__desc">Creamos tu sitio directamente, pensado para tu negocio y tus clientes. Sin formularios, sin esperas.</p>
+          </div>
+          <div class="step-card reveal" style="--reveal-index: 2">
+            <p class="step-card__number">03</p>
+            <h3 class="step-card__title">Te lo presentamos</h3>
+            <p class="step-card__desc">Te mostramos el resultado funcionando. Ajustamos lo que necesites y lanzamos tu sitio online.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" aria-labelledby="testimonios-title">
+      <div class="container">
+        <h2 class="section-title reveal" id="testimonios-title">Lo que <span class="highlight">dicen</span> nuestros clientes</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card reveal" style="--reveal-index: 0">
+            <p class="testimonial-card__quote">Nos hicieron la página en tiempo récord. Los clientes pueden reservar desde el celular y todo funciona perfecto.</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar">M</div>
+              <div>
+                <p class="testimonial-card__name">Matías Rodríguez</p>
+                <p class="testimonial-card__role">The Faleros</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card reveal" style="--reveal-index: 1">
+            <p class="testimonial-card__quote">Profesionales, rápidos y saben lo que hacen. Nos pasamos de WhatsApp a un sistema que funciona solo.</p>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar">S</div>
+              <div>
+                <p class="testimonial-card__name">Santiago López</p>
+                <p class="testimonial-card__role">Saga Studio</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Contacto -->
+    <section class="section" aria-labelledby="cta-contacto">
+      <div class="container">
+        <div class="cta-block reveal">
+          <h2 class="cta-block__title" id="cta-contacto">Ya tenemos tu <span class="highlight">solución</span></h2>
+          <p class="cta-block__text">Tenes un negocio y no sabés por dónde empezar? Ya diseñamos algo pensado para vos.</p>
+          <a href="/contacto.html" class="btn btn--primary">Contactanos</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__copy">&copy; 2026 CUADRA</p>
+      <div class="footer__links">
+        <a href="https://github.com/fedmiranda" target="_blank" rel="noopener noreferrer" class="footer__link">GitHub</a>
+        <a href="mailto:fedemiranda2198@gmail.com" class="footer__link">Email</a>
+        <a href="tel:+59899331909" class="footer__link">099 331 909</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
