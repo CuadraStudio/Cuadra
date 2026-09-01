@@ -384,8 +384,21 @@
 .stack-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-8) var(--space-8);
-  max-width: 600px;
+  gap: var(--space-8) var(--space-6);
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .stack-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stack-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 
 /* ---- SOBRE MI: Header with avatar ---- */

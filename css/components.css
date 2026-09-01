@@ -578,10 +578,13 @@
   background: var(--color-accent-subtle);
 }
 
-.tech-icon svg {
+.tech-icon svg,
+.tech-icon i {
   width: 28px;
   height: 28px;
+  font-size: 28px;
   fill: currentColor;
+  color: inherit;
 }
 
 .tech-name {
