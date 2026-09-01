@@ -9,10 +9,10 @@
   left: 0;
   right: 0;
   z-index: var(--z-nav);
-  background: rgba(8, 9, 13, 0.80);
-  backdrop-filter: blur(16px) saturate(1.2);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2);
-  border-bottom: 1px solid var(--color-border);
+  background: rgba(5, 5, 16, 0.70);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--glass-border);
   height: 72px;
   transition: background var(--transition-fast);
 }
@@ -37,7 +37,7 @@
 }
 
 .nav__logo:hover {
-  color: var(--color-accent);
+  color: var(--color-cyan);
 }
 
 /* Desktop nav links */
@@ -66,6 +66,7 @@
   background: var(--gradient-accent);
   transition: width var(--transition-normal);
   border-radius: 1px;
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
 }
 
 .nav__link:hover,
@@ -126,9 +127,9 @@
   position: fixed;
   inset: 0;
   z-index: var(--z-overlay);
-  background: var(--color-overlay);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(5, 5, 16, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -153,7 +154,7 @@
 
 .nav__mobile-link:hover,
 .nav__mobile-link[aria-current="page"] {
-  color: var(--color-accent);
+  color: var(--color-cyan);
 }
 
 @media (min-width: 1024px) {
@@ -185,26 +186,27 @@
 .btn--primary {
   background: var(--gradient-accent);
   color: #ffffff;
-  box-shadow: 0 2px 12px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 2px 16px rgba(0, 212, 255, 0.25);
 }
 
 .btn--primary:hover {
-  background: linear-gradient(135deg, var(--color-primary-hover), var(--color-accent));
+  background: linear-gradient(135deg, var(--color-primary-hover), var(--color-accent-hover));
   color: #ffffff;
-  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 4px 24px rgba(0, 212, 255, 0.35);
   transform: translateY(-1px);
 }
 
 .btn--secondary {
   background: transparent;
   color: var(--color-text);
-  border: 1px solid var(--color-border-strong);
+  border: 1px solid var(--glass-border);
 }
 
 .btn--secondary:hover {
   background: var(--color-bg-card);
   color: var(--color-text);
-  border-color: var(--color-accent);
+  border-color: var(--color-cyan);
+  box-shadow: var(--shadow-glow-cyan);
 }
 
 .btn--full {
@@ -219,8 +221,10 @@
 
 /* ---- Cards ---- */
 .card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-xl);
   padding: var(--space-6);
   transition: all var(--transition-normal);
@@ -229,8 +233,8 @@
 
 .card:hover {
   background: var(--color-bg-card-hover);
-  border-color: var(--color-border-strong);
-  box-shadow: var(--shadow-md);
+  border-color: rgba(0, 212, 255, 0.15);
+  box-shadow: var(--shadow-glow-cyan);
   transform: translateY(-2px);
 }
 
@@ -331,8 +335,8 @@
   padding: 4px 12px;
   font: var(--text-label);
   letter-spacing: var(--letter-spacing-wide);
-  color: var(--color-accent);
-  background: var(--color-accent-subtle);
+  color: var(--color-cyan);
+  background: var(--color-cyan-subtle);
   border-radius: var(--radius-full);
 }
 
@@ -350,7 +354,7 @@
   letter-spacing: var(--letter-spacing-tight);
   flex-shrink: 0;
   transition: transform var(--transition-normal);
-  box-shadow: 0 0 60px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 0 60px rgba(0, 212, 255, 0.2), 0 0 100px rgba(168, 85, 247, 0.1);
 }
 
 .avatar:hover {
@@ -404,8 +408,8 @@
 
 .form-input:focus,
 .form-textarea:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--color-accent-subtle);
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 0 3px var(--color-cyan-subtle);
 }
 
 .form-textarea {
@@ -434,8 +438,8 @@
 
 /* ---- Footer ---- */
 .footer {
-  background: var(--color-bg-raised);
-  border-top: 1px solid var(--color-border);
+  background: rgba(5, 5, 16, 0.80);
+  border-top: 1px solid var(--glass-border);
   padding-block: var(--space-6);
 }
 
@@ -468,7 +472,7 @@
 }
 
 .footer__link:hover {
-  color: var(--color-accent);
+  color: var(--color-cyan);
 }
 
 @media (min-width: 768px) {
@@ -496,19 +500,21 @@
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-5);
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-xl);
-  color: var(--color-accent);
+  color: var(--color-cyan);
   text-decoration: none;
   transition: all var(--transition-normal);
 }
 
 .contact-link:hover {
   background: var(--color-bg-card-hover);
-  border-color: var(--color-border-strong);
+  border-color: rgba(0, 212, 255, 0.15);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-glow-cyan);
 }
 
 .contact-link__icon {
@@ -517,7 +523,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-accent-subtle);
+  background: var(--color-cyan-subtle);
   border-radius: var(--radius-md);
   flex-shrink: 0;
 }
@@ -525,7 +531,7 @@
 .contact-link__icon svg {
   width: 20px;
   height: 20px;
-  stroke: var(--color-accent);
+  stroke: var(--color-cyan);
   fill: none;
   stroke-width: 2;
   stroke-linecap: round;
@@ -565,17 +571,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   color: var(--color-text-secondary);
   transition: all var(--transition-fast);
 }
 
 .tech-item:hover .tech-icon {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-  background: var(--color-accent-subtle);
+  border-color: rgba(0, 212, 255, 0.2);
+  color: var(--color-cyan);
+  background: var(--color-cyan-subtle);
 }
 
 .tech-icon svg,

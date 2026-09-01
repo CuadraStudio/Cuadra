@@ -4,7 +4,10 @@
 
 /* ---- Inline highlight text (Solveo-style) ---- */
 .highlight {
-  color: var(--color-accent);
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ---- HOME: Hero ---- */
@@ -23,7 +26,7 @@
   right: -200px;
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.06) 0%, rgba(168, 85, 247, 0.03) 40%, transparent 70%);
   pointer-events: none;
 }
 
@@ -65,7 +68,7 @@
 .hero__label {
   font: var(--text-label);
   letter-spacing: var(--letter-spacing-wide);
-  color: var(--color-accent);
+  color: var(--color-cyan);
   text-transform: uppercase;
   margin-bottom: var(--space-4);
 }
@@ -133,8 +136,10 @@
 }
 
 .stat-card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-xl);
   padding: var(--space-8) var(--space-6);
   text-align: center;
@@ -142,13 +147,14 @@
 }
 
 .stat-card:hover {
-  border-color: var(--color-border-strong);
+  border-color: rgba(0, 212, 255, 0.15);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-cyan);
 }
 
 .stat-card__number {
   font: var(--text-stat);
-  color: var(--color-text);
+  color: var(--color-cyan);
   letter-spacing: var(--letter-spacing-tight);
   margin-bottom: var(--space-2);
 }
@@ -173,22 +179,25 @@
 }
 
 .step-card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-xl);
   padding: var(--space-8) var(--space-6);
   transition: all var(--transition-normal);
 }
 
 .step-card:hover {
-  border-color: var(--color-border-strong);
+  border-color: rgba(0, 212, 255, 0.15);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-cyan);
 }
 
 .step-card__number {
   font: var(--text-stat);
   font-size: clamp(1.5rem, 3vw, 2rem);
-  color: var(--color-accent);
+  color: var(--color-cyan);
   letter-spacing: var(--letter-spacing-tight);
   margin-bottom: var(--space-4);
   line-height: 1;
@@ -220,8 +229,10 @@
 }
 
 .testimonial-card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-xl);
   padding: var(--space-8);
   display: flex;
@@ -231,7 +242,8 @@
 }
 
 .testimonial-card:hover {
-  border-color: var(--color-border-strong);
+  border-color: rgba(168, 85, 247, 0.15);
+  box-shadow: var(--shadow-glow-purple);
 }
 
 .testimonial-card__quote {
@@ -249,7 +261,7 @@
   left: 0;
   top: -4px;
   font-size: 1.5rem;
-  color: var(--color-accent);
+  color: var(--color-purple);
   font-style: normal;
 }
 
@@ -271,6 +283,7 @@
   font: var(--text-body-sm);
   font-weight: 600;
   flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
 }
 
 .testimonial-card__name {
@@ -286,8 +299,10 @@
 
 /* ---- HOME: CTA block ---- */
 .cta-block {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-2xl);
   padding: var(--space-16) var(--space-8);
   text-align: center;
@@ -299,7 +314,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.06) 0%, transparent 60%);
+  background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.05) 0%, rgba(168, 85, 247, 0.03) 40%, transparent 70%);
   pointer-events: none;
 }
 
@@ -341,7 +356,7 @@
 .project-card__link {
   font: var(--text-body);
   font-weight: 500;
-  color: var(--color-accent);
+  color: var(--color-purple);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -457,29 +472,31 @@
 }
 
 .comparison-card {
-  background: var(--color-bg-card);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border-radius: var(--radius-xl);
   padding: var(--space-8);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--glass-border);
   position: relative;
 }
 
 .comparison-card--before {
-  border-color: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.12);
 }
 
 .comparison-card--after {
-  border-color: rgba(34, 197, 94, 0.2);
-  box-shadow: 0 0 40px rgba(34, 197, 94, 0.08), 0 0 80px rgba(34, 197, 94, 0.04);
+  border-color: rgba(0, 212, 255, 0.2);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.08), 0 0 80px rgba(168, 85, 247, 0.04);
   animation: glow-pulse 4s ease-in-out infinite;
 }
 
 @keyframes glow-pulse {
   0%, 100% {
-    box-shadow: 0 0 40px rgba(34, 197, 94, 0.08), 0 0 80px rgba(34, 197, 94, 0.04);
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.08), 0 0 80px rgba(168, 85, 247, 0.04);
   }
   50% {
-    box-shadow: 0 0 50px rgba(34, 197, 94, 0.14), 0 0 100px rgba(34, 197, 94, 0.07);
+    box-shadow: 0 0 50px rgba(0, 212, 255, 0.14), 0 0 100px rgba(168, 85, 247, 0.07);
   }
 }
 
@@ -501,7 +518,7 @@
 }
 
 .comparison-card--after .comparison-card__label {
-  color: var(--color-success);
+  color: var(--color-cyan);
 }
 
 .comparison-card__title {
@@ -539,7 +556,7 @@
   content: '\2713';
   position: absolute;
   left: 0;
-  color: var(--color-success);
+  color: var(--color-cyan);
   font-weight: 600;
 }
 
@@ -547,8 +564,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-accent);
+  color: var(--color-cyan);
   transform: rotate(90deg);
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.3));
 }
 
 @media (min-width: 768px) {
