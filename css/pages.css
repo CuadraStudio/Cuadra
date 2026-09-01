@@ -108,6 +108,14 @@
   line-height: 1.75;
 }
 
+.hero__brand-note {
+  font: var(--text-body-sm);
+  color: var(--color-text-muted);
+  max-width: 48ch;
+  margin-bottom: var(--space-4);
+  font-style: italic;
+}
+
 .hero__avatar-wrap {
   display: flex;
   justify-content: center;
