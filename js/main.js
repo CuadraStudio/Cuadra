@@ -226,16 +226,23 @@
 
       if (!validate()) return;
 
-      // Simulate form submission (no backend)
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Enviando...';
+      // Build WhatsApp message
+      var nombre = nombreInput.value.trim();
+      var email = emailInput.value.trim();
+      var mensaje = mensajeInput.value.trim();
 
-      setTimeout(function () {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Enviar mensaje';
-        formStatus.innerHTML = '<div class="form-success">Mensaje enviado correctamente. Te voy a responder pronto.</div>';
-        form.reset();
-      }, 1200);
+      var text = 'Hola! Quiero un sitio web.\n\n'
+        + '*Nombre:* ' + nombre + '\n'
+        + '*Email:* ' + email + '\n'
+        + '*Mensaje:* ' + mensaje;
+
+      var url = 'https://wa.me/59899331909?text=' + encodeURIComponent(text);
+      window.open(url, '_blank');
+
+      // Show success
+      submitBtn.disabled = false;
+      formStatus.innerHTML = '<div class="form-success">Abriendo WhatsApp... Si no se abre, <a href="' + url + '" target="_blank" rel="noopener noreferrer">hacé clic acá</a>.</div>';
+      form.reset();
     });
 
     // Clear error on input
