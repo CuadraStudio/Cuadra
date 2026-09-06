@@ -26,11 +26,31 @@
       document.body.style.overflow = 'hidden';
       hamburger.setAttribute('aria-label', 'Cerrar menu de navegacion');
 
-      // Focus first link in menu
+      // Focus the first menu item only once the opening transition has run.
+      // Focusing synchronously fails silently: the menu is still
+      // `visibility: hidden` mid-transition, so Tab would fall into the
+      // background content (WCAG 2.4.3 / APG modal pattern). Prefer
+      // `transitionend` with a timeout fallback matching --duration-normal
+      // (300ms, css/tokens.css) in case the transition never fires
+      // (e.g. prefers-reduced-motion kills it via base.css).
       var firstLink = mobileMenu.querySelector('.nav__mobile-link');
-      if (firstLink) {
+      if (!firstLink) return;
+
+      var didFocus = false;
+      function focusFirstLink() {
+        if (didFocus) return;
+        didFocus = true;
+        mobileMenu.removeEventListener('transitionend', onMenuTransitionEnd);
+        clearTimeout(focusFallbackTimer);
         firstLink.focus();
       }
+      function onMenuTransitionEnd(e) {
+        // Only the menu's own transition — ignore bubbled link hover events.
+        if (e.target === mobileMenu) focusFirstLink();
+      }
+      var focusFallbackTimer = setTimeout(focusFirstLink, 320);
+
+      mobileMenu.addEventListener('transitionend', onMenuTransitionEnd);
     }
 
     function closeMenu() {
@@ -274,6 +294,17 @@
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth' });
+
+          // WCAG 2.4.1 (Bypass Blocks): the skip link must MOVE focus to the
+          // main content, not just scroll to it. #contenido already carries
+          // tabindex="-1"; add it defensively for any other target first, so
+          // the next Tab starts inside the content instead of the nav.
+          if (link.classList.contains('skip-link')) {
+            if (!target.hasAttribute('tabindex')) {
+              target.setAttribute('tabindex', '-1');
+            }
+            target.focus({ preventScroll: true });
+          }
         }
       });
     });

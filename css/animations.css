@@ -1,12 +1,15 @@
 /* ============================================
-   animations.css - Scroll reveal, hover states, transitions
+   animations.css - Scroll reveal, motion tokens
+   Sobrio motion per Design System section 14:
+   easing var(--ease-out), micro 180ms / reveal 600ms.
    ============================================ */
 
-/* ---- Scroll reveal ---- */
+/* ---- Scroll reveal (discrete, no bounce) ---- */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity var(--transition-slow), transform var(--transition-slow);
+  transform: translateY(20px);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
 }
 
 .reveal--visible {
@@ -16,55 +19,51 @@
 
 /* Stagger support via custom property */
 .reveal--stagger {
-  transition-delay: calc(var(--reveal-index, 0) * 80ms);
+  transition-delay: calc(var(--reveal-index, 0) * 70ms);
 }
 
-/* Respect reduced motion - show everything immediately */
+/* ---- Parallel reveal for project images (very subtle) ---- */
+.image-parallax {
+  transform: translateZ(0);
+  transition: transform 400ms var(--ease-out);
+}
+
+/* ---- Animated link underline (used on nav + links) ---- */
+.u-underline {
+  position: relative;
+}
+
+.u-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 0;
+  background: currentColor;
+  transition: width var(--duration-normal) var(--ease-out);
+}
+
+.u-underline:hover::after,
+.u-underline[aria-current="page"]::after {
+  width: 100%;
+}
+
+/* ---- Border expansion on hover (subtle, architectural) ---- */
+.b-expand {
+  transition: border-color var(--duration-fast) var(--ease-out),
+              transform var(--duration-normal) var(--ease-out);
+}
+
+/* ---- Respect reduced motion - show everything immediately (DS 22) ---- */
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
-}
-
-/* ---- Focus states ---- */
-.focus-ring:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 2px;
-}
-
-/* ---- Page load animation ---- */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-in {
-  animation: fadeInUp 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Respect reduced motion for page load animations */
-@media (prefers-reduced-motion: reduce) {
-  .animate-in {
-    animation: none;
-    opacity: 1;
+  .image-parallax {
     transform: none;
-  }
-}
-
-/* ---- Subtle glow pulse for accent elements ---- */
-@keyframes glowPulse {
-  0%, 100% {
-    box-shadow: 0 0 40px rgba(37, 99, 235, 0.12);
-  }
-  50% {
-    box-shadow: 0 0 60px rgba(37, 99, 235, 0.2);
+    transition: none;
   }
 }

@@ -1,4 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <rect width="32" height="32" rx="8" fill="#08090d"/>
-  <text x="16" y="22" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#60a5fa">C</text>
+  <rect width="32" height="32" rx="4" fill="#0F1111"/>
+  <g fill="none" stroke="#AFC8C2" stroke-width="2.6" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M6 8H20L25.5 16"/>
+    <path d="M8 22H25"/>
+    <path d="M8 26H25"/>
+  </g>
 </svg>

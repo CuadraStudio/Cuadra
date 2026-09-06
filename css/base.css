@@ -13,7 +13,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 64px;
+  scroll-padding-top: 72px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -21,7 +21,9 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font: var(--text-body);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
   letter-spacing: var(--letter-spacing-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -55,6 +57,7 @@ svg {
 
 /* Typography base */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
   overflow-wrap: break-word;
   text-wrap: balance;
   color: var(--color-text);
@@ -67,13 +70,17 @@ p {
 
 /* Links */
 a {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
-a:hover {
-  color: var(--color-accent-hover);
+/* Generic hover must not win the specificity fight against styled controls
+   (.btn, .card__link, etc. all define their own hover colors with higher
+   specificity). Restricting the broad selector to non-button anchors keeps
+   `.btn--primary:hover` text black on the sage hover background (AA ~12.7:1). */
+a:not(.btn):not(.skip-link):hover {
+  color: var(--color-accent-ink-hover);
 }
 
 /* Focus visible - all interactive elements */
@@ -135,23 +142,32 @@ select {
 /* Skip link */
 .skip-link {
   position: absolute;
-  top: -100%;
+  top: 0;
   left: var(--space-4);
   z-index: calc(var(--z-overlay) + 1);
   padding: var(--space-3) var(--space-6);
   background: var(--color-primary);
-  color: #ffffff;
-  font: var(--text-body);
+  color: var(--color-accent-on-primary);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
   font-weight: 500;
   border-radius: var(--radius-md);
   text-decoration: none;
-  transition: top var(--transition-fast);
+  /* Off-screen until focused. Transform (not `top`) keeps it outside the
+     clipping cascade and animates without layout thrash. */
+  transform: translateY(-150%);
+  transition: transform var(--transition-fast) var(--ease-out);
 }
 
 .skip-link:focus {
-  top: var(--space-4);
+  transform: translateY(var(--space-4));
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
+}
+
+/* Skip-link is a sage solid control: keep black text on hover too (AA ~10:1) */
+.skip-link:hover {
+  color: var(--color-accent-on-primary);
 }
 
 /* Remove focus outline on main for skip link */

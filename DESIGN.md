@@ -1,109 +1,186 @@
 ---
 name: CUADRA
-description: Desarrollo web profesional en Montevideo. Light mode, minimalista, azul como accent. Marca proactiva: identifico, diseño, vendo. 3 paginas estaticas. HTML + CSS + JS vanilla. Deploy en Render Static Site.
+description: "Desarrollo web a medida en Montevideo. Dark-first arquitectonico y editorial, paleta black/graphite/sage, Space Grotesk + Inter, isotipo geometrico. 3 paginas estaticas. HTML + CSS + JS vanilla. Deploy en Render Static Site."
 
 colors:
-  bg: "#ffffff"
-  bg-raised: "#f8fafc"
-  bg-card: "#ffffff"
-  bg-card-hover: "#f1f5f9"
-  text: "#0f172a"
-  text-secondary: "#64748b"
-  text-muted: "#94a3b8"
-  primary: "#2563eb"
-  primary-hover: "#1d4ed8"
-  accent: "#2563eb"
-  accent-hover: "#1d4ed8"
-  border: "#e2e8f0"
-  border-strong: "#cbd5e1"
-  success: "#16a34a"
-  error: "#dc2626"
-  focus: "#2563eb"
+  bg: "#0F1111"
+  bg-raised: "#292E2D"
+  bg-card: "#F2F1ED"
+  bg-card-hover: "#292E2D"
+  text: "#F2F1ED"
+  text-secondary: "#A7AAAD"
+  text-muted: "#A7AAAD"
+  primary: "#AFC8C2"
+  primary-hover: "#93B5AE"
+  accent: "#AFC8C2"
+  accent-hover: "#93B5AE"
+  border: "#A7AAAD"
+  border-strong: "#D8E2DF"
+  success: "#AFC8C2"
+  error: "#E58E7E"
+  focus: "#AFC8C2"
 
 gradients:
-  hero: "linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)"
-  accent: "linear-gradient(135deg, #2563eb, #3b82f6)"
+  hero: "none"
+  accent: "none"
 
 shadows:
-  sm: "0 1px 3px rgba(0, 0, 0, 0.06)"
-  md: "0 4px 12px rgba(0, 0, 0, 0.08)"
-  lg: "0 8px 24px rgba(0, 0, 0, 0.10)"
+  sm: "0 1px 2px rgba(15, 17, 17, 0.20)"
+  md: "0 4px 12px rgba(15, 17, 17, 0.25)"
+  lg: "0 8px 24px rgba(15, 17, 17, 0.30)"
 
 glassmorphism:
-  bg: "rgba(255, 255, 255, 0.70)"
-  border: "rgba(0, 0, 0, 0.06)"
-  blur: "12px"
+  bg: "rgba(242, 241, 237, 0.04)"
+  border: "rgba(242, 241, 237, 0.12)"
+  blur: "8px"
 
 typography:
   display-xl:
     fontFamily: Space Grotesk
-    fontSize: clamp(2.75rem, 6vw, 4.5rem)
+    fontSize: 4.5rem
     fontWeight: 700
     lineHeight: 1.0
     letterSpacing: -0.04em
   display-lg:
     fontFamily: Space Grotesk
-    fontSize: clamp(2rem, 4.5vw, 3.5rem)
+    fontSize: 3.5rem
     fontWeight: 700
     lineHeight: 1.05
     letterSpacing: -0.03em
   display-md:
     fontFamily: Space Grotesk
-    fontSize: clamp(1.75rem, 3vw, 2.25rem)
+    fontSize: 2.25rem
     fontWeight: 600
     lineHeight: 1.12
     letterSpacing: -0.02em
+  heading-xl:
+    fontFamily: Space Grotesk
+    fontSize: 3rem
+    fontWeight: 700
+    lineHeight: 1.05
+    letterSpacing: -0.02em
+  heading-lg:
+    fontFamily: Space Grotesk
+    fontSize: 2.75rem
+    fontWeight: 700
+    lineHeight: 1.1
+    letterSpacing: -0.02em
+  heading-md:
+    fontFamily: Space Grotesk
+    fontSize: 2.5rem
+    fontWeight: 700
+    lineHeight: 1.1
+  heading-sm:
+    fontFamily: Space Grotesk
+    fontSize: 2rem
+    fontWeight: 700
+    lineHeight: 1.2
+  heading-xs:
+    fontFamily: Space Grotesk
+    fontSize: 1.75rem
+    fontWeight: 600
+    lineHeight: 1.2
+  title:
+    fontFamily: Space Grotesk
+    fontSize: 1.25rem
+    fontWeight: 600
+    lineHeight: 1.3
+  h4:
+    fontFamily: Space Grotesk
+    fontSize: 1.5rem
+    fontWeight: 600
+    lineHeight: 1.2
+  body-lg:
+    fontFamily: Inter
+    fontSize: 1.125rem
+    fontWeight: 400
+    lineHeight: 1.6
+  body:
+    fontFamily: Inter
+    fontSize: 1rem
+    fontWeight: 400
+    lineHeight: 1.6
+  small:
+    fontFamily: Inter
+    fontSize: 0.875rem
+    fontWeight: 400
+    lineHeight: 1.5
+  caption:
+    fontFamily: Inter
+    fontSize: 0.75rem
+    fontWeight: 400
+    lineHeight: 1.4
+  micro:
+    fontFamily: Inter
+    fontSize: 0.6875rem
+    fontWeight: 500
+    lineHeight: 1.4
+    letterSpacing: 0.08em
 
 components:
   button-primary:
-    background: "{colors.primary}"
-    textColor: "#ffffff"
-    rounded: "{rounded.md}"
-    padding: 13px 28px
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.bg}"
+    rounded: "4px"
+    padding: "12px 24px"
+    textTransform: "uppercase"
+  button-secondary:
+    backgroundColor: "transparent"
+    textColor: "{colors.text}"
+    rounded: "4px"
+    padding: "12px 24px"
+    textTransform: "uppercase"
   card:
-    background: "{colors.bg-card}"
-    border: "1px solid {colors.border}"
-    rounded: "{rounded.lg}"
-    padding: 24px
+    backgroundColor: "{colors.bg-card}"
+    rounded: "8px"
+    padding: "24px"
 ---
 
 # CUADRA — Design System
 
 ## Overview
 
-CUADRA es una marca de desarrollo web profesional en Montevideo, Uruguay. Enfoque proactivo: identifico negocios que necesitan presencia online, diseño la solucion y la presento lista para usar. Especializado en barberias y negocios locales.
+CUADRA es un estudio de desarrollo web a medida en Montevideo, Uruguay. Cada sitio se diseña y construye pieza por pieza, como una cuadra urbana: medido, estructurado y funcional. Dark-first, arquitectónico y editorial.
 
-**Design Read**: Light mode limpio y profesional. Fondo blanco, azul (#2563eb) como unico accent. Sin sombras excesivas, sin glassmorphism. Tipografia limpia con Space Grotesk.
+**Design Read**: Dark-first arquitectónico. Predominio de CUADRA Black (#0F1111) con Graphite (#292E2D) para superficies secundarias y Sage (#AFC8C2) como acento de identidad (nunca como fondo masivo). Tipografía Space Grotesk (display) + Inter (body). Bordes finos y discretos, radios rectilíneos, sin sombras ni efectos dramáticos. Debe sentirse como estudio de diseño + estudio de arquitectura + ingeniería digital.
 
 ## Colors
 
-Paleta limitada y profesional. Background blanco (#ffffff) con elevacion via grises claros (#f8fafc, #f1f5f9). Un solo accent: azul electrico (#2563eb) para links, botones, focus rings. Texto principal en slate oscuro (#0f172a), secundario en slate medio (#64748b).
+Paleta neutra y arquitectónica. **CUADRA Black** (#0F1111): fondos principales — header, footer, hero, secciones premium. **Graphite** (#292E2D): superficies secundarias — cards oscuras, navegación, profundidad. **Sage** (#AFC8C2): CTAs, detalles, estados activos — acento, no fondo masivo. **Mist** (#D8E2DF): fondos claros y secciones destacadas. **Warm White** (#F2F1ED): fondo claro principal y tipografía sobre fondos oscuros. **Concrete** (#A7AAAD): texto secundario, bordes, metadatos. Proporción recomendada: 40% black / 20% graphite / 20% sage / 10% mist / 5% white / 5% concrete.
 
 ## Typography
 
-Space Grotesk como unica fuente. Display headings con weight 700 y letter-spacing tight. Body text con weight 400 y line-height generoso (1.7). Labels con weight 500 y letter-spacing wide.
+**Space Grotesk** (--font-display) para H1-H4, nombres de proyectos, frases de impacto, números destacados y navegación destacada. **Inter** (--font-body) para párrafos, botones, formularios, descripciones, metadata. Escala desktop: H1 72px/1.0, H2 48px/1.05, H3 32px/1.1, H4 24px/1.2, Body Large 20px/1.5, Body 16px/1.6, Small 14px/1.5, Caption 12px/1.4. Tracking: títulos grandes -0.03em a -0.05em, labels/uppercase 0.08em a 0.16em. Uso responsivo con clamp en CSS (el frontmatter declara valores base).
 
 ## Layout
 
-3 paginas: Home (one-page con todas las secciones), Proyectos, Contacto. Home: Hero -> Stats -> Antes/Despues -> Proyectos -> Proceso -> Testimonios -> Pricing -> FAQ -> CTA. Baja densidad visual, spacing generoso.
+Grid editorial: 12 columnas desktop (gutter 20-32px, contenedor máximo 1280-1440px), 8 columnas tablet, 4 columnas mobile (gutter 16px, márgenes 16-20px). Espacio en blanco deliberado entre secciones: 96-160px desktop, 64-96px mobile. El espacio vacío es parte de la identidad — nada se llena sin razón. 3 páginas: Home (Hero -> Stats -> Antes/Después -> Proyectos -> Proceso -> Testimonios -> Pricing -> FAQ -> CTA), Proyectos, Contacto.
 
 ## Brand Identity
 
-- **Nombre**: CUADRA (referencia a la unidad de medida — cada sitio se disena a medida)
-- **Enfoque**: Proactivo — identifico, diseño, vendo
-- **Tono**: Moderno, directo, tecnico. El trabajo habla.
-- **Accent**: Azul (#2563eb) para acciones primarias
+- **Nombre**: CUADRA (referencia a la unidad de medida urbana — cada sitio se diseña a medida)
+- **Isotipo**: Interpretación geométrica de `¬=` — SVG propio, trazos consistentes, esquinas limpias, alto contraste a tamaños pequeños
+- **Tono**: Directo, claro, profesional, técnico. Sin exageraciones.
+- **Accent**: Sage (#AFC8C2)
+- **Motion**: Easing global cubic-bezier(0.22, 1, 0.36, 1); micro 150-200ms, normal 250-400ms, reveal 500-800ms; underlines animados, bordes que se expanden, reveal on scroll discreto; respetar prefers-reduced-motion
 - **Deploy**: Render Static Site (cuadra-m5ew.onrender.com)
+
+## Accessibility
+
+Contraste WCAG AA (4.5:1 mínimo para texto normal, 3:1 para texto grande). Contrastes verificados: concrete/black 8.1:1, black/sage 10.7:1, sage/white 1.57:1 (FALLA — nunca sage como texto sobre fondos claros). Estado de focus visible en every interactive element. Skip link funcional. Formulario con labels.
 
 ## Do's and Don'ts
 
-- Do usar azul (#2563eb) solo para elementos interactivos: links, botones, focus rings
-- Do mantener contraste WCAG AA (4.5:1 minimo para texto)
-- Do usar Space Grotesk exclusivamente
-- Do usar background lightness para elevacion
+- Do usar Sage (#AFC8C2) para CTAs y estados activos — nunca como fondo masivo ni como texto sobre fondos claros
+- Do usar Graphite (#292E2D) para elevación sobre black (bordes +1px darker, no sombras)
+- Do usar Space Grotesk para display/números y Inter para body/UI
+- Do usar bordes finos (1px solid rgba(242,241,237,0.12) sobre oscuro, rgba(15,17,17,0.12) sobre claro)
+- Do usar radios rectilíneos: 0px editorial, 2-4px botones, 8px cards, 12px imágenes
+- Do mantener contraste WCAG AA (4.5:1 mínimo para texto)
 - Do mantener el hero alineado a la izquierda en desktop
-- Don't agregar mas de un accent color por componente
-- Don't usar puro negro (#000000) o puro blanco (#ffffff) para texto sobre fondos de acento
-- Don't agregar box-shadows decorativos (solo sombras funcionales en cards)
+- Don't usar box-shadows decorativos ni glows — la elevación es por color y borde, no por sombra
+- Don't usar esquinas muy redondeadas ni cards tipo SaaS dashboard (chrome redondeado, glassmorphism)
+- Don't usar gradientes excesivos, neon/cyberpunk ni estética gamer
+- Don't usar iconos rellenos mezclados con lineales (todo trazo fino y consistente)
 - Don't usar serif fonts
-- Don't agregar emojis en el codigo
+- Don't agregar emojis en el código

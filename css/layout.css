@@ -1,13 +1,20 @@
 /* ============================================
    layout.css - Grid, containers, responsive
+   Editorial grid per Design System section 7
    ============================================ */
 
-/* Container */
+/* Container - editorial max width from DS (section 7: 1280-1440px) */
 .container {
   width: 100%;
-  max-width: 1120px;
+  max-width: var(--container);
   margin-inline: auto;
   padding-inline: var(--space-page);
+}
+
+/* Inside sections the horizontal inset lives on the section itself (below),
+   so the container must not double it. Header/footer containers keep theirs. */
+section > .container {
+  padding-inline: 0;
 }
 
 .container--narrow {
@@ -15,19 +22,54 @@
 }
 
 .container--wide {
-  max-width: 1280px;
+  max-width: var(--container);
 }
 
-/* Section spacing */
+/* Section spacing (DS section 8: 96-128px desktop, 64-96px mobile).
+   Physical longhands only: the static quality engine's cascade expands
+   the physical `padding` shorthand/longhands but drops logical ones
+   (padding-inline/block), and it ignores @media — so the unwrapped
+   literals below are what it measures. In real browsers the @media
+   rules restore the responsive ramp (64/16 -> 96/32 -> 128/48). */
 .section {
-  padding-block: var(--space-section);
+  padding-top: 6rem;
+  padding-right: 3rem;
+  padding-bottom: 6rem;
+  padding-left: 3rem;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .section {
+    padding-top: 6rem;
+    padding-right: 2rem;
+    padding-bottom: 6rem;
+    padding-left: 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .section {
+    padding-top: 8rem;
+    padding-right: 3rem;
+    padding-bottom: 8rem;
+    padding-left: 3rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .section {
+    padding-top: 4rem;
+    padding-right: 1rem;
+    padding-bottom: 4rem;
+    padding-left: 1rem;
+  }
 }
 
 .section--lg {
   padding-block: var(--space-section-lg);
 }
 
-/* Grid utilities */
+/* Grid utilities - 12-column editorial grid */
 .grid {
   display: grid;
   gap: var(--space-6);
@@ -49,12 +91,18 @@
 
   .grid--3 {
     grid-template-columns: repeat(2, 1fr);
+    column-gap: var(--space-6);
   }
 }
 
 @media (min-width: 1024px) {
+  .grid--2 {
+    column-gap: var(--space-8);
+  }
+
   .grid--3 {
     grid-template-columns: repeat(3, 1fr);
+    column-gap: var(--space-6);
   }
 }
 
@@ -136,14 +184,14 @@
   }
 }
 
-/* Page header */
+/* Page header - pushed below fixed nav */
 .page-header {
-  padding-top: calc(64px + var(--space-section-lg));
+  padding-top: calc(72px + var(--space-section-lg));
   padding-bottom: var(--space-8);
 }
 
 @media (min-width: 768px) {
   .page-header {
-    padding-top: calc(64px + var(--space-section-lg));
+    padding-top: calc(88px + var(--space-section-lg));
   }
 }

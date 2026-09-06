@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="CUADRA">
+  <g fill="none" stroke="#0F1111" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M10 14H45L58 36"/>
+    <path d="M16 47H58"/>
+    <path d="M16 56H58"/>
+  </g>
+</svg>
