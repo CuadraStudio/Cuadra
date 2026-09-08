@@ -19,6 +19,7 @@ section > .container {
 
 .container--narrow {
   max-width: 720px;
+  margin-inline: auto;   /* center narrow blocks (standalone comparison cards, text-center titles) */
 }
 
 .container--wide {
