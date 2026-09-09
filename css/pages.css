@@ -17,20 +17,29 @@
   overflow: hidden;
 }
 
-/* Plain flat black hero surface per the DS: no decorative grid overlay.
-   (The old tiled linear-gradient grid was removed — the current DS allows only
-   minimal 2-6% textures and impeccable flagged it as a codex-grid signature.) */
+/* Grid plano técnico: celdas 32px + maestras 256px */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(to right,  rgba(242, 241, 237, 0.035) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(to bottom, rgba(242, 241, 237, 0.035) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(to right,  rgba(242, 241, 237, 0.07) 0 1px, transparent 1px 256px),
+    repeating-linear-gradient(to bottom, rgba(242, 241, 237, 0.07) 0 1px, transparent 1px 256px);
+}
+
+/* Grain de hormigón: feTurbulence data-URI */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 2;
   pointer-events: none;
-  background: radial-gradient(
-    ellipse at 50% 12%,
-    rgba(175, 200, 194, 0.05) 0%,
-    transparent 55%
-  );
-  /* subtle architectural light wash at 5% opacity, within DS texture allowance (section 18) */
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .hero__grid {
@@ -107,15 +116,50 @@
   }
 }
 
-.hero__avatar-wrap {
+/* Marca de agua ¬= */
+.hero__texture-mark {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   display: flex;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
+  pointer-events: none;
 }
 
-@media (min-width: 1024px) {
-  .hero__avatar-wrap {
-    justify-content: flex-end;
-    padding-right: var(--space-6);
+.hero__texture-mark svg {
+  width: clamp(340px, 52vmin, 640px);
+  height: auto;
+  opacity: 0.055;
+  transform: translate(12%, 14%);
+  color: var(--color-sage);
+}
+
+/* Coordenadas esquina */
+.hero__coords {
+  position: absolute;
+  left: clamp(1rem, 4vw, 3rem);
+  bottom: clamp(1.25rem, 3vw, 2rem);
+  z-index: 0;
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--color-concrete);
+  opacity: 0.5;
+  text-transform: uppercase;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Responsive <768px: ocultar coords, reducir marca */
+@media (max-width: 767px) {
+  .hero__coords {
+    display: none;
+  }
+  .hero__texture-mark svg {
+    transform: translate(18%, 20%);
+    opacity: 0.04;
   }
 }
 
