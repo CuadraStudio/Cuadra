@@ -163,7 +163,7 @@ Grid editorial: 12 columnas desktop (gutter 20-32px, contenedor máximo 1280-144
 - **Tono**: Directo, claro, profesional, técnico. Sin exageraciones.
 - **Accent**: Sage (#AFC8C2)
 - **Motion**: Easing global cubic-bezier(0.22, 1, 0.36, 1); micro 150-200ms, normal 250-400ms, reveal 500-800ms; underlines animados, bordes que se expanden, reveal on scroll discreto; respetar prefers-reduced-motion
-- **Deploy**: Render Static Site (cuadra-m5ew.onrender.com)
+- **Deploy**: Render Static Site (cuadrastudio.uy)
 
 ## Accessibility
 
