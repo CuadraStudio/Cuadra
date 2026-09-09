@@ -48,7 +48,7 @@
 }
 
 .nav__logo-img {
-  width: 132px;
+  width: 104px;
   height: auto;
   flex-shrink: 0;
   display: block;
@@ -542,7 +542,7 @@
 }
 
 .footer__logo-img {
-  width: 132px;
+  width: 104px;
   height: auto;
   display: block;
 }
