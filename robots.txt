@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cuadra-m5ew.onrender.com/sitemap.xml
