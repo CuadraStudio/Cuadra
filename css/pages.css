@@ -682,3 +682,23 @@
   justify-content: center;
   margin-top: var(--space-6);
 }
+
+/* construccion.html: wordmark dominante */
+.hero--construction .hero__label {
+  font-family: var(--font-body);        /* Inter — wordmark de marca siempre en body */
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: clamp(3.5rem, 13vw, 7.5rem);
+  line-height: 0.95;
+  text-transform: none;                  /* desactivar el uppercase del hero__label base si lo tiene */
+  color: var(--color-text);              /* #F2F1ED hueso */
+  margin-bottom: var(--space-6);
+}
+.hero--construction .hero__title {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);  /* recede frente al wordmark */
+  max-width: 34ch;
+  margin-inline: auto;
+}
+.hero--construction .hero__subtitle {
+  max-width: 44ch;
+}
