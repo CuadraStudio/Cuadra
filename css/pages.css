@@ -666,3 +666,19 @@
 .project-card__link--demo:hover {
   color: var(--color-accent-ink-hover);
 }
+
+/* construccion.html: hero a pantalla completa */
+.hero--construction {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
+
+/* construccion.html: acciones de contacto */
+.hero--construction .hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: center;
+  margin-top: var(--space-6);
+}
