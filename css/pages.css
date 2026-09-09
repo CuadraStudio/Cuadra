@@ -119,6 +119,13 @@
   }
 }
 
+/* Wordmark CUADRA: la marca siempre en Inter (font-body), aunque el contexto sea display */
+.brand-wordmark {
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
 /* ---- Section titles (DS 6: H2 48px desktop / 34-40 mobile) ---- */
 .section-title {
   font-family: var(--font-display);
