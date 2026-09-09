@@ -702,3 +702,12 @@
 .hero--construction .hero__subtitle {
   max-width: 44ch;
 }
+
+/* construccion.html: logo sobre el wordmark */
+.hero--construction .hero__logo {
+  width: clamp(7rem, 26vw, 13rem);
+  height: auto;
+  margin-bottom: var(--space-6);
+  display: block;
+  margin-inline: auto;
+}
