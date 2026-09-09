@@ -17,8 +17,19 @@
   overflow: hidden;
 }
 
+.page-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header .container {
+  position: relative;
+  z-index: 1;
+}
+
 /* Grid plano técnico: celdas 32px + maestras 256px */
-.hero::before {
+.hero::before,
+.page-header::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -32,7 +43,8 @@
 }
 
 /* Grain de hormigón: feTurbulence data-URI */
-.hero::after {
+.hero::after,
+.page-header::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -160,6 +172,10 @@
   .hero__texture-mark svg {
     transform: translate(18%, 20%);
     opacity: 0.04;
+  }
+  /* Page headers son compactos: empujar la marca mas afuera para que el trazo no cruce detras del h1 */
+  .page-header .hero__texture-mark svg {
+    transform: translate(30%, 46%);
   }
 }
 
