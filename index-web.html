@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CUADRA - Desarrollo Web | Sitios web para negocios locales</title>
+  <meta name="description" content="CUADRA diseña y crea sitios web profesionales para negocios locales. Presencia en Google, gestión de turnos y consultas, y resultados medibles.">
+  <link rel="canonical" href="https://cuadrastudio.uy/">
+  <meta name="theme-color" content="#0F1111">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CUADRA - Desarrollo Web">
+  <meta property="og:description" content="Sitios web profesionales para negocios locales. Diseño, construcción y lanzamiento en 72 horas.">
+  <meta property="og:url" content="https://cuadrastudio.uy/">
+  <meta property="og:locale" content="es_UY">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Fonts: Space Grotesk (display) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Navegacion principal">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="CUADRA - Inicio">
+        <img src="img/logo_white.svg" alt="" aria-hidden="true" class="nav__logo-img" width="104" height="31">
+      </a>
+
+      <div class="nav__links">
+        <a href="/" class="nav__link" aria-current="page">Inicio</a>
+        <a href="/proyectos.html" class="nav__link">Proyectos</a>
+        <a href="/contacto.html" class="nav__link">Contacto</a>
+      </div>
+
+      <button class="nav__hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu de navegacion">
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="nav__mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu de navegacion">
+      <a href="/" class="nav__mobile-link" aria-current="page">Inicio</a>
+      <a href="/proyectos.html" class="nav__mobile-link">Proyectos</a>
+      <a href="/contacto.html" class="nav__mobile-link">Contacto</a>
+    </div>
+  </nav>
+
+  <main id="contenido" tabindex="-1">
+
+    <!-- 1. Hero -->
+    <section class="hero section">
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__content">
+            <p class="hero__label reveal">Cuadra — Desarrollo Web</p>
+            <h1 class="hero__title reveal"><span class="brand-wordmark">CUADRA</span><br>Sitios web que <span class="highlight">funcionan</span><br>y generan <span class="highlight">resultados.</span></h1>
+            <p class="hero__subtitle reveal">Diseñamos y desarrollamos sitios web para negocios locales. Construimos la solución, la automatizamos y te la presentamos lista para usar. Turnos, consultas, presencia en Google y resultados medibles en menos de 72 horas.</p>
+            <div class="hero__ctas reveal">
+              <a href="/proyectos.html" class="btn btn--primary">Ver proyectos</a>
+              <a href="/contacto.html" class="btn btn--secondary">Quiero mi sitio</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__texture-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#AFC8C2" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter">
+              <path d="M10 14H45L58 36"/>
+              <path d="M16 47H58"/>
+              <path d="M16 56H58"/>
+            </g>
+          </svg>
+        </div>
+        <div class="hero__coords" aria-hidden="true">34.90°S / 56.16°W</div>
+
+      </div>
+    </section>
+
+    <!-- 2. Stats (Social Proof) -->
+    <section class="section section--mist" aria-labelledby="stats-title">
+      <div class="container">
+        <h2 class="sr-only" id="stats-title">Números que hablan</h2>
+        <div class="stats-grid">
+          <div class="stat-card reveal" style="--reveal-index: 0">
+            <p class="stat-card__number">50+</p>
+            <p class="stat-card__label">Turnos y consultas gestionados para clientes activos</p>
+          </div>
+          <div class="stat-card reveal" style="--reveal-index: 1">
+            <p class="stat-card__number">48h</p>
+            <p class="stat-card__label">Tiempo promedio de entrega</p>
+          </div>
+          <div class="stat-card reveal" style="--reveal-index: 2">
+            <p class="stat-card__number">3</p>
+            <p class="stat-card__label">Negocios ya activos</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Testimonios (Social Proof) -->
+    <section class="section section--light" aria-labelledby="testimonios-title">
+      <div class="container">
+        <h2 class="section-title reveal" id="testimonios-title">Lo que <span class="highlight">dicen</span> nuestros clientes</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card reveal" style="--reveal-index: 0">
+            <p class="testimonial-card__quote">Me hizo la página en tiempo récord. Los clientes gestionan sus turnos desde el celular y todo funciona perfecto.</p>
+            <div class="testimonial-card__source">
+              <span class="testimonial-card__source-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                WhatsApp
+              </span>
+              <span class="testimonial-card__source-date">Marzo 2026</span>
+            </div>
+          </div>
+          <div class="testimonial-card reveal" style="--reveal-index: 1">
+            <p class="testimonial-card__quote">Profesional, rápido y sabe lo que hace. Pasé de WhatsApp a un sistema que funciona solo.</p>
+            <div class="testimonial-card__source">
+              <span class="testimonial-card__source-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                WhatsApp
+              </span>
+              <span class="testimonial-card__source-date">Febrero 2026</span>
+            </div>
+          </div>
+          <div class="testimonial-card reveal" style="--reveal-index: 2">
+            <p class="testimonial-card__quote">⭐⭐⭐⭐⭐ en Google: "Muy profesional, el sitio quedó exactamente como quería. Mis clientes gestionan sus turnos solos ahora."
+            </p>
+            <div class="testimonial-card__source">
+              <span class="testimonial-card__source-badge testimonial-card__source-badge--google">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Reseña de Google
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Problem statement -->
+    <section class="section section--mist" aria-labelledby="problem-title">
+      <div class="container">
+        <div class="container--narrow" style="margin-bottom: var(--space-8);">
+          <h2 class="section-title reveal text-center" id="problem-title">Tu negocio <span class="highlight">sin</span> presencia online</h2>
+        </div>
+        <div class="container--narrow">
+          <div class="comparison-card comparison-card--before reveal" style="--reveal-index: 0">
+            <p class="comparison-card__label">Sin presencia online</p>
+            <ul class="comparison-card__list">
+              <li class="comparison-card__item">Clientes no encontraban el negocio en Google</li>
+              <li class="comparison-card__item">Consultas solo por llamada o WhatsApp</li>
+              <li class="comparison-card__item">Ninguna consulta ni pedido recibido en línea</li>
+              <li class="comparison-card__item">Visibilidad limitada al barrio y al horario del local</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Solution / Value -->
+    <section class="section section--light" aria-labelledby="solution-title">
+      <div class="container">
+        <div class="container--narrow" style="margin-bottom: var(--space-8);">
+          <h2 class="section-title reveal text-center" id="solution-title">Lo que <span class="highlight">cambia</span> con <span class="brand-wordmark">CUADRA</span></h2>
+        </div>
+        <div class="container--narrow">
+          <div class="comparison-card comparison-card--after reveal" style="--reveal-index: 0">
+            <p class="comparison-card__label">Con <span class="brand-wordmark">CUADRA</span></p>
+            <ul class="comparison-card__list">
+              <li class="comparison-card__item"><strong>50+ turnos y consultas</strong> gestionados automáticamente para clientes activos</li>
+              <li class="comparison-card__item">Aparece en búsquedas de Google, 24/7</li>
+              <li class="comparison-card__item">Los clientes gestionan turnos y consultas desde el celular</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Proyectos destacados -->
+    <section class="section section--dark" aria-labelledby="proyectos-destacados">
+      <div class="container">
+        <h2 class="section-title reveal" id="proyectos-destacados">Proyectos <span class="highlight">destacados</span></h2>
+        <div class="grid grid--3">
+
+          <!-- The Faleros -->
+          <article class="card reveal" style="--reveal-index: 0">
+            <img src="img/thefaleros.png" alt="Screenshot del sitio web de The Faleros, barbería en Av. 18 de Julio, Montevideo" class="card__image" loading="lazy">
+            <h3 class="card__title">The Faleros</h3>
+            <p class="card__desc">Av. 18 de Julio 2042, Montevideo</p>
+            <a href="https://thefaleros.onrender.com" target="_blank" rel="noopener noreferrer" class="card__link card__link--demo">
+              Demo <span class="card__link-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+
+          <!-- Saga Studio -->
+          <article class="card reveal" style="--reveal-index: 1">
+            <img src="img/sagastudio.png" alt="Screenshot del sitio web de Saga Studio, barbería en el barrio Unión, Montevideo" class="card__image" loading="lazy">
+            <h3 class="card__title">Saga Studio</h3>
+            <p class="card__desc">Barrio Unión, Montevideo</p>
+            <a href="https://sagastudio.onrender.com" target="_blank" rel="noopener noreferrer" class="card__link card__link--demo">
+              Demo <span class="card__link-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+
+          <!-- Ccesco Studio -->
+          <article class="card reveal" style="--reveal-index: 2">
+            <img src="img/ccescostudio.png" alt="Screenshot del sitio web de Ccesco Studio, barbería moderna en Montevideo" class="card__image" loading="lazy">
+            <h3 class="card__title">Ccesco Studio</h3>
+            <p class="card__desc">Montevideo</p>
+            <a href="https://ccescostudio.onrender.com" target="_blank" rel="noopener noreferrer" class="card__link card__link--demo">
+              Demo <span class="card__link-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Cómo funciona (proceso) -->
+    <section class="section" aria-labelledby="como-funciona">
+      <div class="container">
+        <div class="container--narrow" style="margin-bottom: var(--space-8);">
+          <h2 class="section-title reveal text-center" id="como-funciona">Cómo <span class="highlight">funciona</span></h2>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card reveal" style="--reveal-index: 0">
+            <p class="step-card__number">01</p>
+            <h3 class="step-card__title">Identificamos tu negocio</h3>
+            <p class="step-card__desc">Seleccionamos negocios que pueden crecer con una presencia online. Analizamos qué necesitan y a quién le sirve.</p>
+          </div>
+          <div class="step-card reveal" style="--reveal-index: 1">
+            <p class="step-card__number">02</p>
+            <h3 class="step-card__title">Diseñamos la solución</h3>
+            <p class="step-card__desc">Creamos tu sitio directamente, pensado para tu negocio y tus clientes. Sin formularios, sin esperas.</p>
+          </div>
+          <div class="step-card reveal" style="--reveal-index: 2">
+            <p class="step-card__number">03</p>
+            <h3 class="step-card__title">Te presentamos el resultado</h3>
+            <p class="step-card__desc">Te mostramos el resultado funcionando. Ajustamos lo que necesités y lanzamos tu sitio online.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. FAQ -->
+    <section class="section section--light" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="container--narrow" style="margin-bottom: var(--space-8);">
+          <h2 class="section-title reveal text-center" id="faq-title">Preguntas <span class="highlight">frecuentes</span></h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item reveal" style="--reveal-index: 0">
+            <summary class="faq-item__question">¿Cuánto tarda en estar listo mi sitio?</summary>
+            <p class="faq-item__answer">En 48 a 72 horas hábiles tenés tu sitio funcionando. Primero te mostramos la demo, ajustamos lo que necesites, y lo lanzamos online.</p>
+          </details>
+          <details class="faq-item reveal" style="--reveal-index: 1">
+            <summary class="faq-item__question">¿Qué incluye el sitio web?</summary>
+            <p class="faq-item__answer">Diseño adaptable a celular, tablet y computadora (diseño responsive), herramientas online según tu negocio: turnos, catálogo o consultas (sistema de agendamiento, e-commerce o formulario), hosting y dominio incluidos por un año (hosting y dominio), presencia en búsquedas de Google (SEO básico), y soporte técnico post-lanzamiento.</p>
+          </details>
+          <details class="faq-item reveal" style="--reveal-index: 2">
+            <summary class="faq-item__question">¿Cómo se paga?</summary>
+            <p class="faq-item__answer">50% al aprobar la demo, 50% al lanzar el sitio. Aceptamos transferencia bancaria, Mercado Pago y efectivo.</p>
+          </details>
+          <details class="faq-item reveal" style="--reveal-index: 3">
+            <summary class="faq-item__question">¿Necesito saber de tecnología?</summary>
+            <p class="faq-item__answer">Para nada. CUADRA se encarga de todo: diseño, desarrollo, hosting y configuración. Vos solo aprobás y recibís las consultas y los turnos.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Pricing -->
+    <section class="section section--mist" aria-labelledby="pricing-title">
+      <div class="container">
+        <div class="container--narrow text-center" style="margin-bottom: var(--space-8);">
+          <h2 class="section-title reveal" id="pricing-title">Propuestas <span class="highlight">a medida</span></h2>
+          <p class="hero__subtitle reveal" style="margin-inline: auto;">Cada proyecto se cotiza según las necesidades del negocio. Contanos tu idea y armamos una propuesta a medida.</p>
+        </div>
+        <div class="pricing-cards">
+          <!-- Plan Básico -->
+          <div class="pricing-card reveal" style="--reveal-index: 0">
+            <p class="pricing-card__label">Presencia Online</p>
+            <ul class="pricing-card__list">
+              <li class="pricing-card__item">Página única con todo en un solo lugar (landing page)</li>
+              <li class="pricing-card__item">Diseño adaptable a celular, tablet y computadora (diseño responsive)</li>
+              <li class="pricing-card__item">Botón de WhatsApp para contactar al instante (vinculación con WhatsApp)</li>
+              <li class="pricing-card__item">Aparición en búsquedas de Google (SEO básico)</li>
+              <li class="pricing-card__item">Servidor y dirección web incluidos por un año (hosting y dominio)</li>
+              <li class="pricing-card__item">Sitio listo en 72 horas (plazo de entrega: 72 horas)</li>
+            </ul>
+            <a href="/contacto.html" class="btn btn--secondary btn--full">Pedí tu presupuesto</a>
+          </div>
+
+          <!-- Plan Popular (destacado) -->
+          <div class="pricing-card pricing-card--featured reveal" style="--reveal-index: 1">
+            <span class="pricing-card__badge">Más elegido</span>
+            <p class="pricing-card__label">Sitio Web Completo</p>
+            <ul class="pricing-card__list">
+              <li class="pricing-card__item">Todo lo del plan Presencia Online</li>
+              <li class="pricing-card__item">Sitio con varias secciones (sitio multi-página)</li>
+              <li class="pricing-card__item">Gestión automática de turnos y consultas según tu rubro (sistema de agendamiento online)</li>
+              <li class="pricing-card__item">Formulario para que te escriban desde el sitio (formulario de contacto)</li>
+              <li class="pricing-card__item">Posicionamiento mejorado en búsquedas de Google (SEO avanzado)</li>
+              <li class="pricing-card__item">Ayuda técnica durante 30 días después del lanzamiento (soporte técnico 30 días)</li>
+            </ul>
+            <a href="/contacto.html" class="btn btn--primary btn--full">Pedí tu presupuesto</a>
+          </div>
+
+          <!-- Plan Premium -->
+          <div class="pricing-card reveal" style="--reveal-index: 2">
+            <p class="pricing-card__label">Tienda Online / Sitio Pro</p>
+            <ul class="pricing-card__list">
+              <li class="pricing-card__item">Todo lo del plan Sitio Web Completo</li>
+              <li class="pricing-card__item">Tienda virtual para vender productos (tienda online / e-commerce)</li>
+              <li class="pricing-card__item">Muestra de trabajos realizados (portfolio)</li>
+              <li class="pricing-card__item">Espacio para editar textos, fotos y secciones (panel de administración / CMS)</li>
+              <li class="pricing-card__item">Atención prioritaria durante 90 días (soporte prioritario 90 días)</li>
+              <li class="pricing-card__item">Adaptaciones según la actividad del negocio (personalización según el rubro)</li>
+            </ul>
+            <a href="/contacto.html" class="btn btn--secondary btn--full">Pedí tu presupuesto</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. CTA Contacto -->
+    <section class="section" aria-labelledby="cta-contacto">
+      <div class="container">
+        <div class="cta-block reveal">
+          <h2 class="cta-block__title" id="cta-contacto">Ya tenemos tu <span class="highlight">solución</span></h2>
+          <p class="cta-block__text">Tenés un negocio y no sabés por dónde empezar? Ya diseñamos algo pensado para tu rubro.</p>
+          <a href="/contacto.html" class="btn btn--primary">Agendá una demo gratuita</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- WhatsApp floating button -->
+  <a href="https://wa.me/59899331909?text=Hola!%20Vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20un%20sitio%20web" target="_blank" rel="noopener noreferrer" class="whatsapp-fab" aria-label="Contactar por WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C6.9 3 2.7 7.2 2.7 12.3c0 1.6.4 3.1 1.2 4.5L2.7 21.3l4.6-1.2c1.3.8 2.8 1.2 4.5 1.2 5.1 0 9.3-4.2 9.3-9.3S17.1 3 12 3z"/><path d="M9.3 8.6c-.2 0-.4.1-.5.3-.2.3-.7.9-.7 2s.7 2.4.8 2.5c.1.1 1.4 2.3 3.5 3.1 1.3.5 1.9.5 2.4.3.4-.1 1-.5 1.1-1 .1-.5.1-.9.1-1-.1-.1-.2-.2-.4-.2l-1.6-.7c-.2-.1-.4-.1-.5.1l-.6.9c-.1.2-.3.2-.5.1-.8-.3-1.6-.8-2.2-1.5-.5-.6-.9-1.3-1-1.5-.1-.2 0-.3.1-.4l.4-.5c.1-.2.1-.3 0-.4l-.3-.7c-.2-.9-.5-1.9-.7-2-.1-.2-.3-.3-.7-.3z"/></svg>
+  </a>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="img/logo_white.svg" alt="CUADRA" class="footer__logo-img" width="104" height="31">
+        <span class="footer__brand-desc">Desarrollo web a medida</span>
+      </div>
+      <div class="footer__links">
+        <a href="mailto:contacto@cuadrastudio.uy" class="footer__link">Email</a>
+        <a href="https://wa.me/59899331909" target="_blank" rel="noopener noreferrer" class="footer__link">WhatsApp</a>
+      </div>
+      <div class="footer__brand">
+        <p class="footer__copy">&copy; 2026 CUADRA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
