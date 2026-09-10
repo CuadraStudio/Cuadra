@@ -684,6 +684,14 @@
   align-items: center;
 }
 
+/* movil: contenido alineado arriba con padding superior reducido para que los 3 CTA entren en el primer viewport */
+@media (max-width: 767.98px) {
+  .hero--construction {
+    align-items: flex-start;
+    padding-top: 24px;
+  }
+}
+
 /* construccion.html: acciones de contacto */
 .hero--construction .hero__actions {
   display: flex;
