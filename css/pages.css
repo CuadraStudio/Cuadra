@@ -722,7 +722,7 @@
   margin: 0 auto var(--space-8);
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(1rem, 3vw, 1.75rem);   /* con tracking display 0.18em: frase mas larga (49 chars) = 2 lineas a 390px */
+  font-size: clamp(0.875rem, 2.25vw, 1.375rem);   /* ~21% menor; con 0.18em: frase mas larga (49 chars) = 2 lineas a 390px */
   line-height: 1.3;
   letter-spacing: var(--letter-spacing-display);
   text-transform: uppercase;
