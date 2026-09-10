@@ -703,6 +703,19 @@
   text-transform: uppercase;
   color: var(--color-text);              /* #F2F1ED hueso */
   margin-bottom: var(--space-6);
+  /* centrado óptico determinista: flex centra el ancho exacto de los items;
+     la ultima letra no tiene tracking posterior → sin espacio fantasma en ningun viewport */
+  display: flex;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.hero--construction .hero__label span {
+  letter-spacing: var(--letter-spacing-interface);
+}
+
+.hero--construction .hero__label span:last-child {
+  letter-spacing: 0;
 }
 /* construccion.html: logo sobre el wordmark */
 .hero--construction .hero__logo {
