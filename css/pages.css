@@ -694,11 +694,6 @@
   color: var(--color-text);              /* #F2F1ED hueso */
   margin-bottom: var(--space-6);
 }
-.hero--construction .hero__title {
-  font-size: clamp(1.25rem, 3vw, 1.75rem);  /* recede frente al wordmark */
-  max-width: 34ch;
-  margin-inline: auto;
-}
 .hero--construction .hero__subtitle {
   max-width: 44ch;
 }
