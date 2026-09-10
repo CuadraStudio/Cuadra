@@ -684,11 +684,11 @@
   align-items: center;
 }
 
-/* movil: contenido alineado arriba con padding superior reducido para que los 3 CTA entren en el primer viewport */
+/* movil: el hero se corta en su contenido con aire simetrico (sin forzar pantalla completa) */
 @media (max-width: 767.98px) {
   .hero--construction {
-    align-items: flex-start;
-    padding-top: 24px;
+    min-height: 0;
+    padding-block: clamp(2.5rem, 9svh, 4.5rem);
   }
 }
 
