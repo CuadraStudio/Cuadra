@@ -33,9 +33,9 @@
   align-items: center;
   font-family: var(--font-display);
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-display);
   color: var(--color-text);
-  letter-spacing: var(--letter-spacing-tight);
   text-decoration: none;
   transition: color var(--transition-fast);
   /* clear space: padding >= stroke height of the isotipo */
@@ -62,9 +62,11 @@
 }
 
 .nav__link {
-  font-family: var(--font-body);
+  font-family: var(--font-primary);
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-interface);
   color: var(--color-text-secondary);
   text-decoration: none;
   position: relative;
@@ -160,6 +162,9 @@
 .nav__mobile-link {
   font-family: var(--font-display);
   font-size: 1.75rem;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-display);
+  text-transform: uppercase;
   color: var(--color-text);
   text-decoration: none;
   transition: color var(--transition-fast);
@@ -183,10 +188,10 @@
   justify-content: center;
   gap: var(--space-2);
   padding: 14px 26px;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--letter-spacing-interface);
   text-transform: uppercase;
   border-radius: var(--radius-md);
   transition: transform var(--duration-fast) var(--ease-out),
@@ -194,7 +199,9 @@
               border-color var(--duration-fast) var(--ease-out),
               color var(--duration-fast) var(--ease-out);
   cursor: pointer;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.2;
   text-decoration: none;
 }
 
@@ -286,8 +293,9 @@
 
 .card__title {
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.125rem;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-display);
   color: var(--color-text);
   margin-bottom: var(--space-2);
 }
@@ -295,6 +303,8 @@
 .card__desc {
   font-family: var(--font-body);
   font-size: 0.875rem;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-body);
   color: var(--color-text-secondary);
   margin-bottom: var(--space-4);
   display: -webkit-box;
@@ -403,9 +413,9 @@
   display: inline-block;
   padding: 5px 12px;
   font-family: var(--font-body);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: var(--letter-spacing-wide);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-body);
   color: var(--color-text-secondary);
   background: transparent;
   border: 1px solid var(--color-border);
@@ -456,12 +466,12 @@
 }
 
 .form-label {
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: var(--letter-spacing-wide);
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-body);
   color: var(--color-text-secondary);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .form-input,
@@ -470,6 +480,9 @@
   padding: 14px 18px;
   font-family: var(--font-body);
   font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-body);
+  text-transform: none;
   color: var(--color-text);
   background: var(--color-bg-raised);
   border: 1px solid var(--color-border);
@@ -549,8 +562,9 @@
 
 .footer__brand-desc {
   font-family: var(--font-body);
-  font-size: 0.6875rem;
-  letter-spacing: var(--letter-spacing-wide);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-body);
   color: var(--color-text-muted);
   text-transform: uppercase;
 }
@@ -558,6 +572,9 @@
 .footer__copy {
   font-family: var(--font-body);
   font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-body);
+  text-transform: none;
   color: var(--color-text-muted);
 }
 
@@ -570,12 +587,16 @@
 .footer__links {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--space-6);
 }
 
 .footer__link {
-  font-family: var(--font-body);
+  font-family: var(--font-primary);
   font-size: 0.875rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-interface);
   color: var(--color-text-secondary);
   text-decoration: none;
   transition: color var(--transition-fast);
@@ -670,6 +691,8 @@
 .contact-link__text {
   font-family: var(--font-body);
   font-size: 0.875rem;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-body);
   color: var(--color-text-secondary);
   word-break: break-all;
 }
@@ -844,10 +867,10 @@
 }
 
 .pricing-card__label {
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: var(--letter-spacing-wide);
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-interface);
   text-transform: uppercase;
   color: var(--color-text-secondary);
   margin-bottom: var(--space-4);
@@ -856,7 +879,8 @@
 .pricing-card__price {
   font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-display);
   color: var(--color-text);
   margin-bottom: var(--space-6);
 }
@@ -921,10 +945,10 @@
   display: inline-block;
   margin-bottom: var(--space-5);
   padding: 6px 14px;
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: var(--letter-spacing-wide);
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-interface);
   text-transform: uppercase;
   color: var(--color-sage);
   background: transparent;
@@ -956,7 +980,8 @@
 .faq-item__question {
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-body);
   color: var(--color-text);
   padding: var(--space-5) var(--space-5);
   cursor: pointer;
@@ -1010,7 +1035,8 @@
   padding: 4px 10px;
   font-family: var(--font-body);
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-body);
   color: var(--color-text-secondary);
   background: transparent;
   border: 1px solid var(--color-border);
@@ -1185,7 +1211,8 @@
 
 .case-study__metric-value {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-interface);
   color: var(--color-accent-ink);
 }
 

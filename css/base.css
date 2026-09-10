@@ -23,8 +23,9 @@ body {
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: 16px;
+  font-weight: 300;
   line-height: 1.6;
-  letter-spacing: var(--letter-spacing-normal);
+  letter-spacing: var(--letter-spacing-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -58,12 +59,19 @@ svg {
 /* Typography base */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-display);
+  text-transform: uppercase;
   overflow-wrap: break-word;
   text-wrap: balance;
   color: var(--color-text);
 }
 
 p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-body);
+  text-transform: none;
   overflow-wrap: break-word;
   text-wrap: pretty;
 }
@@ -151,6 +159,7 @@ select {
   font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 500;
+  letter-spacing: var(--letter-spacing-body);
   border-radius: var(--radius-md);
   text-decoration: none;
   /* Off-screen until focused. Transform (not `top`) keeps it outside the
