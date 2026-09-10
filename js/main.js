@@ -325,3 +325,18 @@
     init();
   }
 })();
+
+/* Rotador de propuestas de valor (solo pagina de construccion) */
+(function () {
+  const rotator = document.querySelector('.hero--construction .hero__rotator');
+  if (!rotator) return;
+  const lines = Array.from(rotator.querySelectorAll('.hero__rotator-line'));
+  if (lines.length < 2) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let i = 0;
+  window.setInterval(function () {
+    lines[i].classList.remove('is-active');
+    i = (i + 1) % lines.length;
+    lines[i].classList.add('is-active');
+  }, 3200);
+})();

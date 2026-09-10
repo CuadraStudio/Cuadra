@@ -694,10 +694,6 @@
   color: var(--color-text);              /* #F2F1ED hueso */
   margin-bottom: var(--space-6);
 }
-.hero--construction .hero__subtitle {
-  max-width: 44ch;
-}
-
 /* construccion.html: logo sobre el wordmark */
 .hero--construction .hero__logo {
   width: clamp(7rem, 26vw, 13rem);
@@ -705,4 +701,40 @@
   margin-bottom: var(--space-6);
   display: block;
   margin-inline: auto;
+}
+
+/* construccion.html: rotador de propuestas de valor */
+.hero--construction .hero__rotator {
+  position: relative;
+  min-height: 2.7em;
+  max-width: 44ch;
+  margin: 0 auto var(--space-8);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.125rem, 3.2vw, 1.5rem);
+  line-height: 1.3;
+  letter-spacing: 0.05em;
+  color: var(--color-text);
+}
+.hero--construction .hero__rotator-line {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  pointer-events: none;
+}
+.hero--construction .hero__rotator-line.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero--construction .hero__rotator-line {
+    transition: none;
+  }
+  .hero--construction .hero__rotator-line:not(.is-active) {
+    display: none;
+  }
 }
