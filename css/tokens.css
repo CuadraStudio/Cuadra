@@ -103,13 +103,13 @@
   --text-body-lg: 300 1.125rem/1.6 var(--font-body);
   --text-body: 300 1rem/1.6 var(--font-body);
   --text-body-sm: 300 0.875rem/1.5 var(--font-body);
-  --text-label: 300 0.8125rem/1.4 var(--font-body);   /* 13px (>=13px): weight 300 per client policy */
-  --text-caption: 400 0.75rem/1.5 var(--font-body);     /* 12px (<13px): weight kept 400 for legibility */
+  --text-label: 400 0.8125rem/1.4 var(--font-body);   /* 13px minimum for Light weight legibility */
+  --text-caption: 400 0.75rem/1.5 var(--font-body);     /* 12px minimum */
   --text-stat: 300 clamp(2rem, 4vw, 3rem)/1.0 var(--font-display);
 
-  --letter-spacing-interface: 0.38em;    /* display/wordmark/short display - wide editorial tracking */
-  --letter-spacing-display: 0.38em;      /* unified with interface: ALL display at 0.38em (client policy) */
-  --letter-spacing-body: 0.28em;         /* body & interface text - client policy: caps + wide tracking */
+  --letter-spacing-interface: 0.38em;    /* caps + wide tracking for short interface text */
+  --letter-spacing-display: 0.18em;      /* reduced tracking for longer display phrases */
+  --letter-spacing-body: 0.02em;         /* normal reading tracking for paragraphs */
   --letter-spacing-tight: 0em;           /* reserved, not used with Montserrat Light */
 
   /* ---- Spacing aliases used by layout ---- */

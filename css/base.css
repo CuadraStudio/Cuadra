@@ -71,7 +71,7 @@ p {
   font-family: var(--font-body);
   font-weight: 300;
   letter-spacing: var(--letter-spacing-body);
-  text-transform: uppercase;   /* client policy: todo el texto en caps; tracking amplio 0.28em */
+  text-transform: none;
   overflow-wrap: break-word;
   text-wrap: pretty;
 }
@@ -158,9 +158,8 @@ select {
   color: var(--color-accent-on-primary);
   font-family: var(--font-body);
   font-size: 0.875rem;
-  font-weight: 300;
+  font-weight: 500;
   letter-spacing: var(--letter-spacing-body);
-  text-transform: uppercase;
   border-radius: var(--radius-md);
   text-decoration: none;
   /* Off-screen until focused. Transform (not `top`) keeps it outside the
