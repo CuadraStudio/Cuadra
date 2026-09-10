@@ -87,8 +87,8 @@
 .hero__label {
   font-family: var(--font-primary);
   font-size: 0.8125rem;
-  font-weight: 400;
-  letter-spacing: var(--letter-spacing-interface);
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-body);
   color: var(--color-accent-ink);
   text-transform: uppercase;
   margin-bottom: var(--space-5);
@@ -243,6 +243,7 @@
   font-size: 0.875rem;
   font-weight: 300;
   letter-spacing: var(--letter-spacing-body);
+  text-transform: uppercase;
   color: var(--color-text-secondary);
 }
 
@@ -279,6 +280,7 @@
   font-size: clamp(1.5rem, 3vw, 2rem);
   color: var(--color-accent-ink);
   letter-spacing: var(--letter-spacing-interface);
+  text-transform: uppercase;
   margin-bottom: var(--space-4);
   line-height: 1;
 }
@@ -339,7 +341,7 @@
   font-size: 1.125rem;
   font-weight: 300;
   letter-spacing: var(--letter-spacing-body);
-  text-transform: none;
+  text-transform: uppercase;
   color: var(--color-text);
   line-height: 1.6;
   position: relative;
@@ -390,8 +392,9 @@
 .testimonial-card__name {
   font-family: var(--font-body);
   font-size: 0.875rem;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: var(--letter-spacing-body);
+  text-transform: uppercase;
   color: var(--color-text);
 }
 
@@ -550,8 +553,8 @@
 .comparison-card__label {
   font-family: var(--font-primary);
   font-size: 0.8125rem;
-  font-weight: 400;
-  letter-spacing: var(--letter-spacing-interface);
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-body);
   text-transform: uppercase;
   margin-bottom: var(--space-4);
 }
@@ -632,7 +635,9 @@
 .project-card__link {
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-body);
+  text-transform: uppercase;
   color: var(--color-accent-ink);
   text-decoration: none;
   display: inline-flex;
@@ -664,7 +669,9 @@
 .project-card__link--demo {
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-body);
+  text-transform: uppercase;
   color: var(--color-accent-ink);
   display: inline-flex;
   align-items: center;
@@ -715,15 +722,37 @@
 /* construccion.html: rotador de propuestas de valor */
 .hero--construction .hero__rotator {
   position: relative;
-  min-height: 2.7em;
+  /* las lineas son absolute: el contenedor reserva el alto de la frase mas alta */
+  min-height: 4em;                   /* movil: cubre 3 lineas del floor 14px = 54.6px; la 1ra frase (9 palabras) mide ~55px */
   max-width: 44ch;
   margin: 0 auto var(--space-8);
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(1rem, 3vw, 1.75rem);
+  font-size: clamp(0.875rem, 2.5vw, 1.5rem);   /* floor 14px: longest phrase (49 chars) fits 2 lines at 390px with 0.38em */
   line-height: 1.3;
   letter-spacing: var(--letter-spacing-display);
   text-transform: uppercase;
+  color: var(--color-text);
+}
+
+@media (min-width: 640px) {
+  .hero--construction .hero__rotator {
+    min-height: 2.8em;               /* tablet: ~3 lineas del clamp medio */
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero--construction .hero__rotator {
+    min-height: 1.8em;               /* desktop: frase en 2 lineas compactas */
+  }
+}
+
+/* construccion.html: subtitle historico bajo el rotador (caps + 0.28em via p global) */
+.hero--construction .hero__subtitle {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 58ch;
+  margin-inline: auto;
   color: var(--color-text);
 }
 .hero--construction .hero__rotator-line {

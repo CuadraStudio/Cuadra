@@ -1,20 +1,21 @@
-# CUADRA — Typography Specification: Montserrat Light 300
+# CUADRA — Typography Specification: Montserrat Light 300 (Global Caps Policy)
 
 ## Overview
 
-Montserrat Light 300 replaces Space Grotesk and Inter as the single primary typeface. The 0.38em letter-spacing + all-caps treatment defines CUADRA's architectural identity for interface elements. Body text uses Montserrat 300 at normal tracking for legibility.
+Montserrat Light 300 is the single primary typeface. The client's **new global policy** applies ALL-CAPS with wide letter-spacing across the entire system:
+
+- **Display / titles** (wordmark, headings H1-H3, rotator, stat numbers, coords): weight **300**, tracking **0.38em**, uppercase
+- **Body / interface** (p, nav, btn, footer links, labels, captions, form, testimonials, skip link, stat labels): weight **300**, tracking **0.28em**, uppercase
+
+The previous policy (body at 0.02em normal-case for legibility, weight-500 button exception) is **replaced**. There are no weight exceptions: everything is 300. Emphasis comes from color/background, not weight.
 
 ---
 
 ## Google Fonts Link
 
-Replace the existing Google Fonts link in all 4 HTML files:
+All 4 HTML files:
 
 ```html
-<!-- OLD -->
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-<!-- NEW -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 ```
 
@@ -25,303 +26,144 @@ Replace the existing Google Fonts link in all 4 HTML files:
 ### Font Family Tokens
 
 ```css
-/* OLD */
---font-display: 'Space Grotesk', sans-serif;
---font-body: 'Inter', sans-serif;
-
-/* NEW */
 --font-primary: 'Montserrat', sans-serif;
 --font-display: 'Montserrat', sans-serif;
 --font-body: 'Montserrat', sans-serif;
 ```
 
-### Letter-Spacing Tokens
+### Letter-Spacing Tokens (new values)
 
 ```css
-/* OLD */
---letter-spacing-tight: -0.04em;
---letter-spacing-snug: -0.03em;
---letter-spacing-normal: -0.01em;
---letter-spacing-wide: 0.08em;
-
-/* NEW */
---letter-spacing-interface: 0.38em;    /* caps + wide tracking for short interface text */
---letter-spacing-display: 0.18em;      /* reduced tracking for longer display phrases */
---letter-spacing-body: 0.02em;         /* normal reading tracking for paragraphs */
+--letter-spacing-interface: 0.38em;    /* display/wordmark/short display - wide editorial tracking */
+--letter-spacing-display: 0.38em;      /* unified with interface: ALL display at 0.38em */
+--letter-spacing-body: 0.28em;         /* body & interface text - caps + wide tracking (client policy) */
 --letter-spacing-tight: 0em;           /* reserved, not used with Montserrat Light */
 ```
 
-### Typography Scale (Updated)
+### Typography Scale (weights all 300; 400 ONLY below 13px)
 
 ```css
---text-display-xl: 300 clamp(2.5rem, 5vw, 3.75rem)/1.0 var(--font-display);
---text-display-lg: 300 clamp(1.75rem, 4vw, 2.75rem)/1.05 var(--font-display);
---text-display-md: 300 clamp(1.5rem, 3vw, 2rem)/1.12 var(--font-display);
---text-h2: 300 1.375rem/1.2 var(--font-display);
---text-h3: 300 1.125rem/1.35 var(--font-display);
---text-body-lg: 300 1.125rem/1.6 var(--font-body);
---text-body: 300 1rem/1.6 var(--font-body);
---text-body-sm: 300 0.875rem/1.5 var(--font-body);
---text-label: 400 0.8125rem/1.4 var(--font-body);   /* 13px minimum for Light weight legibility */
---text-caption: 400 0.75rem/1.5 var(--font-body);     /* 12px minimum */
---text-stat: 300 clamp(2rem, 4vw, 3rem)/1.0 var(--font-display);
+--text-display-xl: 300 clamp(2.5rem, 5vw, 3.75rem)/1.0 var(--font-display);   /* 0.38em */
+--text-display-lg: 300 clamp(1.75rem, 4vw, 2.75rem)/1.05 var(--font-display); /* 0.38em */
+--text-display-md: 300 clamp(1.5rem, 3vw, 2rem)/1.12 var(--font-display);     /* 0.38em */
+--text-h2: 300 1.375rem/1.2 var(--font-display);                              /* 0.38em */
+--text-h3: 300 1.125rem/1.35 var(--font-display);                             /* 0.38em */
+--text-body-lg: 300 1.125rem/1.6 var(--font-body);                            /* 0.28em */
+--text-body: 300 1rem/1.6 var(--font-body);                                   /* 0.28em */
+--text-body-sm: 300 0.875rem/1.5 var(--font-body);                            /* 0.28em */
+--text-label: 300 0.8125rem/1.4 var(--font-body);   /* 13px (>=13px): weight 300 = 300 policy */
+--text-caption: 400 0.75rem/1.5 var(--font-body);   /* 12px (<13px): weight kept 400 for legibility */
+--text-stat: 300 clamp(2rem, 4vw, 3rem)/1.0 var(--font-display);              /* 0.38em */
 ```
 
----
-
-## Role → Caps/Tracking Table
-
-| Role | Tracking | Caps | Weight | Justification |
-|------|----------|------|--------|---------------|
-| **Wordmark "CUADRA"** | 0.38em | YES | 300 | Brand identity, short word (6 chars), dominant visual |
-| **Nav items** | 0.38em | YES | 300 | Interface navigation, short labels |
-| **Buttons (.btn)** | 0.38em | YES | 500 | CTA affordance, short labels, weight exception for interactivity |
-| **Eyebrows (.hero__label)** | 0.38em | YES | 400 | Small uppercase labels above headlines |
-| **Footer links** | 0.38em | YES | 300 | Short navigation phrases |
-| **Coordinates/Location** | 0.38em | YES | 300 | Short data strings (e.g., "34°53'S 56°10'W") |
-| **Hero rotator phrases** | 0.18em | YES | 300 | Reduced tracking for readability in longer phrases |
-| **Display headings (H1-H3)** | 0.18em | YES | 300 | Reduced tracking for headlines >12 chars |
-| **Stat numbers** | 0.38em | YES | 300 | Short numeric display |
-| **Body paragraphs** | 0.02em | NO | 300 | Normal reading, NO caps for legibility |
-| **Project descriptions** | 0.02em | NO | 300 | Long-form reading text |
-| **Form labels** | 0.02em | NO | 400 | Readable labels, weight 400 for minimum legibility |
-| **Form inputs** | 0.02em | NO | 300 | User input text |
-| **Testimonials** | 0.02em | NO | 300 | Quoted text, readable |
-| **Captions** | 0.02em | NO | 400 | Small text, weight 400 for legibility |
-| **Skip link** | 0.02em | NO | 500 | Accessibility, must be readable |
+**Documented deviation**: captions at 0.75rem (12px) keep weight 400 because 12px < 13px; Montserrat Light 300 is too thin below 13px. No text element is smaller than 12px.
 
 ---
 
-## Element-Specific CSS (components.css)
+## Role → Caps/Tracking Table (NEW POLICY)
 
-### Navigation
+| Role | Tracking | Caps | Weight | Notes |
+|------|----------|------|--------|-------|
+| **Display bucket** | 0.38em | YES | 300 | wordmark, H1-H3, rotador, stat numbers, coords |
+| **Body & interface bucket** | 0.28em | YES | 300 | p, nav, btn, footer links, labels, captions, form, testimonios, skip link, stat labels |
+| Captions (12px < 13px) | 0.28em | YES | 400 | single documented 400 exception |
+
+---
+
+## Element-Specific CSS (components.css / pages.css)
+
+### Navigation + Footer (`--letter-spacing-body`: 0.28em)
 
 ```css
-.nav__link {
+.nav__link, .footer__link {
   font-family: var(--font-primary);
   font-weight: 300;
-  font-size: 0.875rem;           /* 14px */
   text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-interface);  /* 0.38em */
+  letter-spacing: var(--letter-spacing-body);   /* 0.28em */
 }
 ```
 
-### Buttons
+### Buttons (weight exception ELIMINATED)
 
 ```css
 .btn {
   font-family: var(--font-primary);
-  font-weight: 500;              /* EXCEPTION: weight 500 for affordance */
-  font-size: 0.8125rem;          /* 13px */
+  font-weight: 300;                             /* NO 500 exception — emphasis via background color */
+  letter-spacing: var(--letter-spacing-body);   /* 0.28em */
   text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-interface);  /* 0.38em */
-}
-
-.btn--primary {
-  background-color: var(--color-primary);
-  color: var(--color-black);
-  /* ... existing styles ... */
 }
 ```
 
-### Hero Section
+### Display / headings (0.38em)
 
 ```css
-.hero__label {
-  font-family: var(--font-primary);
-  font-weight: 400;
-  font-size: 0.8125rem;          /* 13px */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-display); /* 0.38em */
   text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-interface);  /* 0.38em */
 }
 
-.hero__wordmark {
+.hero__rotator {   /* construction hero */
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(0.875rem, 2.5vw, 1.5rem);     /* final value: fits 49-char phrase in 2 lines at 390px */
+  letter-spacing: var(--letter-spacing-display); /* 0.38em */
+  text-transform: uppercase;
+  min-height: 2.7em;
+  max-width: 44ch;
+}
+
+.hero--construction .hero__label {   /* wordmark */
   font-family: var(--font-primary);
   font-weight: 300;
-  font-size: clamp(2.5rem, 10vw, 5.5rem);  /* Redimensioned for 390px + 0.38em tracking */
+  font-size: clamp(2.5rem, 10vw, 5.5rem);
+  letter-spacing: var(--letter-spacing-interface); /* 0.38em */
   text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-interface);  /* 0.38em */
   line-height: 1.0;
 }
-
-.hero__rotator {
-  font-family: var(--font-primary);
-  font-weight: 300;
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-display);  /* 0.18em - reduced for longer phrases */
-}
-
-.hero__heading {
-  font-family: var(--font-primary);
-  font-weight: 300;
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-display);  /* 0.18em */
-}
 ```
 
-### Footer
+### Body (uppercase by policy)
 
 ```css
-.footer__link {
-  font-family: var(--font-primary);
-  font-weight: 300;
-  font-size: 0.875rem;           /* 14px */
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-interface);  /* 0.38em */
-}
-
-.footer__copy {
-  font-family: var(--font-primary);
-  font-weight: 300;
-  font-size: 0.75rem;            /* 12px */
-  letter-spacing: var(--letter-spacing-body);  /* 0.02em - normal for readability */
-  text-transform: none;           /* NO caps for copyright text */
-}
-```
-
-### Body Text
-
-```css
-p, .body-text {
+p {
   font-family: var(--font-body);
   font-weight: 300;
-  font-size: 1rem;               /* 16px */
+  letter-spacing: var(--letter-spacing-body); /* 0.28em */
+  text-transform: uppercase;                  /* client policy */
+}
+```
+
+### Construction hero subtitle (recreated rule)
+
+```css
+.hero--construction .hero__subtitle {
+  font-size: 1rem;
   line-height: 1.6;
-  letter-spacing: var(--letter-spacing-body);  /* 0.02em */
-  text-transform: none;           /* NO caps for body text */
+  max-width: 58ch;
+  margin-inline: auto;
+  color: var(--color-text);
 }
-
-.body-text-lg {
-  font-weight: 300;
-  font-size: 1.125rem;           /* 18px */
-  line-height: 1.6;
-  letter-spacing: var(--letter-spacing-body);  /* 0.02em */
-}
-```
-
-### Labels & Captions
-
-```css
-.label {
-  font-family: var(--font-primary);
-  font-weight: 400;              /* Weight 400 for minimum legibility at small sizes */
-  font-size: 0.8125rem;          /* 13px - minimum for Montserrat Light */
-  letter-spacing: var(--letter-spacing-body);  /* 0.02em */
-}
-
-.caption {
-  font-family: var(--font-primary);
-  font-weight: 400;              /* Weight 400 for minimum legibility */
-  font-size: 0.75rem;            /* 12px - minimum */
-  letter-spacing: var(--letter-spacing-body);  /* 0.02em */
-}
-```
-
-### Stats
-
-```css
-.stat__number {
-  font-family: var(--font-primary);
-  font-weight: 300;
-  font-size: clamp(2rem, 4vw, 3rem);
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-interface);  /* 0.38em */
-}
-
-.stat__label {
-  font-family: var(--font-primary);
-  font-weight: 400;
-  font-size: 0.8125rem;          /* 13px */
-  text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-interface);  /* 0.38em */
-}
-```
-
-### Testimonials
-
-```css
-.testimonial__quote {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 1.125rem;           /* 18px */
-  line-height: 1.6;
-  letter-spacing: var(--letter-spacing-body);  /* 0.02em */
-  text-transform: none;           /* NO caps for quoted text */
-}
-
-.testimonial__author {
-  font-family: var(--font-primary);
-  font-weight: 400;
-  font-size: 0.875rem;           /* 14px */
-  letter-spacing: var(--letter-spacing-body);  /* 0.02em */
-  text-transform: none;
-}
-```
-
-### Form Elements
-
-```css
-.form-label {
-  font-family: var(--font-primary);
-  font-weight: 400;              /* Weight 400 for legibility */
-  font-size: 0.875rem;           /* 14px */
-  letter-spacing: var(--letter-spacing-body);  /* 0.02em */
-  text-transform: none;
-}
-
-.form-input {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 1rem;               /* 16px */
-  letter-spacing: var(--letter-spacing-body);  /* 0.02em */
-  text-transform: none;
-}
+/* receives uppercase + 0.28em from the global p rule */
 ```
 
 ---
 
 ## Wordmark Dimensioning (390px viewport)
 
-The wordmark "CUADRA" (6 characters) with 0.38em tracking requires reduced font size to prevent overflow on mobile:
+"CUADRA" (6 chars) at 0.38em tracking, floor clamp 2.5rem (40px):
 
-```css
-.hero__wordmark {
-  /* Mobile: 2.5rem fits within 390px with 0.38em tracking */
-  /* Desktop: scales to 5.5rem for dominant presence */
-  font-size: clamp(2.5rem, 10vw, 5.5rem);
-  letter-spacing: 0.38em;
-  text-transform: uppercase;
-}
-```
-
-**Calculation**:
-- At 390px viewport, 10vw = 39px (2.4375rem)
-- With 0.38em tracking on 6 characters: extra width = 5 × 0.38em × 2.4375rem ≈ 4.63rem
-- Total visual width ≈ 6 × 2.4375rem + 4.63rem ≈ 19.25rem (308px)
-- Fits within 390px with 82px margin (safe)
+- 6 chars × ~0.68em + 5 × 0.38em = ~5.98em × 40px ≈ 239-254px visual width
+- Fits within 390px with wide safe margin (no overflow at 390px or 1440px)
 
 ---
 
-## Legibility Justification
+## Legibility Note (documented client decision)
 
-### Why 0.38em + Caps Works for Interface
-- Short text (≤12 characters) is scanned, not read
-- Wide tracking enhances architectural/editorial identity
-- All-caps creates consistent baseline and height
-- Examples: "PROYECTOS", "CONTACTO", "CUADRA", "34°53'S"
+ALL-CAPS + wide tracking (0.28em body) **reduces reading speed** for long-form text (research: caps read 10-15% slower; wide tracking breaks word recognition). This is an explicit **brand decision** by the client for neutrality/identity — not an accessibility regression for control contrast (WCAG AA contrast ratios unchanged). Implementation mitigates overflow risk: long phrases wrap (no nowrap on body), overflow-wrap is enabled, and the rotator's font-size floor was lowered to fit its longest phrase.
 
-### Why 0.38em + Caps Fails for Body Text
-- Paragraphs require continuous reading, not scanning
-- Wide tracking breaks word recognition patterns
-- All-caps reduces reading speed by 10-15% (research-backed)
-- WCAG 1.4.8 requires text scalable to 200% without loss of functionality
-
-### The Compromise
-- Interface elements (≤12 chars): 0.38em + caps = identity
-- Display headings (>12 chars): 0.18em + caps = balance
-- Body text: 0.02em + normal case = legibility
+**Rotator final values (documented)**: longest phrase "DESARROLLO A MEDIDA, SIN PLANTILLAS, SIN LÍMITES." (49 chars) at 0.38em → to keep it inside `min-height: 2.7em` (2 lines) at 390px, floor was stepped down to `0.875rem` (14px) in `clamp(0.875rem, 2.5vw, 1.5rem)`. The 0.38em token is unchanged per role.
 
 ---
 
@@ -329,31 +171,30 @@ The wordmark "CUADRA" (6 characters) with 0.38em tracking requires reduced font 
 
 | Element | Minimum Size | Weight | Justification |
 |---------|--------------|--------|---------------|
-| Labels | 13px (0.8125rem) | 400 | Light weight at 300 is too thin below 13px |
-| Captions | 12px (0.75rem) | 400 | Absolute minimum, weight 400 for legibility |
+| Labels | 13px (0.8125rem) | 300 | 13px >= 13px threshold → 300 policy |
+| Captions | 12px (0.75rem) | 400 | Below 13px → documented 400 exception |
 | Body | 16px (1rem) | 300 | Standard reading size |
-| Buttons | 13px (0.8125rem) | 500 | Weight exception for affordance |
+| Buttons | 13px (0.8125rem) | 300 | No weight exception |
 | Nav | 14px (0.875rem) | 300 | Readable with tracking |
-| Skip link | 14px (0.875rem) | 500 | Accessibility requirement |
+| Skip link | 14px (0.875rem) | 300 | Body/interface bucket per policy |
 
 ---
 
-## Files to Update
+## Files to Update (this run)
 
-1. **css/tokens.css** - Font family, letter-spacing tokens, typography scale
-2. **css/base.css** - Body font-family (var(--font-primary))
-3. **css/components.css** - All component typography (nav, btn, hero, footer, etc.)
-4. **index.html** - Google Fonts link
-5. **index-web.html** - Google Fonts link
-6. **proyectos.html** - Google Fonts link
-7. **contacto.html** - Google Fonts link
+1. **css/tokens.css** - letter-spacing tokens (display 0.38, body 0.28), scale labels → 300 (caption 400 documented)
+2. **css/base.css** - p uppercase, skip-link 300 + uppercase
+3. **css/components.css** - nav, btn (300), footer, forms, testimonials, pricing, FAQ, pills, tech/case-study (broken token refs fixed)
+4. **css/pages.css** - hero label, stat labels, step numbers, testimonial name/quote, comparison labels, project links, rotated font-size, construction subtitle rule
+5. **index.html** - rotator reordered (7 phrases), historical subtitle added
+6. **DESIGN.md** - tokens + policy updated
 
 ---
 
 ## Designer Sign-Off
 
-This specification respects the client's vision (Montserrat Light 300 + 0.38em + caps) while maintaining WCAG AA legibility standards. The tracking policy is documented and justified: wide tracking for identity, normal tracking for readability.
+This specification implements the client's **global caps policy** (display 0.38em / body 0.28em, all 300). The single 400 exception (captions < 13px) is size-forced and documented. Legibility tradeoff in long body text is a documented brand decision (neutrality); contrast, focus states and minimum sizes keep WCAG AA control compliance.
 
 **UI Designer**: Design System Agent
 **Date**: September 2026
-**Status**: Ready for frontend implementation
+**Status**: Ready — policy update applied

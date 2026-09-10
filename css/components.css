@@ -66,7 +66,7 @@
   font-size: 0.875rem;
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-interface);
+  letter-spacing: var(--letter-spacing-body);   /* interfaz: 0.28em caps */
   color: var(--color-text-secondary);
   text-decoration: none;
   position: relative;
@@ -190,8 +190,8 @@
   padding: 14px 26px;
   font-family: var(--font-primary);
   font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: var(--letter-spacing-interface);
+  font-weight: 300;                            /* client policy: no weight exception — emphasis via color */
+  letter-spacing: var(--letter-spacing-body);  /* interfaz: 0.28em caps */
   text-transform: uppercase;
   border-radius: var(--radius-md);
   transition: transform var(--duration-fast) var(--ease-out),
@@ -316,7 +316,9 @@
 .card__link {
   font-family: var(--font-body);
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-body);
+  text-transform: uppercase;
   color: var(--color-accent-ink);
   display: inline-flex;
   align-items: center;
@@ -357,7 +359,9 @@
 .card__link--demo {
   font-family: var(--font-body);
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-body);
+  text-transform: uppercase;
   color: var(--color-accent-ink);
   display: inline-flex;
   align-items: center;
@@ -414,8 +418,9 @@
   padding: 5px 12px;
   font-family: var(--font-body);
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 400;                        /* 12px (<13px): weight kept 400 for legibility */
   letter-spacing: var(--letter-spacing-body);
+  text-transform: uppercase;
   color: var(--color-text-secondary);
   background: transparent;
   border: 1px solid var(--color-border);
@@ -468,10 +473,10 @@
 .form-label {
   font-family: var(--font-primary);
   font-size: 0.875rem;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: var(--letter-spacing-body);
   color: var(--color-text-secondary);
-  text-transform: none;
+  text-transform: uppercase;
 }
 
 .form-input,
@@ -482,7 +487,7 @@
   font-size: 1rem;
   font-weight: 300;
   letter-spacing: var(--letter-spacing-body);
-  text-transform: none;
+  text-transform: uppercase;
   color: var(--color-text);
   background: var(--color-bg-raised);
   border: 1px solid var(--color-border);
@@ -574,7 +579,7 @@
   font-size: 0.75rem;
   font-weight: 300;
   letter-spacing: var(--letter-spacing-body);
-  text-transform: none;
+  text-transform: uppercase;
   color: var(--color-text-muted);
 }
 
@@ -596,7 +601,7 @@
   font-size: 0.875rem;
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-interface);
+  letter-spacing: var(--letter-spacing-body);   /* interfaz: 0.28em caps */
   color: var(--color-text-secondary);
   text-decoration: none;
   transition: color var(--transition-fast);
@@ -693,6 +698,7 @@
   font-size: 0.875rem;
   font-weight: 300;
   letter-spacing: var(--letter-spacing-body);
+  text-transform: uppercase;
   color: var(--color-text-secondary);
   word-break: break-all;
 }
@@ -747,8 +753,10 @@
 
 .tech-name {
   font-family: var(--font-body);
-  font-size: 0.6875rem;
-  letter-spacing: var(--letter-spacing-wide);
+  font-size: 0.75rem;               /* 12px minimum (was 11px — below limit) */
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-body);
+  text-transform: uppercase;
   color: var(--color-text-secondary);
 }
 
@@ -772,7 +780,9 @@
 .principle__title {
   font-family: var(--font-display);
   font-size: 1.125rem;
-  font-weight: 500;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-display);
+  text-transform: uppercase;
   color: var(--color-text);
   margin-bottom: var(--space-2);
 }
@@ -869,8 +879,8 @@
 .pricing-card__label {
   font-family: var(--font-primary);
   font-size: 0.8125rem;
-  font-weight: 400;
-  letter-spacing: var(--letter-spacing-interface);
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-body);
   text-transform: uppercase;
   color: var(--color-text-secondary);
   margin-bottom: var(--space-4);
@@ -881,6 +891,7 @@
   font-size: 1.5rem;
   font-weight: 300;
   letter-spacing: var(--letter-spacing-display);
+  text-transform: uppercase;
   color: var(--color-text);
   margin-bottom: var(--space-6);
 }
@@ -947,8 +958,8 @@
   padding: 6px 14px;
   font-family: var(--font-primary);
   font-size: 0.8125rem;
-  font-weight: 400;
-  letter-spacing: var(--letter-spacing-interface);
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-body);
   text-transform: uppercase;
   color: var(--color-sage);
   background: transparent;
@@ -980,8 +991,9 @@
 .faq-item__question {
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: var(--letter-spacing-body);
+  text-transform: uppercase;
   color: var(--color-text);
   padding: var(--space-5) var(--space-5);
   cursor: pointer;
@@ -1035,8 +1047,9 @@
   padding: 4px 10px;
   font-family: var(--font-body);
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 400;                        /* 12px (<13px): weight kept 400 for legibility */
   letter-spacing: var(--letter-spacing-body);
+  text-transform: uppercase;
   color: var(--color-text-secondary);
   background: transparent;
   border: 1px solid var(--color-border);
@@ -1102,9 +1115,9 @@
 
 .case-study__label {
   font-family: var(--font-body);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: var(--letter-spacing-wide);
+  font-size: 0.75rem;               /* 12px minimum (was 11px — below limit) */
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-body);
   text-transform: uppercase;
   margin-bottom: var(--space-4);
 }
@@ -1171,7 +1184,9 @@
 .case-study__mockup-text {
   font-family: var(--font-display);
   font-size: 1.125rem;
-  font-weight: 500;
+  font-weight: 300;
+  letter-spacing: var(--letter-spacing-display);
+  text-transform: uppercase;
   color: var(--color-text);
   margin-bottom: var(--space-2);
 }
@@ -1213,6 +1228,7 @@
   font-family: var(--font-display);
   font-weight: 300;
   letter-spacing: var(--letter-spacing-interface);
+  text-transform: uppercase;
   color: var(--color-accent-ink);
 }
 
