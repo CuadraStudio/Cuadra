@@ -842,3 +842,628 @@ font-family: var(--font-display);
     display: none;
   }
 }
+
+/* ============================================
+   LANDING (index.html): secciones de producto
+   Clases nuevas por spec landing-producto.md (§2-§5)
+   Contexto: default dark (tokens oscuros)
+   ============================================ */
+
+/* ---- #lineas: lede y master pitch ---- */
+.lines-lede {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text);
+  max-width: 48ch;
+  margin-inline: auto;
+}
+
+.lines-pitch {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-secondary);
+  max-width: 62ch;
+  margin: 0 auto var(--space-9);
+  text-align: center;
+}
+
+/* ---- #lineas: grid de 4 tarjetas (patron .step-card: hairline superior, sin fondo) ---- */
+.lines-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-7) var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .lines-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .lines-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-8) var(--space-6);
+  }
+}
+
+.line-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: var(--space-6) 0 0;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.line-card:hover {
+  border-top-color: var(--color-accent-ink);
+}
+
+.line-card__title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  letter-spacing: var(--letter-spacing-display);
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.line-card__tagline {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-accent-ink);
+  margin: 0 0 var(--space-2);
+}
+
+.line-card__audience,
+.line-card__outcome {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.line-card__quote {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: var(--space-2) 0 0;
+  padding-left: var(--space-5);
+  position: relative;
+}
+
+.line-card__quote::before {
+  content: '\201c';
+  position: absolute;
+  left: 0;
+  top: -2px;
+  font-size: 1.25rem;
+  color: var(--color-accent-ink);
+  font-style: normal;
+  font-family: var(--font-display);
+}
+
+.line-card__cta {
+  margin-top: auto;
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--letter-spacing-interface);
+  text-transform: uppercase;
+  color: var(--color-accent-ink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding-top: var(--space-4);
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.line-card__cta::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  width: 0;
+  background: currentColor;
+  transition: width var(--transition-normal) var(--ease-out);
+}
+
+.line-card__cta:hover {
+  color: var(--color-accent-ink-hover);
+}
+
+.line-card__cta:hover::after {
+  width: 100%;
+}
+
+/* ---- #planes: definicion (nota caption), strip, nav de anclas ---- */
+.plans-definition {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-muted);
+  margin: var(--space-3) 0 0;
+}
+
+.plans-base {
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-6);
+  text-align: center;
+  margin-bottom: var(--space-7);
+}
+
+.plans-base p {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+  max-width: 68ch;
+  margin-inline: auto;
+}
+
+.plans-nav {
+  margin-bottom: var(--space-8);
+}
+
+.plans-nav__list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-3);
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--space-gutter);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  white-space: nowrap;
+}
+
+.plans-nav__list::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .plans-nav__list {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: visible;
+    scroll-snap-type: none;
+    padding: 0;
+    white-space: normal;
+  }
+}
+
+.plans-nav__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 var(--space-5);
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-interface);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  scroll-snap-align: start;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.plans-nav__link:hover {
+  color: var(--color-accent-ink);
+  border-color: var(--color-border-strong);
+}
+
+/* ---- #planes: bloques por linea ---- */
+.plans-block {
+  margin-top: var(--space-9);
+}
+
+.plans-block__title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-display);
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-align: center;
+  margin: 0 0 var(--space-2);
+}
+
+.plans-block__tagline {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-accent-ink);
+  text-align: center;
+  margin: 0 0 var(--space-7);
+}
+
+/* ---- #planes: setup / hook / CTA de cada tarjeta (solo landing; __price no existe en index-web) ---- */
+.pricing-card__price {
+  margin-bottom: var(--space-3);
+}
+
+.pricing-card__setup {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-2);
+}
+
+.pricing-card__hook {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-6);
+}
+
+.pricing-card__cta {
+  margin-top: var(--space-1);
+}
+
+/* ---- #planes: details "VER LISTA COMPLETA DEL PLAN" (patron .faq-item) ---- */
+.plan-details {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+  transition: border-color var(--transition-fast);
+}
+
+.plan-details[open] {
+  border-color: var(--color-border-strong);
+}
+
+.plan-details__summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-4) var(--space-5);
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;      /* 13px min, estilo interfaz */
+  font-weight: 500;
+  letter-spacing: var(--letter-spacing-interface);
+  text-transform: uppercase;
+  color: var(--color-accent-ink);
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--transition-fast);
+}
+
+.plan-details__summary::-webkit-details-marker {
+  display: none;
+}
+
+.plan-details__summary::after {
+  content: '+';
+  font-size: 1.125rem;
+  color: var(--color-accent-ink);
+  flex-shrink: 0;
+}
+
+.plan-details[open] .plan-details__summary::after {
+  content: '\2212';
+}
+
+.plan-details__summary:hover {
+  color: var(--color-accent-ink-hover);
+}
+
+.plan-details__body {
+  padding: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.plan-details__head {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.plan-details__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.plan-details__item {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  padding-left: var(--space-6);
+  position: relative;
+}
+
+.plan-details__item::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-ink);
+  font-weight: 600;
+}
+
+.plan-details__item--no::before {
+  content: '\00d7';
+  color: var(--color-before-strong);
+}
+
+.plan-details__group-label {
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-interface);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin: var(--space-1) 0 0;
+}
+
+.plan-details__ideal {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.plan-details__ideal strong {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* ---- #planes: nota de pie de precios ---- */
+.plans-footnote {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: 60ch;
+  margin: var(--space-8) auto 0;
+}
+
+/* ---- #setup: grilla asimetrica 3fr/2fr (>=1024), 2 col (768), 1 col (390) ---- */
+.setup-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .setup-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .setup-grid {
+    grid-template-columns: 3fr 2fr;
+    gap: var(--space-8);
+  }
+}
+
+.setup-grid__main,
+.setup-grid__side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.setup-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.setup-card__title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  letter-spacing: var(--letter-spacing-display);
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 0 0 var(--space-5);
+}
+
+.setup-card__lede {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-4);
+}
+
+/* ---- #setup: forma de pago (hairline solo superior entre filas) ---- */
+.setup-rows {
+  margin: 0;
+  padding: 0;
+}
+
+.setup-row {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4) 0;
+}
+
+.setup-row + .setup-row {
+  border-top: 1px solid var(--color-border);
+}
+
+.setup-row__term {
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.setup-row__desc {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ---- #setup: subtitulo y grilla "Qué necesitamos de vos" ---- */
+.setup-subtitle {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.375rem;
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-display);
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-align: center;
+  margin: var(--space-10) 0 var(--space-7);
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .content-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.content-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.content-card__title {
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-interface);
+  text-transform: uppercase;
+  color: var(--color-accent-ink);
+  margin: 0 0 var(--space-4);
+}
+
+.content-card__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.content-card__item {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-text-secondary);
+}
+
+/* ---- #setup: checklist de implementacion (sin margen inferior extra) ---- */
+.setup-checklist {
+  margin-bottom: 0;
+}
+
+/* ---- #setup: orden mobile 390 (fix P2 review, spec §5) ----
+   Reorden visual SOLO en <768 sin tocar el DOM:
+   Qué incluye -> Forma de pago -> Setup 4.900 -> Trial -> Tiempo de entrega.
+   display:contents aplana __main/__side; order reordena los 5 setup-cards.
+   Desktop (>=768) sigue siendo grid 2col/3fr-2fr sin cambios. */
+@media (max-width: 767.98px) {
+  .setup-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .setup-grid__main,
+  .setup-grid__side {
+    display: contents;
+  }
+
+  /* .setup-grid__main nth-child: 1 = Qué incluye, 2 = Trial gratuito */
+  .setup-grid__main .setup-card:nth-child(1) {
+    order: 1;
+  }
+
+  .setup-grid__main .setup-card:nth-child(2) {
+    order: 4;
+  }
+
+  /* .setup-grid__side nth-child: 1 = Forma de pago, 2 = Setup 4.900, 3 = Tiempo */
+  .setup-grid__side .setup-card:nth-child(1) {
+    order: 2;
+  }
+
+  .setup-grid__side .setup-card:nth-child(2) {
+    order: 3;
+  }
+
+  .setup-grid__side .setup-card:nth-child(3) {
+    order: 5;
+  }
+}
