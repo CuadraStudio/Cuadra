@@ -684,6 +684,54 @@
   align-items: center;
 }
 
+/* construccion.html: la marca de agua no se usa en esta pagina */
+.hero--construction .hero__texture-mark {
+  display: none;
+}
+
+/* construccion.html: coords en flujo, debajo de los botones, centradas */
+.hero--construction .hero__coords {
+  position: static;
+  z-index: auto;
+  margin-top: var(--space-8);
+  text-align: center;
+  white-space: normal;
+  opacity: 0.7;
+  display: block;
+}
+
+/* construccion.html: fondo fotografico BN con oscuridad controlada por variable */
+.hero--construction {
+  position: relative;
+  --hero-img-dark: 0.45;
+  --hero-img-blur: 3px;
+}
+
+.hero--construction::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('../img/samuel-angor-NVdhhp95jnA-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(1) brightness(var(--hero-img-dark)) contrast(1.05) blur(var(--hero-img-blur));
+}
+
+.hero--construction::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(rgba(15,17,17,0.28), rgba(15,17,17,0.5));
+  pointer-events: none;
+}
+
+.hero--construction > * {
+  position: relative;
+  z-index: 2;
+}
+
 /* movil: el hero se corta en su contenido con aire simetrico (sin forzar pantalla completa) */
 @media (max-width: 767.98px) {
   .hero--construction {
