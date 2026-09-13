@@ -333,8 +333,16 @@
     }
 
     // Progressive enhancement: sin JS quedan las 12 cards visibles (fallback actual).
-    // Con JS, arranca mostrando solo la primera linea (Agenda).
-    activate(panels[0].id, false);
+    // Con JS, arranca mostrando la linea del hash de la URL (deep-link desde otra
+    // pagina, ej. index.html#planes-tienda -> productos.html#planes-tienda) o,
+    // si no hay hash valido, la primera linea (Agenda).
+    var initialId = panels[0].id;
+    var hashId = window.location.hash.replace('#', '');
+    var hashPanel = hashId && document.getElementById(hashId);
+    if (hashPanel && hashPanel.classList.contains('plans-block')) {
+      initialId = hashId;
+    }
+    activate(initialId, !!hashPanel);
 
     document.querySelectorAll('a[href^="#planes-"]').forEach(function (link) {
       link.addEventListener('click', function (e) {

@@ -736,7 +736,12 @@
 @media (max-width: 767.98px) {
   .hero--construction {
     min-height: 0;
-    padding-block: clamp(2.5rem, 9svh, 4.5rem);
+    /* padding-top >= altura del nav fijo (72px, ver .page-header) + aire minimo,
+       para que el isotipo nunca quede tapado por el header. Bug real: la version
+       anterior usaba padding-block simetrico (2.5rem..4.5rem) que en alturas de
+       viewport comunes (600-800px) caia por debajo de los 72px del nav. */
+    padding-top: calc(72px + clamp(1rem, 4svh, 2rem));
+    padding-bottom: clamp(2.5rem, 9svh, 4.5rem);
   }
 }
 
@@ -1125,7 +1130,7 @@ font-family: var(--font-display);
   margin: 0 0 var(--space-7);
 }
 
-/* ---- #planes: setup / hook / CTA de cada tarjeta (solo landing; __price no existe en index-web) ---- */
+/* ---- #planes: setup / hook / CTA de cada tarjeta (solo productos.html) ---- */
 .pricing-card__price {
   margin-bottom: var(--space-3);
 }
