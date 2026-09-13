@@ -98,7 +98,7 @@ La landing actual de CUADRA tiene un orden de secciones que no sigue una narrati
 | Campo | Valor |
 |-------|-------|
 | **Rol en narrativa** | Presenta la solución con evidencia: qué cambia con CUADRA (resultados medibles) + prueba visual (proyectos reales con demo live). El pricing se integra aquí como parte de la propuesta de valor (ver Decisión de Pricing abajo). |
-| **Bloque de contenido real** | **Panel "Con CUADRA"**: Líneas 138–146 (`.comparison-card--after`, con deduplicación del item "3 negocios"). **Proyectos destacados**: Líneas 151–189 (sección completa con 3 cards: The Faleros, Saga Studio, Ccesco Studio — cada uno con screenshot, descripción y link a demo live). |
+| **Bloque de contenido real** | **Panel "Con CUADRA"**: Líneas 138–146 (`.comparison-card--after`, con deduplicación del item "3 negocios"). **Proyectos destacados**: Líneas 151–189 (sección completa con 3 cards: The Faleros, Saga Studio, Estudio Trazo — cada uno con screenshot, descripción y link a demo live). |
 | **Título / H2 sugerido** | "Lo que **cambia** con CUADRA" (para el panel resultado). Los proyectos mantienen "Proyectos **destacados**". |
 | **Micro-ajustes de copy** | Panel "Después" después de deduplicar queda con 3 items (50+ reservas, Google 24/7, reservan desde el celular). El cuarto item ("3 negocios ya activos") se eliminó porque ya está en Social Proof. **Opcional**: reemplazar el item eliminado con un dato real existente en el pricing o en otro lugar del copy, pero NO inventar nada. Si no hay dato de reemplazo, quedan 3 items — es suficiente. |
 | **Background** | Resultado: `section--mist` (o mantener `section--light`). Proyectos: `section--dark` (ya existente, alto contraste). |
@@ -212,7 +212,7 @@ Líneas 277–332 del index.html actual:
 | CA-2 | Cada sección contiene el contenido real preexistente (stats, testimonios, before/after items, proyectos, proceso, pricing, FAQ) | Comparación side-by-side del HTML nuevo vs. original | |
 | CA-3 | Ningún dato fue inventado: 0 testimonios nuevos, 0 stats nuevos, 0 proyectos nuevos, 0 precios nuevos | Auditoría de copy: cada claim rastreable al index.html original | |
 | CA-4 | No hay duplicación de contenido: "3 negocios activos" aparece solo en Social Proof (Stats) | Búsqueda de texto en el HTML reestructurado | |
-| CA-5 | Todos los links internos (/proyectos.html, /contacto.html, /) y externos (demos de The Faleros, Saga Studio, Ccesco Studio; WhatsApp) funcionan | Validación manual de cada href | |
+| CA-5 | Todos los links internos (/proyectos.html, /contacto.html, /) y externos (demos de The Faleros, Saga Studio, Estudio Trazo; WhatsApp) funcionan | Validación manual de cada href | |
 | CA-6 | Todas las secciones mantienen sus aria-labelledby o aria-label funcionales | Inspección DOM: verificar que cada ID referenciado existe | |
 | CA-7 | La sección de pricing mantiene los 3 planes con features, precios y CTAs intactos | Comparación del bloque de pricing vs. original | |
 | CA-8 | No se modificaron nav, footer, FAB, ni otras páginas | Comparación de nav/footer/FAB entre HTML viejo y nuevo | |
