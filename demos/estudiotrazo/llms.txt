@@ -1,0 +1,15 @@
+# Estudio Trazo by CUADRA — Barbería en Montevideo (demo de producto)
+
+> Estudio Trazo es un demo de producto de la plataforma CUADRA (vertical agenda/barbería). Sitio ficticio: barbería en Bulevar Artigas 2026, Montevideo, Uruguay, con cortes, perfilado de barba y estilos personalizados. Reserva de turnos online.
+
+## Pages
+
+- `/demos/estudiotrazo/` — Home: servicios, equipo, preguntas frecuentes y ubicación
+- `/demos/estudiotrazo/reservar.html` — Reserva de turno online paso a paso
+- `/demos/estudiotrazo/admin.html` — Panel administrativo (demo)
+
+## Contact
+
+- Teléfono: 099 000 000
+- WhatsApp: https://wa.me/59899000000
+- Dirección: Bulevar Artigas 2026, Montevideo, Uruguay

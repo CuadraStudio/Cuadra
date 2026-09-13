@@ -811,6 +811,19 @@
     db.createAppointment(payload).then(function (created) {
       state.appointment = created || payload;
       availCache = {}; // el turno nuevo cambia la disponibilidad para próximos visitantes de paso 2
+      // Persistencia aditiva para gracias.html (última reserva, patrón verastore):
+      // falla silenciosa — el wizard sigue funcionando aunque localStorage no esté.
+      try {
+        root.localStorage.setItem('estudiotrazo_last_booking', JSON.stringify({
+          id: (created && (created.id || created._id)) || state.appointment.service_id,
+          servicio: state.service ? state.service.name : '',
+          barbero: state.barber ? state.barber.name : 'Cualquiera',
+          date: state.date,
+          time: state.time,
+          nombre: state.appointment.client_name || state.formData.name,
+          telefono: state.appointment.client_phone || state.formData.phone
+        }));
+      } catch (e) { /* demo sigue sin persistencia si localStorage falla */ }
       finish();
       goToStep(4);
     }).catch(function (err) {
