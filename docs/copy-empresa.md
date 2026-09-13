@@ -63,7 +63,7 @@
 | 45 | proyectos.html | hero subtitle `.hero__subtitle` (L75) | Demos de sitios web diseñados para negocios locales. | Proyectos reales para negocios locales en Montevideo. |
 | 46 | proyectos.html | CTA — texto `.cta-block__text` (L209) | Puedo hacer algo así para tu negocio. Sin compromiso. | Podemos hacer algo así para tu negocio. Cotización sin cargo. |
 | 47 | proyectos.html | CTA — botón (L210) | Reservá tu demo gratis | Agendá una demo gratuita |
-| 48 | proyectos.html | tarjeta The Faleros — `.card__desc` (L154) | Barbería premium en Av. 18 de Julio 2042, Montevideo. Cortes con oficio, barba, promos y servicio a domicilio. Reserva online. | Av. 18 de Julio 2042, Montevideo |
+| 48 | proyectos.html | tarjeta Vera Store (ex The Faleros) — `.card__desc` (L154) | ~~Barbería premium en Av. 18 de Julio 2042, Montevideo. Cortes con oficio, barba, promos y servicio a domicilio. Reserva online.~~ | Pocitos, Montevideo – demo de producto CUADRA. Catálogo con variantes y stock, carrito y pedidos por WhatsApp. |
 | 49 | proyectos.html | tarjeta Saga Studio — `.card__desc` (L171) | Barbería en el barrio Unión, Montevideo. Cortes con oficio, asesoramiento de imagen y precios fijos. Estilo moderno con acentos dorados. | Barrio Unión, Montevideo |
 | 50 | proyectos.html | tarjeta Ccesco Studio — `.card__desc` (L188) | Barbería moderna y elegante en Montevideo. Estética minimalista, cortes y estilos personalizados. Galería de trabajo. | Montevideo |
 
