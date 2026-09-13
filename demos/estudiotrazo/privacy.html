@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Política de privacidad — Estudio Trazo</title>
+  <meta name="description" content="Política de privacidad del sitio de Estudio Trazo, barbería en Montevideo. Qué datos se manejan y por qué.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,110..125,600..800&family=Hanken+Grotesk:wght@400&family=Space+Mono&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,110..125,600..800&family=Hanken+Grotesk:wght@400&family=Space+Mono&display=swap"></noscript>
+  <link rel="stylesheet" href="css/styles.css?v=20260829a">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <!-- Header fijo mínimo (misma identidad que el resto de las páginas) -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__brand wordmark" href="index.html">ESTUDIO TRAZO</a>
+      <nav class="site-header__nav" aria-label="Navegación principal">
+        <ul class="site-header__list" role="list">
+          <li><a class="site-header__link" href="index.html#servicios">Servicios</a></li>
+          <li><a class="site-header__link" href="index.html#equipo">Equipo</a></li>
+          <li><a class="site-header__link" href="index.html#ubicacion">Ubicación</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--primary btn--compact site-header__cta" href="reservar.html">Reservar</a>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="section privacy" aria-labelledby="privacy-title">
+      <div class="container">
+        <p class="eyebrow">Privacidad</p>
+        <h1 class="privacy__title display-section" id="privacy-title">Política de privacidad</h1>
+        <p class="privacy__lead lead">En este sitio tratamos la menor cantidad de datos posible y solo los necesarios para que funcione la reserva de turnos y la comunicación con el estudio.</p>
+
+        <div class="privacy__body">
+          <h2>Reservas</h2>
+          <p>El sitio permite reservar turnos online mediante un formulario con nombre, teléfono y, opcionalmente, una nota. Los datos del formulario se envían a la API del negocio para gestionar la reserva. También podés reservar o coordinar turnos directamente por WhatsApp.</p>
+
+          <h2>Qué se recopila</h2>
+          <p>Cuando hacés una reserva online se guardan los datos que completás: nombre, teléfono y nota de la reserva. Además, el navegador provee datos técnicos de la visita (como la dirección IP y el tipo de navegador) que se usan para que la página funcione correctamente y para prevenir abusos.</p>
+
+          <h2>Servicios de terceros</h2>
+          <p>El sitio usa servicios externos con políticas de privacidad propias: Google Fonts para las tipografías, Google Maps para el mapa embebido en la sección de ubicación, WhatsApp como canal de contacto y reserva, e Instagram como enlace al perfil del estudio. Te recomendamos revisar las políticas de cada servicio si querés saber cómo tratan tus datos.</p>
+
+          <h2>Cookies</h2>
+          <p>Este sitio no usa cookies de seguimiento ni de publicidad. La disponibilidad del calendario se consulta contra la API sin cookies.</p>
+
+          <h2>Contacto por dudas de privacidad</h2>
+          <p>Si tenés dudas sobre cómo tratamos tus datos, escribinos por WhatsApp.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer compacto: contacto, sin CTA (la página ya tiene header de reserva) -->
+  <footer class="site-footer site-footer--compact">
+    <div class="container footer-compact">
+      <a class="wordmark footer-compact__brand" href="index.html">ESTUDIO TRAZO</a>
+      <a class="inline-link" href="index.html">Inicio</a>
+      <a class="inline-link" href="https://wa.me/59899000000?text=Hola%20Estudio%20Trazo%2C%20quiero%20reservar%20un%20turno." target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <p class="site-footer__legal">© <span id="footer-year">2026</span> Estudio Trazo</p>
+    </div>
+  </footer>
+
+  <!-- Año dinámico del footer (mismo patrón que 404.html — furniture, sin contratos) -->
+  <script>
+    (function () {
+      var el = document.getElementById('footer-year');
+      if (el) { el.textContent = String(new Date().getFullYear()); }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Gorra de lino">
+  <rect width="400" height="400" fill="#F1E7DA"/>
+  <circle cx="200" cy="200" r="120" fill="#FAF7F2"/>
+  <path d="M120 210 a80 80 0 0 1 160 0 z" fill="#6B7D5E"/>
+  <path d="M280 210 q34 -2 40 22 q-30 8 -40 -22 z" fill="#55654a"/>
+  <circle cx="200" cy="132" r="7" fill="#FAF7F2"/>
+</svg>

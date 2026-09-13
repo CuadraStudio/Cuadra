@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vera Store — Panel de pedidos</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="css/styles.css?v=20260913a">
+  <link rel="stylesheet" href="css/admin.css?v=20260913a">
+</head>
+<body class="admin-body">
+  <a class="skip-link" href="#admin-main">Saltar al contenido</a>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- ============================ LOGIN ============================ -->
+  <div id="login-view" class="admin-login">
+    <p class="admin-login__brand"><span>Vera</span><span>Store</span></p>
+    <p class="admin-login__values">Pedidos · Pocitos, Montevideo</p>
+    <h1 class="admin-login__title">Panel de pedidos del día.</h1>
+
+    <form id="login-form" class="admin-login__card" novalidate>
+      <div class="field">
+        <label class="field__label" for="pin-input">PIN de acceso</label>
+        <input type="password" id="pin-input" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+      </div>
+
+      <p id="login-error" class="admin-error-text" role="alert" hidden></p>
+
+      <button type="submit" class="btn-primary admin-login__submit" id="login-btn">Entrar</button>
+      <p class="admin-login__hint">Demostración: el panel se abre automáticamente. Si no, PIN 0000. Sitio ficticio, no corresponde a un negocio real.</p>
+      <a href="index.html" class="admin-login__back">← Volver a la tienda</a>
+    </form>
+  </div>
+
+  <!-- ============================ PANEL ============================ -->
+  <div id="admin-panel" class="admin-shell" hidden>
+    <header class="admin-topbar">
+      <div>
+        <span class="admin-topbar__label">Panel de gestión</span>
+        <strong class="admin-topbar__name">Vera Store</strong>
+      </div>
+      <div class="admin-topbar__actions">
+        <a href="index.html" class="admin-link">Ver tienda</a>
+        <button type="button" id="logout-btn" class="btn-outline-light">Salir</button>
+      </div>
+    </header>
+
+    <div class="admin-content">
+      <div class="admin-wrap">
+        <div class="admin-head">
+          <div>
+            <h1>Pedidos</h1>
+            <p id="admin-date">Cargando…</p>
+          </div>
+        </div>
+
+        <div class="admin-kpis">
+          <div class="admin-kpi">
+            <span class="admin-kpi__label">Pedidos hoy</span>
+            <strong class="admin-kpi__value" id="kpi-orders">—</strong>
+          </div>
+          <div class="admin-kpi">
+            <span class="admin-kpi__label">Pendientes</span>
+            <strong class="admin-kpi__value admin-kpi__value--warn" id="kpi-pending">—</strong>
+          </div>
+          <div class="admin-kpi">
+            <span class="admin-kpi__label">Confirmados</span>
+            <strong class="admin-kpi__value" id="kpi-confirmed">—</strong>
+          </div>
+          <div class="admin-kpi">
+            <span class="admin-kpi__label">Total del día</span>
+            <strong class="admin-kpi__value" id="kpi-total">—</strong>
+          </div>
+        </div>
+
+        <main id="admin-main">
+          <div id="orders-list" class="admin-orders"></div>
+        </main>
+
+        <p class="admin-note">Demo de producto: los pedidos se guardan en este navegador (localStorage) y no se envían a ningún servidor.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js" defer></script>
+  <script src="js/admin.js" defer></script>
+</body>
+</html>

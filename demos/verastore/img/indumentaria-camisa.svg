@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Camisa de lino con botones">
+  <rect width="400" height="400" fill="#F1E7DA"/>
+  <circle cx="200" cy="200" r="120" fill="#FAF7F2"/>
+  <path d="M164 116 h72 l54 34 -18 32 -18 -10 v120 q-62 12 -108 0 v-120 l-18 10 -18 -32 z" fill="#E7D6BE"/>
+  <path d="M200 118 v166" stroke="#201A14" stroke-width="3"/>
+  <circle cx="200" cy="150" r="4" fill="#201A14"/>
+  <circle cx="200" cy="182" r="4" fill="#201A14"/>
+  <circle cx="200" cy="214" r="4" fill="#201A14"/>
+  <path d="M182 122 l18 18 18 -18" fill="none" stroke="#201A14" stroke-width="4"/>
+</svg>

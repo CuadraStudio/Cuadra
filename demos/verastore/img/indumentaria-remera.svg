@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Remera básica de algodón">
+  <rect width="400" height="400" fill="#F1E7DA"/>
+  <circle cx="200" cy="200" r="120" fill="#FAF7F2"/>
+  <path d="M166 118 q34 -16 68 0 l56 36 -20 34 -20 -12 v112 q-50 12 -100 0 v-112 l-20 12 -20 -34 z" fill="#6B7D5E"/>
+  <path d="M182 120 q18 22 36 0" fill="none" stroke="#201A14" stroke-width="4"/>
+</svg>

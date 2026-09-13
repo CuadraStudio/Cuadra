@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Bufanda tejida">
+  <rect width="400" height="400" fill="#F1E7DA"/>
+  <circle cx="200" cy="200" r="120" fill="#FAF7F2"/>
+  <path d="M150 100 q-28 90 0 180 q18 12 36 0 q-22 -90 0 -180 q-18 -12 -36 0 z" fill="#C4592B"/>
+  <path d="M214 110 q-28 90 0 170 q18 12 36 0 q-22 -85 0 -170 q-18 -12 -36 0 z" fill="#E0A15A"/>
+  <path d="M150 100 q18 -12 36 0 M214 110 q18 -12 36 0" stroke="#201A14" stroke-width="4" fill="none"/>
+</svg>

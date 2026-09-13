@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Collar con dije de luna">
+  <rect width="400" height="400" fill="#F1E7DA"/>
+  <circle cx="200" cy="200" r="120" fill="#FAF7F2"/>
+  <path d="M132 120 Q200 210 268 120" fill="none" stroke="#201A14" stroke-width="5"/>
+  <path d="M200 250 a46 46 0 1 0 0 -92 a36 36 0 1 1 0 92 z" fill="#C4592B"/>
+</svg>

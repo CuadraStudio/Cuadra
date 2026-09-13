@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Bolso tote de cuero">
+  <rect width="400" height="400" fill="#F1E7DA"/>
+  <circle cx="200" cy="200" r="120" fill="#FAF7F2"/>
+  <path d="M128 176 h144 l-14 122 q-58 12 -116 0 z" fill="#C4592B"/>
+  <path d="M162 176 v-14 a38 38 0 0 1 76 0 v14" fill="none" stroke="#201A14" stroke-width="7"/>
+  <path d="M128 210 h144" stroke="#a8471f" stroke-width="4" fill="none"/>
+</svg>

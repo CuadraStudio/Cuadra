@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Sweater de punto grueso">
+  <rect width="400" height="400" fill="#F1E7DA"/>
+  <circle cx="200" cy="200" r="120" fill="#FAF7F2"/>
+  <path d="M158 118 q42 -18 84 0 l54 44 -24 30 -24 -14 v106 q-56 14 -112 0 v-106 l-24 14 -24 -30 z" fill="#D8C7A8"/>
+  <path d="M158 118 q42 22 84 0" fill="none" stroke="#201A14" stroke-width="4"/>
+  <path d="M170 160 v110 M200 164 v110 M230 160 v110" stroke="#bda986" stroke-width="4" fill="none"/>
+</svg>

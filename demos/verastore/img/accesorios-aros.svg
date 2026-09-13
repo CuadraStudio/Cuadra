@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Aros dorados">
+  <rect width="400" height="400" fill="#F1E7DA"/>
+  <circle cx="200" cy="200" r="120" fill="#FAF7F2"/>
+  <circle cx="156" cy="196" r="44" fill="none" stroke="#C4592B" stroke-width="10"/>
+  <circle cx="244" cy="196" r="44" fill="none" stroke="#C4592B" stroke-width="10"/>
+  <circle cx="156" cy="176" r="6" fill="#6B7D5E"/>
+  <circle cx="244" cy="176" r="6" fill="#6B7D5E"/>
+</svg>

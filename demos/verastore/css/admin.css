@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Vera Store — admin.css
+   Panel admin demo (pedidos del día). Estética coherente con el sitio.
+   ========================================================================== */
+
+.admin-body { background: var(--cream-2); min-height: 100vh; }
+
+/* ------------------------------ Login ----------------------------------- */
+.admin-login {
+  min-height: 100vh; display: grid; align-content: center; justify-items: center;
+  padding: 40px 20px; text-align: center;
+  background: radial-gradient(110% 80% at 80% 0%, rgba(107, 125, 94, .18), transparent 60%), var(--cream-2);
+}
+.admin-login__brand { font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 6px; display: flex; gap: .5rem; }
+.admin-login__values { font-size: .75rem; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 22px; }
+.admin-login__title { font-size: clamp(1.5rem, 6vw, 2.1rem); max-width: 18ch; margin: 0 auto 26px; }
+.admin-login__card { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); padding: 28px 24px; width: min(100%, 380px); text-align: left; }
+.admin-login__submit { width: 100%; margin-top: 16px; }
+.admin-login__hint { font-size: .78rem; color: var(--muted); margin: 14px 0 0; }
+.admin-login__back { display: inline-block; margin-top: 16px; font-size: .85rem; color: var(--terracotta); font-weight: 600; }
+.admin-error-text { color: var(--terracotta); font-size: .85rem; margin: 10px 0 0; }
+.field { display: grid; gap: 6px; }
+.field__label { font-size: .8rem; font-weight: 700; letter-spacing: .06em; color: var(--ink-soft); }
+.field input, .field select, #pin-input {
+  width: 100%; padding: 12px 14px; border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm); background: var(--cream); font: inherit;
+}
+.field input:focus, .field select:focus, #pin-input:focus { border-color: var(--terracotta); }
+.field input:focus-visible, .field select:focus-visible, #pin-input:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 2px;
+}
+.btn-primary { background: var(--terracotta); color: var(--cream); border: 0; border-radius: 999px; padding: 12px 24px; font-weight: 600; cursor: pointer; }
+.btn-primary:hover { background: var(--terracotta-dark); }
+.btn-outline-light { background: none; border: 1.5px solid var(--line); color: var(--ink); border-radius: 999px; padding: 8px 16px; font-weight: 600; cursor: pointer; }
+.btn-outline-light:hover { border-color: var(--ink); }
+
+/* ------------------------------ Panel ----------------------------------- */
+.admin-shell { min-height: 100vh; display: flex; flex-direction: column; }
+.admin-topbar {
+  position: sticky; top: 0; z-index: 20; background: var(--cream);
+  border-bottom: 1px solid var(--line); padding: 14px 22px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.admin-topbar__label { display: block; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.admin-topbar__name { font-family: var(--font-display); font-size: 1.25rem; }
+.admin-topbar__actions { display: flex; align-items: center; gap: 10px; }
+.admin-link { font-size: .85rem; font-weight: 600; color: var(--terracotta); }
+.admin-link:hover { text-decoration: underline; }
+
+.admin-content { flex: 1; padding: 28px 22px 60px; }
+.admin-wrap { max-width: 960px; margin: 0 auto; }
+
+.admin-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+.admin-head h1 { font-size: clamp(1.5rem, 6vw, 2.1rem); }
+.admin-head p { color: var(--muted); font-size: .88rem; margin: 4px 0 0; }
+
+.admin-kpis { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 26px; }
+@media (min-width: 640px) { .admin-kpis { grid-template-columns: repeat(4, 1fr); } }
+.admin-kpi { background: var(--white); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 16px 18px; }
+.admin-kpi__label { display: block; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 6px; }
+.admin-kpi__value { font-family: var(--font-display); font-size: 1.7rem; }
+.admin-kpi__value--warn { color: var(--terracotta); }
+
+.admin-orders { display: grid; gap: 14px; }
+.order-card { background: var(--white); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow-sm); }
+.order-card__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.order-card__id { font-family: var(--font-display); font-size: 1.1rem; }
+.order-card__meta { font-size: .8rem; color: var(--muted); }
+.order-status { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; }
+.order-status--pendiente { background: rgba(196, 89, 43, .14); color: var(--terracotta-dark); }
+.order-status--confirmado { background: rgba(107, 125, 94, .18); color: var(--sage-dark); }
+.order-lines { border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); padding: 10px 0; margin-bottom: 12px; }
+.order-line { display: flex; justify-content: space-between; gap: 12px; font-size: .88rem; padding: 4px 0; }
+.order-line__variant { color: var(--muted); font-size: .8rem; }
+.order-card__foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.order-card__total { font-weight: 700; }
+.order-card__total span { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: block; }
+.order-card__actions { display: flex; gap: 8px; }
+.admin-empty { background: var(--white); border: 1px dashed var(--line); border-radius: var(--radius); padding: 44px 24px; text-align: center; color: var(--muted); }
+
+.admin-note { font-size: .78rem; color: var(--muted); margin-top: 26px; text-align: center; }

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Camisola de mangas amplias">
+  <rect width="400" height="400" fill="#F1E7DA"/>
+  <circle cx="200" cy="200" r="120" fill="#FAF7F2"/>
+  <path d="M160 120 q40 -18 80 0 l52 34 -18 30 -22 -12 v108 q-52 14 -104 0 v-108 l-22 12 -18 -30 z" fill="#C4592B"/>
+  <path d="M178 122 q22 26 44 0" fill="none" stroke="#201A14" stroke-width="4"/>
+</svg>
