@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Retrato estilizado de Nélida, dueña y parrillera de El Fogatero, con delantal frente a la parrilla">
+  <rect width="400" height="400" fill="#2A2018" rx="22"/>
+  <rect width="400" height="400" fill="url(#puntos)" opacity=".07"/>
+  <!-- Fondo circular -->
+  <circle cx="200" cy="200" r="150" fill="#1A1410" stroke="#3a3028" stroke-width="2"/>
+  <!-- Hombros y torso -->
+  <path d="M120 300 q20 -70 80 -66 q60 -4 80 66 z" fill="#352C22"/>
+  <!-- Delantal -->
+  <path d="M170 250 h60 l16 70 h-92 z" fill="#2A2018" stroke="#D4762C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M170 250 l8 26 l10 -6" fill="none" stroke="#D4762C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M230 250 l-8 26 l-10 -6" fill="none" stroke="#D4762C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Cuello -->
+  <path d="M186 200 h28 l6 30 h-40 z" fill="#352C22"/>
+  <!-- Rostro -->
+  <circle cx="200" cy="164" r="46" fill="#F5EDE0"/>
+  <!-- Pelo recogido -->
+  <path d="M154 160 a46 46 0 0 1 92 0 l-6 10 a40 40 0 0 0 -80 0 z" fill="#1A1410"/>
+  <path d="M156 152 a50 50 0 0 1 88 -2" fill="none" stroke="#1A1410" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="200" cy="112" r="18" fill="#1A1410"/>
+  <!-- Rasgos -->
+  <circle cx="184" cy="164" r="4" fill="#1A1410"/>
+  <circle cx="216" cy="164" r="4" fill="#1A1410"/>
+  <path d="M190 182 q10 8 20 0" fill="none" stroke="#1A1410" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M200 176 v6" stroke="#1A1410" stroke-width="3" stroke-linecap="round"/>
+  <!-- Manos -->
+  <circle cx="132" cy="286" r="12" fill="#F5EDE0"/>
+  <circle cx="268" cy="286" r="12" fill="#F5EDE0"/>
+  <!-- Fuego/parrilla de fondo -->
+  <path d="M118 320 h164" stroke="#D4762C" stroke-width="5" stroke-linecap="round"/>
+  <path d="M128 330 q40 14 72 0 q34 12 72 0" fill="none" stroke="#E8923E" stroke-width="3.5" stroke-linecap="round"/>
+  <defs>
+    <pattern id="puntos" width="10" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="5" r="0.9" fill="#F5EDE0"/>
+    </pattern>
+  </defs>
+</svg>

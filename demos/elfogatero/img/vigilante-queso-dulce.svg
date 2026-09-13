@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-label="Ilustración de Queso y dulce (vigilante)">
+  <rect width="200" height="150" fill="#2A2018" rx="8"/>
+  <circle cx="100" cy="75" r="60" fill="#1A1410" stroke="#3a3028" stroke-width="1"/>
+  <circle cx="100" cy="75" r="58" fill="url(#puntos)" opacity=".08"/>
+  <!-- Triángulo de queso -->
+  <path d="M76 98 L100 66 L124 98 z" fill="#D4762C" opacity=".35" stroke="#F5EDE0" stroke-width="3.5" stroke-linejoin="round"/>
+  <!-- Agujeros del queso -->
+  <circle cx="96" cy="88" r="3" fill="none" stroke="#F5EDE0" stroke-width="2"/>
+  <circle cx="104" cy="92" r="2" fill="none" stroke="#F5EDE0" stroke-width="2"/>
+  <circle cx="92" cy="94" r="2" fill="none" stroke="#F5EDE0" stroke-width="2"/>
+  <!-- Porción de membrillo/batata -->
+  <path d="M128 86 h16 v14 h-16 z" fill="#D4762C" opacity=".55" stroke="#F5EDE0" stroke-width="3" stroke-linejoin="round"/>
+  <line x1="128" y1="93" x2="144" y2="93" stroke="#F5EDE0" stroke-width="1.5"/>
+  <line x1="136" y1="86" x2="136" y2="100" stroke="#F5EDE0" stroke-width="1.5"/>
+  <path d="M118 74 q-6 -8 0 -12 q8 2 8 8 q-4 6 -8 4z" fill="#F5EDE0" opacity=".7"/>
+  <defs>
+    <pattern id="puntos" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="0.8" fill="#F5EDE0"/>
+    </pattern>
+  </defs>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-label="Ilustración de Clericot en jarra">
+  <rect width="200" height="150" fill="#2A2018" rx="8"/>
+  <circle cx="100" cy="75" r="60" fill="#1A1410" stroke="#3a3028" stroke-width="1"/>
+  <circle cx="100" cy="75" r="58" fill="url(#puntos)" opacity=".08"/>
+  <!-- Jarra -->
+  <path d="M74 56 h44 q2 30 -8 46 q-16 22 -30 0 q-8 -16 -6 -46z" fill="#D4762C" opacity=".2" stroke="#F5EDE0" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M118 58 l10 10 q-4 8 -12 2 z" fill="#F5EDE0" opacity=".85"/>
+  <!-- Líquido -->
+  <path d="M76 66 q22 10 40 0 v20 q-20 12 -40 0 z" fill="#D4762C" opacity=".4"/>
+  <!-- Frutas -->
+  <circle cx="88" cy="78" r="5" fill="none" stroke="#F5EDE0" stroke-width="2.5"/>
+  <circle cx="103" cy="84" r="4.5" fill="none" stroke="#F5EDE0" stroke-width="2.5"/>
+  <circle cx="112" cy="76" r="4" fill="none" stroke="#F5EDE0" stroke-width="2.5"/>
+  <path d="M106 66 q10 2 8 10 q-8 4 -10 -4 z" fill="#F5EDE0" opacity=".7"/>
+  <path d="M80 96 q10 2 8 10 q-9 3 -10 -4 z" fill="#F5EDE0" opacity=".6"/>
+  <defs>
+    <pattern id="puntos" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="0.8" fill="#F5EDE0"/>
+    </pattern>
+  </defs>
+</svg>

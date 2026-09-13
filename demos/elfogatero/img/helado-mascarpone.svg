@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-label="Ilustración de Helado de mascarpone y nuez">
+  <rect width="200" height="150" fill="#2A2018" rx="8"/>
+  <circle cx="100" cy="75" r="60" fill="#1A1410" stroke="#3a3028" stroke-width="1"/>
+  <circle cx="100" cy="75" r="58" fill="url(#puntos)" opacity=".08"/>
+  <!-- Copa -->
+  <path d="M96 100 l-8 12 q12 6 24 0 l-8 -12 z" fill="#D4762C" opacity=".25" stroke="#F5EDE0" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M84 100 h32" stroke="#F5EDE0" stroke-width="3" stroke-linecap="round"/>
+  <!-- Dos bochas -->
+  <circle cx="92" cy="80" r="15" fill="#F5EDE0" opacity=".9"/>
+  <circle cx="114" cy="62" r="16" fill="#D4762C" opacity=".6" stroke="#F5EDE0" stroke-width="3"/>
+  <!-- Praliné de nuez -->
+  <g fill="#D4762C">
+    <path d="M88 76 q3 -4 6 0 q-3 4 -6 0z"/>
+    <path d="M96 82 q3 -4 6 0 q-3 4 -6 0z"/>
+    <path d="M110 54 q3 -4 6 0 q-3 4 -6 0z"/>
+    <path d="M120 60 q3 -4 6 0 q-3 4 -6 0z"/>
+    <path d="M106 68 q3 -4 6 0 q-3 4 -6 0z"/>
+  </g>
+  <path d="M116 88 q8 -2 10 6 q-8 6 -10 -6z" fill="#F5EDE0" opacity=".7"/>
+  <defs>
+    <pattern id="puntos" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="0.8" fill="#F5EDE0"/>
+    </pattern>
+  </defs>
+</svg>

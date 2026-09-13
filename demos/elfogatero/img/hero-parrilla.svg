@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" aria-hidden="true">
+  <rect width="400" height="300" fill="#1A1410"/>
+  <rect width="400" height="300" fill="url(#puntos)" opacity=".06"/>
+  <circle cx="200" cy="150" r="118" fill="#2A2018" stroke="#3a3028" stroke-width="2"/>
+  <circle cx="200" cy="150" r="112" fill="url(#puntos)" opacity=".1"/>
+  <!-- Brasas -->
+  <circle cx="150" cy="190" r="10" fill="#D4762C" opacity=".5"/>
+  <circle cx="172" cy="196" r="8" fill="#D4762C" opacity=".55"/>
+  <circle cx="210" cy="192" r="11" fill="#D4762C" opacity=".45"/>
+  <circle cx="242" cy="198" r="9" fill="#D4762C" opacity=".6"/>
+  <circle cx="268" cy="188" r="7" fill="#D4762C" opacity=".5"/>
+  <!-- Hueso / parrilla -->
+  <path d="M120 150 h160" stroke="#F5EDE0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M120 158 h160" stroke="#F5EDE0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M120 166 h160" stroke="#F5EDE0" stroke-width="5" stroke-linecap="round"/>
+  <!-- Cortes sobre la parrilla -->
+  <path d="M150 118 q10 -14 24 -8 q14 -6 28 2 q14 -6 28 4" fill="none" stroke="#D4762C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M158 118 q10 -8 24 -2 q22 4 40 -2" fill="none" stroke="#E8923E" stroke-width="4" stroke-linecap="round"/>
+  <!-- Llama -->
+  <path d="M196 96 c6 14 0 22 -4 30 c-3 7 2 12 6 14" fill="none" stroke="#E8923E" stroke-width="4" stroke-linecap="round"/>
+  <defs>
+    <pattern id="puntos" width="10" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="5" r="0.9" fill="#F5EDE0"/>
+    </pattern>
+  </defs>
+</svg>

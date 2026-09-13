@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-label="Ilustración de Gaseosa de 600 ml">
+  <rect width="200" height="150" fill="#2A2018" rx="8"/>
+  <circle cx="100" cy="75" r="60" fill="#1A1410" stroke="#3a3028" stroke-width="1"/>
+  <circle cx="100" cy="75" r="58" fill="url(#puntos)" opacity=".08"/>
+  <!-- Botella -->
+  <path d="M88 38 h24 l5 12 v60 q0 10 -8 10 h-18 q-8 0 -8 -10 v-60 z" fill="#D4762C" opacity=".25" stroke="#F5EDE0" stroke-width="3.5" stroke-linejoin="round"/>
+  <line x1="88" y1="58" x2="112" y2="58" stroke="#F5EDE0" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Líquido -->
+  <path d="M90 22 h20 l3 16 h-26 z" fill="#D4762C" opacity=".3" stroke="#F5EDE0" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Etiqueta -->
+  <rect x="88" y="76" width="24" height="26" rx="3" fill="none" stroke="#F5EDE0" stroke-width="2.5"/>
+  <!-- Burbujas -->
+  <circle cx="96" cy="92" r="1.4" fill="#F5EDE0"/>
+  <circle cx="104" cy="88" r="1.6" fill="#F5EDE0"/>
+  <circle cx="108" cy="94" r="1.2" fill="#F5EDE0"/>
+  <circle cx="100" cy="96" r="1.2" fill="#F5EDE0"/>
+  <!-- Vaso con hielo y gaseosa -->
+  <path d="M126 106 h16 v18 q-8 4 -16 0 z" fill="#D4762C" opacity=".3" stroke="#F5EDE0" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="130" y="100" width="8" height="8" rx="1.5" fill="none" stroke="#F5EDE0" stroke-width="2" opacity=".8"/>
+  <defs>
+    <pattern id="puntos" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="0.8" fill="#F5EDE0"/>
+    </pattern>
+  </defs>
+</svg>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>¡Gracias por tu reserva! — El Fogatero</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="css/styles.css?v=20260913b">
+</head>
+<body>
+  <a class="skip-link" href="#gracias-main">Saltar al contenido</a>
+
+  <main id="gracias-main" class="thanks">
+    <div id="gracias-card" class="thanks__card">
+      <div class="thanks__icon" aria-hidden="true">🔥</div>
+      <h1 id="gracias-title">¡Gracias! Tu reserva fue enviada.</h1>
+      <p>Te esperamos con las brasas encendidas. Este es el resumen de tu reserva — llega formateada al WhatsApp del restó:</p>
+
+      <div id="gracias-summary" class="thanks__summary" aria-live="polite"></div>
+
+      <p style="font-size: var(--fs-sm);color: var(--ink-muted);margin:0 0 16px;">¿No viste el mensaje? Podés reabrir WhatsApp con el botón de abajo.</p>
+      <div class="thanks__actions">
+        <a class="btn btn--solid" href="index.html">Volver al inicio</a>
+        <a id="gracias-whatsapp" class="btn btn--outline" href="https://wa.me/59899000000" target="_blank" rel="noopener" style="border-color: var(--success); color: var(--success);">Reabrir WhatsApp</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="footer-bottom" style="border-top: 1px solid var(--line);">
+        <p>© <span data-year>2026</span> El Fogatero — Demo CUADRA Restó.</p>
+        <p class="site-footer__notice">Sitio de demostración. Todos los nombres, platos, precios y datos son ficticios.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a id="wa-float" class="wa-float" href="https://wa.me/59899000000?text=Hola%20El%20Fogatero%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-2.9c-.3-.4.2-.4.6-1.4.1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.2 2-1 3.2.2 1.2 1 2.6 1.8 3.6a9.2 9.2 0 0 0 4.5 3c.6.3 1.1.4 1.5.4.6 0 1.9-.8 2.2-1.6.2-.8.2-1.1 0-1.3l-.7-.3z"/></svg>
+    <span class="wa-float__label">WhatsApp</span>
+  </a>
+
+  <script src="js/config.js" defer></script>
+  <script src="js/resto.js" defer></script>
+  <script>
+    (function () {
+      'use strict';
+      function esc(s) {
+        return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+      function load() {
+        var reservas = null;
+        try { reservas = JSON.parse(localStorage.getItem('fogatero_demo_reservas') || 'null'); } catch (e) { reservas = null; }
+        var box = document.getElementById('gracias-summary');
+        var r = Array.isArray(reservas) && reservas.length ? reservas[0] : null;
+        if (!r) {
+          if (box) { box.innerHTML = '<p class="thanks__empty">No tenemos registro de una reserva reciente en este navegador. Volvé al inicio y hacé una reserva de prueba.</p>'; }
+          return;
+        }
+        var franjaLabel = (window.RESTO_CONFIG && window.RESTO_CONFIG.slots && window.RESTO_CONFIG.slots[r.franja])
+          ? window.RESTO_CONFIG.slots[r.franja].label
+          : (r.franja || '');
+        var rows = '<div class="thanks__row"><span>Reserva</span><span>' + esc(r.id || '') + '</span></div>';
+        rows += '<div class="thanks__row"><span>Fecha</span><span>' + esc(window.RESTO && window.RESTO.logic ? window.RESTO.logic.formatDate(r.fecha) : r.fecha) + '</span></div>';
+        rows += '<div class="thanks__row"><span>Franja</span><span>' + esc(franjaLabel) + ' · ' + esc(r.hora || '') + '</span></div>';
+        rows += '<div class="thanks__row"><span>Personas</span><span>' + (Number(r.personas) || 0) + '</span></div>';
+        rows += '<div class="thanks__row"><span>Nombre</span><span>' + esc(r.nombre || '') + '</span></div>';
+        rows += '<div class="thanks__row"><span>Teléfono</span><span>' + esc(r.telefono || '') + '</span></div>';
+        box.innerHTML = rows;
+
+        var wa = document.getElementById('gracias-whatsapp');
+        var waFloat = document.getElementById('wa-float');
+        if (window.RESTO && window.RESTO.logic) {
+          // P2-2: el FAB y el botón usan el mensaje de ESTA reserva, no el genérico.
+          var waHref = window.RESTO.logic.whatsappUrl(window.RESTO.logic.buildWhatsAppMessage(r));
+          if (wa) { wa.href = waHref; }
+          if (waFloat) { waFloat.href = waHref; }
+        }
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', load); } else { load(); }
+      document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+    })();
+  </script>
+</body>
+</html>

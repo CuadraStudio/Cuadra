@@ -737,7 +737,7 @@
         if (t) { t.setAttribute('aria-expanded', 'false'); }
       });
     });
-    var scrims = $$('[data-scrim]');
+    var scrims = $$('[data-nav-scrim], [data-cart-scrim]');
     scrims.forEach(function (sc) {
       sc.addEventListener('click', function () {
         document.body.classList.remove('nav-open');

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-label="Ilustración de Chajá con dulce de leche">
+  <rect width="200" height="150" fill="#2A2018" rx="8"/>
+  <circle cx="100" cy="75" r="60" fill="#1A1410" stroke="#3a3028" stroke-width="1"/>
+  <circle cx="100" cy="75" r="58" fill="url(#puntos)" opacity=".08"/>
+  <!-- Porción rectangular de chajá -->
+  <path d="M76 100 h48 v-6 q-24 -6 -48 0 z" fill="#F5EDE0" opacity=".5"/>
+  <path d="M76 76 h48 v24 h-48 z" fill="#D4762C" opacity=".45"/>
+  <!-- Capas: bizcochuelo + crema + merengue -->
+  <path d="M76 76 q24 -8 48 0" fill="none" stroke="#F5EDE0" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M78 70 q22 -10 44 -2" fill="none" stroke="#F5EDE0" stroke-width="3" stroke-linecap="round"/>
+  <path d="M80 64 q20 -10 40 -2" fill="none" stroke="#E8923E" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Dulce de leche -->
+  <path d="M82 88 q22 6 36 0" stroke="#E8923E" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <circle cx="88" cy="58" r="5" fill="#F5EDE0" opacity=".9"/>
+  <circle cx="108" cy="56" r="4" fill="#F5EDE0" opacity=".8"/>
+  <circle cx="98" cy="52" r="3" fill="#F5EDE0" opacity=".75"/>
+  <defs>
+    <pattern id="puntos" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="0.8" fill="#F5EDE0"/>
+    </pattern>
+  </defs>
+</svg>

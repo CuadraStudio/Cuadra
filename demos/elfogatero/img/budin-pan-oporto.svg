@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" role="img" aria-label="Ilustración de Budín de pan con salsa de oporto">
+  <rect width="200" height="150" fill="#2A2018" rx="8"/>
+  <circle cx="100" cy="75" r="60" fill="#1A1410" stroke="#3a3028" stroke-width="1"/>
+  <circle cx="100" cy="75" r="58" fill="url(#puntos)" opacity=".08"/>
+  <!-- Plato -->
+  <path d="M72 102 h56 q0 8 -28 8 q-28 0 -28 -8z" fill="#2A2018" stroke="#3a3028" stroke-width="1.5"/>
+  <!-- Rodaja de budín -->
+  <ellipse cx="100" cy="80" rx="26" ry="16" fill="#D4762C" opacity=".4" stroke="#F5EDE0" stroke-width="3.5"/>
+  <ellipse cx="100" cy="78" rx="18" ry="10" fill="none" stroke="#F5EDE0" stroke-width="2.5"/>
+  <!-- Pasas -->
+  <circle cx="94" cy="74" r="2" fill="#1A1410"/>
+  <circle cx="106" cy="77" r="2" fill="#1A1410"/>
+  <circle cx="100" cy="70" r="2" fill="#1A1410"/>
+  <!-- Salsa de oporto cayendo -->
+  <path d="M116 96 q8 2 6 10 q-8 4 -12 -2 q4 -8 6 -8z" fill="#D4762C" opacity=".55"/>
+  <path d="M124 100 q10 4 6 14 q-10 2 -12 -6 z" fill="#D4762C" opacity=".4"/>
+  <path d="M88 96 q-10 -2 -12 6 q4 8 12 4" fill="#D4762C" opacity=".45"/>
+  <defs>
+    <pattern id="puntos" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="0.8" fill="#F5EDE0"/>
+    </pattern>
+  </defs>
+</svg>
