@@ -1,7 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Bufanda tejida">
-  <rect width="400" height="400" fill="#F1E7DA"/>
-  <circle cx="200" cy="200" r="120" fill="#FAF7F2"/>
-  <path d="M150 100 q-28 90 0 180 q18 12 36 0 q-22 -90 0 -180 q-18 -12 -36 0 z" fill="#C4592B"/>
-  <path d="M214 110 q-28 90 0 170 q18 12 36 0 q-22 -85 0 -170 q-18 -12 -36 0 z" fill="#E0A15A"/>
-  <path d="M150 100 q18 -12 36 0 M214 110 q18 -12 36 0" stroke="#201A14" stroke-width="4" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Bufanda Ámbar, Vera Store">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F1E7DA"/><stop offset="1" stop-color="#FAF7F2"/></linearGradient></defs>
+  <rect width="400" height="400" fill="url(#g)"/>
+  <circle cx="200" cy="200" r="146" fill="none" stroke="#201A14" stroke-opacity=".08" stroke-width="1.5"/>
+  <g stroke="#201A14" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M120 150 Q200 112 280 150 L280 190 Q200 152 120 190 Z" fill="#C4592B"/>
+    <path d="M150 190 L140 262 M165 190 L158 266 M180 190 L176 270" fill="none"/>
+    <path d="M250 190 L246 270 M265 190 L262 266 M280 190 L278 262" fill="none"/>
+  </g>
+  <text x="26" y="378" font-family="Georgia, serif" font-size="22" fill="#201A14" opacity=".1" font-style="italic">V</text>
 </svg>

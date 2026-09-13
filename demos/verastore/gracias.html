@@ -1,88 +1,46 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>¡Gracias por tu pedido! — Vera Store</title>
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap"></noscript>
-  <link rel="stylesheet" href="css/styles.css?v=20260913a">
-</head>
-<body>
-  <a class="skip-link" href="#gracias-main">Saltar al contenido</a>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>¡Gracias por tu pedido! — Vera Store</title><meta name="robots" content="noindex, nofollow"><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Work+Sans:wght@400;500;600;700&display=swap"></noscript><link rel="stylesheet" href="css/styles.css?v=20260913e"></head><body><a class="skip-link" href="#gracias-main">Saltar al contenido</a><main id="gracias-main" class="thanks"><div class="thanks__card"><div class="thanks__icon" aria-hidden="true">✓</div><h1>¡Gracias por tu pedido!</h1><p>Te confirmamos por WhatsApp en unos minutos. Mientras tanto, este es el resumen de lo que pediste:</p><div id="order-summary" class="thanks__summary" aria-live="polite"></div><p style="font-size:.88rem;color:var(--muted)">Si no viste el mensaje de WhatsApp, podés reenviarlo con el botón de abajo.</p><div class="thanks__actions"><a class="btn btn--solid" href="index.html">Volver a la tienda</a><a class="btn btn--outline" href="catalogo/">Ver el catálogo</a><a id="wa-resend" class="btn btn--ghost" href="https://wa.me/59899000000" target="_blank" rel="noopener">Reenviar por WhatsApp</a></div></div></main><footer class="site-footer site-footer--brief"><div class="wrap"><div class="footer-bottom"><p>© <span data-year>2026</span> Vera Store</p><p class="site-footer__notice">Sitio de demostración. Todos los nombres, productos y datos son ficticios.</p></div></div></footer><a class="wa-float" href="https://wa.me/59899000000?text=Hola%20Vera%20Store%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Consultar por WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-2.9c-.3-.4.2-.4.6-1.4.1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.2 2-1 3.2.2 1.2 1 2.6 1.8 3.6a9.2 9.2 0 0 0 4.5 3c.6.3 1.1.4 1.5.4.6 0 1.9-.8 2.2-1.6.2-.8.2-1.1 0-1.3l-.7-.3z"/></svg><span class="wa-float__label">Escribinos</span></a><script src="js/config.js"></script><script src="js/shop.js"></script><script>
+(function () {
+'use strict';
+function esc(s) {
+return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+function money(n) { return '$ ' + (Number(n) || 0).toLocaleString('es-UY'); }
+function variantText(v) {
+var parts = [];
+if (v && v.talle) { parts.push('Talle ' + v.talle); }
+if (v && v.color) { parts.push('Color ' + v.color); }
+return parts.join(', ');
+}
+function load() {
+var order = null;
+try { order = JSON.parse(localStorage.getItem('verastore_last_order') || 'null'); } catch (e) { order = null; }
+var box = document.getElementById('order-summary');
+if (!order || !box) {
+if (box) { box.innerHTML = '<p class="thanks__empty">No tenemos registro de un pedido reciente acá. Volvé a la tienda y hacé un pedido de prueba.</p>'; }
+return;
+}
+var rows = '<div class="thanks__row"><span>Pedido</span><span>' + esc(order.id) + '</span></div>';
+rows += '<div class="thanks__row"><span>Cliente</span><span>' + esc(order.cliente) + ' · ' + esc(order.telefono || '') + '</span></div>';
+(order.items || []).forEach(function (it) {
+var vt = variantText(it.variant);
+rows += '<div class="thanks__row"><span>' + it.qty + 'x ' + esc(it.name) + (vt ? ' (' + esc(vt) + ')' : '') + '</span><span>' + money(it.subtotal != null ? it.subtotal : it.price * it.qty) + '</span></div>';
+});
+rows += '<div class="thanks__row"><span>Entrega</span><span>' + (order.entrega === 'envio' ? 'Envío a domicilio' : 'Retiro en local') + '</span></div>';
+rows += '<div class="thanks__row thanks__row--total"><span>Total</span><span>' + money(order.total) + '</span></div>';
+box.innerHTML = rows;
 
-  <main id="gracias-main" class="thanks">
-    <div class="thanks__card">
-      <div class="thanks__icon" aria-hidden="true">✓</div>
-      <h1>¡Gracias por tu pedido!</h1>
-      <p>Te confirmamos por WhatsApp en unos minutos. Mientras tanto, este es el resumen de lo que pediste:</p>
-
-      <div id="order-summary" class="thanks__summary" aria-live="polite"></div>
-
-      <p style="font-size:.88rem;color:var(--muted)">Si no viste el mensaje de WhatsApp, podés reenviarlo con el botón de abajo.</p>
-      <div class="thanks__actions">
-        <a class="btn btn--solid" href="index.html">Volver a la tienda</a>
-        <a id="wa-resend" class="btn btn--outline" href="https://wa.me/59899000000" target="_blank" rel="noopener">Reenviar por WhatsApp</a>
-      </div>
-    </div>
-  </main>
-
-  <a class="wa-float" href="https://wa.me/59899000000?text=Hola%20Vera%20Store%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener" aria-label="Consultar por WhatsApp">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-2.9c-.3-.4.2-.4.6-1.4.1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.2 2-1 3.2.2 1.2 1 2.6 1.8 3.6a9.2 9.2 0 0 0 4.5 3c.6.3 1.1.4 1.5.4.6 0 1.9-.8 2.2-1.6.2-.8.2-1.1 0-1.3l-.7-.3z"/></svg>
-    <span class="wa-float__label">Escribinos</span>
-  </a>
-
-  <script src="js/config.js" defer></script>
-  <script src="js/shop.js" defer></script>
-  <script>
-    (function () {
-      'use strict';
-      function esc(s) {
-        return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-      }
-      function money(n) { return '$ ' + (Number(n) || 0).toLocaleString('es-UY'); }
-      function variantText(v) {
-        var parts = [];
-        if (v && v.talle) { parts.push('Talle ' + v.talle); }
-        if (v && v.color) { parts.push('Color ' + v.color); }
-        return parts.join(', ');
-      }
-      function load() {
-        var order = null;
-        try { order = JSON.parse(localStorage.getItem('verastore_last_order') || 'null'); } catch (e) { order = null; }
-        var box = document.getElementById('order-summary');
-        if (!order || !box) {
-          if (box) { box.innerHTML = '<p class="thanks__empty">No tenemos registro de un pedido reciente acá. Volvé a la tienda y hacé un pedido de prueba.</p>'; }
-          return;
-        }
-        var rows = '<div class="thanks__row"><span>Pedido</span><span>' + esc(order.id) + '</span></div>';
-        rows += '<div class="thanks__row"><span>Cliente</span><span>' + esc(order.cliente) + ' · ' + esc(order.telefono || '') + '</span></div>';
-        (order.items || []).forEach(function (it) {
-          var vt = variantText(it.variant);
-          rows += '<div class="thanks__row"><span>' + it.qty + 'x ' + esc(it.name) + (vt ? ' (' + esc(vt) + ')' : '') + '</span><span>' + money(it.subtotal != null ? it.subtotal : it.price * it.qty) + '</span></div>';
-        });
-        rows += '<div class="thanks__row"><span>Entrega</span><span>' + (order.entrega === 'envio' ? 'Envío a domicilio' : 'Retiro en local') + '</span></div>';
-        rows += '<div class="thanks__row thanks__row--total"><span>Total</span><span>' + money(order.total) + '</span></div>';
-        box.innerHTML = rows;
-
-        var wa = document.getElementById('wa-resend');
-        if (wa && window.SHOP && window.SHOP.logic) {
-          var msg = window.SHOP.logic.buildWhatsAppMessage({
-            items: order.items.map(function (it) { return { name: it.name, price: it.price, qty: it.qty, variant: it.variant }; }),
-            total: order.total,
-            entrega: order.entrega,
-            nombre: order.cliente,
-            telefono: order.telefono
-          });
-          wa.href = window.SHOP.logic.whatsappUrl(msg);
-        }
-      }
-      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', load); } else { load(); }
-    })();
-  </script>
-</body>
-</html>
+var wa = document.getElementById('wa-resend');
+if (wa && window.SHOP && window.SHOP.logic) {
+var msg = window.SHOP.logic.buildWhatsAppMessage({
+items: order.items.map(function (it) { return { name: it.name, price: it.price, qty: it.qty, variant: it.variant }; }),
+total: order.total,
+entrega: order.entrega,
+nombre: order.cliente,
+telefono: order.telefono
+});
+wa.href = window.SHOP.logic.whatsappUrl(msg);
+}
+}
+if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', load); } else { load(); }
+})();
+</script></body></html>

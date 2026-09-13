@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Páginas utilitarias del demo (no indexar)
+Disallow: /demos/verastore/admin.html
+Disallow: /demos/verastore/gracias.html
+Disallow: /demos/verastore/404.html
+
+Sitemap: https://cuadrastudio.uy/demos/verastore/sitemap.xml

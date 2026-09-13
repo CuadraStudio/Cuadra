@@ -1,7 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Gorra de lino">
-  <rect width="400" height="400" fill="#F1E7DA"/>
-  <circle cx="200" cy="200" r="120" fill="#FAF7F2"/>
-  <path d="M120 210 a80 80 0 0 1 160 0 z" fill="#6B7D5E"/>
-  <path d="M280 210 q34 -2 40 22 q-30 8 -40 -22 z" fill="#55654a"/>
-  <circle cx="200" cy="132" r="7" fill="#FAF7F2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Gorra de Lino, Vera Store">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F1E7DA"/><stop offset="1" stop-color="#FAF7F2"/></linearGradient></defs>
+  <rect width="400" height="400" fill="url(#g)"/>
+  <circle cx="200" cy="200" r="146" fill="none" stroke="#201A14" stroke-opacity=".08" stroke-width="1.5"/>
+  <path d="M124 232 a76 76 0 0 1 152 0z" fill="#C4592B" stroke="#201A14" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M276 232 q42 -6 48 24 q-38 10 -48 -24z" fill="#a8471f" stroke="#201A14" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="200" cy="158" r="7" fill="#201A14"/>
+  <path d="M150 200 q50 -22 100 0" fill="none" stroke="#201A14" stroke-opacity=".35" stroke-width="4" stroke-linecap="round"/>
+  <text x="26" y="378" font-family="Georgia, serif" font-size="22" fill="#201A14" opacity=".1" font-style="italic">V</text>
 </svg>
