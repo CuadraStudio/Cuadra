@@ -1082,6 +1082,23 @@ font-family: var(--font-display);
   border-color: var(--color-border-strong);
 }
 
+.plans-nav__link[aria-selected="true"] {
+  color: var(--color-text);
+  background: var(--color-bg-card);
+  border-color: var(--color-accent-ink);
+}
+
+.plans-nav-hint {
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-interface);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin: 0 0 var(--space-4);
+}
+
 /* ---- #planes: bloques por linea ---- */
 .plans-block {
   margin-top: var(--space-9);

@@ -310,12 +310,51 @@
     });
   }
 
+  // ---- Plans tabs: filtra #planes por linea (evita el muro de 12 cards en mobile) ----
+  function initPlansTabs() {
+    var tabs = document.querySelectorAll('.plans-nav__link');
+    var panels = document.querySelectorAll('.plans-block');
+    if (!tabs.length || !panels.length) return;
+
+    function activate(targetId, scroll) {
+      panels.forEach(function (panel) {
+        panel.hidden = panel.id !== targetId;
+      });
+      tabs.forEach(function (tab) {
+        var isMatch = tab.getAttribute('href') === '#' + targetId;
+        tab.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      });
+      if (scroll) {
+        var panel = document.getElementById(targetId);
+        if (panel) {
+          panel.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+        }
+      }
+    }
+
+    // Progressive enhancement: sin JS quedan las 12 cards visibles (fallback actual).
+    // Con JS, arranca mostrando solo la primera linea (Agenda).
+    activate(panels[0].id, false);
+
+    document.querySelectorAll('a[href^="#planes-"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var targetId = link.getAttribute('href').slice(1);
+        if (!document.getElementById(targetId)) return;
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        activate(targetId, true);
+        history.replaceState(null, '', '#' + targetId);
+      });
+    });
+  }
+
   // ---- Init all ----
   function init() {
     initNav();
     initActiveNav();
     initScrollReveal();
     initForm();
+    initPlansTabs();
     initSmoothScroll();
   }
 
