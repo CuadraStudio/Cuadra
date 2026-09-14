@@ -220,7 +220,7 @@
 
   /* ------------------------------ Carta --------------------------------- */
   function dishImg(dish) {
-    return 'img/' + dish.id + '.svg';
+    return 'img/' + dish.id + '.jpg';
   }
 
   function dishCardHTML(dish) {
