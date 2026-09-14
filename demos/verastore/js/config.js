@@ -46,7 +46,7 @@ variants: [
 { color: 'Plateado', stock: 'disponible' }
 ],
 delivery: 'ambos',
-img: 'img/accesorios-aros.svg'
+img: 'img/accesorios-aros.jpg'
 },
 {
 id: 'collar-luna',
@@ -59,7 +59,7 @@ variants: [
 { color: 'Plateado', stock: 'agotado' }
 ],
 delivery: 'ambos',
-img: 'img/accesorios-collar.svg'
+img: 'img/accesorios-collar.jpg'
 },
 {
 id: 'gorra-lino',
@@ -73,7 +73,7 @@ variants: [
 { color: 'Verde salvia', stock: 'agotado' }
 ],
 delivery: 'ambos',
-img: 'img/accesorios-gorra.svg'
+img: 'img/accesorios-gorra.jpg'
 },
 {
 id: 'bufanda-ambar',
@@ -84,7 +84,7 @@ desc: 'Tejido suave en tono ámbar, ideal para las mañanas frescas. Trama abrig
 variants: [],
 stock: 'agotado',
 delivery: 'retiro',
-img: 'img/accesorios-bufanda.svg'
+img: 'img/accesorios-bufanda.jpg'
 },
 
 // ===================== Indumentaria =====================
@@ -101,7 +101,7 @@ variants: [
 { talle: 'M', color: 'Verde salvia', stock: 'agotado' }
 ],
 delivery: 'envio',
-img: 'img/indumentaria-camisola.svg'
+img: 'img/indumentaria-camisola.jpg'
 },
 {
 id: 'remera-basica',
@@ -116,7 +116,7 @@ variants: [
 { talle: 'S', color: 'Tinta', stock: 'agotado' }
 ],
 delivery: 'ambos',
-img: 'img/indumentaria-remera.svg'
+img: 'img/indumentaria-remera.jpg'
 },
 {
 id: 'camisa-lino',
@@ -130,7 +130,7 @@ variants: [
 { talle: 'L', color: 'Arena', stock: 'disponible' }
 ],
 delivery: 'ambos',
-img: 'img/indumentaria-camisa.svg'
+img: 'img/indumentaria-camisa.jpg'
 },
 {
 id: 'sweater-crudo',
@@ -143,7 +143,7 @@ variants: [
 { talle: 'L', color: 'Crudo', stock: 'disponible' }
 ],
 delivery: 'envio',
-img: 'img/indumentaria-sweater.svg'
+img: 'img/indumentaria-sweater.jpg'
 },
 
 // ================= Bolsos y Mochilas =================
@@ -158,7 +158,7 @@ variants: [
 { color: 'Tinta', stock: 'disponible' }
 ],
 delivery: 'ambos',
-img: 'img/bolsos-tote.svg'
+img: 'img/bolsos-tote.jpg'
 },
 {
 id: 'mochila-lona',
@@ -171,7 +171,7 @@ variants: [
 { color: 'Arena', stock: 'agotado' }
 ],
 delivery: 'envio',
-img: 'img/bolsos-mochila.svg'
+img: 'img/bolsos-mochila.jpg'
 },
 {
 id: 'rinonera-siena',
@@ -182,7 +182,7 @@ desc: 'Riñonera compacta con dos cierres y correa ajustable. Manos libres para 
 variants: [],
 stock: 'disponible',
 delivery: 'ambos',
-img: 'img/bolsos-rinonera.svg'
+img: 'img/bolsos-rinonera.jpg'
 },
 
 // =================== Cuidado y Hogar ==================
@@ -195,7 +195,7 @@ desc: 'Vela de soja con aroma a ámbar y vainilla. 40 horas de encendido en vaso
 variants: [],
 stock: 'disponible',
 delivery: 'ambos',
-img: 'img/hogar-vela.svg'
+img: 'img/hogar-vela.jpg'
 },
 {
 id: 'jabon-avena',
@@ -206,7 +206,7 @@ desc: 'Jabón artesanal de avena y miel, apto para piel sensible. Hecho a mano e
 variants: [],
 stock: 'disponible',
 delivery: 'retiro',
-img: 'img/hogar-jabon.svg'
+img: 'img/hogar-jabon.jpg'
 },
 {
 id: 'difusor-savia',
@@ -217,7 +217,7 @@ desc: 'Difusor de varillas con notas verdes y cítricas. Perfuma el ambiente por
 variants: [],
 stock: 'disponible',
 delivery: 'ambos',
-img: 'img/hogar-difusor.svg'
+img: 'img/hogar-difusor.jpg'
 }
 ]
 };

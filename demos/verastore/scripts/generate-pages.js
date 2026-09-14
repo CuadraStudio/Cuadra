@@ -125,10 +125,10 @@ var CATEGORY_DESC = {
 };
 
 var CATEGORY_TILE_IMG = {
-  'Accesorios': 'img/accesorios-gorra.svg',
-  'Indumentaria': 'img/indumentaria-camisola.svg',
-  'Bolsos y Mochilas': 'img/bolsos-tote.svg',
-  'Cuidado y Hogar': 'img/hogar-vela.svg'
+  'Accesorios': 'img/accesorios-gorra.jpg',
+  'Indumentaria': 'img/indumentaria-camisola.jpg',
+  'Bolsos y Mochilas': 'img/bolsos-tote.jpg',
+  'Cuidado y Hogar': 'img/hogar-vela.jpg'
 };
 
 /* ------------------- Copy: descripción larga de producto ------------------ */
