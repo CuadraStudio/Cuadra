@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Telegrama de despido sobre una mesa">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2f4f7"/>
+      <stop offset="1" stop-color="#e4e8ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+
+  <!-- telegrama -->
+  <g transform="translate(360 120) rotate(-2 240 200)">
+    <rect x="0" y="0" width="500" height="440" rx="10" fill="#ffffff"/>
+    <rect x="0" y="0" width="500" height="14" rx="7" fill="#16304a"/>
+    <rect x="0" y="400" width="500" height="12" rx="6" fill="#8a6a3b"/>
+    <!-- franja dentada -->
+    <circle cx="40" cy="406" r="7" fill="#f2f4f7"/>
+    <circle cx="80" cy="406" r="7" fill="#f2f4f7"/>
+    <circle cx="120" cy="406" r="7" fill="#f2f4f7"/>
+    <circle cx="160" cy="406" r="7" fill="#f2f4f7"/>
+    <circle cx="200" cy="406" r="7" fill="#f2f4f7"/>
+    <circle cx="240" cy="406" r="7" fill="#f2f4f7"/>
+    <circle cx="280" cy="406" r="7" fill="#f2f4f7"/>
+    <circle cx="320" cy="406" r="7" fill="#f2f4f7"/>
+    <circle cx="360" cy="406" r="7" fill="#f2f4f7"/>
+    <circle cx="400" cy="406" r="7" fill="#f2f4f7"/>
+    <circle cx="440" cy="406" r="7" fill="#f2f4f7"/>
+    <rect x="44" y="60" width="150" height="24" rx="12" fill="#8a6a3b"/>
+    <g stroke="#16304a" stroke-width="9" opacity="0.2">
+      <line x1="44" y1="140" x2="360" y2="140"/>
+      <line x1="44" y1="185" x2="440" y2="185"/>
+      <line x1="44" y1="230" x2="420" y2="230"/>
+      <line x1="44" y1="275" x2="440" y2="275"/>
+      <line x1="44" y1="320" x2="330" y2="320"/>
+    </g>
+  </g>
+
+  <!-- sobre -->
+  <circle cx="170" cy="420" r="60" fill="#8a6a3b"/>
+  <path d="M150 400 L170 428 L190 400" stroke="#f2f4f7" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

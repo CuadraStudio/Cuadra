@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="Documentación laboral sobre un escritorio">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2f4f7"/>
+      <stop offset="1" stop-color="#e4e8ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)"/>
+
+  <!-- escritorio -->
+  <rect x="90" y="610" width="720" height="34" rx="17" fill="#16304a"/>
+  <rect x="150" y="644" width="40" height="120" rx="10" fill="#8a6a3b"/>
+  <rect x="710" y="644" width="40" height="120" rx="10" fill="#8a6a3b"/>
+
+  <!-- documento -->
+  <g transform="translate(310 190) rotate(-4 140 180)">
+    <rect x="0" y="0" width="320" height="420" rx="10" fill="#ffffff"/>
+    <rect x="0" y="0" width="320" height="10" rx="5" fill="#8a6a3b"/>
+    <rect x="36" y="52" width="120" height="16" rx="8" fill="#8a6a3b" opacity="0.8"/>
+    <g stroke="#16304a" stroke-width="8" opacity="0.22">
+      <line x1="36" y1="116" x2="252" y2="116"/>
+      <line x1="36" y1="156" x2="284" y2="156"/>
+      <line x1="36" y1="196" x2="284" y2="196"/>
+      <line x1="36" y1="236" x2="284" y2="236"/>
+      <line x1="36" y1="276" x2="236" y2="276"/>
+      <line x1="36" y1="316" x2="284" y2="316"/>
+      <line x1="36" y1="356" x2="196" y2="356"/>
+    </g>
+    <circle cx="270" cy="380" r="26" fill="none" stroke="#8a6a3b" stroke-width="8"/>
+  </g>
+
+  <text x="64" y="820" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#16304a" opacity="0.75">Documentación laboral</text>
+</svg>

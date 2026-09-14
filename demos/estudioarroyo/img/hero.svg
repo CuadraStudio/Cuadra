@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Sala de reuniones del Estudio Arroyo">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16304a"/>
+      <stop offset="1" stop-color="#0f2236"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.2" r="0.5">
+      <stop offset="0" stop-color="#f2f4f7" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#f2f4f7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+
+  <!-- ventanal derecho: marco y persiana -->
+  <rect x="1050" y="120" width="370" height="560" rx="8" fill="#f2f4f7"/>
+  <rect x="1068" y="138" width="334" height="524" rx="6" fill="#16304a"/>
+  <line x1="1235" y1="138" x2="1235" y2="662" stroke="#f2f4f7" stroke-width="4"/>
+  <g stroke="#8a6a3b" stroke-width="10" opacity="0.85">
+    <line x1="1076" y1="220" x2="1394" y2="220"/>
+    <line x1="1076" y1="300" x2="1394" y2="300"/>
+    <line x1="1076" y1="380" x2="1394" y2="380"/>
+    <line x1="1076" y1="460" x2="1394" y2="460"/>
+    <line x1="1076" y1="540" x2="1394" y2="540"/>
+  </g>
+  <!-- lámpara -->
+  <circle cx="1235" cy="120" r="56" fill="#8a6a3b"/>
+  <circle cx="1235" cy="120" r="56" fill="none" stroke="#f2f4f7" stroke-width="3" opacity="0.5"/>
+  <line x1="1235" y1="64" x2="1235" y2="40" stroke="#8a6a3b" stroke-width="6"/>
+
+  <!-- mesa -->
+  <rect x="60" y="700" width="900" height="26" rx="13" fill="#8a6a3b"/>
+  <rect x="60" y="726" width="900" height="12" rx="6" fill="#f2f4f7" opacity="0.08"/>
+
+  <!-- texto -->
+  <text x="100" y="330" font-family="Georgia, 'Times New Roman', serif" font-size="34" letter-spacing="10" fill="#8a6a3b">ESTUDIO JURÍDICO · CIUDAD VIEJA</text>
+  <text x="96" y="430" font-family="Georgia, 'Times New Roman', serif" font-size="84" font-weight="700" fill="#f2f4f7">Estudio Arroyo</text>
+  <rect x="102" y="470" width="120" height="8" rx="4" fill="#8a6a3b"/>
+  <text x="100" y="545" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#f2f4f7" opacity="0.82">Derecho laboral y de familia, explicado en criollo.</text>
+</svg>

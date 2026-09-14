@@ -1,0 +1,34 @@
+# Estudio Arroyo
+
+Estudio jurídico en Ciudad Vieja especializado en derecho laboral y de familia. Primera consulta orientativa, agenda online y respuesta en 24 horas.
+Dirección: Zabala 1327, oficina 404, Ciudad Vieja, Montevideo
+
+Línea de producto: consulta · Plan: profesional
+
+## Páginas
+
+- `/demos/estudioarroyo/` — Inicio
+- `/demos/estudioarroyo/servicios/` — Servicios y precios
+- `/demos/estudioarroyo/servicios/{slug}/` — Área de trabajo (6 páginas)
+- `/demos/estudioarroyo/sobre-mi/` — Perfil profesional
+- `/demos/estudioarroyo/como-trabajamos/` — Cómo trabajamos
+- `/demos/estudioarroyo/agendar/` — Agenda de consultas
+- `/demos/estudioarroyo/casos/` — Casos y proyectos
+- `/demos/estudioarroyo/casos/{slug}/` — Ficha de caso (3 páginas)
+- `/demos/estudioarroyo/preguntas/` — Preguntas frecuentes
+- `/demos/estudioarroyo/contacto/` — Contacto y ubicación
+- `/demos/estudioarroyo/galeria/` — Galería
+- `/demos/estudioarroyo/opiniones/` — Opiniones de clientes
+- `/demos/estudioarroyo/privacidad/` — Política de privacidad
+- `/demos/estudioarroyo/terminos/` — Términos y condiciones
+
+## Contacto
+
+- Teléfono: 099 000 000
+- WhatsApp: https://wa.me/59899000000
+- Email: consultas@estudioarroyo.uy
+
+## Notas
+
+- Los pedidos y reservas se cierran por WhatsApp. No hay pago online.
+- El panel de administración (/demos/estudioarroyo/admin.html) no es público.
