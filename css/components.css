@@ -422,6 +422,25 @@
   border-radius: var(--radius-md);
 }
 
+/* Demo badge - overlaid on project card screenshots so it reads at a
+   glance that these are product demos, not client work (DS 16 variant) */
+.project-card__badge {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 1;
+  display: inline-block;
+  padding: 5px 12px;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-interface);
+  text-transform: uppercase;
+  color: var(--color-black);
+  background: var(--color-sage);
+  border-radius: var(--radius-md);
+}
+
 /* ---- Hero avatar (isotipo block, geometric - DS 2.1) ---- */
 .avatar {
   width: 140px;
