@@ -1262,38 +1262,136 @@ font-family: var(--font-display);
   padding-right: var(--space-6);
 }
 
-/* ---- Paso 2: boton "elegir este plan" + estado seleccionado ---- */
-.pricing-card__select {
-  display: block;
-  width: 100%;
-  margin-top: var(--space-3);
-  padding: var(--space-3) var(--space-4);
-  background: transparent;
+/* ---- Paso 2: base fija por linea (no se puede sacar) ---- */
+.plan-base {
+  background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-7);
+}
+
+.plan-base__label {
   font-family: var(--font-primary);
   font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: var(--letter-spacing-interface);
   text-transform: uppercase;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
-}
-
-.pricing-card__select:hover {
   color: var(--color-accent-ink);
-  border-color: var(--color-accent-ink);
+  margin: 0 0 var(--space-3);
 }
 
-.pricing-card.is-selected {
-  border-color: var(--color-accent-ink);
+.plan-base__price {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  letter-spacing: var(--letter-spacing-display);
+  color: var(--color-text);
+  margin: 0 0 var(--space-5);
 }
 
-.pricing-card.is-selected .pricing-card__select {
-  color: var(--color-black);
-  background: var(--color-accent-ink);
+.plan-base__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+}
+
+@media (min-width: 640px) {
+  .plan-base__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-5);
+  }
+}
+
+.plan-base__list li {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  padding-left: var(--space-5);
+  position: relative;
+}
+
+.plan-base__list li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-ink);
+  font-weight: 600;
+}
+
+.extras-heading {
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-interface);
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 0 0 var(--space-5);
+}
+
+.extras-group {
+  margin-bottom: var(--space-7);
+}
+
+.extras-group__title {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: var(--letter-spacing-body);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-3);
+}
+
+.extra-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.extra-toggle + .extra-toggle {
+  margin-top: var(--space-2);
+}
+
+.extra-toggle:hover {
+  border-color: var(--color-border-strong);
+}
+
+.extra-toggle:has(input:checked) {
   border-color: var(--color-accent-ink);
+  background: var(--color-bg-card-hover);
+}
+
+.extra-toggle input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--color-sage);
+}
+
+.extra-toggle__name {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.extra-toggle__price {
+  flex-shrink: 0;
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-accent-ink);
+  white-space: nowrap;
 }
 
 /* ---- Paso 3: combo toggle ---- */
@@ -1335,6 +1433,37 @@ font-family: var(--font-display);
 
 .result-summary__row:last-of-type {
   border-bottom: none;
+}
+
+.result-summary__extras {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.result-summary__extras:empty {
+  display: none;
+}
+
+.result-summary__extras li {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  padding-left: var(--space-5);
+  position: relative;
+}
+
+.result-summary__extras li::before {
+  content: '+';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent-ink);
+  font-weight: 600;
 }
 
 .result-summary__label {

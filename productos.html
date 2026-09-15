@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="css/base.css?v=20260914">
   <link rel="stylesheet" href="css/layout.css?v=20260914">
   <link rel="stylesheet" href="css/components.css?v=20260914b">
-  <link rel="stylesheet" href="css/pages.css?v=20260915">
+  <link rel="stylesheet" href="css/pages.css?v=20260915b">
   <link rel="stylesheet" href="css/animations.css?v=20260914">
 
   <!-- SEO estructurado: FAQPage (feature SEO basico del servicio) -->
@@ -236,473 +236,399 @@
               <!-- Paso 2: plan dentro de la línea elegida -->
               <div class="configurator__panel" data-step="2">
                 <p class="configurator__panel-eyebrow">Paso 2 de 4</p>
-                <h3 class="configurator__panel-title">Elegí tu plan de <span data-selected-line-name>—</span></h3>
-                <p class="configurator__panel-lede">Los tres planes incluyen la base completa (web, hosting, WhatsApp, panel). Cada plan siguiente suma todo el anterior.</p>
+                <h3 class="configurator__panel-title">Armá tu plan de <span data-selected-line-name>—</span></h3>
+                <p class="configurator__panel-lede">Todo plan arranca con la base de tu línea (incluida siempre) y suma lo que marques. El total se arma solo, abajo a la derecha.</p>
 
                 <!-- CUADRA AGENDA -->
-                <div id="planes-agenda" class="plans-block" data-line-panel="agenda">
+                <div id="planes-agenda" class="plans-block" data-line-panel="agenda" data-base-impl="25000" data-base-usd="625" data-base-mensual="990">
                   <h3 class="plans-block__title">CUADRA AGENDA</h3>
-          <p class="plans-block__tagline">Tu agenda trabaja sola</p>
+                  <p class="plans-block__tagline">Tu agenda trabaja sola</p>
 
-          <div class="pricing-cards">
-            <article class="pricing-card">
-              <p class="pricing-card__label">BÁSICO</p>
-              <p class="pricing-card__price">$U 990/mes</p>
-              <p class="pricing-card__setup">Implementación: $U 25.000 único (~USD 625)</p>
-              <p class="pricing-card__hook">~USD 25/mes — menos que 2 cortes de pelo por semana</p>
-              <ul class="pricing-card__list">
-                <li class="pricing-card__item">Web a medida con diseño responsive mobile-first y dominio a nombre del cliente</li>
-                <li class="pricing-card__item">Hosting, SSL y mantenimiento incluidos (sin costos ocultos)</li>
-                <li class="pricing-card__item">Reserva online con horarios en vivo: el cliente ve servicios con precio, duración y foto, elige fecha/hora y reserva solo</li>
-                <li class="pricing-card__item">Anti doble reserva: el sistema bloquea automáticamente los slots ocupados</li>
-                <li class="pricing-card__item">Reprogramación y cancelación por link — el cliente gestiona su turno sin llamar</li>
-                <li class="pricing-card__item">Excepciones y feriados del calendario configurables desde el panel</li>
-              </ul>
-              <details class="plan-details">
-                <summary class="plan-details__summary">VER LISTA COMPLETA DEL PLAN</summary>
-                <div class="plan-details__body">
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item">Panel de administración con login Google: gestión de servicios, horarios y turnos</li>
-                    <li class="plan-details__item">Panel de actividad del día: turnos del día, pendientes y disponibles en un vistazo</li>
-                    <li class="plan-details__item">Confirmación automática por email cada vez que se reserva un turno</li>
-                    <li class="plan-details__item">Botón WhatsApp flotante con mensaje pre-cargado para consultas directas</li>
-                    <li class="plan-details__item">SEO básico: meta tags, datos estructurados y vinculación con Google Business</li>
-                    <li class="plan-details__item">Soporte humano por WhatsApp para resolver dudas</li>
-                  </ul>
-                  <p class="plan-details__group-label">No incluye:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item plan-details__item--no">Confirmación y recordatorios automáticos por WhatsApp (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Gestión de múltiples profesionales con agenda propia (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Multi-sucursal con catálogo y horarios independientes (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Waitlist / cola de espera con aviso automático (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Base de clientes con historial y tags (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Estadísticas operativas y reportes (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Sincronización con Google Calendar (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Multi-idioma ES/EN (disponible en Profesional)</li>
-                  </ul>
-                  <p class="plan-details__ideal"><strong>Ideal para:</strong> el profesional o negocio que recién arranca con la reserva online, tiene uno o dos servicios y quiere que sus clientes reserven sin fricción. La operación esencial funciona desde el día uno.</p>
+                  <div class="plan-base">
+                    <p class="plan-base__label">Base incluida — no se puede sacar</p>
+                    <p class="plan-base__price">Implementación: $U 25.000 único (~USD 625) &nbsp;·&nbsp; Mensual: $U 990/mes (~USD 25)</p>
+                    <ul class="plan-base__list">
+                      <li>Web a medida con diseño responsive y dominio a tu nombre</li>
+                      <li>Hosting, SSL y mantenimiento incluidos</li>
+                      <li>Reserva online con horarios en vivo + anti doble reserva</li>
+                      <li>Reprogramación y cancelación por link, excepciones y feriados</li>
+                      <li>Panel de administración + botón WhatsApp flotante</li>
+                      <li>SEO básico + soporte humano por WhatsApp</li>
+                    </ul>
+                  </div>
+
+                  <p class="extras-heading">Sumá lo que necesites</p>
+
+                  <div class="extras-group">
+                    <p class="extras-group__title">Específico de Agenda</p>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="3500">
+                      <span class="extra-toggle__name">Gestión de múltiples profesionales (providers)</span>
+                      <span class="extra-toggle__price">+$U 3.500 único</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="4000">
+                      <span class="extra-toggle__name">Multi-sucursal (horarios y catálogo independientes)</span>
+                      <span class="extra-toggle__price">+$U 4.000 único</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="100">
+                      <span class="extra-toggle__name">Waitlist con aviso automático por WhatsApp</span>
+                      <span class="extra-toggle__price">+$U 100/mes</span>
+                    </label>
+                  </div>
+
+                  <div class="extras-group">
+                    <p class="extras-group__title">Comunicación y clientes</p>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="250">
+                      <span class="extra-toggle__name">Confirmación y recordatorios automáticos por WhatsApp</span>
+                      <span class="extra-toggle__price">+$U 250/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="120">
+                      <span class="extra-toggle__name">Base de clientes con historial y tags</span>
+                      <span class="extra-toggle__price">+$U 120/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="100">
+                      <span class="extra-toggle__name">Estadísticas operativas + exportación de reportes</span>
+                      <span class="extra-toggle__price">+$U 100/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="1500">
+                      <span class="extra-toggle__name">Sincronización con Google Calendar</span>
+                      <span class="extra-toggle__price">+$U 1.500 único</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="2000">
+                      <span class="extra-toggle__name">Multi-idioma ES/EN</span>
+                      <span class="extra-toggle__price">+$U 2.000 único</span>
+                    </label>
+                  </div>
+
+                  <div class="extras-group">
+                    <p class="extras-group__title">Crecimiento y fidelización</p>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="350">
+                      <span class="extra-toggle__name">Campañas WhatsApp broadcast + cupones</span>
+                      <span class="extra-toggle__price">+$U 350/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="250">
+                      <span class="extra-toggle__name">Sistema de fidelización (puntos, recompra)</span>
+                      <span class="extra-toggle__price">+$U 250/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="200">
+                      <span class="extra-toggle__name">Analytics avanzado + reportes programados</span>
+                      <span class="extra-toggle__price">+$U 200/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="200">
+                      <span class="extra-toggle__name">SEO avanzado + Google Business optimizado</span>
+                      <span class="extra-toggle__price">+$U 200/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="1500">
+                      <span class="extra-toggle__name">Integración con Instagram</span>
+                      <span class="extra-toggle__price">+$U 1.500 único</span>
+                    </label>
+                  </div>
                 </div>
-              </details>
-              <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20B%C3%A1sico%20de%20CUADRA%20Agenda." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Básico de CUADRA Agenda">QUIERO ESTE PLAN</a>
-              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
-            </article>
 
-            <article class="pricing-card pricing-card--featured">
-              <span class="pricing-card__badge">RECOMENDADO</span>
-              <p class="pricing-card__label">PROFESIONAL</p>
-              <p class="pricing-card__price">$U 1.490/mes</p>
-              <p class="pricing-card__setup">Implementación: $U 32.000 único (~USD 800)</p>
-              <p class="pricing-card__hook">~USD 37/mes — el equivalente a 3 cortes de pelo y dejás de perder ventas</p>
-              <ul class="pricing-card__list">
-                <li class="pricing-card__item">Confirmación automática por WhatsApp + recordatorios 24h y 1h antes de cada turno — el no-show se reduce drásticamente</li>
-                <li class="pricing-card__item">Gestión de múltiples profesionales (providers): cada uno con su agenda, servicios y horarios propios</li>
-                <li class="pricing-card__item">Multi-sucursal con catálogo de servicios y horarios independientes por sucursal</li>
-                <li class="pricing-card__item">Waitlist / cola de espera: cuando se libera un hueco, el siguiente en la cola recibe aviso por WhatsApp automáticamente</li>
-                <li class="pricing-card__item">Base de clientes con historial: cada reserva queda vinculada al cliente, con tags y historial de servicios</li>
-                <li class="pricing-card__item">Estadísticas operativas: turnos completados, cancelados, no-shows, ingresos estimados, servicio más reservado</li>
-              </ul>
-              <details class="plan-details">
-                <summary class="plan-details__summary">VER LISTA COMPLETA DEL PLAN</summary>
-                <div class="plan-details__body">
-                  <p class="plan-details__head">Incluye todo lo del Básico, más:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item">Exportación de reportes en CSV y PDF</li>
-                    <li class="plan-details__item">Sincronización con Google Calendar: los turnos se reflejan en el calendario del profesional/admin</li>
-                    <li class="plan-details__item">Multi-idioma ES/EN para tu web</li>
-                    <li class="plan-details__item">Soporte prioritario por WhatsApp</li>
-                  </ul>
-                  <p class="plan-details__group-label">No incluye:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item plan-details__item--no">Campañas WhatsApp broadcast a clientes (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Sistema de fidelización / puntos (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Cupones y promociones automatizadas (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Analytics avanzado con tendencias y retención (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">SEO avanzado y optimización profunda de Google Business (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Integración con Instagram (disponible en Premium)</li>
-                  </ul>
-                  <p class="plan-details__ideal"><strong>Ideal para:</strong> el negocio que ya tiene tráfico y quiere dejar de perder ventas por no-shows, teléfono ocupado o clientes que no encuentran disponibilidad. WhatsApp automatizado + clientes + estadísticas = el salto operativo real.</p>
+                <!-- CUADRA TIENDA -->
+                <div id="planes-tienda" class="plans-block" data-line-panel="tienda" data-base-impl="32000" data-base-usd="800" data-base-mensual="990">
+                  <h3 class="plans-block__title">CUADRA TIENDA</h3>
+                  <p class="plans-block__tagline">Tu catálogo en Google, tus pedidos por WhatsApp</p>
+
+                  <div class="plan-base">
+                    <p class="plan-base__label">Base incluida — no se puede sacar</p>
+                    <p class="plan-base__price">Implementación: $U 32.000 único (~USD 800) &nbsp;·&nbsp; Mensual: $U 990/mes (~USD 25)</p>
+                    <ul class="plan-base__list">
+                      <li>Web a medida con diseño responsive y dominio a tu nombre</li>
+                      <li>Hosting, SSL y mantenimiento incluidos</li>
+                      <li>Catálogo navegable con categorías, fotos, precios y descripciones</li>
+                      <li>Pedido por WhatsApp: el cliente arma el carrito y envía el pedido formateado</li>
+                      <li>Panel de administración + botón WhatsApp flotante</li>
+                      <li>SEO básico + soporte humano por WhatsApp</li>
+                    </ul>
+                  </div>
+
+                  <p class="extras-heading">Sumá lo que necesites</p>
+
+                  <div class="extras-group">
+                    <p class="extras-group__title">Específico de Tienda</p>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="4000">
+                      <span class="extra-toggle__name">Variantes de producto (talle/color)</span>
+                      <span class="extra-toggle__price">+$U 4.000 único</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="2500">
+                      <span class="extra-toggle__name">Control de stock simple (disponible/agotado)</span>
+                      <span class="extra-toggle__price">+$U 2.500 único</span>
+                    </label>
+                  </div>
+
+                  <div class="extras-group">
+                    <p class="extras-group__title">Comunicación y clientes</p>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="250">
+                      <span class="extra-toggle__name">Confirmación y avisos automáticos de pedido por WhatsApp</span>
+                      <span class="extra-toggle__price">+$U 250/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="120">
+                      <span class="extra-toggle__name">Base de clientes con historial y tags</span>
+                      <span class="extra-toggle__price">+$U 120/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="100">
+                      <span class="extra-toggle__name">Estadísticas de pedidos + exportación de reportes</span>
+                      <span class="extra-toggle__price">+$U 100/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="2000">
+                      <span class="extra-toggle__name">Multi-idioma ES/EN</span>
+                      <span class="extra-toggle__price">+$U 2.000 único</span>
+                    </label>
+                  </div>
+
+                  <div class="extras-group">
+                    <p class="extras-group__title">Crecimiento y fidelización</p>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="350">
+                      <span class="extra-toggle__name">Campañas WhatsApp broadcast + cupones</span>
+                      <span class="extra-toggle__price">+$U 350/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="250">
+                      <span class="extra-toggle__name">Sistema de fidelización (puntos, recompra)</span>
+                      <span class="extra-toggle__price">+$U 250/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="200">
+                      <span class="extra-toggle__name">Analytics avanzado + reportes programados</span>
+                      <span class="extra-toggle__price">+$U 200/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="200">
+                      <span class="extra-toggle__name">SEO avanzado + Google Business optimizado</span>
+                      <span class="extra-toggle__price">+$U 200/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="1500">
+                      <span class="extra-toggle__name">Integración con Instagram</span>
+                      <span class="extra-toggle__price">+$U 1.500 único</span>
+                    </label>
+                  </div>
                 </div>
-              </details>
-              <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Profesional%20de%20CUADRA%20Agenda." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Profesional de CUADRA Agenda">QUIERO ESTE PLAN</a>
-              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
-            </article>
 
-            <article class="pricing-card">
-              <p class="pricing-card__label">PREMIUM</p>
-              <p class="pricing-card__price">$U 2.490/mes</p>
-              <p class="pricing-card__setup">Implementación: $U 48.000 único (~USD 1.200)</p>
-              <p class="pricing-card__hook">~USD 62/mes — el equivalente a 6 cortes de pelo y tu negocio crece solo</p>
-              <ul class="pricing-card__list">
-                <li class="pricing-card__item">Campañas WhatsApp broadcast: enviá promociones, novedades y ofertas a toda tu base de clientes segmentada</li>
-                <li class="pricing-card__item">Sistema de fidelización: puntos por visita, descuentos por recompra y programas de fidelidad configurables</li>
-                <li class="pricing-card__item">Cupones y promociones: generá códigos de descuento para campañas específicas (temporada, referidos, etc.)</li>
-                <li class="pricing-card__item">Analytics avanzado: tendencias de reserva, retención de clientes, servicios más rentables, horarios pico, reportes programados</li>
-                <li class="pricing-card__item">SEO avanzado + optimización profunda de Google Business: posicionamiento local, reseñas, ficha completa</li>
-                <li class="pricing-card__item">Integración con Instagram: feed de servicios y publicaciones destacadas en tu web</li>
-              </ul>
-              <details class="plan-details">
-                <summary class="plan-details__summary">VER LISTA COMPLETA DEL PLAN</summary>
-                <div class="plan-details__body">
-                  <p class="plan-details__head">Incluye todo lo del Profesional, más:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item">Soporte dedicado para campañas y estrategia de crecimiento</li>
-                  </ul>
-                  <p class="plan-details__ideal"><strong>Ideal para:</strong> el negocio que ya tiene una base de clientes sólida y quiere hacer crecer el volumen, fidelizar y campañar sin depender de Instagram o el boca a boca. Tu agenda es tu motor de crecimiento.</p>
+                <!-- CUADRA RESTÓ -->
+                <div id="planes-resto" class="plans-block" data-line-panel="resto" data-base-impl="28000" data-base-usd="700" data-base-mensual="990">
+                  <h3 class="plans-block__title">CUADRA RESTÓ</h3>
+                  <p class="plans-block__tagline">Tu carta digital, tus mesas reservadas, tus clientes contentos</p>
+
+                  <div class="plan-base">
+                    <p class="plan-base__label">Base incluida — no se puede sacar</p>
+                    <p class="plan-base__price">Implementación: $U 28.000 único (~USD 700) &nbsp;·&nbsp; Mensual: $U 990/mes (~USD 25)</p>
+                    <ul class="plan-base__list">
+                      <li>Web a medida con diseño responsive y dominio a tu nombre</li>
+                      <li>Hosting, SSL y mantenimiento incluidos</li>
+                      <li>Carta digital por categorías: entradas, principales, postres, bebidas</li>
+                      <li>Reserva de mesa online con cupos por franja (almuerzo/cena)</li>
+                      <li>Panel de administración + botón WhatsApp flotante</li>
+                      <li>SEO básico + soporte humano por WhatsApp</li>
+                    </ul>
+                  </div>
+
+                  <p class="extras-heading">Sumá lo que necesites</p>
+
+                  <div class="extras-group">
+                    <p class="extras-group__title">Específico de Restó</p>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="2500">
+                      <span class="extra-toggle__name">Menú QR por mesa</span>
+                      <span class="extra-toggle__price">+$U 2.500 único</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="1500">
+                      <span class="extra-toggle__name">Franjas de cocina y horarios de servicio configurables</span>
+                      <span class="extra-toggle__price">+$U 1.500 único</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="150">
+                      <span class="extra-toggle__name">Pedido para llevar / delivery por WhatsApp</span>
+                      <span class="extra-toggle__price">+$U 150/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="2000">
+                      <span class="extra-toggle__name">Reservas para grupos y eventos</span>
+                      <span class="extra-toggle__price">+$U 2.000 único</span>
+                    </label>
+                  </div>
+
+                  <div class="extras-group">
+                    <p class="extras-group__title">Comunicación y clientes</p>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="250">
+                      <span class="extra-toggle__name">Confirmación y recordatorios automáticos por WhatsApp</span>
+                      <span class="extra-toggle__price">+$U 250/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="120">
+                      <span class="extra-toggle__name">Base de clientes con historial y tags</span>
+                      <span class="extra-toggle__price">+$U 120/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="100">
+                      <span class="extra-toggle__name">Estadísticas operativas + exportación de reportes</span>
+                      <span class="extra-toggle__price">+$U 100/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="1500">
+                      <span class="extra-toggle__name">Sincronización con Google Calendar</span>
+                      <span class="extra-toggle__price">+$U 1.500 único</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="2000">
+                      <span class="extra-toggle__name">Multi-idioma ES/EN</span>
+                      <span class="extra-toggle__price">+$U 2.000 único</span>
+                    </label>
+                  </div>
+
+                  <div class="extras-group">
+                    <p class="extras-group__title">Crecimiento y fidelización</p>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="350">
+                      <span class="extra-toggle__name">Campañas WhatsApp broadcast + cupones</span>
+                      <span class="extra-toggle__price">+$U 350/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="250">
+                      <span class="extra-toggle__name">Sistema de fidelización (puntos, recompra)</span>
+                      <span class="extra-toggle__price">+$U 250/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="200">
+                      <span class="extra-toggle__name">Analytics avanzado + reportes programados</span>
+                      <span class="extra-toggle__price">+$U 200/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="200">
+                      <span class="extra-toggle__name">SEO avanzado + Google Business optimizado</span>
+                      <span class="extra-toggle__price">+$U 200/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="1500">
+                      <span class="extra-toggle__name">Integración con Instagram</span>
+                      <span class="extra-toggle__price">+$U 1.500 único</span>
+                    </label>
+                  </div>
                 </div>
-              </details>
-              <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Premium%20de%20CUADRA%20Agenda." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Premium de CUADRA Agenda">QUIERO ESTE PLAN</a>
-              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
-            </article>
-          </div>
-        </div>
 
-        <!-- CUADRA TIENDA -->
-        <div id="planes-tienda" class="plans-block" data-line-panel="tienda">
-          <h3 class="plans-block__title">CUADRA TIENDA</h3>
-          <p class="plans-block__tagline">Tu catálogo en Google, tus pedidos por WhatsApp</p>
+                <!-- CUADRA CONSULTA -->
+                <div id="planes-consulta" class="plans-block" data-line-panel="consulta" data-base-impl="18000" data-base-usd="450" data-base-mensual="990">
+                  <h3 class="plans-block__title">CUADRA CONSULTA</h3>
+                  <p class="plans-block__tagline">Tu presencia profesional, seria y funcionando</p>
 
-          <div class="pricing-cards">
-            <article class="pricing-card">
-              <p class="pricing-card__label">BÁSICO</p>
-              <p class="pricing-card__price">$U 990/mes</p>
-              <p class="pricing-card__setup">Implementación: $U 32.000 único (~USD 800)</p>
-              <p class="pricing-card__hook">~USD 25/mes — menos que 2 cafés con leche por día</p>
-              <ul class="pricing-card__list">
-                <li class="pricing-card__item">Web a medida con diseño responsive mobile-first y dominio a nombre del cliente</li>
-                <li class="pricing-card__item">Hosting, SSL y mantenimiento incluidos (sin costos ocultos)</li>
-                <li class="pricing-card__item">Catálogo de productos navegable: fotos, precios y descripciones de cada producto</li>
-                <li class="pricing-card__item">Categorías y filtros de producto para que el cliente encuentre lo que busca</li>
-                <li class="pricing-card__item">Ficha de producto individual con galería de fotos, precio y descripción completa</li>
-                <li class="pricing-card__item">Pedido por WhatsApp: el cliente arma el carrito y envía el pedido formateado (producto, cantidad, total) al número del negocio</li>
-              </ul>
-              <details class="plan-details">
-                <summary class="plan-details__summary">VER LISTA COMPLETA DEL PLAN</summary>
-                <div class="plan-details__body">
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item">Panel de administración con login Google: gestión de productos, precios y estados</li>
-                    <li class="plan-details__item">Panel de actividad del día: pedidos recientes y productos pendientes en un vistazo</li>
-                    <li class="plan-details__item">Indicador de disponibilidad en cada producto (disponible / agotado)</li>
-                    <li class="plan-details__item">Información de entrega: retiro en local o envío, visible en cada ficha de producto</li>
-                    <li class="plan-details__item">Botón WhatsApp flotante con mensaje pre-cargado</li>
-                    <li class="plan-details__item">SEO básico: meta tags, datos estructurados y vinculación con Google Business</li>
-                    <li class="plan-details__item">Soporte humano por WhatsApp</li>
-                  </ul>
-                  <p class="plan-details__group-label">No incluye:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item plan-details__item--no">Variantes de producto (talle, color) (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Control de stock simple (disponible/agotado por variante) (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Confirmaciones y avisos automáticos por WhatsApp (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Base de clientes con historial y tags (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Estadísticas de pedidos y ticket promedio (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Multi-idioma ES/EN (disponible en Profesional)</li>
-                  </ul>
-                  <p class="plan-details__ideal"><strong>Ideal para:</strong> la tienda que quiere presencia en Google y que sus clientes puedan armar un pedido sin depender de DMs de Instagram. Catálogo profesional + pedido por WhatsApp = cada venta que se escapaba, ahora llega.</p>
-                </div>
-              </details>
-              <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20B%C3%A1sico%20de%20CUADRA%20Tienda." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Básico de CUADRA Tienda">QUIERO ESTE PLAN</a>
-              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
-            </article>
+                  <div class="plan-base">
+                    <p class="plan-base__label">Base incluida — no se puede sacar</p>
+                    <p class="plan-base__price">Implementación: $U 18.000 único (~USD 450) &nbsp;·&nbsp; Mensual: $U 990/mes (~USD 25)</p>
+                    <ul class="plan-base__list">
+                      <li>Web a medida con diseño responsive y dominio a tu nombre</li>
+                      <li>Hosting, SSL y mantenimiento incluidos</li>
+                      <li>Perfil profesional: bio, especialidades, credenciales/matrícula, foto</li>
+                      <li>Formulario de contacto personalizado por rubro</li>
+                      <li>Panel de administración + botón WhatsApp flotante</li>
+                      <li>SEO básico + soporte humano por WhatsApp</li>
+                    </ul>
+                  </div>
 
-            <article class="pricing-card pricing-card--featured">
-              <span class="pricing-card__badge">RECOMENDADO</span>
-              <p class="pricing-card__label">PROFESIONAL</p>
-              <p class="pricing-card__price">$U 1.490/mes</p>
-              <p class="pricing-card__setup">Implementación: $U 40.000 único (~USD 1.000)</p>
-              <p class="pricing-card__hook">~USD 37/mes — dejás de perder ventas por confusiones de talle y stock</p>
-              <ul class="pricing-card__list">
-                <li class="pricing-card__item">Variantes de producto: talle, color y combinaciones para indumentaria y accesorios</li>
-                <li class="pricing-card__item">Control de stock simple: disponible o agotado por cada variante, visible en la ficha del producto</li>
-                <li class="pricing-card__item">Confirmación automática por WhatsApp: cuando se recibe un pedido, el cliente recibe aviso inmediato con los detalles</li>
-                <li class="pricing-card__item">Avisos de pedido listo para retirar o en camino por WhatsApp</li>
-                <li class="pricing-card__item">Base de clientes con historial: cada pedido queda vinculado al cliente, con tags y historial de compras</li>
-                <li class="pricing-card__item">Estadísticas de pedidos: volumen, ingresos estimados, ticket promedio, productos más vendidos</li>
-              </ul>
-              <details class="plan-details">
-                <summary class="plan-details__summary">VER LISTA COMPLETA DEL PLAN</summary>
-                <div class="plan-details__body">
-                  <p class="plan-details__head">Incluye todo lo del Básico, más:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item">Exportación de reportes en CSV y PDF</li>
-                    <li class="plan-details__item">Multi-idioma ES/EN para tu web</li>
-                    <li class="plan-details__item">Soporte prioritario por WhatsApp</li>
-                  </ul>
-                  <p class="plan-details__group-label">No incluye:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item plan-details__item--no">Campañas WhatsApp broadcast a clientes (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Cupones y promociones automatizadas (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Sistema de fidelización / puntos (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Analytics avanzado y retención (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">SEO avanzado y optimización profunda de Google Business (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Integración con Instagram (disponible en Premium)</li>
-                  </ul>
-                  <p class="plan-details__ideal"><strong>Ideal para:</strong> la tienda con catálogo amplio que vende por talles/colores y quiere automatizar las confirmaciones, controlar el stock y conocer sus números. El saldo entre operativa y crecimiento.</p>
-                </div>
-              </details>
-              <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Profesional%20de%20CUADRA%20Tienda." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Profesional de CUADRA Tienda">QUIERO ESTE PLAN</a>
-              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
-            </article>
+                  <p class="extras-heading">Sumá lo que necesites</p>
 
-            <article class="pricing-card">
-              <p class="pricing-card__label">PREMIUM</p>
-              <p class="pricing-card__price">$U 2.490/mes</p>
-              <p class="pricing-card__setup">Implementación: $U 54.000 único (~USD 1.350)</p>
-              <p class="pricing-card__hook">~USD 62/mes — tu tienda tiene motor de crecimiento propio</p>
-              <ul class="pricing-card__list">
-                <li class="pricing-card__item">Campañas WhatsApp broadcast: enviá ofertas, novedades y lanzamientos a tu base de clientes segmentada</li>
-                <li class="pricing-card__item">Cupones y promociones: generá códigos de descuento para campañas, referidos y temporadas</li>
-                <li class="pricing-card__item">Sistema de fidelización: puntos por compra, descuentos por recompra y programas de fidelidad</li>
-                <li class="pricing-card__item">Analytics avanzado: tendencias de venta, retención de clientes, productos estrella, horarios pico, reportes programados</li>
-                <li class="pricing-card__item">SEO avanzado + optimización profunda de Google Business</li>
-                <li class="pricing-card__item">Integración con Instagram: feed de productos y publicaciones destacadas en tu web</li>
-              </ul>
-              <details class="plan-details">
-                <summary class="plan-details__summary">VER LISTA COMPLETA DEL PLAN</summary>
-                <div class="plan-details__body">
-                  <p class="plan-details__head">Incluye todo lo del Profesional, más:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item">Soporte dedicado para campañas y estrategia de crecimiento</li>
-                  </ul>
-                  <p class="plan-details__ideal"><strong>Ideal para:</strong> la tienda que ya tiene volumen y quiere fidelizar, campañar y hacer crecer la base de clientes con herramientas que antes solo tenían las grandes marcas.</p>
-                </div>
-              </details>
-              <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Premium%20de%20CUADRA%20Tienda." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Premium de CUADRA Tienda">QUIERO ESTE PLAN</a>
-              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
-            </article>
-          </div>
-        </div>
+                  <div class="extras-group">
+                    <p class="extras-group__title">Específico de Consulta</p>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="3000">
+                      <span class="extra-toggle__name">Agenda de consultas online (turnos)</span>
+                      <span class="extra-toggle__price">+$U 3.000 único</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="2000">
+                      <span class="extra-toggle__name">Portfolio / galería de casos</span>
+                      <span class="extra-toggle__price">+$U 2.000 único</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="1000">
+                      <span class="extra-toggle__name">Testimonios de clientes</span>
+                      <span class="extra-toggle__price">+$U 1.000 único</span>
+                    </label>
+                  </div>
 
-        <!-- CUADRA RESTÓ -->
-        <div id="planes-resto" class="plans-block" data-line-panel="resto">
-          <h3 class="plans-block__title">CUADRA RESTÓ</h3>
-          <p class="plans-block__tagline">Tu carta digital, tus mesas reservadas, tus clientes contentos</p>
+                  <div class="extras-group">
+                    <p class="extras-group__title">Comunicación y contactos</p>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="250">
+                      <span class="extra-toggle__name">Confirmación y recordatorios automáticos por WhatsApp</span>
+                      <span class="extra-toggle__price">+$U 250/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="120">
+                      <span class="extra-toggle__name">Base de contactos con historial y tags</span>
+                      <span class="extra-toggle__price">+$U 120/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="100">
+                      <span class="extra-toggle__name">Estadísticas de consultas + exportación de reportes</span>
+                      <span class="extra-toggle__price">+$U 100/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="1500">
+                      <span class="extra-toggle__name">Sincronización con Google Calendar</span>
+                      <span class="extra-toggle__price">+$U 1.500 único</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="2000">
+                      <span class="extra-toggle__name">Multi-idioma ES/EN</span>
+                      <span class="extra-toggle__price">+$U 2.000 único</span>
+                    </label>
+                  </div>
 
-          <div class="pricing-cards">
-            <article class="pricing-card">
-              <p class="pricing-card__label">BÁSICO</p>
-              <p class="pricing-card__price">$U 990/mes</p>
-              <p class="pricing-card__setup">Implementación: $U 28.000 único (~USD 700)</p>
-              <p class="pricing-card__hook">~USD 25/mes — menos que 2 medianoches por semana</p>
-              <ul class="pricing-card__list">
-                <li class="pricing-card__item">Web a medida con diseño responsive mobile-first y dominio a nombre del cliente</li>
-                <li class="pricing-card__item">Hosting, SSL y mantenimiento incluidos (sin costos ocultos)</li>
-                <li class="pricing-card__item">Carta digital por categorías: entradas, principales, postres, bebidas — con platos, precios y fotos</li>
-                <li class="pricing-card__item">Reserva de mesa online con cupos por franja (almuerzo / cena): el cliente elige fecha, horario y cantidad de personas</li>
-                <li class="pricing-card__item">Panel de administración con login Google: gestión de carta, horarios, capacidad y franjas</li>
-                <li class="pricing-card__item">Panel de actividad del día: reservas del día, platos disponibles y estado de la operación</li>
-              </ul>
-              <details class="plan-details">
-                <summary class="plan-details__summary">VER LISTA COMPLETA DEL PLAN</summary>
-                <div class="plan-details__body">
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item">Confirmación automática por email cada vez que se reserva una mesa</li>
-                    <li class="plan-details__item">Botón WhatsApp flotante con mensaje pre-cargado</li>
-                    <li class="plan-details__item">SEO básico: meta tags, datos estructurados y vinculación con Google Business</li>
-                    <li class="plan-details__item">Soporte humano por WhatsApp</li>
-                  </ul>
-                  <p class="plan-details__group-label">No incluye:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item plan-details__item--no">Menú QR por mesa (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Franjas de cocina y horarios de servicio configurables (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Pedido para llevar / delivery por WhatsApp formateado (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Confirmación y recordatorios automáticos por WhatsApp (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Base de clientes con historial y tags (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Estadísticas operativas y reportes (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Multi-idioma ES/EN (disponible en Profesional)</li>
-                  </ul>
-                  <p class="plan-details__ideal"><strong>Ideal para:</strong> el restaurante que quiere que su carta sea visible en Google y que las mesas se reserven sin llamar. Carta online + reserva con cupos = cada cliente que se perdía por teléfono ocupado, ahora reserva solo.</p>
-                </div>
-              </details>
-              <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20B%C3%A1sico%20de%20CUADRA%20Rest%C3%B3." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Básico de CUADRA Restó">QUIERO ESTE PLAN</a>
-              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
-            </article>
-
-            <article class="pricing-card pricing-card--featured">
-              <span class="pricing-card__badge">RECOMENDADO</span>
-              <p class="pricing-card__label">PROFESIONAL</p>
-              <p class="pricing-card__price">$U 1.490/mes</p>
-              <p class="pricing-card__setup">Implementación: $U 36.000 único (~USD 900)</p>
-              <p class="pricing-card__hook">~USD 37/mes — dejás de perder mesas los viernes por teléfono ocupado</p>
-              <ul class="pricing-card__list">
-                <li class="pricing-card__item">Menú QR por mesa: el cliente escanea el código en la mesa y ve la carta completa sin buscar en Google</li>
-                <li class="pricing-card__item">Franjas de cocina y horarios de servicio configurables: definí hasta qué hora se aceptan reservas, y separá almuerzo de cena</li>
-                <li class="pricing-card__item">Pedido para llevar / delivery por WhatsApp formateado: plato, cantidad, retiro o zona de entrega — todo llega formateado al negocio</li>
-                <li class="pricing-card__item">Confirmación automática por WhatsApp + recordatorios antes de la reserva</li>
-                <li class="pricing-card__item">Base de clientes con historial: cada reserva queda vinculada al cliente, con tags y historial de visitas</li>
-                <li class="pricing-card__item">Estadísticas operativas: reservas completadas, canceladas, no-shows, platos más pedidos, ocupación por franja</li>
-              </ul>
-              <details class="plan-details">
-                <summary class="plan-details__summary">VER LISTA COMPLETA DEL PLAN</summary>
-                <div class="plan-details__body">
-                  <p class="plan-details__head">Incluye todo lo del Básico, más:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item">Exportación de reportes en CSV y PDF</li>
-                    <li class="plan-details__item">Sincronización con Google Calendar</li>
-                    <li class="plan-details__item">Multi-idioma ES/EN para tu web</li>
-                    <li class="plan-details__item">Soporte prioritario por WhatsApp</li>
-                  </ul>
-                  <p class="plan-details__group-label">No incluye:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item plan-details__item--no">Reservas para grupos y eventos (cumpleaños, cenas de empresa) (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Campañas WhatsApp broadcast a clientes (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Cupones y promociones automatizadas (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Sistema de fidelización / puntos (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Analytics avanzado y retención (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">SEO avanzado y optimización profunda de Google Business (disponible en Premium)</li>
-                  </ul>
-                  <p class="plan-details__ideal"><strong>Ideal para:</strong> el restaurante que quiere automatizar las reservas, ofrecer menú QR a sus comensales y que los pedidos para llevar lleguen por WhatsApp sin perder tiempo al teléfono. La operación gastronómica digitalizada de verdad.</p>
-                </div>
-              </details>
-              <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Profesional%20de%20CUADRA%20Rest%C3%B3." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Profesional de CUADRA Restó">QUIERO ESTE PLAN</a>
-              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
-            </article>
-
-            <article class="pricing-card">
-              <p class="pricing-card__label">PREMIUM</p>
-              <p class="pricing-card__price">$U 2.490/mes</p>
-              <p class="pricing-card__setup">Implementación: $U 50.000 único (~USD 1.250)</p>
-              <p class="pricing-card__hook">~USD 62/mes — tu restaurante tiene motor de crecimiento y fidelización</p>
-              <ul class="pricing-card__list">
-                <li class="pricing-card__item">Reservas para grupos y eventos: cumpleaños, cenas de empresa, eventos especiales con capacidad y condiciones propias</li>
-                <li class="pricing-card__item">Campañas WhatsApp broadcast: enviá el menú del día, ofertas de media tarde y promociones de temporada a tu base de clientes</li>
-                <li class="pricing-card__item">Cupones y promociones: códigos de descuento para referidos, cumpleaños y campañas específicas</li>
-                <li class="pricing-card__item">Sistema de fidelización: puntos por visita, descuentos por recompra, programas de fidelidad para clientes habituales</li>
-                <li class="pricing-card__item">Analytics avanzado: tendencias de ocupación, retención de clientes, platos más rentables, horarios pico, reportes programados</li>
-                <li class="pricing-card__item">SEO avanzado + optimización profunda de Google Business</li>
-              </ul>
-              <details class="plan-details">
-                <summary class="plan-details__summary">VER LISTA COMPLETA DEL PLAN</summary>
-                <div class="plan-details__body">
-                  <p class="plan-details__head">Incluye todo lo del Profesional, más:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item">Integración con Instagram: feed de platos y publicaciones destacadas en tu web</li>
-                    <li class="plan-details__item">Soporte dedicado para campañas y estrategia de crecimiento</li>
-                  </ul>
-                  <p class="plan-details__ideal"><strong>Ideal para:</strong> el restaurante con tráfico estable que quiere fidelizar, campañar y manejar eventos sin depender del teléfono ni del boca a boca. Tu restaurante crece con datos, no con suerte.</p>
-                </div>
-              </details>
-              <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Premium%20de%20CUADRA%20Rest%C3%B3." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Premium de CUADRA Restó">QUIERO ESTE PLAN</a>
-              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
-            </article>
-          </div>
-        </div>
-
-        <!-- CUADRA CONSULTA -->
-        <div id="planes-consulta" class="plans-block" data-line-panel="consulta">
-          <h3 class="plans-block__title">CUADRA CONSULTA</h3>
-          <p class="plans-block__tagline">Tu presencia profesional, seria y funcionando</p>
-
-          <div class="pricing-cards">
-            <article class="pricing-card">
-              <p class="pricing-card__label">BÁSICO</p>
-              <p class="pricing-card__price">$U 990/mes</p>
-              <p class="pricing-card__setup">Implementación: $U 18.000 único (~USD 450)</p>
-              <p class="pricing-card__hook">~USD 25/mes — menos que 2 consultas y tu presencia online está resuelta</p>
-              <ul class="pricing-card__list">
-                <li class="pricing-card__item">Web a medida con diseño responsive mobile-first y dominio a nombre del cliente</li>
-                <li class="pricing-card__item">Hosting, SSL y mantenimiento incluidos (sin costos ocultos)</li>
-                <li class="pricing-card__item">Perfil profesional completo: bio, especialidades, credenciales/matrícula, foto profesional e idiomas</li>
-                <li class="pricing-card__item">Formulario de contacto personalizado por rubro: no el genérico "nombre + email" — el abogado recibe "tipo de consulta", la nutricionista "objetivo", el consultor "presupuesto/fecha"</li>
-                <li class="pricing-card__item">Panel de administración con login Google: gestión de formulario, servicios y perfil</li>
-                <li class="pricing-card__item">Panel de actividad del día: consultas recibidas, pendientes y respondidas en un vistazo</li>
-              </ul>
-              <details class="plan-details">
-                <summary class="plan-details__summary">VER LISTA COMPLETA DEL PLAN</summary>
-                <div class="plan-details__body">
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item">Mapa / cómo llegar / dirección del consultorio</li>
-                    <li class="plan-details__item">Botón WhatsApp flotante con mensaje pre-cargado para consultas directas</li>
-                    <li class="plan-details__item">Botón de llamada para contacto inmediato</li>
-                    <li class="plan-details__item">SEO básico: meta tags, datos estructurados y vinculación con Google Business</li>
-                    <li class="plan-details__item">Soporte humano por WhatsApp</li>
-                  </ul>
-                  <p class="plan-details__group-label">No incluye:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item plan-details__item--no">Agenda de consultas online con turnos (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Confirmación y recordatorios automáticos por WhatsApp (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Portfolio / galería de casos y proyectos (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Testimonios de clientes (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Base de contactos con historial y tags (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Estadísticas de consultas y reportes (disponible en Profesional)</li>
-                    <li class="plan-details__item plan-details__item--no">Multi-idioma ES/EN (disponible en Profesional)</li>
-                  </ul>
-                  <p class="plan-details__ideal"><strong>Ideal para:</strong> el profesional que necesita presencia seria en Google y que los pacientes/clientes lo encuentren y puedan contactarlo sin fricción. Tu web profesional funcionando desde el día uno.</p>
-                </div>
-              </details>
-              <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20B%C3%A1sico%20de%20CUADRA%20Consulta." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Básico de CUADRA Consulta">QUIERO ESTE PLAN</a>
-              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
-            </article>
-
-            <article class="pricing-card pricing-card--featured">
-              <span class="pricing-card__badge">RECOMENDADO</span>
-              <p class="pricing-card__label">PROFESIONAL</p>
-              <p class="pricing-card__price">$U 1.490/mes</p>
-              <p class="pricing-card__setup">Implementación: $U 24.000 único (~USD 600)</p>
-              <p class="pricing-card__hook">~USD 37/mes — tu consultorio funciona 24/7 sin que vos estés al teléfono</p>
-              <ul class="pricing-card__list">
-                <li class="pricing-card__item">Agenda de consultas online: el paciente/cliente pide hora contra horarios reales, con confirmación inmediata</li>
-                <li class="pricing-card__item">Confirmación automática por WhatsApp + recordatorios 24h y 1h antes de cada consulta</li>
-                <li class="pricing-card__item">Portfolio / galería de casos y proyectos con fotos y descripción (ideal para arquitectos, consultores, diseñadores)</li>
-                <li class="pricing-card__item">Testimonios de clientes: sección de reseñas y opiniones verificables en tu web</li>
-                <li class="pricing-card__item">Base de contactos con historial: cada consulta queda vinculada al contacto, con tags y seguimiento</li>
-                <li class="pricing-card__item">Estadísticas de consultas: volumen, horarios más solicitados, contactos recurrentes</li>
-              </ul>
-              <details class="plan-details">
-                <summary class="plan-details__summary">VER LISTA COMPLETA DEL PLAN</summary>
-                <div class="plan-details__body">
-                  <p class="plan-details__head">Incluye todo lo del Básico, más:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item">Exportación de reportes en CSV y PDF</li>
-                    <li class="plan-details__item">Sincronización con Google Calendar</li>
-                    <li class="plan-details__item">Multi-idioma ES/EN para tu web</li>
-                    <li class="plan-details__item">Soporte prioritario por WhatsApp</li>
-                  </ul>
-                  <p class="plan-details__group-label">No incluye:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item plan-details__item--no">Campañas WhatsApp broadcast a contactos (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Cupones para paquetes de sesiones (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Sistema de fidelización (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Analytics avanzado y retención (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">SEO avanzado y posicionamiento local alimentado (disponible en Premium)</li>
-                    <li class="plan-details__item plan-details__item--no">Integración con Instagram (disponible en Premium)</li>
-                  </ul>
-                  <p class="plan-details__ideal"><strong>Ideal para:</strong> el profesional que quiere que su agenda funcione sola, que su portfolio hable por él y que cada paciente/cliente tenga una experiencia seria y profesional desde el primer contacto online.</p>
-                </div>
-              </details>
-              <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Profesional%20de%20CUADRA%20Consulta." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Profesional de CUADRA Consulta">QUIERO ESTE PLAN</a>
-              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
-            </article>
-
-            <article class="pricing-card">
-              <p class="pricing-card__label">PREMIUM</p>
-              <p class="pricing-card__price">$U 2.490/mes</p>
-              <p class="pricing-card__setup">Implementación: $U 34.000 único (~USD 850)</p>
-              <p class="pricing-card__hook">~USD 62/mes — tu consultorio tiene motor de crecimiento y fidelización</p>
-              <ul class="pricing-card__list">
-                <li class="pricing-card__item">Campañas WhatsApp broadcast: enviá novedades, talleres, publicaciones y ofertas a tu base de contactos segmentada</li>
-                <li class="pricing-card__item">Cupones para paquetes de sesiones: ofrecé descuentos por compra de packs (10 sesiones, consulta inicial + seguimiento, etc.)</li>
-                <li class="pricing-card__item">Sistema de fidelización: puntos por consulta, beneficios por permanencia y programas de referidos</li>
-                <li class="pricing-card__item">Analytics avanzado: tendencias de consultas, retención de pacientes, servicios más demandados, reportes programados</li>
-                <li class="pricing-card__item">SEO avanzado + posicionamiento local alimentado: ficha de Google Business optimizada, reseñas, posicionamiento en búsquedas locales</li>
-                <li class="pricing-card__item">Integración con Instagram: publicaciones y contenido destacado en tu web</li>
-              </ul>
-              <details class="plan-details">
-                <summary class="plan-details__summary">VER LISTA COMPLETA DEL PLAN</summary>
-                <div class="plan-details__body">
-                  <p class="plan-details__head">Incluye todo lo del Profesional, más:</p>
-                  <ul class="plan-details__list">
-                    <li class="plan-details__item">Soporte dedicado para campañas y estrategia de crecimiento</li>
-                  </ul>
-                  <p class="plan-details__ideal"><strong>Ideal para:</strong> el profesional que ya tiene una base de pacientes/clientes sólida y quiere crecer de forma sostenida, fidelizar y campañar sin perder tiempo en tareas operativas.</p>
-                </div>
-              </details>
-              <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Premium%20de%20CUADRA%20Consulta." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Premium de CUADRA Consulta">QUIERO ESTE PLAN</a>
-              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
-            </article>
-          </div>
+                  <div class="extras-group">
+                    <p class="extras-group__title">Crecimiento y fidelización</p>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="350">
+                      <span class="extra-toggle__name">Campañas WhatsApp broadcast + cupones para paquetes de sesiones</span>
+                      <span class="extra-toggle__price">+$U 350/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="250">
+                      <span class="extra-toggle__name">Sistema de fidelización (puntos, referidos)</span>
+                      <span class="extra-toggle__price">+$U 250/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="200">
+                      <span class="extra-toggle__name">Analytics avanzado + reportes programados</span>
+                      <span class="extra-toggle__price">+$U 200/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="mensual" data-price="200">
+                      <span class="extra-toggle__name">SEO avanzado + posicionamiento local alimentado</span>
+                      <span class="extra-toggle__price">+$U 200/mes</span>
+                    </label>
+                    <label class="extra-toggle">
+                      <input type="checkbox" data-feature data-type="impl" data-price="1500">
+                      <span class="extra-toggle__name">Integración con Instagram</span>
+                      <span class="extra-toggle__price">+$U 1.500 único</span>
+                    </label>
+                  </div>
                 </div>
 
                 <div class="configurator__actions">
                   <button type="button" class="btn btn--secondary" data-back="1">← Cambiar de línea</button>
+                  <button type="button" class="btn btn--primary" data-next-to-extras>Continuar →</button>
                 </div>
               </div>
 
@@ -745,9 +671,10 @@
                 <h3 class="configurator__panel-title">Tu plan está armado</h3>
                 <div class="result-summary" data-result-summary>
                   <div class="result-summary__row">
-                    <span class="result-summary__label">Línea y plan</span>
+                    <span class="result-summary__label">Línea</span>
                     <strong class="result-summary__value" data-result-line-plan>—</strong>
                   </div>
+                  <ul class="result-summary__extras" data-result-extras></ul>
                   <div class="result-summary__row">
                     <span class="result-summary__label">Implementación única</span>
                     <strong class="result-summary__value" data-result-impl>—</strong>
@@ -981,6 +908,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260915" defer></script>
+  <script src="js/main.js?v=20260915b" defer></script>
 </body>
 </html>

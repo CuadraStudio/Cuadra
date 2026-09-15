@@ -310,13 +310,12 @@
     });
   }
 
-  // ---- Configurador de planes: paso a paso, estilo cotizador (linea -> plan -> extras -> resumen) ----
+  // ---- Configurador de planes: a la carte (linea -> extras con precio propio -> combo -> resumen) ----
   function initPlanConfigurator() {
     var root = document.querySelector('[data-configurator]');
     if (!root) return;
 
     var LINE_NAMES = { agenda: 'CUADRA Agenda', tienda: 'CUADRA Tienda', resto: 'CUADRA Restó', consulta: 'CUADRA Consulta' };
-    var LINE_FROM = { agenda: 25000, tienda: 32000, resto: 28000, consulta: 18000 };
     var WA_NUMBER = '59899331909';
 
     var panels = root.querySelectorAll('.configurator__panel');
@@ -337,12 +336,13 @@
     var summaryCombo = root.querySelector('[data-summary-combo]');
 
     var resultLinePlan = root.querySelector('[data-result-line-plan]');
+    var resultExtras = root.querySelector('[data-result-extras]');
     var resultImpl = root.querySelector('[data-result-impl]');
     var resultMensual = root.querySelector('[data-result-mensual]');
     var resultCombo = root.querySelector('[data-result-combo]');
     var waResultLink = root.querySelector('[data-whatsapp-result]');
 
-    var state = { line: null, plan: null, combo: false, comboLine: null };
+    var state = { line: null, combo: false, comboLine: null };
 
     function fmt(n) {
       return Number(n).toLocaleString('es-UY');
@@ -360,39 +360,47 @@
       root.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
     }
 
-    function updateSummaryPreview() {
-      if (!state.line) return;
+    // Lee la base fija del panel de la linea + suma cada [data-feature] tildado dentro de ese panel.
+    function computeTotals(linePanel) {
+      if (!linePanel) return null;
+      var impl = Number(linePanel.getAttribute('data-base-impl'));
+      var mensual = Number(linePanel.getAttribute('data-base-mensual'));
+      var extras = [];
+      linePanel.querySelectorAll('[data-feature]:checked').forEach(function (input) {
+        var price = Number(input.getAttribute('data-price'));
+        var type = input.getAttribute('data-type');
+        var nameEl = input.closest('.extra-toggle').querySelector('.extra-toggle__name');
+        var name = nameEl ? nameEl.textContent.trim() : '';
+        if (type === 'mensual') {
+          mensual += price;
+        } else {
+          impl += price;
+        }
+        extras.push({ name: name, type: type, price: price });
+      });
+      return { impl: impl, mensual: mensual, extras: extras };
+    }
+
+    function activeLinePanel() {
+      if (!state.line) return null;
+      return root.querySelector('[data-line-panel="' + state.line + '"]');
+    }
+
+    function updateSummary() {
+      if (!state.line) {
+        summaryEmpty.hidden = false;
+        summaryContent.hidden = true;
+        return;
+      }
+      var totals = computeTotals(activeLinePanel());
       summaryEmpty.hidden = true;
       summaryContent.hidden = false;
       summaryLine.textContent = LINE_NAMES[state.line];
-      summaryPlan.textContent = 'Elegí tu plan para ver el total';
-      summaryImpl.textContent = 'desde $U ' + fmt(LINE_FROM[state.line]);
-      summaryMensual.textContent = 'desde $U 990/mes';
-      summaryCombo.hidden = true;
-    }
-
-    function parsePlanCard(card) {
-      var label = card.querySelector('.pricing-card__label');
-      var price = card.querySelector('.pricing-card__price');
-      var setup = card.querySelector('.pricing-card__setup');
-      var mensualMatch = price && price.textContent.match(/([\d.]+)/);
-      var implMatch = setup && setup.textContent.match(/\$U\s*([\d.]+)\s*único\s*\(~USD\s*([\d.]+)\)/);
-      return {
-        planName: label ? label.textContent.trim() : '',
-        mensual: mensualMatch ? Number(mensualMatch[1].replace(/\./g, '')) : null,
-        impl: implMatch ? Number(implMatch[1].replace(/\./g, '')) : null,
-        usdImpl: implMatch ? Number(implMatch[2].replace(/\./g, '')) : null
-      };
-    }
-
-    function updateSummaryFinal() {
-      if (!state.line || !state.plan) return;
-      summaryEmpty.hidden = true;
-      summaryContent.hidden = false;
-      summaryLine.textContent = LINE_NAMES[state.line];
-      summaryPlan.textContent = 'Plan ' + state.plan.planName;
-      summaryImpl.textContent = '$U ' + fmt(state.plan.impl) + ' (~USD ' + fmt(state.plan.usdImpl) + ')';
-      summaryMensual.textContent = '$U ' + fmt(state.plan.mensual) + '/mes';
+      summaryPlan.textContent = totals.extras.length
+        ? totals.extras.length + ' extra' + (totals.extras.length === 1 ? '' : 's') + ' seleccionado' + (totals.extras.length === 1 ? '' : 's')
+        : 'Solo la base — sumá extras si querés';
+      summaryImpl.textContent = '$U ' + fmt(totals.impl) + ' (~USD ' + fmt(Math.round(totals.impl / 40)) + ')';
+      summaryMensual.textContent = '$U ' + fmt(totals.mensual) + '/mes (~USD ' + fmt(Math.round(totals.mensual / 40)) + ')';
       if (state.combo && state.comboLine) {
         summaryCombo.hidden = false;
         summaryCombo.textContent = '+ Combo con ' + LINE_NAMES[state.comboLine] + ' (10% off en la 2da línea)';
@@ -401,19 +409,13 @@
       }
     }
 
-    function selectLine(line, focusPanel) {
+    function selectLine(line, jumpToStep2) {
       state.line = line;
-      state.plan = null;
       lineChoices.forEach(function (btn) {
         btn.setAttribute('aria-pressed', btn.getAttribute('data-choose-line') === line ? 'true' : 'false');
       });
       linePanels.forEach(function (panel) {
         panel.hidden = panel.getAttribute('data-line-panel') !== line;
-      });
-      linePanels.forEach(function (panel) {
-        panel.querySelectorAll('.pricing-card.is-selected').forEach(function (c) {
-          c.classList.remove('is-selected');
-        });
       });
       if (selectedLineName) selectedLineName.textContent = LINE_NAMES[line];
       var step1Next = root.querySelector('[data-step="1"] [data-next]');
@@ -429,21 +431,8 @@
         }
       });
 
-      updateSummaryPreview();
-      if (focusPanel) goToStep(2);
-    }
-
-    function selectPlan(card) {
-      var panel = card.closest('[data-line-panel]');
-      if (panel) {
-        panel.querySelectorAll('.pricing-card').forEach(function (c) {
-          c.classList.remove('is-selected');
-        });
-      }
-      card.classList.add('is-selected');
-      state.plan = parsePlanCard(card);
-      updateSummaryFinal();
-      goToStep(3);
+      updateSummary();
+      if (jumpToStep2) goToStep(2);
     }
 
     function selectCombo(line) {
@@ -451,41 +440,55 @@
       comboChoices.forEach(function (btn) {
         btn.setAttribute('aria-pressed', btn.getAttribute('data-choose-combo') === line ? 'true' : 'false');
       });
-      updateSummaryFinal();
+      updateSummary();
     }
 
     function renderResult() {
-      if (!state.line || !state.plan) return;
-      resultLinePlan.textContent = LINE_NAMES[state.line] + ' — Plan ' + state.plan.planName;
-      resultImpl.textContent = '$U ' + fmt(state.plan.impl) + ' (~USD ' + fmt(state.plan.usdImpl) + ')';
-      resultMensual.textContent = '$U ' + fmt(state.plan.mensual) + '/mes (~USD ' + fmt(Math.round(state.plan.mensual / 40)) + ')';
+      var linePanel = activeLinePanel();
+      if (!linePanel) return;
+      var totals = computeTotals(linePanel);
 
-      var lines = [
+      resultLinePlan.textContent = LINE_NAMES[state.line];
+      resultImpl.textContent = '$U ' + fmt(totals.impl) + ' (~USD ' + fmt(Math.round(totals.impl / 40)) + ')';
+      resultMensual.textContent = '$U ' + fmt(totals.mensual) + '/mes (~USD ' + fmt(Math.round(totals.mensual / 40)) + ')';
+
+      resultExtras.innerHTML = '';
+      totals.extras.forEach(function (extra) {
+        var li = document.createElement('li');
+        li.textContent = extra.name + ' — +$U ' + fmt(extra.price) + (extra.type === 'mensual' ? '/mes' : ' único');
+        resultExtras.appendChild(li);
+      });
+
+      var waLines = [
         'Hola CUADRA! Armé mi plan en la web:',
-        LINE_NAMES[state.line] + ' — Plan ' + state.plan.planName,
-        'Implementación: $U ' + fmt(state.plan.impl) + ' único',
-        'Mensual: $U ' + fmt(state.plan.mensual) + '/mes'
+        LINE_NAMES[state.line] + ' (base + ' + totals.extras.length + ' extra' + (totals.extras.length === 1 ? '' : 's') + ')'
       ];
+      totals.extras.forEach(function (extra) {
+        waLines.push('- ' + extra.name);
+      });
+      waLines.push('Implementación: $U ' + fmt(totals.impl) + ' único');
+      waLines.push('Mensual: $U ' + fmt(totals.mensual) + '/mes');
+
       if (state.combo && state.comboLine) {
         resultCombo.hidden = false;
         resultCombo.textContent = 'También me interesa combinar con ' + LINE_NAMES[state.comboLine] + ' — se cotiza con 10% de descuento sobre la segunda línea, a confirmar por WhatsApp.';
-        lines.push('También quiero cotizar un combo con ' + LINE_NAMES[state.comboLine] + '.');
+        waLines.push('También quiero cotizar un combo con ' + LINE_NAMES[state.comboLine] + '.');
       } else {
         resultCombo.hidden = true;
       }
-      lines.push('¿Seguimos?');
+      waLines.push('¿Seguimos?');
       if (waResultLink) {
-        waResultLink.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+        waResultLink.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waLines.join('\n'));
       }
     }
 
     function resetAll() {
-      state = { line: null, plan: null, combo: false, comboLine: null };
+      state = { line: null, combo: false, comboLine: null };
       lineChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); });
-      comboChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); });
+      comboChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); btn.hidden = false; });
       linePanels.forEach(function (panel) {
         panel.hidden = true;
-        panel.querySelectorAll('.pricing-card.is-selected').forEach(function (c) { c.classList.remove('is-selected'); });
+        panel.querySelectorAll('[data-feature]').forEach(function (input) { input.checked = false; });
       });
       if (comboToggle) comboToggle.checked = false;
       if (comboChoicesWrap) comboChoicesWrap.hidden = true;
@@ -503,10 +506,10 @@
       });
     });
 
-    root.querySelectorAll('[data-select-plan]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        selectPlan(btn.closest('.pricing-card'));
-      });
+    root.addEventListener('change', function (e) {
+      if (e.target.matches('[data-feature]')) {
+        updateSummary();
+      }
     });
 
     if (comboToggle) {
@@ -517,7 +520,7 @@
           state.comboLine = null;
           comboChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); });
         }
-        updateSummaryFinal();
+        updateSummary();
       });
     }
 
@@ -530,6 +533,13 @@
     root.querySelector('[data-step="1"] [data-next]').addEventListener('click', function () {
       if (state.line) goToStep(2);
     });
+
+    var nextToExtras = root.querySelector('[data-next-to-extras]');
+    if (nextToExtras) {
+      nextToExtras.addEventListener('click', function () {
+        goToStep(3);
+      });
+    }
 
     root.querySelectorAll('[data-back]').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -549,7 +559,7 @@
     if (restartBtn) restartBtn.addEventListener('click', resetAll);
 
     // Deep-link: index-web.html y otras paginas enlazan a productos.html#planes-tienda, etc.
-    // Progressive enhancement: sin JS, panels y pasos quedan visibles (fallback de contenido completo).
+    // Progressive enhancement: sin JS, todos los pasos y checkboxes quedan visibles (fallback de contenido completo).
     resetAll();
     var hashId = window.location.hash.replace('#', '');
     var hashMatch = hashId.match(/^planes-(agenda|tienda|resto|consulta)$/);
@@ -558,6 +568,7 @@
       history.replaceState(null, '', '#' + hashId);
     }
   }
+
 
   // ---- Init all ----
   function init() {
