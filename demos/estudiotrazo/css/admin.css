@@ -59,6 +59,7 @@
 .admin-status { font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; }
 .admin-status--pendiente { background: color-mix(in srgb, var(--accent) 14%, var(--surface)); color: var(--accent); }
 .admin-status--atendida { background: color-mix(in srgb, var(--primary) 12%, var(--surface)); color: var(--primary); }
+.admin-status--recurrente { background: color-mix(in srgb, var(--ink) 10%, var(--surface)); color: var(--ink); border: 1px solid var(--line); }
 
 .admin-card__data { display: grid; grid-template-columns: 1fr; gap: 6px 16px; margin: 0 0 12px; }
 @media (min-width: 640px) { .admin-card__data { grid-template-columns: minmax(110px, auto) 1fr; } }

@@ -3,7 +3,7 @@
 Barbería en Bulevar Artigas: corte, barba y color con turno online. Elegí profesional, día y hora, y reservá en un minuto.
 Dirección: Bulevar Artigas 2026, Parque Rodó, Montevideo
 
-Línea de producto: agenda · Plan: profesional
+Línea de producto: agenda · Plan: premium
 
 ## Páginas
 
@@ -19,8 +19,13 @@ Línea de producto: agenda · Plan: profesional
 - `/demos/estudiotrazo/preguntas/` — Preguntas frecuentes
 - `/demos/estudiotrazo/contacto/` — Contacto y ubicación
 - `/demos/estudiotrazo/galeria/` — Galería
+- `/demos/estudiotrazo/opiniones/` — Opiniones de clientes
+- `/demos/estudiotrazo/promociones/` — Promociones vigentes
+- `/demos/estudiotrazo/fidelidad/` — Programa de fidelidad
 - `/demos/estudiotrazo/privacidad/` — Política de privacidad
 - `/demos/estudiotrazo/terminos/` — Términos y condiciones
+- `/demos/estudiotrazo/novedades/` — Novedades
+- `/demos/estudiotrazo/novedades/{slug}/` — Artículo (2 páginas)
 
 ## Contacto
 

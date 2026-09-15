@@ -4,7 +4,7 @@ window.SITE_CONFIG = {
     "slug": "estudiotrazo",
     "name": "Estudio Trazo",
     "vertical": "agenda",
-    "plan": "profesional",
+    "plan": "premium",
     "currency": "UYU"
   },
   "api": {

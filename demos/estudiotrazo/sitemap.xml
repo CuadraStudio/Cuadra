@@ -121,6 +121,24 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://cuadrastudio.uy/demos/estudiotrazo/opiniones/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cuadrastudio.uy/demos/estudiotrazo/promociones/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cuadrastudio.uy/demos/estudiotrazo/fidelidad/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://cuadrastudio.uy/demos/estudiotrazo/privacidad/</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>yearly</changefreq>
@@ -131,5 +149,23 @@
     <lastmod>2026-09-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://cuadrastudio.uy/demos/estudiotrazo/novedades/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cuadrastudio.uy/demos/estudiotrazo/novedades/cada-cuanto-cortarse-el-pelo/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cuadrastudio.uy/demos/estudiotrazo/novedades/como-cuidar-la-barba-en-invierno/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>

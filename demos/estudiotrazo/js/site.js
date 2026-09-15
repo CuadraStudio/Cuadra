@@ -409,7 +409,7 @@
     };
     qsa('input, select, textarea', form).forEach(function (el) {
       if (!el.name || !el.value || el.type === 'radio' || isHidden(el)) return;
-      record[el.name] = el.value;
+      record[el.name] = fieldValue(el);
     });
     if (slotBox && slotBox.getAttribute('data-value')) record.hora = slotBox.getAttribute('data-value');
     var list = [];
@@ -438,7 +438,7 @@
     lines.push('');
     qsa('input, select, textarea', form).forEach(function (el) {
       if (!el.name || !el.value || el.type === 'radio' || isHidden(el)) return;
-      lines.push(labelFor(el) + ': ' + el.value);
+      lines.push(labelFor(el) + ': ' + fieldValue(el));
     });
     if (slotBox && slotBox.getAttribute('data-value')) {
       lines.push('Hora: ' + slotBox.getAttribute('data-value'));
@@ -464,6 +464,16 @@
     return !!(field && field.hidden);
   }
 
+  /** El texto de la opción elegida (p. ej. "Corte clásico · 40 min"), no el
+   * slug interno: así el mensaje de WhatsApp y el panel muestran algo
+   * legible en vez de "corte-clasico". */
+  function fieldValue(el) {
+    if (el.tagName === 'SELECT' && el.selectedIndex > -1) {
+      return el.options[el.selectedIndex].textContent.trim();
+    }
+    return el.value;
+  }
+
   function labelFor(el) {
     var lab = el.id ? document.querySelector('label[for="' + el.id + '"]') : null;
     return lab ? lab.textContent.replace('*', '').trim() : el.name;
@@ -473,5 +483,42 @@
     return String(s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
+  }
+
+  /* ── /gracias/: agregar a Google Calendar ──────────────────────────────
+     Modo demo: toma el último registro guardado por saveDemoCita() y arma
+     el link de Google Calendar con fecha, hora y servicio. Si el registro
+     no tiene fecha/hora (p. ej. un pedido de tienda) el botón queda oculto. */
+  (function calendarAdd() {
+    var btn = qs('#calendar-add');
+    var demo = CFG.demo || {};
+    if (!btn || !demo.enabled) return;
+    var key = demo.citasKey || ((CFG.tenant && CFG.tenant.slug) || 'cuadra') + '_demo_citas';
+    var list = [];
+    try { list = JSON.parse(localStorage.getItem(key)) || []; } catch (e) { list = []; }
+    var last = list[0];
+    if (!last || !last.fecha || !last.hora) return;
+    var start = new Date(last.fecha + 'T' + last.hora + ':00');
+    if (isNaN(start.getTime())) return;
+    var duration = Number((CFG.booking && CFG.booking.slotStepMin) || 30) * 2;
+    var end = new Date(start.getTime() + duration * 60000);
+    var titulo = (CFG.tenant && CFG.tenant.name ? CFG.tenant.name + ' — ' : '') + (last.servicio || last.franja || 'Turno');
+    var detalle = ['Reservado desde el sitio.', last.nombre ? 'A nombre de ' + last.nombre + '.' : ''].filter(Boolean).join(' ');
+    var params = new URLSearchParams({
+      action: 'TEMPLATE',
+      text: titulo,
+      dates: toCalStamp(start) + '/' + toCalStamp(end),
+      details: detalle
+    });
+    var addr = (CFG.contact && CFG.contact.address) || {};
+    if (addr.street) params.set('location', addr.street + (addr.locality ? ', ' + addr.locality : ''));
+    btn.href = 'https://calendar.google.com/calendar/render?' + params.toString();
+    btn.hidden = false;
+  }());
+
+  /** Fecha/hora local sin separadores, como la pide Google Calendar (YYYYMMDDTHHMMSS). */
+  function toCalStamp(d) {
+    var p = function (n) { return String(n).padStart(2, '0'); };
+    return d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate()) + 'T' + p(d.getHours()) + p(d.getMinutes()) + '00';
   }
 }());
