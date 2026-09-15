@@ -45,7 +45,8 @@
       </div>
       <div class="admin-topbar__actions">
         <a class="admin-link" href="/demos/estudioarroyo/">Ver sitio</a>
-        <button type="button" class="btn btn--ghost btn--sm" id="export-btn">Exportar</button>
+        <button type="button" class="btn btn--ghost btn--sm" id="export-btn">Exportar JSON</button>
+        <button type="button" class="btn btn--ghost btn--sm" id="export-csv-btn">Exportar CSV</button>
         <button type="button" class="btn btn--ghost btn--sm" id="clear-btn">Vaciar</button>
         <button type="button" class="btn btn--ghost btn--sm" id="logout-btn">Salir</button>
       </div>
@@ -54,7 +55,7 @@
       <div class="admin-wrap">
         <div class="admin-head">
           <div>
-            <h1>Consultas y citas</h1>
+            <h1>Consultas</h1>
             <p id="kpi-subtitle">Cargando…</p>
           </div>
         </div>
@@ -70,7 +71,7 @@
           <p class="admin-loading">Cargando…</p>
         </div>
 
-        <p class="admin-note">Las consultas enviadas desde <a href="/demos/estudioarroyo/agendar/">/agendar/</a> y <a href="/demos/estudioarroyo/contacto/">/contacto/</a> se guardan en este navegador (almacenamiento local, clave <code id="citas-key">…</code>). No viajan a ningún servidor. Sitio de demostración: todos los nombres, datos y servicios son ficticios.</p>
+        <p class="admin-note">Lo que se completa desde <a href="/demos/estudioarroyo/agendar/">/agendar/</a> y <a href="/demos/estudioarroyo/contacto/">/contacto/</a> se guarda en este navegador (almacenamiento local, clave <code id="citas-key">…</code>). No viaja a ningún servidor. Sitio de demostración: todos los nombres, datos y servicios son ficticios.</p>
       </div>
     </main>
     <footer class="admin-footer"><p class="site-footer__notice">Sitio de demostración. Todos los nombres, datos y servicios son ficticios.</p></footer>
@@ -139,16 +140,22 @@
       var list = read();
       kpis(list);
       if (!list.length) {
-        box.innerHTML = '<div class="admin-empty"><p>No hay consultas todavía.</p>'
-          + '<p class="admin-empty__hint">Enviá una consulta desde <a href="/demos/estudioarroyo/agendar/">/agendar/</a> o <a href="/demos/estudioarroyo/contacto/">/contacto/</a> y aparece acá.</p></div>';
+        box.innerHTML = '<div class="admin-empty"><p>Todavía no hay ' + 'consultas' + '.</p>'
+          + '<p class="admin-empty__hint">Completá el formulario en <a href="' + '/agendar/' + '">' + '/agendar/' + '</a> o <a href="/demos/estudioarroyo/contacto/">/contacto/</a> y aparece acá.</p></div>';
         return;
       }
+      /* Base de clientes con historial: sin backend ni tabla propia, un
+         teléfono repetido dentro de lo ya guardado ES el historial. */
+      var porTelefono = {};
+      list.forEach(function (c) { if (c.telefono) porTelefono[c.telefono] = (porTelefono[c.telefono] || 0) + 1; });
       box.innerHTML = list.map(function (c, i) {
         var atendida = c.estado === 'Atendida';
+        var recurrente = c.telefono && porTelefono[c.telefono] > 1;
         return '<article class="admin-card' + (atendida ? ' is-atendida' : '') + '">'
           + '<header class="admin-card__head">'
           + '<strong class="admin-card__id">' + esc(c.id || ('C-' + String(i + 1))) + '</strong>'
           + '<span class="admin-card__meta">' + esc(fmt(c.created)) + '</span>'
+          + (recurrente ? '<span class="admin-status admin-status--recurrente" title="Ya reservó ' + porTelefono[c.telefono] + ' veces con este teléfono">Cliente recurrente</span>' : '')
           + '<span class="admin-status admin-status--' + (atendida ? 'atendida' : 'pendiente') + '">' + esc(atendida ? 'Atendida' : 'Pendiente') + '</span>'
           + '</header>'
           + '<dl class="admin-card__data">'
@@ -190,7 +197,7 @@
       document.getElementById('kpi-total').textContent = String(list.length);
       document.getElementById('kpi-pendientes').textContent = String(pend);
       document.getElementById('kpi-atendidas').textContent = String(list.length - pend);
-      document.getElementById('kpi-subtitle').textContent = list.length + ' consulta' + (list.length === 1 ? '' : 's') + ' enviada' + (list.length === 1 ? '' : 's') + ' desde el sitio · guardadas solo en este navegador';
+      document.getElementById('kpi-subtitle').textContent = list.length + ' ' + 'consultas' + ' · datos guardados solo en este navegador, no en un servidor';
     }
 
     function toast(msg) {
@@ -207,12 +214,28 @@
     });
     document.getElementById('export-btn').addEventListener('click', function () {
       var list = read();
-      if (!list.length) { toast('No hay consultas para exportar.'); return; }
+      if (!list.length) { toast('No hay ' + 'consultas' + ' para exportar.'); return; }
       var a = document.createElement('a');
       a.href = URL.createObjectURL(new Blob([JSON.stringify(list, null, 2)], { type: 'application/json' }));
       a.download = KEY + '.json';
       a.click();
-      toast('Exportadas ' + list.length + ' consultas.');
+      toast('Exportados ' + list.length + ' registros en JSON.');
+    });
+    document.getElementById('export-csv-btn').addEventListener('click', function () {
+      var list = read();
+      if (!list.length) { toast('No hay ' + 'consultas' + ' para exportar.'); return; }
+      var cols = ['id', 'created', 'estado', 'servicio', 'modalidad', 'franja', 'fecha', 'hora', 'nombre', 'telefono', 'email', 'mensaje'];
+      var csv = cols.join(',') + '\n' + list.map(function (r) {
+        return cols.map(function (k) {
+          var v = r[k] == null ? '' : String(r[k]);
+          return '"' + v.replace(/"/g, '""') + '"';
+        }).join(',');
+      }).join('\n');
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' }));
+      a.download = KEY + '.csv';
+      a.click();
+      toast('Exportados ' + list.length + ' registros en CSV.');
     });
     document.getElementById('clear-btn').addEventListener('click', function () {
       var list = read();

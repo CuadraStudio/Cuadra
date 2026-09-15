@@ -4,7 +4,7 @@ window.SITE_CONFIG = {
     "slug": "estudioarroyo",
     "name": "Estudio Arroyo",
     "vertical": "consulta",
-    "plan": "profesional",
+    "plan": "premium",
     "currency": "UYU"
   },
   "api": {

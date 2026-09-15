@@ -3,7 +3,7 @@
 Estudio jurídico en Ciudad Vieja especializado en derecho laboral y de familia. Primera consulta orientativa, agenda online y respuesta en 24 horas.
 Dirección: Zabala 1327, oficina 404, Ciudad Vieja, Montevideo
 
-Línea de producto: consulta · Plan: profesional
+Línea de producto: consulta · Plan: premium
 
 ## Páginas
 
@@ -15,12 +15,18 @@ Línea de producto: consulta · Plan: profesional
 - `/demos/estudioarroyo/agendar/` — Agenda de consultas
 - `/demos/estudioarroyo/casos/` — Casos y proyectos
 - `/demos/estudioarroyo/casos/{slug}/` — Ficha de caso (3 páginas)
+- `/demos/estudioarroyo/paquetes/` — Paquetes de sesiones
+- `/demos/estudioarroyo/recursos/` — Recursos descargables
 - `/demos/estudioarroyo/preguntas/` — Preguntas frecuentes
 - `/demos/estudioarroyo/contacto/` — Contacto y ubicación
 - `/demos/estudioarroyo/galeria/` — Galería
 - `/demos/estudioarroyo/opiniones/` — Opiniones de clientes
+- `/demos/estudioarroyo/promociones/` — Promociones vigentes
+- `/demos/estudioarroyo/fidelidad/` — Programa de fidelidad
 - `/demos/estudioarroyo/privacidad/` — Política de privacidad
 - `/demos/estudioarroyo/terminos/` — Términos y condiciones
+- `/demos/estudioarroyo/publicaciones/` — Novedades
+- `/demos/estudioarroyo/publicaciones/{slug}/` — Artículo (2 páginas)
 
 ## Contacto
 
