@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your order — Vera Store</title>
+  <meta name="description" content="Review your order at Vera Store and close it on WhatsApp. Pickup in store or delivery to arrange.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://cuadrastudio.uy/demos/verastore/en/pedido/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Vera Store">
+  <meta property="og:title" content="Your order — Vera Store">
+  <meta property="og:description" content="Review your order at Vera Store and close it on WhatsApp. Pickup in store or delivery to arrange.">
+  <meta property="og:url" content="https://cuadrastudio.uy/demos/verastore/en/pedido/">
+  <meta property="og:image" content="https://cuadrastudio.uy/demos/verastore/en/img/og.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#2b2a28">
+  <link rel="icon" href="/demos/verastore/en/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/demos/verastore/en/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="/demos/verastore/en/css/site.css">
+  <link rel="alternate" hreflang="en" href="https://cuadrastudio.uy/demos/verastore/en/pedido/">
+  <link rel="alternate" hreflang="es" href="https://cuadrastudio.uy/demos/verastore/pedido/">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://cuadrastudio.uy/demos/verastore/en/"},{"@type":"ListItem","position":2,"name":"Your order","item":"https://cuadrastudio.uy/demos/verastore/en/pedido/"}]}
+  </script>
+</head>
+<body>
+  <header class="site-header site-header--minimal">
+    <div class="container site-header__inner">
+      <a class="brand" href="/demos/verastore/en/">Vera Store</a>
+      <a class="site-header__back" href="/demos/verastore/en/">Back</a>
+      <a class="lang-switch" href="https://cuadrastudio.uy/demos/verastore/pedido/" hreflang="es">ES</a>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="flow">
+      <div class="container flow__inner">
+        <header class="flow__head">
+          <h1 class="flow__title">Your order</h1>
+          <p class="flow__lead">Review what you picked and we&#39;ll close it on WhatsApp.</p>
+
+        </header>
+        <div class="flow__grid">
+          <div class="flow__main">
+      <form class="form" id="form-carrito" action="#" method="post" novalidate>
+        <div class="field">
+          <label>Your order</label>
+          <div class="cart" data-cart data-cart-source="catalog">
+            <p class="cart__empty">Your order is empty. <a href="/demos/verastore/en/catalogo/">View catalog</a>.</p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-entrega">Delivery <span class="req" aria-hidden="true">*</span></label>
+          <select id="f-entrega" name="entrega" required>
+            <option value="retiro">Pickup in store</option>
+            <option value="envio">Shipping</option>
+          </select>
+
+        </div>
+        <div class="field" data-when="entrega=envio" hidden>
+          <label for="f-zona">Zone</label>
+          <select id="f-zona" name="zona">
+            <option value="Montevideo — Pocitos, Punta Carretas, Cordón">Montevideo — Pocitos, Punta Carretas, Cordón · $ 150</option>
+            <option value="Montevideo — resto de la ciudad">Montevideo — resto de la ciudad · $ 220</option>
+            <option value="Interior (por agencia)">Interior (por agencia) · $ 320</option>
+          </select>
+
+        </div>
+        <div class="field" data-when="entrega=envio" hidden>
+          <label for="f-direccion">Delivery address</label>
+          <input id="f-direccion" name="direccion" type="text">
+
+        </div>
+        <div class="field">
+          <label for="f-nombre">Full name <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-nombre" name="nombre" type="text" required>
+
+        </div>
+        <div class="field">
+          <label for="f-telefono">Phone <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-telefono" name="telefono" type="tel" required>
+
+        </div>
+        <div class="field">
+          <label for="f-notas">Notes (size, color, gift wrap…)</label>
+          <textarea id="f-notas" name="notas" rows="3"></textarea>
+
+        </div>
+        <div class="form__actions">
+          <button class="btn btn--primary btn--block" type="submit">Send order via WhatsApp</button>
+        </div>
+        <p class="form__note">Nothing is charged from the site. We arrange payment and delivery on WhatsApp.</p>
+        <p class="form__status" role="status" aria-live="polite"></p>
+      </form>
+          </div>
+          <aside class="flow__aside">        <div class="aside-card">
+          <h2 class="aside-card__title">Prefer to talk?</h2>
+          <p><a href="tel:+59899000000">099 000 000</a></p>
+          <p><a class="btn btn--ghost btn--sm" href="https://wa.me/59899000000?text=Hi%20Vera%20Store%2C%20I&#39;d%20like%20to%20make%20an%20inquiry." target="_blank" rel="noopener">WhatsApp</a></p>
+          <p class="aside-card__note">Shipping is paid together with the order, on delivery or by bank transfer.</p>
+        </div></aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer site-footer--minimal">
+    <div class="container"><p class="site-footer__notice">Demo site. All names, data and services are fictitious.</p></div>
+  </footer>
+  <script src="/demos/verastore/en/js/config.js"></script>
+  <script src="/demos/verastore/en/js/site.js" defer></script>
+</body>
+</html>

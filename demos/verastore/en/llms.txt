@@ -1,0 +1,39 @@
+# Vera Store
+
+Clothing, accessories and home goods shop in Pocitos. Browse the catalog with up-to-date prices and stock, build your order, and we'll close it on WhatsApp.
+Dirección: 21 de Setiembre 3421, Pocitos, Montevideo
+
+Línea de producto: tienda · Plan: premium
+
+## Páginas
+
+- `/demos/verastore/en/` — Inicio
+- `/demos/verastore/en/catalogo/` — Catálogo completo
+- `/demos/verastore/en/catalogo/{slug}/` — Categoría del catálogo (4 páginas)
+- `/demos/verastore/en/producto/{slug}/` — Ficha de producto (14 páginas)
+- `/demos/verastore/en/pedido/` — Armado de pedido
+- `/demos/verastore/en/envios/` — Envíos y retiros
+- `/demos/verastore/en/cambios/` — Cambios y devoluciones
+- `/demos/verastore/en/talles/` — Guía de talles
+- `/demos/verastore/en/lookbook/` — Lookbook
+- `/demos/verastore/en/nosotros/` — Sobre el negocio
+- `/demos/verastore/en/preguntas/` — Preguntas frecuentes
+- `/demos/verastore/en/contacto/` — Contacto y ubicación
+- `/demos/verastore/en/opiniones/` — Opiniones de clientes
+- `/demos/verastore/en/promociones/` — Promociones vigentes
+- `/demos/verastore/en/fidelidad/` — Programa de fidelidad
+- `/demos/verastore/en/privacidad/` — Política de privacidad
+- `/demos/verastore/en/terminos/` — Términos y condiciones
+- `/demos/verastore/en/novedades/` — Novedades
+- `/demos/verastore/en/novedades/como-elegir-el-talle-sin-probarte/` — Artículo
+
+## Contacto
+
+- Teléfono: 099 000 000
+- WhatsApp: https://wa.me/59899000000
+- Email: hola@verastore.uy
+
+## Notas
+
+- Los pedidos y reservas se cierran por WhatsApp. No hay pago online.
+- El panel de administración (/demos/verastore/en/admin.html) no es público.
