@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /demos/estudioarroyo/en/turno/
+Disallow: /demos/estudioarroyo/en/gracias/
+Disallow: /demos/estudioarroyo/en/404.html
+Disallow: /demos/estudioarroyo/en/admin.html
+
+Sitemap: https://cuadrastudio.uy/demos/estudioarroyo/en/sitemap.xml

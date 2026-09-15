@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a consultation — Estudio Arroyo</title>
+  <meta name="description" content="Book your consultation with Dra. Inés Arroyo in Ciudad Vieja, Montevideo: in person or by video call, against real availability.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://cuadrastudio.uy/demos/estudioarroyo/en/agendar/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Estudio Arroyo">
+  <meta property="og:title" content="Book a consultation — Estudio Arroyo">
+  <meta property="og:description" content="Book your consultation with Dra. Inés Arroyo in Ciudad Vieja, Montevideo: in person or by video call, against real availability.">
+  <meta property="og:url" content="https://cuadrastudio.uy/demos/estudioarroyo/en/agendar/">
+  <meta property="og:image" content="https://cuadrastudio.uy/demos/estudioarroyo/en/img/og.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#16304a">
+  <link rel="icon" href="/demos/estudioarroyo/en/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/demos/estudioarroyo/en/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="/demos/estudioarroyo/en/css/site.css">
+  <link rel="alternate" hreflang="en" href="https://cuadrastudio.uy/demos/estudioarroyo/en/agendar/">
+  <link rel="alternate" hreflang="es" href="https://cuadrastudio.uy/demos/estudioarroyo/agendar/">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://cuadrastudio.uy/demos/estudioarroyo/en/"},{"@type":"ListItem","position":2,"name":"Book a consultation","item":"https://cuadrastudio.uy/demos/estudioarroyo/en/agendar/"}]}
+  </script>
+</head>
+<body>
+  <header class="site-header site-header--minimal">
+    <div class="container site-header__inner">
+      <a class="brand" href="/demos/estudioarroyo/en/">Estudio Arroyo</a>
+      <a class="site-header__back" href="/demos/estudioarroyo/en/">Back</a>
+      <a class="lang-switch" href="https://cuadrastudio.uy/demos/estudioarroyo/agendar/" hreflang="es">ES</a>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="flow">
+      <div class="container flow__inner">
+        <header class="flow__head">
+          <h1 class="flow__title">Book a consultation</h1>
+          <p class="flow__lead">Pick the consultation type, day and time.</p>
+          <ol class="flow__steps" role="list"><li class="is-active">Consultation</li><li>Day &amp; time</li><li>Your details</li></ol>
+        </header>
+        <div class="flow__grid">
+          <div class="flow__main">
+      <form class="form" id="form-consulta" action="#" method="post" novalidate>
+        <div class="field">
+          <label for="f-servicio">Consultation type <span class="req" aria-hidden="true">*</span></label>
+          <select id="f-servicio" name="servicio" required>
+            <option value="despidos-y-ceses">Layoffs and terminations</option>
+            <option value="reclamos-laborales">Unpaid wages and leave claims</option>
+            <option value="accidentes-laborales">Workplace accidents</option>
+            <option value="divorcios">Divorce</option>
+            <option value="pension-alimenticia">Child support</option>
+            <option value="tenencia-y-visitas">Custody and visitation</option>
+          </select>
+
+        </div>
+        <div class="field">
+          <label for="f-modalidad">Format <span class="req" aria-hidden="true">*</span></label>
+          <select id="f-modalidad" name="modalidad" required>
+            <option value="Presencial en el estudio">Presencial en el estudio</option>
+            <option value="Videollamada">Videollamada</option>
+            <option value="Telefónica">Telefónica</option>
+          </select>
+
+        </div>
+        <div class="field">
+          <label for="f-fecha">Date <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-fecha" name="fecha" type="date" required>
+
+        </div>
+        <div class="field">
+          <label for="f-hora">Time <span class="req" aria-hidden="true">*</span></label>
+          <div class="slots" id="f-hora" data-slots role="group" aria-label="Available times">
+            <p class="slots__empty">Pick a consultation type and date to see the open times.</p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-nombre">Full name <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-nombre" name="nombre" type="text" required>
+
+        </div>
+        <div class="field">
+          <label for="f-telefono">Phone <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-telefono" name="telefono" type="tel" required>
+
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email">
+
+        </div>
+        <div class="field">
+          <label for="f-mensaje">Briefly tell us why</label>
+          <textarea id="f-mensaje" name="mensaje" rows="4"></textarea>
+
+        </div>
+        <div class="form__actions">
+          <button class="btn btn--primary btn--block" type="submit">Confirm consultation</button>
+        </div>
+        <p class="form__note">Your details are only used to arrange the consultation. Confidentiality guaranteed.</p>
+        <p class="form__status" role="status" aria-live="polite"></p>
+      </form>
+          </div>
+          <aside class="flow__aside">        <div class="aside-card">
+          <h2 class="aside-card__title">Prefer to talk?</h2>
+          <p><a href="tel:+59899000000">099 000 000</a></p>
+          <p><a class="btn btn--ghost btn--sm" href="https://wa.me/59899000000?text=Hi%20Estudio%20Arroyo%2C%20I&#39;d%20like%20to%20make%20an%20inquiry." target="_blank" rel="noopener">WhatsApp</a></p>
+
+        </div></aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer site-footer--minimal">
+    <div class="container"><p class="site-footer__notice">Demo site. All names, data and services are fictitious.</p></div>
+  </footer>
+  <script src="/demos/estudioarroyo/en/js/config.js"></script>
+  <script src="/demos/estudioarroyo/en/js/site.js" defer></script>
+</body>
+</html>

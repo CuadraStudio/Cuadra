@@ -26,6 +26,11 @@
   var qs = function (sel, root) { return (root || document).querySelector(sel); };
   var qsa = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
   var params = new URLSearchParams(window.location.search);
+  /* Multi-idioma: CFG.lang solo está presente ('en') en el árbol /en/ — ver
+     lib/build.js::runtimeConfig. El resto de la interfaz (chrome de página)
+     ya sale traducido del build; esto cubre los mensajes que arma el JS. */
+  var isEn = CFG.lang === 'en';
+  var T = function (es, en) { return isEn ? en : es; };
 
   /* ── Menú mobile ────────────────────────────────────────────────────── */
 
@@ -132,7 +137,7 @@
            no se agrega hasta que estén elegidos todos los ejes. */
         var faltan = missingAxes();
         if (faltan.length) {
-          warnVariant('Elegí ' + faltan.join(' y ') + ' antes de agregar.');
+          warnVariant(T('Elegí ' + faltan.join(' y ') + ' antes de agregar.', 'Pick ' + faltan.join(' and ') + ' before adding.'));
           return;
         }
         Cart.add({
@@ -142,8 +147,8 @@
           variant: selectedVariant(),
           qty: 1
         });
-        add.textContent = 'Agregado ✓';
-        setTimeout(function () { add.textContent = 'Agregar al pedido'; }, 1600);
+        add.textContent = T('Agregado ✓', 'Added ✓');
+        setTimeout(function () { add.textContent = T('Agregar al pedido', 'Add to order'); }, 1600);
         return;
       }
       var qty = ev.target.closest('[data-qty]');
@@ -331,7 +336,7 @@
     var mesa = params.get('mesa');
     var mesaEl = qs('[data-mesa]');
     if (mesa && mesaEl) {
-      mesaEl.textContent = 'Mesa ' + mesa;
+      mesaEl.textContent = T('Mesa ' + mesa, 'Table ' + mesa);
       mesaEl.hidden = false;
     }
   }());
@@ -369,17 +374,17 @@
         });
         var slotBox = qs('[data-slots]', form);
         if (slotBox && !slotBox.getAttribute('data-value')) {
-          setStatus(status, 'Elegí un horario para continuar.', 'error');
+          setStatus(status, T('Elegí un horario para continuar.', 'Pick a time to continue.'), 'error');
           return;
         }
         if (missing.length) {
-          setStatus(status, 'Faltan datos: completá los campos marcados.', 'error');
+          setStatus(status, T('Faltan datos: completá los campos marcados.', 'Missing info: fill in the marked fields.'), 'error');
           missing[0].focus();
           return;
         }
         saveDemoCita(form, slotBox);
         var url = whatsappUrl(form, slotBox);
-        setStatus(status, 'Abriendo WhatsApp…', '');
+        setStatus(status, T('Abriendo WhatsApp…', 'Opening WhatsApp…'), '');
         window.open(url, '_blank', 'noopener');
         window.setTimeout(function () { window.location.href = base + '/gracias/'; }, 600);
       });
@@ -418,7 +423,10 @@
     try { localStorage.setItem(key, JSON.stringify(list)); } catch (e) { /* modo privado */ }
   }
 
-  /** Arma el mensaje formateado que recibe el negocio. */
+  /** Arma el mensaje formateado que recibe el negocio.
+   * A propósito siempre en español, sin importar CFG.lang: este texto lo lee
+   * el dueño del negocio, no el cliente que reservó — traducirlo con el
+   * idioma del sitio que visitó el cliente sería confuso para el dueño. */
   function whatsappUrl(form, slotBox) {
     var wa = (CFG.whatsapp && CFG.whatsapp.number) || '';
     var lines = [];

@@ -9,7 +9,7 @@ window.SITE_CONFIG = {
   },
   "api": {
     "enabled": false,
-    "base": "https://cuadra-api-t7rg.onrender.com/api/estudioarroyo",
+    "base": "https://cuadra-api-t7rg.onrender.com/api/democonsulta",
     "timeoutMs": 8000
   },
   "whatsapp": {
@@ -46,6 +46,6 @@ window.SITE_CONFIG = {
   "base": "/demos/estudioarroyo",
   "demo": {
     "enabled": true,
-    "citasKey": "estudioarroyo_demo_citas"
+    "citasKey": "estudioarroyo_demo_turnos"
   }
 };
