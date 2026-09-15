@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="css/base.css?v=20260914">
   <link rel="stylesheet" href="css/layout.css?v=20260914">
   <link rel="stylesheet" href="css/components.css?v=20260914b">
-  <link rel="stylesheet" href="css/pages.css?v=20260914">
+  <link rel="stylesheet" href="css/pages.css?v=20260915">
   <link rel="stylesheet" href="css/animations.css?v=20260914">
 
   <!-- SEO estructurado: FAQPage (feature SEO basico del servicio) -->
@@ -174,27 +174,74 @@
     <section id="planes" class="section" aria-labelledby="planes-title">
       <div class="container">
         <div class="container--narrow text-center" style="margin-bottom: var(--space-6);">
-          <h2 class="section-title reveal" id="planes-title">PLANES Y PRECIOS</h2>
-          <p class="plans-definition">Implementación = web a medida + datos reales cargados + integración WhatsApp + panel configurado + capacitación.</p>
+          <h2 class="section-title reveal" id="planes-title">ARMÁ TU PLAN</h2>
+          <p class="plans-definition">Elegí tu línea de negocio y tu plan — mirá el total armarse en tiempo real. Implementación = web a medida + datos reales cargados + integración WhatsApp + panel configurado + capacitación.</p>
         </div>
 
         <div class="plans-base">
           <p>Todos los planes incluyen: hosting, dominio propio, SSL, mantenimiento, soporte humano por WhatsApp, panel de administración y botón WhatsApp flotante.</p>
         </div>
 
-        <p class="plans-nav-hint">Elegí tu línea para ver sus 3 planes:</p>
-        <nav class="plans-nav" aria-label="Líneas de producto">
-          <ul class="plans-nav__list" role="tablist" aria-label="Líneas de producto">
-            <li role="presentation"><a class="plans-nav__link" href="#planes-agenda" role="tab" id="tab-agenda" aria-controls="planes-agenda" aria-selected="true">AGENDA</a></li>
-            <li role="presentation"><a class="plans-nav__link" href="#planes-tienda" role="tab" id="tab-tienda" aria-controls="planes-tienda" aria-selected="false">TIENDA</a></li>
-            <li role="presentation"><a class="plans-nav__link" href="#planes-resto" role="tab" id="tab-resto" aria-controls="planes-resto" aria-selected="false">RESTÓ</a></li>
-            <li role="presentation"><a class="plans-nav__link" href="#planes-consulta" role="tab" id="tab-consulta" aria-controls="planes-consulta" aria-selected="false">CONSULTA</a></li>
-          </ul>
-        </nav>
+        <div class="configurator" data-configurator>
+          <ol class="configurator__steps" data-step-indicators>
+            <li class="configurator__step" data-step-indicator="1"><span class="configurator__step-num">1</span><span class="configurator__step-label">Tu negocio</span></li>
+            <li class="configurator__step" data-step-indicator="2"><span class="configurator__step-num">2</span><span class="configurator__step-label">Tu plan</span></li>
+            <li class="configurator__step" data-step-indicator="3"><span class="configurator__step-num">3</span><span class="configurator__step-label">Extras</span></li>
+            <li class="configurator__step" data-step-indicator="4"><span class="configurator__step-num">4</span><span class="configurator__step-label">Resumen</span></li>
+          </ol>
 
-        <!-- CUADRA AGENDA -->
-        <div id="planes-agenda" class="plans-block" role="tabpanel" aria-labelledby="tab-agenda" tabindex="0">
-          <h3 class="plans-block__title">CUADRA AGENDA</h3>
+          <div class="configurator__layout">
+            <div class="configurator__main">
+
+              <!-- Paso 1: línea de negocio -->
+              <div class="configurator__panel" data-step="1">
+                <p class="configurator__panel-eyebrow">Paso 1 de 4</p>
+                <h3 class="configurator__panel-title">¿Qué tipo de negocio tenés?</h3>
+                <p class="configurator__panel-lede">Elegí la línea que más se parece a tu negocio. Después vemos los planes y el precio.</p>
+                <div class="line-choice-grid" role="group" aria-label="Elegí tu línea de negocio">
+                  <button type="button" class="line-choice" data-choose-line="agenda" aria-pressed="false">
+                    <span class="line-choice__check" aria-hidden="true"></span>
+                    <span class="line-choice__title">CUADRA AGENDA</span>
+                    <span class="line-choice__tagline">Tu agenda trabaja sola</span>
+                    <span class="line-choice__audience">Barberías, peluquerías, estéticas, masajes, tatuajes, gimnasios, clínicas</span>
+                    <span class="line-choice__from">Implementación desde $U 25.000</span>
+                  </button>
+                  <button type="button" class="line-choice" data-choose-line="tienda" aria-pressed="false">
+                    <span class="line-choice__check" aria-hidden="true"></span>
+                    <span class="line-choice__title">CUADRA TIENDA</span>
+                    <span class="line-choice__tagline">Tu catálogo en Google, tus pedidos por WhatsApp</span>
+                    <span class="line-choice__audience">Indumentaria, accesorios, artesanías, regalería, productos locales</span>
+                    <span class="line-choice__from">Implementación desde $U 32.000</span>
+                  </button>
+                  <button type="button" class="line-choice" data-choose-line="resto" aria-pressed="false">
+                    <span class="line-choice__check" aria-hidden="true"></span>
+                    <span class="line-choice__title">CUADRA RESTÓ</span>
+                    <span class="line-choice__tagline">Tu carta digital, tus mesas reservadas</span>
+                    <span class="line-choice__audience">Restaurantes, parrillas, cafés, bares, rotiserías, pizzerías</span>
+                    <span class="line-choice__from">Implementación desde $U 28.000</span>
+                  </button>
+                  <button type="button" class="line-choice" data-choose-line="consulta" aria-pressed="false">
+                    <span class="line-choice__check" aria-hidden="true"></span>
+                    <span class="line-choice__title">CUADRA CONSULTA</span>
+                    <span class="line-choice__tagline">Tu presencia profesional, seria y funcionando</span>
+                    <span class="line-choice__audience">Abogados, contadores, consultores, arquitectos, psicólogos, nutricionistas</span>
+                    <span class="line-choice__from">Implementación desde $U 18.000</span>
+                  </button>
+                </div>
+                <div class="configurator__actions">
+                  <button type="button" class="btn btn--primary" data-next disabled>Continuar →</button>
+                </div>
+              </div>
+
+              <!-- Paso 2: plan dentro de la línea elegida -->
+              <div class="configurator__panel" data-step="2">
+                <p class="configurator__panel-eyebrow">Paso 2 de 4</p>
+                <h3 class="configurator__panel-title">Elegí tu plan de <span data-selected-line-name>—</span></h3>
+                <p class="configurator__panel-lede">Los tres planes incluyen la base completa (web, hosting, WhatsApp, panel). Cada plan siguiente suma todo el anterior.</p>
+
+                <!-- CUADRA AGENDA -->
+                <div id="planes-agenda" class="plans-block" data-line-panel="agenda">
+                  <h3 class="plans-block__title">CUADRA AGENDA</h3>
           <p class="plans-block__tagline">Tu agenda trabaja sola</p>
 
           <div class="pricing-cards">
@@ -237,6 +284,7 @@
                 </div>
               </details>
               <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20B%C3%A1sico%20de%20CUADRA%20Agenda." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Básico de CUADRA Agenda">QUIERO ESTE PLAN</a>
+              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
             </article>
 
             <article class="pricing-card pricing-card--featured">
@@ -276,6 +324,7 @@
                 </div>
               </details>
               <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Profesional%20de%20CUADRA%20Agenda." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Profesional de CUADRA Agenda">QUIERO ESTE PLAN</a>
+              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
             </article>
 
             <article class="pricing-card">
@@ -302,12 +351,13 @@
                 </div>
               </details>
               <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Premium%20de%20CUADRA%20Agenda." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Premium de CUADRA Agenda">QUIERO ESTE PLAN</a>
+              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
             </article>
           </div>
         </div>
 
         <!-- CUADRA TIENDA -->
-        <div id="planes-tienda" class="plans-block" role="tabpanel" aria-labelledby="tab-tienda" tabindex="0">
+        <div id="planes-tienda" class="plans-block" data-line-panel="tienda">
           <h3 class="plans-block__title">CUADRA TIENDA</h3>
           <p class="plans-block__tagline">Tu catálogo en Google, tus pedidos por WhatsApp</p>
 
@@ -350,6 +400,7 @@
                 </div>
               </details>
               <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20B%C3%A1sico%20de%20CUADRA%20Tienda." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Básico de CUADRA Tienda">QUIERO ESTE PLAN</a>
+              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
             </article>
 
             <article class="pricing-card pricing-card--featured">
@@ -388,6 +439,7 @@
                 </div>
               </details>
               <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Profesional%20de%20CUADRA%20Tienda." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Profesional de CUADRA Tienda">QUIERO ESTE PLAN</a>
+              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
             </article>
 
             <article class="pricing-card">
@@ -414,12 +466,13 @@
                 </div>
               </details>
               <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Premium%20de%20CUADRA%20Tienda." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Premium de CUADRA Tienda">QUIERO ESTE PLAN</a>
+              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
             </article>
           </div>
         </div>
 
         <!-- CUADRA RESTÓ -->
-        <div id="planes-resto" class="plans-block" role="tabpanel" aria-labelledby="tab-resto" tabindex="0">
+        <div id="planes-resto" class="plans-block" data-line-panel="resto">
           <h3 class="plans-block__title">CUADRA RESTÓ</h3>
           <p class="plans-block__tagline">Tu carta digital, tus mesas reservadas, tus clientes contentos</p>
 
@@ -460,6 +513,7 @@
                 </div>
               </details>
               <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20B%C3%A1sico%20de%20CUADRA%20Rest%C3%B3." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Básico de CUADRA Restó">QUIERO ESTE PLAN</a>
+              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
             </article>
 
             <article class="pricing-card pricing-card--featured">
@@ -499,6 +553,7 @@
                 </div>
               </details>
               <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Profesional%20de%20CUADRA%20Rest%C3%B3." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Profesional de CUADRA Restó">QUIERO ESTE PLAN</a>
+              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
             </article>
 
             <article class="pricing-card">
@@ -526,12 +581,13 @@
                 </div>
               </details>
               <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Premium%20de%20CUADRA%20Rest%C3%B3." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Premium de CUADRA Restó">QUIERO ESTE PLAN</a>
+              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
             </article>
           </div>
         </div>
 
         <!-- CUADRA CONSULTA -->
-        <div id="planes-consulta" class="plans-block" role="tabpanel" aria-labelledby="tab-consulta" tabindex="0">
+        <div id="planes-consulta" class="plans-block" data-line-panel="consulta">
           <h3 class="plans-block__title">CUADRA CONSULTA</h3>
           <p class="plans-block__tagline">Tu presencia profesional, seria y funcionando</p>
 
@@ -573,6 +629,7 @@
                 </div>
               </details>
               <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20B%C3%A1sico%20de%20CUADRA%20Consulta." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Básico de CUADRA Consulta">QUIERO ESTE PLAN</a>
+              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
             </article>
 
             <article class="pricing-card pricing-card--featured">
@@ -612,6 +669,7 @@
                 </div>
               </details>
               <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Profesional%20de%20CUADRA%20Consulta." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Profesional de CUADRA Consulta">QUIERO ESTE PLAN</a>
+              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
             </article>
 
             <article class="pricing-card">
@@ -638,7 +696,97 @@
                 </div>
               </details>
               <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20el%20plan%20Premium%20de%20CUADRA%20Consulta." target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--full pricing-card__cta" aria-label="Consultar el plan Premium de CUADRA Consulta">QUIERO ESTE PLAN</a>
+              <button type="button" class="pricing-card__select" data-select-plan>Elegir este plan y ver mi resumen &#8594;</button>
             </article>
+          </div>
+                </div>
+
+                <div class="configurator__actions">
+                  <button type="button" class="btn btn--secondary" data-back="1">← Cambiar de línea</button>
+                </div>
+              </div>
+
+              <!-- Paso 3: combo (opcional) -->
+              <div class="configurator__panel" data-step="3">
+                <p class="configurator__panel-eyebrow">Paso 3 de 4</p>
+                <h3 class="configurator__panel-title">¿Tu negocio también necesita otra línea?</h3>
+                <p class="configurator__panel-lede">Si combinás dos líneas en una sola web (por ejemplo, una estética que también vende productos), es un solo tenant por línea, una sola web y una sola factura — con 10% de descuento sobre la segunda línea. Es opcional: si no aplica, seguí de largo.</p>
+                <label class="combo-toggle">
+                  <input type="checkbox" data-combo-toggle>
+                  <span>Sí, quiero cotizar un combo con otra línea</span>
+                </label>
+                <div class="line-choice-grid line-choice-grid--combo" data-combo-choices hidden role="group" aria-label="Elegí la segunda línea">
+                  <button type="button" class="line-choice" data-choose-combo="agenda" aria-pressed="false">
+                    <span class="line-choice__check" aria-hidden="true"></span>
+                    <span class="line-choice__title">+ CUADRA AGENDA</span>
+                  </button>
+                  <button type="button" class="line-choice" data-choose-combo="tienda" aria-pressed="false">
+                    <span class="line-choice__check" aria-hidden="true"></span>
+                    <span class="line-choice__title">+ CUADRA TIENDA</span>
+                  </button>
+                  <button type="button" class="line-choice" data-choose-combo="resto" aria-pressed="false">
+                    <span class="line-choice__check" aria-hidden="true"></span>
+                    <span class="line-choice__title">+ CUADRA RESTÓ</span>
+                  </button>
+                  <button type="button" class="line-choice" data-choose-combo="consulta" aria-pressed="false">
+                    <span class="line-choice__check" aria-hidden="true"></span>
+                    <span class="line-choice__title">+ CUADRA CONSULTA</span>
+                  </button>
+                </div>
+                <div class="configurator__actions">
+                  <button type="button" class="btn btn--secondary" data-back="2">← Atrás</button>
+                  <button type="button" class="btn btn--primary" data-next-to-result>Ver mi resumen →</button>
+                </div>
+              </div>
+
+              <!-- Paso 4: resumen -->
+              <div class="configurator__panel" data-step="4">
+                <p class="configurator__panel-eyebrow">Paso 4 de 4</p>
+                <h3 class="configurator__panel-title">Tu plan está armado</h3>
+                <div class="result-summary" data-result-summary>
+                  <div class="result-summary__row">
+                    <span class="result-summary__label">Línea y plan</span>
+                    <strong class="result-summary__value" data-result-line-plan>—</strong>
+                  </div>
+                  <div class="result-summary__row">
+                    <span class="result-summary__label">Implementación única</span>
+                    <strong class="result-summary__value" data-result-impl>—</strong>
+                  </div>
+                  <div class="result-summary__row">
+                    <span class="result-summary__label">Mensualidad</span>
+                    <strong class="result-summary__value" data-result-mensual>—</strong>
+                  </div>
+                  <p class="result-summary__combo" data-result-combo hidden></p>
+                </div>
+                <p class="result-summary__note">Seña 50% al firmar + 50% contra entrega. La mensualidad arranca con la entrega. Esta es una estimación orientativa — la confirmamos juntos por WhatsApp.</p>
+                <div class="configurator__actions configurator__actions--result">
+                  <a class="btn btn--primary btn--full" data-whatsapp-result href="https://wa.me/59899331909" target="_blank" rel="noopener noreferrer">HABLAR POR WHATSAPP CON ESTE PLAN</a>
+                  <button type="button" class="btn btn--secondary" data-back="3">← Atrás</button>
+                  <button type="button" class="btn btn--secondary" data-restart>Empezar de nuevo</button>
+                </div>
+              </div>
+
+            </div>
+
+            <aside class="configurator__summary" data-summary aria-live="polite">
+              <p class="configurator__summary-title">MI PLAN</p>
+              <p class="configurator__summary-empty" data-summary-empty>Todavía no elegiste nada.</p>
+              <div class="configurator__summary-content" data-summary-content hidden>
+                <p class="configurator__summary-line" data-summary-line-name>—</p>
+                <p class="configurator__summary-plan" data-summary-plan-name>—</p>
+                <div class="configurator__summary-totals">
+                  <div class="configurator__summary-total-row">
+                    <span>Implementación</span>
+                    <strong data-summary-impl>—</strong>
+                  </div>
+                  <div class="configurator__summary-total-row">
+                    <span>Mensual</span>
+                    <strong data-summary-mensual>—</strong>
+                  </div>
+                </div>
+                <p class="configurator__summary-combo" data-summary-combo hidden></p>
+              </div>
+            </aside>
           </div>
         </div>
 
@@ -833,6 +981,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20260914" defer></script>
+  <script src="js/main.js?v=20260915" defer></script>
 </body>
 </html>

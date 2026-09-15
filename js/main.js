@@ -310,50 +310,253 @@
     });
   }
 
-  // ---- Plans tabs: filtra #planes por linea (evita el muro de 12 cards en mobile) ----
-  function initPlansTabs() {
-    var tabs = document.querySelectorAll('.plans-nav__link');
-    var panels = document.querySelectorAll('.plans-block');
-    if (!tabs.length || !panels.length) return;
+  // ---- Configurador de planes: paso a paso, estilo cotizador (linea -> plan -> extras -> resumen) ----
+  function initPlanConfigurator() {
+    var root = document.querySelector('[data-configurator]');
+    if (!root) return;
 
-    function activate(targetId, scroll) {
-      panels.forEach(function (panel) {
-        panel.hidden = panel.id !== targetId;
+    var LINE_NAMES = { agenda: 'CUADRA Agenda', tienda: 'CUADRA Tienda', resto: 'CUADRA Restó', consulta: 'CUADRA Consulta' };
+    var LINE_FROM = { agenda: 25000, tienda: 32000, resto: 28000, consulta: 18000 };
+    var WA_NUMBER = '59899331909';
+
+    var panels = root.querySelectorAll('.configurator__panel');
+    var stepIndicators = root.querySelectorAll('[data-step-indicator]');
+    var lineChoices = root.querySelectorAll('[data-choose-line]');
+    var linePanels = root.querySelectorAll('[data-line-panel]');
+    var comboToggle = root.querySelector('[data-combo-toggle]');
+    var comboChoicesWrap = root.querySelector('[data-combo-choices]');
+    var comboChoices = root.querySelectorAll('[data-choose-combo]');
+    var selectedLineName = root.querySelector('[data-selected-line-name]');
+
+    var summaryEmpty = root.querySelector('[data-summary-empty]');
+    var summaryContent = root.querySelector('[data-summary-content]');
+    var summaryLine = root.querySelector('[data-summary-line-name]');
+    var summaryPlan = root.querySelector('[data-summary-plan-name]');
+    var summaryImpl = root.querySelector('[data-summary-impl]');
+    var summaryMensual = root.querySelector('[data-summary-mensual]');
+    var summaryCombo = root.querySelector('[data-summary-combo]');
+
+    var resultLinePlan = root.querySelector('[data-result-line-plan]');
+    var resultImpl = root.querySelector('[data-result-impl]');
+    var resultMensual = root.querySelector('[data-result-mensual]');
+    var resultCombo = root.querySelector('[data-result-combo]');
+    var waResultLink = root.querySelector('[data-whatsapp-result]');
+
+    var state = { line: null, plan: null, combo: false, comboLine: null };
+
+    function fmt(n) {
+      return Number(n).toLocaleString('es-UY');
+    }
+
+    function goToStep(n) {
+      panels.forEach(function (p) {
+        p.hidden = Number(p.getAttribute('data-step')) !== n;
       });
-      tabs.forEach(function (tab) {
-        var isMatch = tab.getAttribute('href') === '#' + targetId;
-        tab.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      stepIndicators.forEach(function (s) {
+        var num = Number(s.getAttribute('data-step-indicator'));
+        s.classList.toggle('is-active', num === n);
+        s.classList.toggle('is-done', num < n);
       });
-      if (scroll) {
-        var panel = document.getElementById(targetId);
-        if (panel) {
-          panel.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
-        }
+      root.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+    }
+
+    function updateSummaryPreview() {
+      if (!state.line) return;
+      summaryEmpty.hidden = true;
+      summaryContent.hidden = false;
+      summaryLine.textContent = LINE_NAMES[state.line];
+      summaryPlan.textContent = 'Elegí tu plan para ver el total';
+      summaryImpl.textContent = 'desde $U ' + fmt(LINE_FROM[state.line]);
+      summaryMensual.textContent = 'desde $U 990/mes';
+      summaryCombo.hidden = true;
+    }
+
+    function parsePlanCard(card) {
+      var label = card.querySelector('.pricing-card__label');
+      var price = card.querySelector('.pricing-card__price');
+      var setup = card.querySelector('.pricing-card__setup');
+      var mensualMatch = price && price.textContent.match(/([\d.]+)/);
+      var implMatch = setup && setup.textContent.match(/\$U\s*([\d.]+)\s*único\s*\(~USD\s*([\d.]+)\)/);
+      return {
+        planName: label ? label.textContent.trim() : '',
+        mensual: mensualMatch ? Number(mensualMatch[1].replace(/\./g, '')) : null,
+        impl: implMatch ? Number(implMatch[1].replace(/\./g, '')) : null,
+        usdImpl: implMatch ? Number(implMatch[2].replace(/\./g, '')) : null
+      };
+    }
+
+    function updateSummaryFinal() {
+      if (!state.line || !state.plan) return;
+      summaryEmpty.hidden = true;
+      summaryContent.hidden = false;
+      summaryLine.textContent = LINE_NAMES[state.line];
+      summaryPlan.textContent = 'Plan ' + state.plan.planName;
+      summaryImpl.textContent = '$U ' + fmt(state.plan.impl) + ' (~USD ' + fmt(state.plan.usdImpl) + ')';
+      summaryMensual.textContent = '$U ' + fmt(state.plan.mensual) + '/mes';
+      if (state.combo && state.comboLine) {
+        summaryCombo.hidden = false;
+        summaryCombo.textContent = '+ Combo con ' + LINE_NAMES[state.comboLine] + ' (10% off en la 2da línea)';
+      } else {
+        summaryCombo.hidden = true;
       }
     }
 
-    // Progressive enhancement: sin JS quedan las 12 cards visibles (fallback actual).
-    // Con JS, arranca mostrando la linea del hash de la URL (deep-link desde otra
-    // pagina, ej. index.html#planes-tienda -> productos.html#planes-tienda) o,
-    // si no hay hash valido, la primera linea (Agenda).
-    var initialId = panels[0].id;
-    var hashId = window.location.hash.replace('#', '');
-    var hashPanel = hashId && document.getElementById(hashId);
-    if (hashPanel && hashPanel.classList.contains('plans-block')) {
-      initialId = hashId;
-    }
-    activate(initialId, !!hashPanel);
+    function selectLine(line, focusPanel) {
+      state.line = line;
+      state.plan = null;
+      lineChoices.forEach(function (btn) {
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-choose-line') === line ? 'true' : 'false');
+      });
+      linePanels.forEach(function (panel) {
+        panel.hidden = panel.getAttribute('data-line-panel') !== line;
+      });
+      linePanels.forEach(function (panel) {
+        panel.querySelectorAll('.pricing-card.is-selected').forEach(function (c) {
+          c.classList.remove('is-selected');
+        });
+      });
+      if (selectedLineName) selectedLineName.textContent = LINE_NAMES[line];
+      var step1Next = root.querySelector('[data-step="1"] [data-next]');
+      if (step1Next) step1Next.disabled = false;
 
-    document.querySelectorAll('a[href^="#planes-"]').forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        var targetId = link.getAttribute('href').slice(1);
-        if (!document.getElementById(targetId)) return;
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        activate(targetId, true);
-        history.replaceState(null, '', '#' + targetId);
+      // La linea principal no puede combinarse consigo misma: se oculta esa opcion del paso 3.
+      comboChoices.forEach(function (btn) {
+        var isPrimary = btn.getAttribute('data-choose-combo') === line;
+        btn.hidden = isPrimary;
+        if (isPrimary && state.comboLine === line) {
+          state.comboLine = null;
+          btn.setAttribute('aria-pressed', 'false');
+        }
+      });
+
+      updateSummaryPreview();
+      if (focusPanel) goToStep(2);
+    }
+
+    function selectPlan(card) {
+      var panel = card.closest('[data-line-panel]');
+      if (panel) {
+        panel.querySelectorAll('.pricing-card').forEach(function (c) {
+          c.classList.remove('is-selected');
+        });
+      }
+      card.classList.add('is-selected');
+      state.plan = parsePlanCard(card);
+      updateSummaryFinal();
+      goToStep(3);
+    }
+
+    function selectCombo(line) {
+      state.comboLine = line;
+      comboChoices.forEach(function (btn) {
+        btn.setAttribute('aria-pressed', btn.getAttribute('data-choose-combo') === line ? 'true' : 'false');
+      });
+      updateSummaryFinal();
+    }
+
+    function renderResult() {
+      if (!state.line || !state.plan) return;
+      resultLinePlan.textContent = LINE_NAMES[state.line] + ' — Plan ' + state.plan.planName;
+      resultImpl.textContent = '$U ' + fmt(state.plan.impl) + ' (~USD ' + fmt(state.plan.usdImpl) + ')';
+      resultMensual.textContent = '$U ' + fmt(state.plan.mensual) + '/mes (~USD ' + fmt(Math.round(state.plan.mensual / 40)) + ')';
+
+      var lines = [
+        'Hola CUADRA! Armé mi plan en la web:',
+        LINE_NAMES[state.line] + ' — Plan ' + state.plan.planName,
+        'Implementación: $U ' + fmt(state.plan.impl) + ' único',
+        'Mensual: $U ' + fmt(state.plan.mensual) + '/mes'
+      ];
+      if (state.combo && state.comboLine) {
+        resultCombo.hidden = false;
+        resultCombo.textContent = 'También me interesa combinar con ' + LINE_NAMES[state.comboLine] + ' — se cotiza con 10% de descuento sobre la segunda línea, a confirmar por WhatsApp.';
+        lines.push('También quiero cotizar un combo con ' + LINE_NAMES[state.comboLine] + '.');
+      } else {
+        resultCombo.hidden = true;
+      }
+      lines.push('¿Seguimos?');
+      if (waResultLink) {
+        waResultLink.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+      }
+    }
+
+    function resetAll() {
+      state = { line: null, plan: null, combo: false, comboLine: null };
+      lineChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); });
+      comboChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); });
+      linePanels.forEach(function (panel) {
+        panel.hidden = true;
+        panel.querySelectorAll('.pricing-card.is-selected').forEach(function (c) { c.classList.remove('is-selected'); });
+      });
+      if (comboToggle) comboToggle.checked = false;
+      if (comboChoicesWrap) comboChoicesWrap.hidden = true;
+      summaryEmpty.hidden = false;
+      summaryContent.hidden = true;
+      var step1Next = root.querySelector('[data-step="1"] [data-next]');
+      if (step1Next) step1Next.disabled = true;
+      goToStep(1);
+    }
+
+    // ---- Eventos ----
+    lineChoices.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        selectLine(btn.getAttribute('data-choose-line'), false);
       });
     });
+
+    root.querySelectorAll('[data-select-plan]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        selectPlan(btn.closest('.pricing-card'));
+      });
+    });
+
+    if (comboToggle) {
+      comboToggle.addEventListener('change', function () {
+        state.combo = comboToggle.checked;
+        if (comboChoicesWrap) comboChoicesWrap.hidden = !comboToggle.checked;
+        if (!comboToggle.checked) {
+          state.comboLine = null;
+          comboChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); });
+        }
+        updateSummaryFinal();
+      });
+    }
+
+    comboChoices.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        selectCombo(btn.getAttribute('data-choose-combo'));
+      });
+    });
+
+    root.querySelector('[data-step="1"] [data-next]').addEventListener('click', function () {
+      if (state.line) goToStep(2);
+    });
+
+    root.querySelectorAll('[data-back]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        goToStep(Number(btn.getAttribute('data-back')));
+      });
+    });
+
+    var nextToResult = root.querySelector('[data-next-to-result]');
+    if (nextToResult) {
+      nextToResult.addEventListener('click', function () {
+        renderResult();
+        goToStep(4);
+      });
+    }
+
+    var restartBtn = root.querySelector('[data-restart]');
+    if (restartBtn) restartBtn.addEventListener('click', resetAll);
+
+    // Deep-link: index-web.html y otras paginas enlazan a productos.html#planes-tienda, etc.
+    // Progressive enhancement: sin JS, panels y pasos quedan visibles (fallback de contenido completo).
+    resetAll();
+    var hashId = window.location.hash.replace('#', '');
+    var hashMatch = hashId.match(/^planes-(agenda|tienda|resto|consulta)$/);
+    if (hashMatch) {
+      selectLine(hashMatch[1], true);
+      history.replaceState(null, '', '#' + hashId);
+    }
   }
 
   // ---- Init all ----
@@ -362,7 +565,7 @@
     initActiveNav();
     initScrollReveal();
     initForm();
-    initPlansTabs();
+    initPlanConfigurator();
     initSmoothScroll();
   }
 
