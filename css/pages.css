@@ -1348,7 +1348,7 @@ font-family: var(--font-display);
 
 .extra-toggle {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--space-4);
   padding: var(--space-4);
   border: 1px solid var(--color-border);
@@ -1374,19 +1374,34 @@ font-family: var(--font-display);
   width: 18px;
   height: 18px;
   flex-shrink: 0;
+  margin-top: 3px;
   accent-color: var(--color-sage);
 }
 
-.extra-toggle__name {
+.extra-toggle__title {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.extra-toggle__name {
   font-family: var(--font-body);
   font-size: 0.875rem;
-  line-height: 1.5;
+  line-height: 1.4;
   color: var(--color-text);
+}
+
+.extra-toggle__desc {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
 }
 
 .extra-toggle__price {
   flex-shrink: 0;
+  margin-top: 2px;
   font-family: var(--font-primary);
   font-size: 0.8125rem;
   font-weight: 500;
