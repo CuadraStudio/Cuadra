@@ -1,0 +1,37 @@
+# El Fogatero
+
+Parrilla de barrio en Cordón: cortes a la leña, entradas caseras y carta de vinos chica. Reservá tu mesa online y mirá la carta con precios al día.
+Dirección: Pasaje Yuyos 2173, Cordón, Montevideo
+
+Línea de producto: resto · Plan: premium
+
+## Páginas
+
+- `/demos/elfogatero/` — Inicio
+- `/demos/elfogatero/carta/` — Carta completa
+- `/demos/elfogatero/carta/{slug}/` — Sección de la carta (5 páginas)
+- `/demos/elfogatero/reservar/` — Reserva online
+- `/demos/elfogatero/pedidos/` — Pedido para llevar
+- `/demos/elfogatero/eventos/` — Eventos y grupos
+- `/demos/elfogatero/nosotros/` — Sobre el negocio
+- `/demos/elfogatero/preguntas/` — Preguntas frecuentes
+- `/demos/elfogatero/contacto/` — Contacto y ubicación
+- `/demos/elfogatero/galeria/` — Galería
+- `/demos/elfogatero/opiniones/` — Opiniones de clientes
+- `/demos/elfogatero/promociones/` — Promociones vigentes
+- `/demos/elfogatero/fidelidad/` — Programa de fidelidad
+- `/demos/elfogatero/privacidad/` — Política de privacidad
+- `/demos/elfogatero/terminos/` — Términos y condiciones
+- `/demos/elfogatero/novedades/` — Novedades
+- `/demos/elfogatero/novedades/{slug}/` — Artículo (2 páginas)
+
+## Contacto
+
+- Teléfono: 099 000 000
+- WhatsApp: https://wa.me/59899000000
+- Email: hola@elfogatero.uy
+
+## Notas
+
+- Los pedidos y reservas se cierran por WhatsApp. No hay pago online.
+- El panel de administración (/demos/elfogatero/admin.html) no es público.
