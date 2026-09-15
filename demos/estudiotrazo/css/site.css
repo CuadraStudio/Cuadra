@@ -69,6 +69,8 @@ ul, ol { margin: 0 0 1em; padding-left: 1.2em; }
 .nav__link.is-active, .nav__link:hover { color: var(--ink); }
 .site-header__cta { display: none; }
 .nav[data-open="true"] .nav__list { display: block; position: absolute; left: 0; right: 0; top: var(--header-h); background: var(--surface); border-bottom: 1px solid var(--line); padding: 8px var(--gutter) 20px; }
+.lang-switch { display: inline-flex; align-items: center; justify-content: center; min-width: 32px; height: 32px; padding: 0 8px; margin-left: 12px; border: 1px solid var(--line); border-radius: 999px; font: 700 12px/1 var(--font-body); letter-spacing: .04em; text-decoration: none; color: var(--ink-soft); flex-shrink: 0; }
+.lang-switch:hover { color: var(--ink); border-color: var(--ink); }
 
 @media (min-width: 880px) {
   .nav__toggle { display: none; }

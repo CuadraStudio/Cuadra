@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a slot — Estudio Trazo</title>
+  <meta name="description" content="Pick a service, provider and time at Estudio Trazo, Parque Rodó, Montevideo. Instant confirmation, no calls.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://cuadrastudio.uy/demos/estudiotrazo/en/reservar/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Estudio Trazo">
+  <meta property="og:title" content="Book a slot — Estudio Trazo">
+  <meta property="og:description" content="Pick a service, provider and time at Estudio Trazo, Parque Rodó, Montevideo. Instant confirmation, no calls.">
+  <meta property="og:url" content="https://cuadrastudio.uy/demos/estudiotrazo/en/reservar/">
+  <meta property="og:image" content="https://cuadrastudio.uy/demos/estudiotrazo/en/img/og.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#1d1b19">
+  <link rel="icon" href="/demos/estudiotrazo/en/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/demos/estudiotrazo/en/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="/demos/estudiotrazo/en/css/site.css">
+  <link rel="alternate" hreflang="en" href="https://cuadrastudio.uy/demos/estudiotrazo/en/reservar/">
+  <link rel="alternate" hreflang="es" href="https://cuadrastudio.uy/demos/estudiotrazo/reservar/">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://cuadrastudio.uy/demos/estudiotrazo/en/"},{"@type":"ListItem","position":2,"name":"Book a slot","item":"https://cuadrastudio.uy/demos/estudiotrazo/en/reservar/"}]}
+  </script>
+</head>
+<body>
+  <header class="site-header site-header--minimal">
+    <div class="container site-header__inner">
+      <a class="brand" href="/demos/estudiotrazo/en/">Estudio Trazo</a>
+      <a class="site-header__back" href="/demos/estudiotrazo/en/">Back</a>
+      <a class="lang-switch" href="https://cuadrastudio.uy/demos/estudiotrazo/reservar/" hreflang="es">ES</a>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="flow">
+      <div class="container flow__inner">
+        <header class="flow__head">
+          <h1 class="flow__title">Book a slot</h1>
+          <p class="flow__lead">Pick a service, day and time. We&#39;ll confirm right away.</p>
+          <ol class="flow__steps" role="list"><li class="is-active">Service</li><li>Day &amp; time</li><li>Your details</li></ol>
+        </header>
+        <div class="flow__grid">
+          <div class="flow__main">
+      <form class="form" id="form-reserva" action="#" method="post" novalidate>
+        <div class="field">
+          <label for="f-sucursal">Location <span class="req" aria-hidden="true">*</span></label>
+          <select id="f-sucursal" name="sucursal" required>
+            <option value="parque-rodo">Estudio Trazo — Parque Rodó</option>
+            <option value="cordon">Estudio Trazo — Cordón</option>
+          </select>
+
+        </div>
+        <div class="field">
+          <label for="f-servicio">Service <span class="req" aria-hidden="true">*</span></label>
+          <select id="f-servicio" name="servicio" required>
+            <option value="corte-clasico">Classic haircut · 40 min</option>
+            <option value="corte-y-barba">Haircut &amp; beard · 60 min</option>
+            <option value="perfilado-de-barba">Beard shaping · 25 min</option>
+            <option value="color-y-cobertura">Color &amp; gray coverage · 75 min</option>
+            <option value="corte-infantil">Kids&#39; haircut · 30 min</option>
+            <option value="ritual-completo">Full ritual · 90 min</option>
+          </select>
+
+        </div>
+        <div class="field">
+          <label for="f-profesional">Provider</label>
+          <select id="f-profesional" name="profesional">
+            <option value="">First available</option>
+            <option value="martina-vera">Martina Vera</option>
+            <option value="joaquin-pereira">Joaquín Pereira</option>
+            <option value="sofia-nunez">Sofía Núñez</option>
+          </select>
+
+        </div>
+        <div class="field">
+          <label for="f-fecha">Date <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-fecha" name="fecha" type="date" required>
+
+        </div>
+        <div class="field">
+          <label for="f-hora">Time <span class="req" aria-hidden="true">*</span></label>
+          <div class="slots" id="f-hora" data-slots role="group" aria-label="Available times">
+            <p class="slots__empty">Pick a service and a date to see the open times.</p>
+          </div>
+          <p class="field__help">Don&#39;t see a time that works? Message us and we&#39;ll add you to the waitlist — we&#39;ll text you on WhatsApp the moment a spot opens up.</p>
+        </div>
+        <div class="field">
+          <label for="f-nombre">Full name <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-nombre" name="nombre" type="text" required>
+
+        </div>
+        <div class="field">
+          <label for="f-telefono">Phone <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-telefono" name="telefono" type="tel" required>
+          <p class="field__help">We&#39;ll send your confirmation to this number.</p>
+        </div>
+        <div class="field">
+          <label for="f-notas">Anything we should know</label>
+          <textarea id="f-notas" name="notas" rows="3"></textarea>
+
+        </div>
+        <div class="form__actions">
+          <button class="btn btn--primary btn--block" type="submit">Confirm booking</button>
+        </div>
+        <p class="form__note">You can reschedule or cancel from the link you receive.</p>
+        <p class="form__status" role="status" aria-live="polite"></p>
+      </form>
+          </div>
+          <aside class="flow__aside">        <div class="aside-card">
+          <h2 class="aside-card__title">Prefer to talk?</h2>
+          <p><a href="tel:+59899000000">099 000 000</a></p>
+          <p><a class="btn btn--ghost btn--sm" href="https://wa.me/59899000000?text=Hi%20Estudio%20Trazo%2C%20I&#39;d%20like%20to%20book%20a%20slot." target="_blank" rel="noopener">WhatsApp</a></p>
+
+        </div></aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer site-footer--minimal">
+    <div class="container"><p class="site-footer__notice">Demo site. All names, data and services are fictitious.</p></div>
+  </footer>
+  <script src="/demos/estudiotrazo/en/js/config.js"></script>
+  <script src="/demos/estudiotrazo/en/js/site.js" defer></script>
+</body>
+</html>
