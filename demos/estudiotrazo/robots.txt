@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /demos/estudiotrazo/turno/
+Disallow: /demos/estudiotrazo/gracias/
+Disallow: /demos/estudiotrazo/404.html
+Disallow: /demos/estudiotrazo/admin.html
+
+Sitemap: https://cuadrastudio.uy/demos/estudiotrazo/sitemap.xml

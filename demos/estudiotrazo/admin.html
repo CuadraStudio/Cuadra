@@ -1,214 +1,228 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estudio Trazo — Panel</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Hanken+Grotesk:wght@400&family=Space+Mono&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Hanken+Grotesk:wght@400&family=Space+Mono&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="/demos/estudiotrazo/css/styles.css?v=20260829a">
-  <link rel="stylesheet" href="/demos/estudiotrazo/css/admin.css?v=20260913x">
-  <link rel="icon" type="image/svg+xml" href="/demos/estudiotrazo/favicon.svg">
+  <title>Panel de administración — Estudio Trazo</title>
+  <meta name="description" content="Panel de demostración para Estudio Trazo: consultas y citas guardadas en el navegador.">
+  <link rel="canonical" href="https://cuadrastudio.uy/demos/estudiotrazo/admin.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Estudio Trazo">
+  <meta property="og:title" content="Panel de administración — Estudio Trazo">
+  <meta property="og:url" content="https://cuadrastudio.uy/demos/estudiotrazo/admin.html">
+  <meta property="og:image" content="https://cuadrastudio.uy/demos/estudiotrazo/img/og.jpg">
+  <meta property="og:locale" content="es_UY">
+  <link rel="icon" href="/demos/estudiotrazo/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/demos/estudiotrazo/css/site.css">
+  <link rel="stylesheet" href="/demos/estudiotrazo/css/admin.css">
 </head>
 <body class="admin-body">
   <a class="skip-link" href="#admin-main">Saltar al contenido</a>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 
-  <div id="toast" class="admin-toast" role="status" aria-live="polite" hidden></div>
-
-  <div id="notif-banner" class="admin-notif-banner" hidden>
-    <div class="admin-notif-banner__inner">
-      <p id="notif-banner-title" class="admin-notif-banner__title"></p>
-      <ul id="notif-banner-list" class="admin-notif-banner__list"></ul>
-      <div class="admin-notif-banner__actions">
-        <button type="button" id="notif-banner-cta" class="admin-btn admin-btn--solid">Ver agenda</button>
-        <button type="button" id="notif-banner-close" class="admin-btn admin-btn--ghosted">Cerrar</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================== LOGIN ============================== -->
-  <div id="view-login" class="admin-login">
-    <p class="admin-login__brand"><span>Estudio</span><span>Trazo</span></p>
-    <p class="admin-login__values">Barbería · Montevideo</p>
-    <h1 class="admin-login__title">Gestión de turnos y servicios.</h1>
-
+  <div id="login-view" class="admin-login">
+    <p class="admin-login__brand">Estudio Trazo</p>
+    <p class="admin-login__values">Barbería de barrio, oficio de estudio · Montevideo</p>
+    <h2 class="admin-login__title">Panel de turnos del día.</h2>
     <form id="login-form" class="admin-login__card" novalidate>
       <div class="field">
-        <label class="field__label" for="login-pin">PIN de acceso</label>
-        <input type="password" id="login-pin" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+        <label class="field__label" for="pin-input">PIN de acceso</label>
+        <input type="password" id="pin-input" autocomplete="off" autocapitalize="off" spellcheck="false" required>
       </div>
-
       <p id="login-error" class="admin-error-text" role="alert" hidden></p>
-
-      <button type="submit" class="btn-primary admin-login__submit" id="btn-login-submit">Entrar</button>
-      <p class="admin-login__hint">Demostración: el panel se abre automáticamente. Si no, PIN 0000. Sitio ficticio, no corresponde a un negocio real.</p>
-      <a href="/demos/estudiotrazo/index.html" class="admin-login__back">← Volver a la web</a>
+      <button type="submit" class="btn btn--primary btn--block admin-login__submit" id="login-btn">Entrar</button>
+      <p class="admin-login__hint">Demo: PIN 0000. Tras la primera entrada el panel se abre solo. Sitio ficticio, no corresponde a un estudio real.</p>
+      <a href="/demos/estudiotrazo/" class="admin-login__back">← Volver al sitio</a>
     </form>
   </div>
 
-  <!-- ============================== PANEL ============================== -->
-  <div id="view-panel" hidden>
-    <!-- Banner modo vista (solo lectura): lo muestra admin.js cuando la
-         sesión entra con el PIN demo. Sticky arriba; el topbar se corre
-         debajo vía --viewer-banner-offset. -->
-    <div id="viewer-banner" class="admin-viewer-banner" role="status" hidden>
-      Modo demostración — solo lectura: estás viendo datos de ejemplo. Explorá todos los botones; los cambios no se guardan.
-    </div>
-    <div class="admin-shell">
-
-      <!-- Top bar (mobile + desktop) -->
-      <header class="admin-topbar">
-        <div class="admin-topbar__brand">
-          <span class="admin-topbar__label">Panel de gestión</span>
-          <strong class="admin-topbar__name">Estudio Trazo</strong>
-        </div>
-        <div class="admin-topbar__actions">
-          <button type="button" id="btn-sound-toggle" class="admin-sound-toggle" aria-pressed="true" aria-label="Silenciar sonido de notificaciones">
-            <svg class="admin-sound-toggle__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-            <svg class="admin-sound-toggle__icon admin-sound-toggle__icon--muted" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-          </button>
-          <a href="/demos/estudiotrazo/index.html" class="admin-link admin-link--web">Ver web</a>
-          <button type="button" id="btn-logout" class="btn-outline-light">Salir</button>
-        </div>
-      </header>
-
-      <!-- Main content -->
-      <div class="admin-content">
-        <main id="admin-main">
-
-          <!-- ===== DASHBOARD (Operación del día) ===== -->
-          <section id="tab-dashboard" class="admin-section is-active" aria-label="Operación del día" role="tabpanel" aria-labelledby="btn-dashboard">
-            <div class="admin-dash-header">
-              <h2 class="admin-dash-header__title">Operación del día</h2>
-            </div>
-
-            <!-- Date picker -->
-            <div class="admin-date-nav">
-              <button type="button" class="admin-btn admin-btn--ghosted" id="dash-date-prev" aria-label="Día anterior">‹</button>
-              <span class="admin-date-nav__label" id="dash-date-sub">Cargando…</span>
-              <button type="button" class="admin-btn" id="dash-date-today">Hoy</button>
-              <button type="button" class="admin-btn admin-btn--ghosted" id="dash-date-next" aria-label="Día siguiente">›</button>
-            </div>
-
-            <!-- KPI row -->
-            <div class="admin-kpi-row" id="dash-kpis">
-              <div class="admin-kpi">
-                <span class="admin-kpi__label">Turnos hoy</span>
-                <strong class="admin-kpi__value" id="kpi-today-count">—</strong>
-              </div>
-              <div class="admin-kpi">
-                <span class="admin-kpi__label">Pendientes</span>
-                <strong class="admin-kpi__value admin-kpi__value--warn" id="kpi-pending">—</strong>
-              </div>
-              <div class="admin-kpi">
-                <span class="admin-kpi__label">Confirmados</span>
-                <strong class="admin-kpi__value" id="kpi-confirmed">—</strong>
-              </div>
-              <div class="admin-kpi">
-                <span class="admin-kpi__label">Ocupación semanal</span>
-                <strong class="admin-kpi__value" id="kpi-week-pct">—</strong>
-              </div>
-            </div>
-
-            <!-- Team cards -->
-            <div class="admin-dash-section">
-              <h3 class="admin-dash-section__title">Equipo en salón</h3>
-              <div id="dash-team" class="admin-dash-team"></div>
-            </div>
-
-            <!-- Service breakdown -->
-            <div class="admin-dash-section">
-              <h3 class="admin-dash-section__title">Servicios del día</h3>
-              <div id="dash-services" class="admin-dash-services"></div>
-            </div>
-
-            <!-- Today's appointments -->
-            <div class="admin-dash-section">
-              <div class="admin-dash-section__head">
-                <h3 class="admin-dash-section__title">Agenda del día</h3>
-                <button type="button" class="admin-btn" id="dash-new-appt">+ Nuevo turno</button>
-              </div>
-              <div id="dash-appointments"></div>
-            </div>
-          </section>
-
-          <!-- ===== WEEK (Vista semanal) ===== -->
-          <section id="tab-semana" class="admin-section" aria-label="Vista semanal" role="tabpanel" aria-labelledby="btn-semana">
-            <div class="admin-week-nav">
-              <button type="button" class="admin-btn admin-btn--ghosted" id="week-prev" aria-label="Semana anterior">‹</button>
-              <span class="admin-week-nav__label" id="week-range"></span>
-              <button type="button" class="admin-btn" id="week-today">Hoy</button>
-              <button type="button" class="admin-btn admin-btn--ghosted" id="week-next" aria-label="Semana siguiente">›</button>
-            </div>
-
-            <!-- Weekly totals -->
-            <div class="admin-kpi-row" id="week-kpis">
-              <div class="admin-kpi">
-                <span class="admin-kpi__label">Total semana</span>
-                <strong class="admin-kpi__value" id="wk-total">—</strong>
-              </div>
-              <div class="admin-kpi">
-                <span class="admin-kpi__label">Pendientes</span>
-                <strong class="admin-kpi__value admin-kpi__value--warn" id="wk-pending">—</strong>
-              </div>
-              <div class="admin-kpi">
-                <span class="admin-kpi__label">Confirmados</span>
-                <strong class="admin-kpi__value" id="wk-confirmed">—</strong>
-              </div>
-            </div>
-
-            <!-- Weekly days grid -->
-            <div id="week-days" class="admin-week-days"></div>
-          </section>
-
-          <!-- ===== SERVICIOS ===== -->
-          <section id="tab-servicios" class="admin-section" aria-label="Servicios" role="tabpanel" aria-labelledby="btn-servicios"></section>
-
-          <!-- ===== EQUIPO ===== -->
-          <section id="tab-equipo" class="admin-section" aria-label="Equipo" role="tabpanel" aria-labelledby="btn-equipo"></section>
-
-          <!-- ===== HORARIOS ===== -->
-          <section id="tab-horarios" class="admin-section" aria-label="Horarios" role="tabpanel" aria-labelledby="btn-horarios"></section>
-
-        </main>
+  <div id="panel-view" class="admin-shell" hidden>
+    <header class="admin-topbar">
+      <div>
+        <span class="admin-topbar__label">Panel de administración</span>
+        <span class="admin-topbar__name">Estudio Trazo</span>
       </div>
+      <div class="admin-topbar__actions">
+        <a class="admin-link" href="/demos/estudiotrazo/">Ver sitio</a>
+        <button type="button" class="btn btn--ghost btn--sm" id="export-btn">Exportar</button>
+        <button type="button" class="btn btn--ghost btn--sm" id="clear-btn">Vaciar</button>
+        <button type="button" class="btn btn--ghost btn--sm" id="logout-btn">Salir</button>
+      </div>
+    </header>
+    <main class="admin-content" id="admin-main" tabindex="-1">
+      <div class="admin-wrap">
+        <div class="admin-head">
+          <div>
+            <h1>Turnos</h1>
+            <p id="kpi-subtitle">Cargando…</p>
+          </div>
+        </div>
 
-      <!-- Bottom navigation (mobile) -->
-      <nav class="admin-bottomnav" aria-label="Secciones del panel">
-        <button type="button" class="admin-bottomnav__item is-active" data-tab="dashboard" aria-controls="tab-dashboard" aria-selected="true">
-          <svg class="admin-bottomnav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-          <span>Operación</span>
-        </button>
-        <button type="button" class="admin-bottomnav__item" data-tab="semana" aria-controls="tab-semana" aria-selected="false">
-          <svg class="admin-bottomnav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <span>Semana</span>
-          <span class="admin-bottomnav__badge" id="badge-week" hidden></span>
-        </button>
-        <button type="button" class="admin-bottomnav__item" data-tab="servicios" aria-controls="tab-servicios" aria-selected="false">
-          <svg class="admin-bottomnav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          <span>Servicios</span>
-        </button>
-        <button type="button" class="admin-bottomnav__item" data-tab="equipo" aria-controls="tab-equipo" aria-selected="false">
-          <svg class="admin-bottomnav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <span>Equipo</span>
-        </button>
-        <button type="button" class="admin-bottomnav__item" data-tab="horarios" aria-controls="tab-horarios" aria-selected="false">
-          <svg class="admin-bottomnav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <span>Horarios</span>
-        </button>
-      </nav>
+        <div class="admin-kpis">
+          <div class="admin-kpi"><span class="admin-kpi__label">Turnos</span><span class="admin-kpi__value" id="kpi-total">0</span></div>
+          <div class="admin-kpi"><span class="admin-kpi__label">Pendientes</span><span class="admin-kpi__value" id="kpi-pendientes">0</span></div>
+          <div class="admin-kpi"><span class="admin-kpi__label">Atendidas</span><span class="admin-kpi__value" id="kpi-atendidas">0</span></div>
+          <div class="admin-kpi"><span class="admin-kpi__label">Fuente</span><span class="admin-kpi__value admin-kpi__value--small" id="kpi-fuente">localStorage</span></div>
+        </div>
 
-    </div>
+        <div class="admin-list" id="citas-list">
+          <p class="admin-loading">Cargando…</p>
+        </div>
+
+        <p class="admin-note">Lo que se completa desde <a href="/demos/estudiotrazo/reservar/">/reservar/</a> y <a href="/demos/estudiotrazo/contacto/">/contacto/</a> se guarda en este navegador (almacenamiento local, clave <code id="citas-key">…</code>). No viaja a ningún servidor. Sitio de demostración: todos los nombres, datos y servicios son ficticios.</p>
+      </div>
+    </main>
+    <footer class="admin-footer"><p class="site-footer__notice">Sitio de demostración. Todos los nombres, datos y servicios son ficticios.</p></footer>
   </div>
 
-  <!-- Edit appointment overlay (injected by JS) -->
-  <div id="appt-edit-overlay" class="admin-appt-form-overlay" hidden></div>
+  <script src="/demos/estudiotrazo/js/config.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    var CFG = window.SITE_CONFIG || {};
+    var PIN = '0000';
+    var slug = (CFG.tenant && CFG.tenant.slug) || 'cuadra';
+    var KEY = (CFG.demo && CFG.demo.citasKey) || slug + '_demo_citas';
+    var SESSION = slug + '_demo_admin';
+    var box = document.getElementById('citas-list');
+    var err = document.getElementById('login-error');
+    document.getElementById('citas-key').textContent = KEY;
 
-  <script src="/demos/estudiotrazo/js/config.js?v=20260913x" defer></script>
-  <script src="/demos/estudiotrazo/js/db.js?v=20260913x" defer></script>
-  <script src="/demos/estudiotrazo/js/admin.js?v=20260913x" defer></script>
-  </body>
+    function show(ids) { for (var i = 0; i < ids.length; i++) document.getElementById(ids[i]).hidden = !ids[i + 1]; }
+
+    function login() {
+      document.getElementById('login-view').hidden = true;
+      document.getElementById('panel-view').hidden = false;
+      render();
+    }
+    function showLogin() {
+      document.getElementById('panel-view').hidden = true;
+      document.getElementById('login-view').hidden = false;
+    }
+
+    /* Demo: auto-login real tras la primera entrada (sesión). En frío, sin
+       sesión, se muestra el login con el PIN 0000 como respaldo. */
+    try { if (sessionStorage.getItem(SESSION) === '1') login(); else showLogin(); } catch (e) { login(); }
+
+    document.getElementById('login-form').addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var pin = document.getElementById('pin-input').value;
+      if (pin === PIN) {
+        try { sessionStorage.setItem(SESSION, '1'); } catch (e) {}
+        login();
+      } else {
+        err.hidden = false;
+        err.textContent = 'PIN incorrecto. En la demostración el PIN es 0000.';
+        document.getElementById('pin-input').focus();
+      }
+    });
+
+    function read() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+    function write(list) { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {} render(); }
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function (ch) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+      });
+    }
+    function fmt(iso) {
+      var d = new Date(iso);
+      if (isNaN(d.getTime())) return '';
+      return d.toLocaleDateString('es-UY', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    }
+    function row(label, value, multi) {
+      if (value === undefined || value === null || value === '') return '';
+      return '<div class="admin-card__row"><dt>' + esc(label) + '</dt><dd>' + (multi ? esc(value).replace(/\n/g, '<br>') : esc(value)) + '</dd></div>';
+    }
+
+    function render() {
+      var list = read();
+      kpis(list);
+      if (!list.length) {
+        box.innerHTML = '<div class="admin-empty"><p>Todavía no hay ' + 'turnos' + '.</p>'
+          + '<p class="admin-empty__hint">Completá el formulario en <a href="' + '/reservar/' + '">' + '/reservar/' + '</a> o <a href="/demos/estudiotrazo/contacto/">/contacto/</a> y aparece acá.</p></div>';
+        return;
+      }
+      box.innerHTML = list.map(function (c, i) {
+        var atendida = c.estado === 'Atendida';
+        return '<article class="admin-card' + (atendida ? ' is-atendida' : '') + '">'
+          + '<header class="admin-card__head">'
+          + '<strong class="admin-card__id">' + esc(c.id || ('C-' + String(i + 1))) + '</strong>'
+          + '<span class="admin-card__meta">' + esc(fmt(c.created)) + '</span>'
+          + '<span class="admin-status admin-status--' + (atendida ? 'atendida' : 'pendiente') + '">' + esc(atendida ? 'Atendida' : 'Pendiente') + '</span>'
+          + '</header>'
+          + '<dl class="admin-card__data">'
+          + row('Tipo', c.servicio)
+          + row('Modalidad', c.modalidad)
+          + row('Fecha', c.fecha)
+          + row('Hora', c.hora)
+          + row('Nombre', c.nombre)
+          + row('Teléfono', c.telefono)
+          + row('Email', c.email)
+          + row('Mensaje', c.mensaje, true)
+          + '</dl>'
+          + '<div class="admin-card__actions">'
+          + '<button type="button" class="btn btn--ghost btn--sm" data-toggle="' + i + '">' + (atendida ? 'Marcar como nueva' : 'Marcar atendida') + '</button>'
+          + '<button type="button" class="btn btn--ghost btn--sm" data-delete="' + i + '">Quitar</button>'
+          + '</div>'
+          + '</article>';
+      }).join('');
+      box.querySelectorAll('[data-toggle]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var list2 = read();
+          var idx = Number(btn.getAttribute('data-toggle'));
+          list2[idx].estado = list2[idx].estado === 'Atendida' ? 'Nueva' : 'Atendida';
+          write(list2);
+        });
+      });
+      box.querySelectorAll('[data-delete]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var list2 = read();
+          list2.splice(Number(btn.getAttribute('data-delete')), 1);
+          write(list2);
+          toast('Consulta quitada.');
+        });
+      });
+    }
+
+    function kpis(list) {
+      var pend = list.filter(function (c) { return c.estado !== 'Atendida'; }).length;
+      document.getElementById('kpi-total').textContent = String(list.length);
+      document.getElementById('kpi-pendientes').textContent = String(pend);
+      document.getElementById('kpi-atendidas').textContent = String(list.length - pend);
+      document.getElementById('kpi-subtitle').textContent = list.length + ' consulta' + (list.length === 1 ? '' : 's') + ' enviada' + (list.length === 1 ? '' : 's') + ' desde el sitio · guardadas solo en este navegador';
+    }
+
+    function toast(msg) {
+      var el = document.getElementById('toast');
+      if (!el) return;
+      el.hidden = false;
+      el.textContent = msg;
+      setTimeout(function () { el.hidden = true; }, 2200);
+    }
+
+    document.getElementById('logout-btn').addEventListener('click', function () {
+      try { sessionStorage.removeItem(SESSION); } catch (e) {}
+      showLogin();
+    });
+    document.getElementById('export-btn').addEventListener('click', function () {
+      var list = read();
+      if (!list.length) { toast('No hay consultas para exportar.'); return; }
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([JSON.stringify(list, null, 2)], { type: 'application/json' }));
+      a.download = KEY + '.json';
+      a.click();
+      toast('Exportadas ' + list.length + ' consultas.');
+    });
+    document.getElementById('clear-btn').addEventListener('click', function () {
+      var list = read();
+      if (!list.length) { toast('No hay consultas para vaciar.'); return; }
+      if (window.confirm('¿Vaciar las ' + list.length + ' consultas guardadas en este navegador?')) {
+        write([]);
+        toast('Consultas vaciadas.');
+      }
+    });
+  }());
+  </script>
+</body>
 </html>

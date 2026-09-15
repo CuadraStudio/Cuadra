@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es-UY">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reservar turno — Estudio Trazo</title>
+  <meta name="description" content="Elegí servicio, profesional y horario en Estudio Trazo, Parque Rodó, Montevideo. Confirmación inmediata, sin llamar.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://cuadrastudio.uy/demos/estudiotrazo/reservar/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Estudio Trazo">
+  <meta property="og:title" content="Reservar turno — Estudio Trazo">
+  <meta property="og:description" content="Elegí servicio, profesional y horario en Estudio Trazo, Parque Rodó, Montevideo. Confirmación inmediata, sin llamar.">
+  <meta property="og:url" content="https://cuadrastudio.uy/demos/estudiotrazo/reservar/">
+  <meta property="og:image" content="https://cuadrastudio.uy/demos/estudiotrazo/img/og.jpg">
+  <meta property="og:locale" content="es_UY">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#1d1b19">
+  <link rel="icon" href="/demos/estudiotrazo/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/demos/estudiotrazo/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="/demos/estudiotrazo/css/site.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://cuadrastudio.uy/demos/estudiotrazo/"},{"@type":"ListItem","position":2,"name":"Reservar turno","item":"https://cuadrastudio.uy/demos/estudiotrazo/reservar/"}]}
+  </script>
+</head>
+<body>
+  <header class="site-header site-header--minimal">
+    <div class="container site-header__inner">
+      <a class="brand" href="/demos/estudiotrazo/">Estudio Trazo</a>
+      <a class="site-header__back" href="/demos/estudiotrazo/">Volver</a>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="flow">
+      <div class="container flow__inner">
+        <header class="flow__head">
+          <h1 class="flow__title">Reservar turno</h1>
+          <p class="flow__lead">Elegí servicio, día y hora. Te confirmamos al instante.</p>
+          <ol class="flow__steps" role="list"><li class="is-active">Servicio</li><li>Día y hora</li><li>Tus datos</li></ol>
+        </header>
+        <div class="flow__grid">
+          <div class="flow__main">
+      <form class="form" id="form-reserva" action="#" method="post" novalidate>
+        <div class="field">
+          <label for="f-sucursal">Sucursal <span class="req" aria-hidden="true">*</span></label>
+          <select id="f-sucursal" name="sucursal" required>
+            <option value="parque-rodo">Estudio Trazo — Parque Rodó</option>
+            <option value="cordon">Estudio Trazo — Cordón</option>
+          </select>
+
+        </div>
+        <div class="field">
+          <label for="f-servicio">Servicio <span class="req" aria-hidden="true">*</span></label>
+          <select id="f-servicio" name="servicio" required>
+            <option value="corte-clasico">Corte clásico · 40 min</option>
+            <option value="corte-y-barba">Corte y barba · 60 min</option>
+            <option value="perfilado-de-barba">Perfilado de barba · 25 min</option>
+            <option value="color-y-cobertura">Color y cobertura de canas · 75 min</option>
+            <option value="corte-infantil">Corte infantil · 30 min</option>
+            <option value="ritual-completo">Ritual completo · 90 min</option>
+          </select>
+
+        </div>
+        <div class="field">
+          <label for="f-profesional">Profesional</label>
+          <select id="f-profesional" name="profesional">
+            <option value="">El primero disponible</option>
+            <option value="martina-vera">Martina Vera</option>
+            <option value="joaquin-pereira">Joaquín Pereira</option>
+            <option value="sofia-nunez">Sofía Núñez</option>
+          </select>
+
+        </div>
+        <div class="field">
+          <label for="f-fecha">Fecha <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-fecha" name="fecha" type="date" required>
+
+        </div>
+        <div class="field">
+          <label for="f-hora">Hora <span class="req" aria-hidden="true">*</span></label>
+          <div class="slots" id="f-hora" data-slots role="group" aria-label="Horarios disponibles">
+            <p class="slots__empty">Elegí un servicio y una fecha para ver los horarios libres.</p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-nombre">Nombre y apellido <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-nombre" name="nombre" type="text" required>
+
+        </div>
+        <div class="field">
+          <label for="f-telefono">Teléfono <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-telefono" name="telefono" type="tel" required>
+          <p class="field__help">Te mandamos la confirmación a este número.</p>
+        </div>
+        <div class="field">
+          <label for="f-notas">Algo que debamos saber</label>
+          <textarea id="f-notas" name="notas" rows="3"></textarea>
+
+        </div>
+        <div class="form__actions">
+          <button class="btn btn--primary btn--block" type="submit">Confirmar reserva</button>
+        </div>
+        <p class="form__note">Podés reprogramar o cancelar desde el link que te llega.</p>
+        <p class="form__status" role="status" aria-live="polite"></p>
+      </form>
+          </div>
+          <aside class="flow__aside">        <div class="aside-card">
+          <h2 class="aside-card__title">¿Preferís hablar?</h2>
+          <p><a href="tel:+59899000000">099 000 000</a></p>
+          <p><a class="btn btn--ghost btn--sm" href="https://wa.me/59899000000?text=Hola%20Estudio%20Trazo%2C%20quiero%20reservar%20un%20turno." target="_blank" rel="noopener">WhatsApp</a></p>
+
+        </div></aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer site-footer--minimal">
+    <div class="container"><p class="site-footer__notice">Sitio de demostración. Todos los nombres, datos y servicios son ficticios.</p></div>
+  </footer>
+  <script src="/demos/estudiotrazo/js/config.js"></script>
+  <script src="/demos/estudiotrazo/js/site.js" defer></script>
+</body>
+</html>
