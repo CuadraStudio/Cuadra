@@ -40,7 +40,7 @@
   <meta name="twitter:image" content="https://cuadrastudio.uy/demos/estudiotrazo/img/trazo_inside.webp">
   <meta name="twitter:image:alt" content="Interior de Estudio Trazo — la foto de fondo del hero">
 
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="/demos/estudiotrazo/favicon.svg">
 
   <!-- Fuentes: Archivo (display, wdth 110–125) + Hanken Grotesk (lectura) + Space Mono (datos/UI)
        Non-render-blocking: media=print + onload evita que el CSS de fuentes bloquee el primer paint.
@@ -53,8 +53,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,110..125,600..800&family=Hanken+Grotesk:wght@400&family=Space+Mono&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,110..125,600..800&family=Hanken+Grotesk:wght@400&family=Space+Mono&display=swap"></noscript>
 
-  <link rel="preload" as="image" href="img/trazo_inside.webp" fetchpriority="high">
-  <link rel="stylesheet" href="css/styles.css?v=20260912a">
+  <link rel="preload" as="image" href="/demos/estudiotrazo/img/trazo_inside.webp" fetchpriority="high">
+  <link rel="stylesheet" href="/demos/estudiotrazo/css/styles.css?v=20260912a">
 
   <!-- JSON-LD BreadcrumbList: jerarquía de navegación -->
   <script type="application/ld+json">
@@ -151,15 +151,15 @@
   </script>
 
   <!-- Orden de carga con defer: config → GSAP → db → utils → main -->
-  <script src="js/config.js?v=20260913x" defer></script>
+  <script src="/demos/estudiotrazo/js/config.js?v=20260913x" defer></script>
   <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer
           integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer
           integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
-  <script src="js/db.js?v=20260913x" defer></script>
-  <script src="js/utils.js?v=20260829a" defer></script>
-  <script src="js/main.js?v=20260829a" defer></script>
+  <script src="/demos/estudiotrazo/js/db.js?v=20260913x" defer></script>
+  <script src="/demos/estudiotrazo/js/utils.js?v=20260829a" defer></script>
+  <script src="/demos/estudiotrazo/js/main.js?v=20260829a" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
@@ -180,12 +180,12 @@
           <li><a href="#equipo" class="nav__link site-header__link">Equipo</a></li>
           <li><a href="#faq" class="nav__link site-header__link">FAQ</a></li>
           <li><a href="#ubicacion" class="nav__link site-header__link">Ubicación</a></li>
-          <li><a href="reservar.html" class="btn btn--primary btn--sm nav__cta">Reservar turno</a></li>
+          <li><a href="/demos/estudiotrazo/reservar.html" class="btn btn--primary btn--sm nav__cta">Reservar turno</a></li>
         </ul>
       </nav>
 
       <div class="header__actions">
-        <a class="btn btn--primary btn--compact header__cta" href="reservar.html">Reservar</a>
+        <a class="btn btn--primary btn--compact header__cta" href="/demos/estudiotrazo/reservar.html">Reservar</a>
       </div>
     </div>
   </header>
@@ -197,8 +197,8 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__bg" aria-hidden="true">
         <picture>
-          <source type="image/webp" srcset="img/trazo_inside.webp">
-          <img src="img/trazo_inside.webp" alt="" loading="eager" fetchpriority="high" width="1600" height="2400">
+          <source type="image/webp" srcset="/demos/estudiotrazo/img/trazo_inside.webp">
+          <img src="/demos/estudiotrazo/img/trazo_inside.webp" alt="" loading="eager" fetchpriority="high" width="1600" height="2400">
         </picture>
       </div>
       <div class="container hero__layout">
@@ -208,7 +208,7 @@
           <p class="hero__subtitle" data-reveal>Cortes, asesoramiento y las mejores manos.</p>
           <p class="hero__lead" data-reveal>Somos una barbería en Montevideo donde el detalle importa. Te asesoramos, te cortamos con precisión y te esperamos con café y buena onda.</p>
           <div class="hero__ctas" data-reveal>
-            <a class="btn btn--primary btn--lg" href="reservar.html">Reservar turno</a>
+            <a class="btn btn--primary btn--lg" href="/demos/estudiotrazo/reservar.html">Reservar turno</a>
             <a class="btn btn--whatsapp btn--lg" href="https://wa.me/59899000000?text=Hola%20Estudio%20Trazo%2C%20quiero%20reservar%20un%20turno." target="_blank" rel="noopener noreferrer">WhatsApp</a>
           </div>
           <p class="hero__rating" data-reveal>
@@ -251,7 +251,7 @@
         </div>          <div class="about__media" data-reveal>
             <div class="oval-frame">
               <div class="oval-frame__img">
-                <img src="img/landing.webp" alt="Interior del estudio Estudio Trazo en Montevideo" loading="lazy" fetchpriority="low" width="1100" height="1650">
+                <img src="/demos/estudiotrazo/img/landing.webp" alt="Interior del estudio Estudio Trazo en Montevideo" loading="lazy" fetchpriority="low" width="1100" height="1650">
               </div>
             </div>
           </div>
@@ -404,14 +404,14 @@
         <h2 id="cta-final-title" class="cta-final__title display-section" data-reveal>¿Listo para tu mejor corte?</h2>
         <p class="cta-final__promo" data-reveal>Reservá en un minuto o escribinos por WhatsApp.</p>
         <div data-reveal>
-          <a href="reservar.html" class="btn btn--primary btn--lg">Reservar turno</a>
+          <a href="/demos/estudiotrazo/reservar.html" class="btn btn--primary btn--lg">Reservar turno</a>
         </div>
       </div>
     </section>
   </main>
 
   <!-- 10 · Sticky CTA móvil (≤860px) -->
-  <a href="reservar.html" class="sticky-cta" aria-label="Reservar turno">
+  <a href="/demos/estudiotrazo/reservar.html" class="sticky-cta" aria-label="Reservar turno">
     <svg class="icon icon-md" aria-hidden="true"><use href="#icon-calendar"></use></svg>
     <span>Reservar</span>
   </a>
@@ -433,7 +433,7 @@
             <a href="#equipo">Equipo</a>
             <a href="#faq">FAQ</a>
             <a href="#ubicacion">Ubicación</a>
-            <a href="reservar.html">Reservar</a>
+            <a href="/demos/estudiotrazo/reservar.html">Reservar</a>
           </nav>
         </div>
         <div class="footer__info">
@@ -449,8 +449,8 @@
       <div class="footer__bottom">
         <p class="footer__copyright">© <span id="footer-year">2026</span> Estudio Trazo</p>
         <p class="site-footer__notice">Web de demostración de la plataforma CUADRA — sitio ficticio, no corresponde a un negocio real.</p>
-        <a class="footer__panel-link" href="privacy.html">Política de privacidad</a>
-        <a class="footer__panel-link" href="admin.html">Panel</a>
+        <a class="footer__panel-link" href="/demos/estudiotrazo/privacy.html">Política de privacidad</a>
+        <a class="footer__panel-link" href="/demos/estudiotrazo/admin.html">Panel</a>
       </div>
     </div>
   </footer>

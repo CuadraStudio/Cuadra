@@ -379,7 +379,7 @@ function cardHTML(p, base, opts) {
 
 /* --------------------- Página: catálogo completo ------------------------- */
 function catalogPageHTML() {
-  var base = '../';
+  var base = '/demos/verastore/';
   var catsArr = cats();
   var priceRows = [
     { label: 'Todos', min: null, max: null },
@@ -463,7 +463,7 @@ function catalogPageHTML() {
 
 /* --------------------- Página: categoría ---------------------------------- */
 function categoryPageHTML(catName) {
-  var base = '../';
+  var base = '/demos/verastore/';
   var slug = CATEGORY_SLUG[catName];
   var prods = byCat(catName);
   var allCats = cats();
@@ -561,7 +561,7 @@ function optionPill(kind, value, p, state) {
 }
 
 function productPageHTML(p) {
-  var base = '../../';
+  var base = '/demos/verastore/';
   var catSlug = CATEGORY_SLUG[p.category];
   var out = soldOut(p);
   var talles = [];
