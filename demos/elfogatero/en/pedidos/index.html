@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order takeout — El Fogatero</title>
+  <meta name="description" content="Order takeout or delivery from El Fogatero, Cordón, Montevideo. Your order arrives formatted on WhatsApp.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://cuadrastudio.uy/demos/elfogatero/en/pedidos/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="El Fogatero">
+  <meta property="og:title" content="Order takeout — El Fogatero">
+  <meta property="og:description" content="Order takeout or delivery from El Fogatero, Cordón, Montevideo. Your order arrives formatted on WhatsApp.">
+  <meta property="og:url" content="https://cuadrastudio.uy/demos/elfogatero/en/pedidos/">
+  <meta property="og:image" content="https://cuadrastudio.uy/demos/elfogatero/en/img/og.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#2a1810">
+  <link rel="icon" href="/demos/elfogatero/en/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/demos/elfogatero/en/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="/demos/elfogatero/en/css/site.css">
+  <link rel="alternate" hreflang="en" href="https://cuadrastudio.uy/demos/elfogatero/en/pedidos/">
+  <link rel="alternate" hreflang="es" href="https://cuadrastudio.uy/demos/elfogatero/pedidos/">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://cuadrastudio.uy/demos/elfogatero/en/"},{"@type":"ListItem","position":2,"name":"Order takeout","item":"https://cuadrastudio.uy/demos/elfogatero/en/pedidos/"}]}
+  </script>
+</head>
+<body>
+  <header class="site-header site-header--minimal">
+    <div class="container site-header__inner">
+      <a class="brand" href="/demos/elfogatero/en/">El Fogatero</a>
+      <a class="site-header__back" href="/demos/elfogatero/en/">Back</a>
+      <a class="lang-switch" href="https://cuadrastudio.uy/demos/elfogatero/pedidos/" hreflang="es">ES</a>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="flow">
+      <div class="container flow__inner">
+        <header class="flow__head">
+          <h1 class="flow__title">Order takeout</h1>
+          <p class="flow__lead">Pick up at the restaurant or we&#39;ll deliver in the area. The grill arrives hot.</p>
+
+        </header>
+        <div class="flow__grid">
+          <div class="flow__main">
+      <form class="form" id="form-pedido" action="#" method="post" novalidate>
+        <div class="field">
+          <label>Your order</label>
+          <div class="cart" data-cart data-cart-source="menu">
+            <p class="cart__empty">You haven&#39;t added anything yet. <a href="/demos/elfogatero/en/carta/">View the menu</a> and add what you like.</p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-modalidad">How you want it <span class="req" aria-hidden="true">*</span></label>
+          <select id="f-modalidad" name="modalidad" required>
+            <option value="retiro">Pickup</option>
+            <option value="envio">Delivery</option>
+          </select>
+
+        </div>
+        <div class="field" data-when="modalidad=envio" hidden>
+          <label for="f-zona">Delivery zone</label>
+          <select id="f-zona" name="zona">
+            <option value="Cordón y Centro">Cordón y Centro · $ 120</option>
+            <option value="Parque Rodó y Palermo">Parque Rodó y Palermo · $ 160</option>
+            <option value="Pocitos y Punta Carretas">Pocitos y Punta Carretas · $ 220</option>
+          </select>
+
+        </div>
+        <div class="field" data-when="modalidad=envio" hidden>
+          <label for="f-direccion">Address</label>
+          <input id="f-direccion" name="direccion" type="text" placeholder="Street, number, apt">
+
+        </div>
+        <div class="field">
+          <label for="f-horario">What time?</label>
+          <input id="f-horario" name="horario" type="time">
+
+        </div>
+        <div class="field">
+          <label for="f-nombre">Name <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-nombre" name="nombre" type="text" required>
+
+        </div>
+        <div class="field">
+          <label for="f-telefono">Phone <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-telefono" name="telefono" type="tel" required>
+
+        </div>
+        <div class="field">
+          <label for="f-notas">Notes</label>
+          <textarea id="f-notas" name="notas" rows="3"></textarea>
+
+        </div>
+        <div class="form__actions">
+          <button class="btn btn--primary btn--block" type="submit">Send order via WhatsApp</button>
+        </div>
+        <p class="form__note">No online payment: pay on pickup or delivery.</p>
+        <p class="form__status" role="status" aria-live="polite"></p>
+      </form>
+          </div>
+          <aside class="flow__aside">        <div class="aside-card">
+          <h2 class="aside-card__title">Prefer to talk?</h2>
+          <p><a href="tel:+59899000000">099 000 000</a></p>
+          <p><a class="btn btn--ghost btn--sm" href="https://wa.me/59899000000?text=Hi%20El%20Fogatero%2C%20I&#39;d%20like%20to%20make%20an%20inquiry." target="_blank" rel="noopener">WhatsApp</a></p>
+          <p class="aside-card__note">Delivery runs Tuesday to Sunday, 8pm to 11pm.</p>
+        </div></aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer site-footer--minimal">
+    <div class="container"><p class="site-footer__notice">Demo site. All names, data and services are fictitious.</p></div>
+  </footer>
+  <script src="/demos/elfogatero/en/js/config.js"></script>
+  <script src="/demos/elfogatero/en/js/site.js" defer></script>
+</body>
+</html>

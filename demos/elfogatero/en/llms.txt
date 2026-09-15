@@ -1,0 +1,37 @@
+# El Fogatero
+
+Neighborhood steakhouse in Cordón: wood-fired cuts, homemade starters and a small wine list. Book your table online and check the menu with up-to-date prices.
+Dirección: Pasaje Yuyos 2173, Cordón, Montevideo
+
+Línea de producto: resto · Plan: premium
+
+## Páginas
+
+- `/demos/elfogatero/en/` — Inicio
+- `/demos/elfogatero/en/carta/` — Carta completa
+- `/demos/elfogatero/en/carta/{slug}/` — Sección de la carta (5 páginas)
+- `/demos/elfogatero/en/reservar/` — Reserva online
+- `/demos/elfogatero/en/pedidos/` — Pedido para llevar
+- `/demos/elfogatero/en/eventos/` — Eventos y grupos
+- `/demos/elfogatero/en/nosotros/` — Sobre el negocio
+- `/demos/elfogatero/en/preguntas/` — Preguntas frecuentes
+- `/demos/elfogatero/en/contacto/` — Contacto y ubicación
+- `/demos/elfogatero/en/galeria/` — Galería
+- `/demos/elfogatero/en/opiniones/` — Opiniones de clientes
+- `/demos/elfogatero/en/promociones/` — Promociones vigentes
+- `/demos/elfogatero/en/fidelidad/` — Programa de fidelidad
+- `/demos/elfogatero/en/privacidad/` — Política de privacidad
+- `/demos/elfogatero/en/terminos/` — Términos y condiciones
+- `/demos/elfogatero/en/novedades/` — Novedades
+- `/demos/elfogatero/en/novedades/{slug}/` — Artículo (2 páginas)
+
+## Contacto
+
+- Teléfono: 099 000 000
+- WhatsApp: https://wa.me/59899000000
+- Email: hola@elfogatero.uy
+
+## Notas
+
+- Los pedidos y reservas se cierran por WhatsApp. No hay pago online.
+- El panel de administración (/demos/elfogatero/en/admin.html) no es público.
