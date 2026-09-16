@@ -382,7 +382,7 @@
           missing[0].focus();
           return;
         }
-        saveDemoCita(form, slotBox);
+        saveDemoRecord(form, slotBox);
         var url = whatsappUrl(form, slotBox);
         setStatus(status, T('Abriendo WhatsApp…', 'Opening WhatsApp…'), '');
         window.open(url, '_blank', 'noopener');
@@ -398,29 +398,76 @@
   }
 
   /**
-   * Modo demo: guarda la consulta/cita en localStorage para que el panel
-   * (/admin.html) la liste. Solo corre cuando el config habilita `demo`.
-   * El sitio no tiene backend en la demo: sin esto el admin no tendría nada
-   * que mostrar y el flujo no dejaría rastro de que funciona.
+   * Modo demo: guarda la reserva/pedido en CUADRA_DB (localStorage, ver
+   * js/admin-db.js) para que el panel (/admin.html) lo liste igual que una
+   * API real. Solo corre cuando el config habilita `demo`. El sitio no tiene
+   * backend en la demo: sin esto el panel no tendría nada que mostrar.
+   *
+   * La forma del registro depende del flujo (reserva/mesa/pedido/carrito/
+   * consulta) porque cada vertical administra algo distinto (turnos,
+   * reservas de mesa, pedidos) — ver runtime/admin/admin-db.js.
    */
-  function saveDemoCita(form, slotBox) {
+  var LAST_SUBMIT_KEY = ((CFG.tenant && CFG.tenant.slug) || 'cuadra') + '_last_submit';
+
+  function saveDemoRecord(form, slotBox) {
     var demo = CFG.demo || {};
-    if (!demo.enabled) return;
-    var key = demo.citasKey || ((CFG.tenant && CFG.tenant.slug) || 'cuadra') + '_demo_citas';
-    var record = {
-      id: 'C-' + Date.now().toString(36).toUpperCase(),
-      created: new Date().toISOString(),
-      estado: 'Nueva'
+    if (!demo.enabled || !window.CUADRA_DB) return;
+    var DB = window.CUADRA_DB;
+    var get = function (name) {
+      var el = form.querySelector('[name="' + name + '"]');
+      return el && !isHidden(el) ? el.value : '';
     };
-    qsa('input, select, textarea', form).forEach(function (el) {
-      if (!el.name || !el.value || el.type === 'radio' || isHidden(el)) return;
-      record[el.name] = fieldValue(el);
-    });
-    if (slotBox && slotBox.getAttribute('data-value')) record.hora = slotBox.getAttribute('data-value');
-    var list = [];
-    try { list = JSON.parse(localStorage.getItem(key)) || []; } catch (e) { list = []; }
-    list.unshift(record);
-    try { localStorage.setItem(key, JSON.stringify(list)); } catch (e) { /* modo privado */ }
+    var svcLabel = function (name) {
+      var el = form.querySelector('[name="' + name + '"]');
+      return el && !isHidden(el) ? fieldValue(el) : '';
+    };
+    var hora = (slotBox && slotBox.getAttribute('data-value')) || get('horario') || '';
+    var id = form.id;
+    var promise = null;
+    var summary = { fecha: get('fecha') || localYmd(new Date()), hora: hora, servicio: '', nombre: get('nombre') };
+
+    if (id === 'form-reserva' || id === 'form-consulta') {
+      summary.servicio = svcLabel('servicio');
+      promise = DB.createAppointment({
+        service_id: get('servicio'),
+        barber_id: get('profesional') || null,
+        date: get('fecha'),
+        time: hora,
+        client_name: get('nombre'),
+        client_phone: get('telefono'),
+        note: get('notas') || get('mensaje') || null,
+        status: 'pending',
+        source: 'web'
+      });
+    } else if (id === 'form-mesa') {
+      summary.servicio = T('Mesa', 'Table');
+      promise = DB.createReservation({
+        client_name: get('nombre'),
+        client_phone: get('telefono'),
+        personas: Number(get('personas')) || 2,
+        date: get('fecha'),
+        time: hora,
+        note: [svcLabel('franja'), get('notas')].filter(Boolean).join(' · ') || null,
+        status: 'pending'
+      });
+    } else if (id === 'form-pedido' || id === 'form-carrito') {
+      var items = Cart.read().map(function (i) { return { name: i.name, qty: i.qty, price: i.price }; });
+      summary.servicio = T('Pedido', 'Order');
+      promise = DB.createOrder({
+        client_name: get('nombre'),
+        client_phone: get('telefono'),
+        entrega: get('modalidad') || get('entrega') || null,
+        items: items,
+        total: Cart.total(),
+        note: [get('direccion'), svcLabel('zona'), get('notas')].filter(Boolean).join(' · ') || null,
+        status: 'pending'
+      });
+    } else {
+      return;
+    }
+
+    promise.catch(function () { /* demo: sin backend que pueda rechazar de verdad salvo fecha pasada */ });
+    try { localStorage.setItem(LAST_SUBMIT_KEY, JSON.stringify(summary)); } catch (e) { /* modo privado */ }
   }
 
   /** Arma el mensaje formateado que recibe el negocio.
@@ -494,23 +541,21 @@
   }
 
   /* ── /gracias/: agregar a Google Calendar ──────────────────────────────
-     Modo demo: toma el último registro guardado por saveDemoCita() y arma
+     Modo demo: toma el último registro guardado por saveDemoRecord() y arma
      el link de Google Calendar con fecha, hora y servicio. Si el registro
      no tiene fecha/hora (p. ej. un pedido de tienda) el botón queda oculto. */
   (function calendarAdd() {
     var btn = qs('#calendar-add');
     var demo = CFG.demo || {};
     if (!btn || !demo.enabled) return;
-    var key = demo.citasKey || ((CFG.tenant && CFG.tenant.slug) || 'cuadra') + '_demo_citas';
-    var list = [];
-    try { list = JSON.parse(localStorage.getItem(key)) || []; } catch (e) { list = []; }
-    var last = list[0];
+    var last = null;
+    try { last = JSON.parse(localStorage.getItem(LAST_SUBMIT_KEY)); } catch (e) { last = null; }
     if (!last || !last.fecha || !last.hora) return;
     var start = new Date(last.fecha + 'T' + last.hora + ':00');
     if (isNaN(start.getTime())) return;
     var duration = Number((CFG.booking && CFG.booking.slotStepMin) || 30) * 2;
     var end = new Date(start.getTime() + duration * 60000);
-    var titulo = (CFG.tenant && CFG.tenant.name ? CFG.tenant.name + ' — ' : '') + (last.servicio || last.franja || 'Turno');
+    var titulo = (CFG.tenant && CFG.tenant.name ? CFG.tenant.name + ' — ' : '') + (last.servicio || 'Turno');
     var detalle = ['Reservado desde el sitio.', last.nombre ? 'A nombre de ' + last.nombre + '.' : ''].filter(Boolean).join(' ');
     var params = new URLSearchParams({
       action: 'TEMPLATE',

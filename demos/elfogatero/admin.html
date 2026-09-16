@@ -1,251 +1,164 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de gestión — El Fogatero</title>
+  <meta name="description" content="Panel de gestión interno de El Fogatero. Página privada, fuera del índice de buscadores.">
   <meta name="robots" content="noindex, nofollow">
-  <title>Panel de administración — El Fogatero</title>
-  <meta name="description" content="Panel de demostración para El Fogatero: consultas y citas guardadas en el navegador.">
   <link rel="canonical" href="https://cuadrastudio.uy/demos/elfogatero/admin.html">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="El Fogatero">
-  <meta property="og:title" content="Panel de administración — El Fogatero">
-  <meta property="og:url" content="https://cuadrastudio.uy/demos/elfogatero/admin.html">
-  <meta property="og:image" content="https://cuadrastudio.uy/demos/elfogatero/img/og.jpg">
-  <meta property="og:locale" content="es_UY">
-  <link rel="icon" href="/demos/elfogatero/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/demos/elfogatero/css/site.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/demos/elfogatero/css/admin.css">
+  <style>
+    :root {
+      --bg: #f7f1e8;
+      --surface: #ffffff;
+      --ink: #221812;
+      --muted-text: color-mix(in srgb, #221812 58%, #ffffff);
+      --muted: color-mix(in srgb, #fdf8f3 78%, #2a1810);
+      --accent: #b5551f;
+      --accent-strong: color-mix(in srgb, #b5551f 78%, #000);
+      --accent-bright: color-mix(in srgb, #b5551f 65%, #fff);
+      --on-accent: #fdf8f3;
+      --on-strong: #fdf8f3;
+      --focus: #b5551f;
+      --focus-inverse: #fdf8f3;
+      --line: color-mix(in srgb, #221812 14%, #ffffff);
+      --line-strong: color-mix(in srgb, #221812 88%, #ffffff);
+      --line-on-dark: color-mix(in srgb, #fdf8f3 20%, #2a1810);
+      --header-bg: #2a1810;
+      --header-bg-solid: #2a1810;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+  </style>
+  <link rel="icon" href="/demos/elfogatero/img/favicon.svg" type="image/svg+xml">
 </head>
 <body class="admin-body">
   <a class="skip-link" href="#admin-main">Saltar al contenido</a>
-  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 
-  <div id="login-view" class="admin-login">
-    <p class="admin-login__brand">El Fogatero</p>
-    <p class="admin-login__values">Brasas, vino y barrio · Montevideo</p>
-    <h2 class="admin-login__title">Panel de reservas del día.</h2>
+  <div id="toast" class="admin-toast" role="status" aria-live="polite" hidden></div>
+
+  <div id="notif-banner" class="admin-notif-banner" hidden>
+    <div class="admin-notif-banner__inner">
+      <p id="notif-banner-title" class="admin-notif-banner__title"></p>
+      <ul id="notif-banner-list" class="admin-notif-banner__list"></ul>
+      <div class="admin-notif-banner__actions">
+        <button type="button" id="notif-banner-cta" class="admin-btn admin-btn--solid">Ver agenda</button>
+        <button type="button" id="notif-banner-close" class="admin-btn admin-btn--ghosted">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================== LOGIN ============================== -->
+  <div id="view-login" class="admin-login">
+    <p class="admin-login__brand"><span>El</span><span>Fogatero</span></p>
+    <p class="admin-login__values">Restaurante · Montevideo</p>
+    <h1 class="admin-login__title">Gestión de reservas, carta y pedidos.</h1>
+
     <form id="login-form" class="admin-login__card" novalidate>
       <div class="field">
-        <label class="field__label" for="pin-input">PIN de acceso</label>
-        <input type="password" id="pin-input" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+        <label class="field__label" for="login-pin">PIN de acceso</label>
+        <input type="password" id="login-pin" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" required>
       </div>
       <p id="login-error" class="admin-error-text" role="alert" hidden></p>
-      <button type="submit" class="btn btn--primary btn--block admin-login__submit" id="login-btn">Entrar</button>
-      <p class="admin-login__hint">Demo: PIN 0000. Tras la primera entrada el panel se abre solo. Sitio ficticio, no corresponde a un estudio real.</p>
-      <a href="/demos/elfogatero/" class="admin-login__back">← Volver al sitio</a>
+      <button type="submit" class="btn-primary admin-login__submit" id="btn-login-submit">Entrar</button>
+      <p class="admin-login__hint">Demo: PIN 0000. Sitio de demostración — este panel guarda todo en este navegador, no en un servidor.</p>
+      <a href="/demos/elfogatero/" class="admin-login__back">← Volver a la web</a>
     </form>
   </div>
 
-  <div id="panel-view" class="admin-shell" hidden>
-    <header class="admin-topbar">
-      <div>
-        <span class="admin-topbar__label">Panel de administración</span>
-        <span class="admin-topbar__name">El Fogatero</span>
-      </div>
-      <div class="admin-topbar__actions">
-        <a class="admin-link" href="/demos/elfogatero/">Ver sitio</a>
-        <button type="button" class="btn btn--ghost btn--sm" id="export-btn">Exportar JSON</button>
-        <button type="button" class="btn btn--ghost btn--sm" id="export-csv-btn">Exportar CSV</button>
-        <button type="button" class="btn btn--ghost btn--sm" id="clear-btn">Vaciar</button>
-        <button type="button" class="btn btn--ghost btn--sm" id="logout-btn">Salir</button>
-      </div>
-    </header>
-    <main class="admin-content" id="admin-main" tabindex="-1">
-      <div class="admin-wrap">
-        <div class="admin-head">
-          <div>
-            <h1>Reservas</h1>
-            <p id="kpi-subtitle">Cargando…</p>
-          </div>
-        </div>
+  <!-- ============================== PANEL ============================== -->
+  <div id="view-panel" hidden>
+    <div class="admin-shell">
 
-        <div class="admin-kpis">
-          <div class="admin-kpi"><span class="admin-kpi__label">Reservas</span><span class="admin-kpi__value" id="kpi-total">0</span></div>
-          <div class="admin-kpi"><span class="admin-kpi__label">Pendientes</span><span class="admin-kpi__value" id="kpi-pendientes">0</span></div>
-          <div class="admin-kpi"><span class="admin-kpi__label">Atendidas</span><span class="admin-kpi__value" id="kpi-atendidas">0</span></div>
-          <div class="admin-kpi"><span class="admin-kpi__label">Fuente</span><span class="admin-kpi__value admin-kpi__value--small" id="kpi-fuente">localStorage</span></div>
+      <header class="admin-topbar">
+        <div class="admin-topbar__brand">
+          <span class="admin-topbar__label">Panel de gestión</span>
+          <strong class="admin-topbar__name">El Fogatero</strong>
         </div>
-
-        <div class="admin-list" id="citas-list">
-          <p class="admin-loading">Cargando…</p>
+        <div class="admin-topbar__actions">
+          <button type="button" id="btn-sound-toggle" class="admin-sound-toggle" aria-pressed="true" aria-label="Silenciar sonido de notificaciones">
+            <svg class="admin-sound-toggle__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <svg class="admin-sound-toggle__icon admin-sound-toggle__icon--muted" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          </button>
+          <a href="/demos/elfogatero/" class="admin-link admin-link--web">Ver web</a>
+          <button type="button" id="btn-logout" class="btn-outline-light">Salir</button>
         </div>
+      </header>
 
-        <p class="admin-note">Lo que se completa desde <a href="/demos/elfogatero/reservar/">/reservar/</a> y <a href="/demos/elfogatero/contacto/">/contacto/</a> se guarda en este navegador (almacenamiento local, clave <code id="citas-key">…</code>). No viaja a ningún servidor. Sitio de demostración: todos los nombres, datos y servicios son ficticios.</p>
+      <div class="admin-content">
+        <main id="admin-main">
+
+          <section id="tab-dashboard" class="admin-section is-active" aria-label="Operación del día" role="tabpanel" aria-labelledby="btn-dashboard">
+            <div class="admin-dash-header"><h2 class="admin-dash-header__title">Operación del día</h2></div>
+
+            <div class="admin-date-nav">
+              <button type="button" class="admin-btn admin-btn--ghosted" id="dash-date-prev" aria-label="Día anterior">‹</button>
+              <span class="admin-date-nav__label" id="dash-date-sub">Cargando…</span>
+              <button type="button" class="admin-btn" id="dash-date-today">Hoy</button>
+              <button type="button" class="admin-btn admin-btn--ghosted" id="dash-date-next" aria-label="Día siguiente">›</button>
+            </div>
+
+            <div class="admin-kpi-row" id="dash-kpis">
+              <div class="admin-kpi"><span class="admin-kpi__label">Movimientos hoy</span><strong class="admin-kpi__value" id="kpi-today-count">—</strong></div>
+              <div class="admin-kpi"><span class="admin-kpi__label">Pendientes</span><strong class="admin-kpi__value admin-kpi__value--warn" id="kpi-pending">—</strong></div>
+              <div class="admin-kpi"><span class="admin-kpi__label">Confirmados</span><strong class="admin-kpi__value" id="kpi-confirmed">—</strong></div>
+              <div class="admin-kpi"><span class="admin-kpi__label">Ocupación semanal</span><strong class="admin-kpi__value" id="kpi-week-pct">—</strong></div>
+            </div>
+
+            <div class="admin-dash-section" id="dash-extra-1"></div>
+            <div class="admin-dash-section">
+              <div class="admin-dash-section__head">
+                <h3 class="admin-dash-section__title">Reservas y pedidos</h3>
+                <button type="button" class="admin-btn" id="dash-new-appt">+ Nuevo</button>
+              </div>
+              <div id="dash-appointments"></div>
+            </div>
+          </section>
+
+          <section id="tab-carta" class="admin-section" aria-label="Carta" role="tabpanel" aria-labelledby="btn-carta"></section>
+
+          <section id="tab-mesas" class="admin-section" aria-label="Mesas" role="tabpanel" aria-labelledby="btn-mesas"></section>
+
+          <section id="tab-horarios" class="admin-section" aria-label="Horarios" role="tabpanel" aria-labelledby="btn-horarios"></section>
+
+        </main>
       </div>
-    </main>
-    <footer class="admin-footer"><p class="site-footer__notice">Sitio de demostración. Todos los nombres, datos y servicios son ficticios.</p></footer>
+
+      <nav class="admin-bottomnav" aria-label="Secciones del panel">
+        <button type="button" class="admin-bottomnav__item is-active" data-tab="dashboard" aria-controls="tab-dashboard" aria-selected="true">
+          <svg class="admin-bottomnav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          <span>Operación</span>
+
+        </button>
+        <button type="button" class="admin-bottomnav__item" data-tab="carta" aria-controls="tab-carta" aria-selected="false">
+          <svg class="admin-bottomnav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2s2-.9 2-2V2"/><path d="M5 11v11"/><path d="M18 2c-1.7 0-3 2-3 5s1.3 5 3 5v10"/></svg>
+          <span>Carta</span>
+
+        </button>
+        <button type="button" class="admin-bottomnav__item" data-tab="mesas" aria-controls="tab-mesas" aria-selected="false">
+          <svg class="admin-bottomnav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="4"/><line x1="5" y1="11" x2="5" y2="21"/><line x1="19" y1="11" x2="19" y2="21"/></svg>
+          <span>Mesas</span>
+
+        </button>
+        <button type="button" class="admin-bottomnav__item" data-tab="horarios" aria-controls="tab-horarios" aria-selected="false">
+          <svg class="admin-bottomnav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Horarios</span>
+
+        </button>
+      </nav>
+
+    </div>
   </div>
 
+  <div id="appt-edit-overlay" class="admin-appt-form-overlay" hidden></div>
+
   <script src="/demos/elfogatero/js/config.js"></script>
-  <script>
-  (function () {
-    'use strict';
-    var CFG = window.SITE_CONFIG || {};
-    var PIN = '0000';
-    var slug = (CFG.tenant && CFG.tenant.slug) || 'cuadra';
-    var KEY = (CFG.demo && CFG.demo.citasKey) || slug + '_demo_citas';
-    var SESSION = slug + '_demo_admin';
-    var box = document.getElementById('citas-list');
-    var err = document.getElementById('login-error');
-    document.getElementById('citas-key').textContent = KEY;
-
-    function show(ids) { for (var i = 0; i < ids.length; i++) document.getElementById(ids[i]).hidden = !ids[i + 1]; }
-
-    function login() {
-      document.getElementById('login-view').hidden = true;
-      document.getElementById('panel-view').hidden = false;
-      render();
-    }
-    function showLogin() {
-      document.getElementById('panel-view').hidden = true;
-      document.getElementById('login-view').hidden = false;
-    }
-
-    /* Demo: auto-login real tras la primera entrada (sesión). En frío, sin
-       sesión, se muestra el login con el PIN 0000 como respaldo. */
-    try { if (sessionStorage.getItem(SESSION) === '1') login(); else showLogin(); } catch (e) { login(); }
-
-    document.getElementById('login-form').addEventListener('submit', function (ev) {
-      ev.preventDefault();
-      var pin = document.getElementById('pin-input').value;
-      if (pin === PIN) {
-        try { sessionStorage.setItem(SESSION, '1'); } catch (e) {}
-        login();
-      } else {
-        err.hidden = false;
-        err.textContent = 'PIN incorrecto. En la demostración el PIN es 0000.';
-        document.getElementById('pin-input').focus();
-      }
-    });
-
-    function read() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
-    function write(list) { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {} render(); }
-    function esc(s) {
-      return String(s == null ? '' : s).replace(/[&<>"']/g, function (ch) {
-        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
-      });
-    }
-    function fmt(iso) {
-      var d = new Date(iso);
-      if (isNaN(d.getTime())) return '';
-      return d.toLocaleDateString('es-UY', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-    }
-    function row(label, value, multi) {
-      if (value === undefined || value === null || value === '') return '';
-      return '<div class="admin-card__row"><dt>' + esc(label) + '</dt><dd>' + (multi ? esc(value).replace(/\n/g, '<br>') : esc(value)) + '</dd></div>';
-    }
-
-    function render() {
-      var list = read();
-      kpis(list);
-      if (!list.length) {
-        box.innerHTML = '<div class="admin-empty"><p>Todavía no hay ' + 'reservas' + '.</p>'
-          + '<p class="admin-empty__hint">Completá el formulario en <a href="' + '/reservar/' + '">' + '/reservar/' + '</a> o <a href="/demos/elfogatero/contacto/">/contacto/</a> y aparece acá.</p></div>';
-        return;
-      }
-      /* Base de clientes con historial: sin backend ni tabla propia, un
-         teléfono repetido dentro de lo ya guardado ES el historial. */
-      var porTelefono = {};
-      list.forEach(function (c) { if (c.telefono) porTelefono[c.telefono] = (porTelefono[c.telefono] || 0) + 1; });
-      box.innerHTML = list.map(function (c, i) {
-        var atendida = c.estado === 'Atendida';
-        var recurrente = c.telefono && porTelefono[c.telefono] > 1;
-        return '<article class="admin-card' + (atendida ? ' is-atendida' : '') + '">'
-          + '<header class="admin-card__head">'
-          + '<strong class="admin-card__id">' + esc(c.id || ('C-' + String(i + 1))) + '</strong>'
-          + '<span class="admin-card__meta">' + esc(fmt(c.created)) + '</span>'
-          + (recurrente ? '<span class="admin-status admin-status--recurrente" title="Ya reservó ' + porTelefono[c.telefono] + ' veces con este teléfono">Cliente recurrente</span>' : '')
-          + '<span class="admin-status admin-status--' + (atendida ? 'atendida' : 'pendiente') + '">' + esc(atendida ? 'Atendida' : 'Pendiente') + '</span>'
-          + '</header>'
-          + '<dl class="admin-card__data">'
-          + row('Tipo', c.servicio)
-          + row('Modalidad', c.modalidad)
-          + row('Fecha', c.fecha)
-          + row('Hora', c.hora)
-          + row('Nombre', c.nombre)
-          + row('Teléfono', c.telefono)
-          + row('Email', c.email)
-          + row('Mensaje', c.mensaje, true)
-          + '</dl>'
-          + '<div class="admin-card__actions">'
-          + '<button type="button" class="btn btn--ghost btn--sm" data-toggle="' + i + '">' + (atendida ? 'Marcar como nueva' : 'Marcar atendida') + '</button>'
-          + '<button type="button" class="btn btn--ghost btn--sm" data-delete="' + i + '">Quitar</button>'
-          + '</div>'
-          + '</article>';
-      }).join('');
-      box.querySelectorAll('[data-toggle]').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var list2 = read();
-          var idx = Number(btn.getAttribute('data-toggle'));
-          list2[idx].estado = list2[idx].estado === 'Atendida' ? 'Nueva' : 'Atendida';
-          write(list2);
-        });
-      });
-      box.querySelectorAll('[data-delete]').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var list2 = read();
-          list2.splice(Number(btn.getAttribute('data-delete')), 1);
-          write(list2);
-          toast('Consulta quitada.');
-        });
-      });
-    }
-
-    function kpis(list) {
-      var pend = list.filter(function (c) { return c.estado !== 'Atendida'; }).length;
-      document.getElementById('kpi-total').textContent = String(list.length);
-      document.getElementById('kpi-pendientes').textContent = String(pend);
-      document.getElementById('kpi-atendidas').textContent = String(list.length - pend);
-      document.getElementById('kpi-subtitle').textContent = list.length + ' ' + 'reservas' + ' · datos guardados solo en este navegador, no en un servidor';
-    }
-
-    function toast(msg) {
-      var el = document.getElementById('toast');
-      if (!el) return;
-      el.hidden = false;
-      el.textContent = msg;
-      setTimeout(function () { el.hidden = true; }, 2200);
-    }
-
-    document.getElementById('logout-btn').addEventListener('click', function () {
-      try { sessionStorage.removeItem(SESSION); } catch (e) {}
-      showLogin();
-    });
-    document.getElementById('export-btn').addEventListener('click', function () {
-      var list = read();
-      if (!list.length) { toast('No hay ' + 'reservas' + ' para exportar.'); return; }
-      var a = document.createElement('a');
-      a.href = URL.createObjectURL(new Blob([JSON.stringify(list, null, 2)], { type: 'application/json' }));
-      a.download = KEY + '.json';
-      a.click();
-      toast('Exportados ' + list.length + ' registros en JSON.');
-    });
-    document.getElementById('export-csv-btn').addEventListener('click', function () {
-      var list = read();
-      if (!list.length) { toast('No hay ' + 'reservas' + ' para exportar.'); return; }
-      var cols = ['id', 'created', 'estado', 'servicio', 'modalidad', 'franja', 'fecha', 'hora', 'nombre', 'telefono', 'email', 'mensaje'];
-      var csv = cols.join(',') + '\n' + list.map(function (r) {
-        return cols.map(function (k) {
-          var v = r[k] == null ? '' : String(r[k]);
-          return '"' + v.replace(/"/g, '""') + '"';
-        }).join(',');
-      }).join('\n');
-      var a = document.createElement('a');
-      a.href = URL.createObjectURL(new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' }));
-      a.download = KEY + '.csv';
-      a.click();
-      toast('Exportados ' + list.length + ' registros en CSV.');
-    });
-    document.getElementById('clear-btn').addEventListener('click', function () {
-      var list = read();
-      if (!list.length) { toast('No hay consultas para vaciar.'); return; }
-      if (window.confirm('¿Vaciar las ' + list.length + ' consultas guardadas en este navegador?')) {
-        write([]);
-        toast('Consultas vaciadas.');
-      }
-    });
-  }());
-  </script>
+  <script src="/demos/elfogatero/js/admin-db.js"></script>
+  <script src="/demos/elfogatero/js/admin.js"></script>
 </body>
 </html>
