@@ -86,8 +86,8 @@
 }
 
 .ed-nav__brand img {
-  width: 18px;
-  height: 18px;
+  width: auto;
+  height: 20px;
 }
 
 .ed-nav__brand span {
