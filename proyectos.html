@@ -7,7 +7,7 @@
   <meta name="description" content="Demos interactivas de CUADRA: mirá cómo se ven nuestros productos aplicados a negocios ficticios de distintos rubros.">
   <link rel="canonical" href="https://cuadrastudio.uy/proyectos.html">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#0F1111">
+  <meta name="theme-color" content="#F2F1ED">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -32,25 +32,29 @@
   <link rel="stylesheet" href="css/components.css?v=20260914b">
   <link rel="stylesheet" href="css/pages.css?v=20260915c">
   <link rel="stylesheet" href="css/animations.css?v=20260914">
+  <link rel="stylesheet" href="css/home-editorial.css?v=20260918">
 </head>
-<body>
+<body class="home-editorial section--light">
 
   <!-- Skip link -->
   <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
 
   <!-- Navigation -->
-  <nav class="nav" role="navigation" aria-label="Navegacion principal">
-    <div class="nav__inner">
-      <a href="/" class="nav__logo" aria-label="CUADRA - Inicio">
-        <img src="img/logo_white.svg" alt="" aria-hidden="true" class="nav__logo-img" width="104" height="31">
+  <nav class="ed-nav" role="navigation" aria-label="Navegacion principal">
+    <div class="ed-nav__inner">
+      <a href="/" class="ed-nav__brand" aria-label="CUADRA - Inicio">
+        <img src="assets/cuadra-isotipo-dark.svg" alt="">
+        <span>CUADRA</span>
       </a>
 
-      <div class="nav__links">
+      <div class="ed-nav__links">
         <a href="/" class="nav__link">Inicio</a>
         <a href="/productos.html" class="nav__link">Productos</a>
         <a href="/proyectos.html" class="nav__link" aria-current="page">Proyectos</a>
         <a href="/contacto.html" class="nav__link">Contacto</a>
       </div>
+
+      <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20los%20planes%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="ed-nav__cta">Hablar por WhatsApp ↗</a>
 
       <button class="nav__hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu de navegacion">
         <span class="nav__hamburger-line"></span>
@@ -68,31 +72,32 @@
     </div>
   </nav>
 
-  <main id="contenido" tabindex="-1">
+  <div class="ed-shell">
+    <div class="ed-metabar">
+      <div class="ed-container ed-metabar__inner">
+        <span>CUADRA · 2026</span>
+        <span class="ed-metabar__status"><span class="ed-metabar__dot" aria-hidden="true"></span>Abiertos a nuevos proyectos</span>
+      </div>
+    </div>
+
+    <main id="contenido" tabindex="-1">
 
     <!-- Page header -->
-    <header class="page-header">
-      <div class="container">
-        <p class="hero__label reveal">Demos</p>
-        <h1 class="hero__title reveal">Así se ven nuestros <span class="highlight">productos</span><br>en acción</h1>
-        <p class="hero__subtitle reveal">Sitios de demostración con negocios ficticios, pensados para mostrarte cada línea de producto en detalle.</p>
+    <header class="ed-hero" style="padding-bottom: var(--space-7);">
+      <div class="ed-container">
+        <p class="ed-feature__eyebrow reveal" style="margin-bottom: var(--space-3);">Demos</p>
+        <h1 class="ed-hero__title reveal" style="font-size: clamp(2.25rem, 5vw, 3.5rem);">Así se ven nuestros <em>productos</em> en acción.</h1>
+        <p class="ed-hero__subtitle reveal" style="margin-top: var(--space-5);">Sitios de demostración con negocios ficticios, pensados para mostrarte cada línea de producto en detalle.</p>
       </div>
-      <div class="hero__texture-mark" aria-hidden="true">
-        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-          <g fill="none" stroke="#AFC8C2" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter">
-            <path d="M10 14H45L58 36"/>
-            <path d="M16 47H58"/>
-            <path d="M16 56H58"/>
-          </g>
-        </svg>
-      </div>
-      <div class="hero__coords" aria-hidden="true">34.90°S / 56.16°W</div>
     </header>
 
     <!-- Project grid -->
-    <section class="section" aria-labelledby="grid-proyectos">
-      <div class="container">
-        <h2 class="sr-only" id="grid-proyectos">Lista de demos de producto</h2>
+    <section class="ed-section" aria-labelledby="grid-proyectos">
+      <div class="ed-container">
+        <div class="ed-section__head">
+          <span class="ed-section__index">01 —</span>
+          <h2 class="ed-section__label" id="grid-proyectos">Demos de producto</h2>
+        </div>
         <div class="grid grid--2">
 
           <!-- Vera Store (demo de producto CUADRA) -->
@@ -171,43 +176,59 @@
       </div>
     </section>
 
+    </main>
+
     <!-- CTA -->
-    <section class="section" aria-labelledby="cta-proyectos">
-      <div class="container">
-        <div class="cta-block reveal">
-          <h2 class="cta-block__title" id="cta-proyectos">¿Te gustó lo que <span class="highlight">ves</span>?</h2>
-          <p class="cta-block__text">Podemos hacer algo así para tu negocio. Cotización sin cargo.</p>
-          <a href="/contacto.html" class="btn btn--primary">Agendá una demo gratuita</a>
-        </div>
+    <section class="ed-section" style="border-top: none; padding-top: 0;" aria-labelledby="cta-proyectos">
+      <div class="ed-cta reveal">
+        <p class="ed-cta__eyebrow">— Hablemos</p>
+        <p class="ed-cta__title" id="cta-proyectos">¿Te gustó lo que <em>ves</em>?</p>
+        <p class="ed-cta__text">Podemos hacer algo así para tu negocio. Cotización sin cargo.</p>
+        <a href="/contacto.html" class="ed-cta__btn">Agendá una demo gratuita →</a>
+        <p class="ed-cta__meta">Sin compromiso · Te mostramos el sistema funcionando antes de firmar nada</p>
       </div>
     </section>
 
-  </main>
+    <!-- Footer -->
+    <footer class="ed-footer" role="contentinfo">
+      <div class="ed-container">
+        <div class="ed-footer__write">
+          <span class="ed-footer__write-label">Escribinos</span>
+          <a href="mailto:contacto@cuadrastudio.uy" class="ed-footer__email">contacto@cuadrastudio.uy</a>
+        </div>
+
+        <div class="ed-footer__cols">
+          <div class="ed-footer__col">
+            <p class="ed-footer__col-title">Páginas</p>
+            <a href="/">Inicio</a>
+            <a href="/productos.html">Productos</a>
+            <a href="/proyectos.html">Proyectos</a>
+            <a href="/contacto.html">Contacto</a>
+          </div>
+          <div class="ed-footer__col">
+            <p class="ed-footer__col-title">Elsewhere</p>
+            <a href="https://www.instagram.com/cuadrastudio.uy" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+            <a href="https://wa.me/59899331909" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+          </div>
+          <div class="ed-footer__col">
+            <p class="ed-footer__col-title">Legal</p>
+            <a href="/aviso-legal.html">Aviso legal</a>
+            <a href="/privacidad.html">Privacidad</a>
+          </div>
+        </div>
+
+        <div class="ed-footer__bottom">
+          <span>&copy; 2026 <span class="brand-wordmark">CUADRA</span></span>
+          <span>Montevideo, Uruguay</span>
+        </div>
+      </div>
+    </footer>
+  </div>
 
   <!-- WhatsApp floating button -->
   <a href="https://wa.me/59899331909?text=Hola!%20Vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20un%20sitio%20web" target="_blank" rel="noopener noreferrer" class="whatsapp-fab" aria-label="Contactar por WhatsApp">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C6.9 3 2.7 7.2 2.7 12.3c0 1.6.4 3.1 1.2 4.5L2.7 21.3l4.6-1.2c1.3.8 2.8 1.2 4.5 1.2 5.1 0 9.3-4.2 9.3-9.3S17.1 3 12 3z"/><path d="M9.3 8.6c-.2 0-.4.1-.5.3-.2.3-.7.9-.7 2s.7 2.4.8 2.5c.1.1 1.4 2.3 3.5 3.1 1.3.5 1.9.5 2.4.3.4-.1 1-.5 1.1-1 .1-.5.1-.9.1-1-.1-.1-.2-.2-.4-.2l-1.6-.7c-.2-.1-.4-.1-.5.1l-.6.9c-.1.2-.3.2-.5.1-.8-.3-1.6-.8-2.2-1.5-.5-.6-.9-1.3-1-1.5-.1-.2 0-.3.1-.4l.4-.5c.1-.2.1-.3 0-.4l-.3-.7c-.2-.9-.5-1.9-.7-2-.1-.2-.3-.3-.7-.3z"/></svg>
   </a>
-
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <img src="img/logo_white.svg" alt="CUADRA" class="footer__logo-img" width="104" height="31">
-        <span class="footer__brand-desc">Desarrollo web a medida</span>
-      </div>
-      <div class="footer__links">
-        <a href="mailto:contacto@cuadrastudio.uy" class="footer__link">Email</a>
-        <a href="https://wa.me/59899331909" target="_blank" rel="noopener noreferrer" class="footer__link">WhatsApp</a>
-        <a href="https://www.instagram.com/cuadrastudio.uy" target="_blank" rel="noopener noreferrer" class="footer__link">Instagram</a>
-        <a href="/aviso-legal.html" class="footer__link">Aviso legal</a>
-        <a href="/privacidad.html" class="footer__link">Privacidad</a>
-      </div>
-      <div class="footer__brand">
-        <p class="footer__copy">&copy; 2026 <span class="brand-wordmark">CUADRA</span></p>
-      </div>
-    </div>
-  </footer>
 
   <script src="js/main.js?v=20260915b" defer></script>
 </body>

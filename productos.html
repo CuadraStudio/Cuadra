@@ -7,7 +7,7 @@
   <meta name="description" content="Elegí tu línea de producto (Agenda, Tienda, Restó o Consulta) y mirá los planes, precios, setup y condiciones de CUADRA. Planes desde $U 990/mes.">
   <link rel="canonical" href="https://cuadrastudio.uy/productos.html">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#0F1111">
+  <meta name="theme-color" content="#F2F1ED">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="css/components.css?v=20260914b">
   <link rel="stylesheet" href="css/pages.css?v=20260915c">
   <link rel="stylesheet" href="css/animations.css?v=20260914">
+  <link rel="stylesheet" href="css/home-editorial.css?v=20260918">
 
   <!-- SEO estructurado: FAQPage (feature SEO basico del servicio) -->
   <script type="application/ld+json">
@@ -114,24 +115,27 @@
   }
   </script>
 </head>
-<body>
+<body class="home-editorial section--light">
 
   <!-- Skip link -->
   <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
 
   <!-- Navigation -->
-  <nav class="nav" role="navigation" aria-label="Navegacion principal">
-    <div class="nav__inner">
-      <a href="/" class="nav__logo" aria-label="CUADRA - Inicio">
-        <img src="img/logo_white.svg" alt="" aria-hidden="true" class="nav__logo-img" width="104" height="31">
+  <nav class="ed-nav" role="navigation" aria-label="Navegacion principal">
+    <div class="ed-nav__inner">
+      <a href="/" class="ed-nav__brand" aria-label="CUADRA - Inicio">
+        <img src="assets/cuadra-isotipo-dark.svg" alt="">
+        <span>CUADRA</span>
       </a>
 
-      <div class="nav__links">
+      <div class="ed-nav__links">
         <a href="/" class="nav__link">Inicio</a>
         <a href="/productos.html" class="nav__link" aria-current="page">Productos</a>
         <a href="/proyectos.html" class="nav__link">Proyectos</a>
         <a href="/contacto.html" class="nav__link">Contacto</a>
       </div>
+
+      <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20los%20planes%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="ed-nav__cta">Hablar por WhatsApp ↗</a>
 
       <button class="nav__hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu de navegacion">
         <span class="nav__hamburger-line"></span>
@@ -149,34 +153,33 @@
     </div>
   </nav>
 
-  <main id="contenido" tabindex="-1">
+  <div class="ed-shell">
+    <div class="ed-metabar">
+      <div class="ed-container ed-metabar__inner">
+        <span>CUADRA · 2026</span>
+        <span class="ed-metabar__status"><span class="ed-metabar__dot" aria-hidden="true"></span>Abiertos a nuevos proyectos</span>
+      </div>
+    </div>
+
+    <main id="contenido" tabindex="-1">
 
     <!-- Page header -->
-    <header class="page-header">
-      <div class="container container--narrow text-center">
-        <p class="hero__label reveal">Productos</p>
-        <h1 class="hero__title reveal">Un plan para cada <span class="highlight">negocio</span></h1>
-        <p class="hero__subtitle reveal" style="margin-inline: auto;">Tu web + tu sistema + WhatsApp, todo junto, en un servicio mensual desde $U 990.</p>
+    <header class="ed-hero" style="padding-bottom: var(--space-7);">
+      <div class="ed-container">
+        <p class="ed-feature__eyebrow reveal" style="margin-bottom: var(--space-3);">Productos</p>
+        <h1 class="ed-hero__title reveal" style="font-size: clamp(2.25rem, 5vw, 3.5rem);">Un plan para cada <em>negocio.</em></h1>
+        <p class="ed-hero__subtitle reveal" style="margin-top: var(--space-5);">Tu web, tu sistema y WhatsApp, todo junto, en un servicio mensual desde $U 990.</p>
       </div>
-      <div class="hero__texture-mark" aria-hidden="true">
-        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-          <g fill="none" stroke="#AFC8C2" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter">
-            <path d="M10 14H45L58 36"/>
-            <path d="M16 47H58"/>
-            <path d="M16 56H58"/>
-          </g>
-        </svg>
-      </div>
-      <div class="hero__coords" aria-hidden="true">34.90°S / 56.16°W</div>
     </header>
 
     <!-- Planes y precios -->
-    <section id="planes" class="section" aria-labelledby="planes-title">
-      <div class="container">
-        <div class="container--narrow text-center" style="margin-bottom: var(--space-6);">
-          <h2 class="section-title reveal" id="planes-title">ARMÁ TU PLAN</h2>
-          <p class="plans-definition">Elegí tu línea de negocio y tu plan — mirá el total armarse en tiempo real. Implementación = web a medida + datos reales cargados + integración WhatsApp + panel configurado + capacitación.</p>
+    <section id="planes" class="ed-section" aria-labelledby="planes-title">
+      <div class="ed-container">
+        <div class="ed-section__head">
+          <span class="ed-section__index">01 —</span>
+          <h2 class="ed-section__label" id="planes-title">Armá tu plan</h2>
         </div>
+        <p class="ed-section__lede reveal">Elegí tu línea de negocio y tu plan: mirá el total armarse en tiempo real. Implementación es web a medida, datos reales cargados, integración WhatsApp, panel configurado y capacitación.</p>
 
         <div class="plans-base">
           <p>Todos los planes incluyen: hosting, dominio propio, SSL, mantenimiento, soporte humano por WhatsApp, panel de administración y botón WhatsApp flotante. No es una landing de una sola pantalla: cada línea trae varias páginas reales (ver el detalle abajo, en "Base incluida" de tu línea). Vos elegís <strong>qué</strong> mostrar en cada una — tus servicios, fotos, precios, textos —; nosotros armamos <strong>cómo</strong> se ve, con la estructura ya probada de tu línea.</p>
@@ -229,7 +232,7 @@
                   </button>
                 </div>
                 <div class="configurator__actions">
-                  <button type="button" class="btn btn--primary" data-next disabled>Continuar →</button>
+                  <button type="button" class="btn btn--primary" data-next disabled>Continuar</button>
                 </div>
               </div>
 
@@ -245,7 +248,7 @@
                   <p class="plans-block__tagline">Tu agenda trabaja sola</p>
 
                   <div class="plan-base">
-                    <p class="plan-base__label">Base incluida — no se puede sacar</p>
+                    <p class="plan-base__label">Base incluida: no se puede sacar</p>
                     <p class="plan-base__price">Implementación: $U 22.000 único (~USD 550) &nbsp;·&nbsp; Mensual: $U 990/mes (~USD 25)</p>
                     <ul class="plan-base__list">
                       <li><strong>Tu web tiene 6 páginas propias:</strong> Inicio, Servicios, Nosotros, Preguntas frecuentes, Contacto y Reservar — cada una con tu texto y tus fotos, no relleno genérico</li>
@@ -355,7 +358,7 @@
                   <p class="plans-block__tagline">Tu catálogo en Google, tus pedidos por WhatsApp</p>
 
                   <div class="plan-base">
-                    <p class="plan-base__label">Base incluida — no se puede sacar</p>
+                    <p class="plan-base__label">Base incluida: no se puede sacar</p>
                     <p class="plan-base__price">Implementación: $U 28.000 único (~USD 700) &nbsp;·&nbsp; Mensual: $U 990/mes (~USD 25)</p>
                     <ul class="plan-base__list">
                       <li><strong>Tu web tiene 7 páginas fijas</strong> (Inicio, Catálogo, Envíos, Nosotros, Preguntas frecuentes, Contacto y Tu pedido) <strong>más una página propia por cada categoría y por cada producto que cargues</strong> — así cada producto tuyo aparece en Google por separado, no como una fila más en una lista</li>
@@ -455,7 +458,7 @@
                   <p class="plans-block__tagline">Tu carta digital, tus mesas reservadas, tus clientes contentos</p>
 
                   <div class="plan-base">
-                    <p class="plan-base__label">Base incluida — no se puede sacar</p>
+                    <p class="plan-base__label">Base incluida: no se puede sacar</p>
                     <p class="plan-base__price">Implementación: $U 25.000 único (~USD 625) &nbsp;·&nbsp; Mensual: $U 990/mes (~USD 25)</p>
                     <ul class="plan-base__list">
                       <li><strong>Tu web tiene 6 páginas propias:</strong> Inicio, Carta, Reservar, Nosotros, Preguntas frecuentes y Contacto — con tus platos, tus fotos y tus precios reales</li>
@@ -570,7 +573,7 @@
                   <p class="plans-block__tagline">Tu presencia profesional, seria y funcionando</p>
 
                   <div class="plan-base">
-                    <p class="plan-base__label">Base incluida — no se puede sacar</p>
+                    <p class="plan-base__label">Base incluida: no se puede sacar</p>
                     <p class="plan-base__price">Implementación: $U 15.000 único (~USD 375) &nbsp;·&nbsp; Mensual: $U 990/mes (~USD 25)</p>
                     <ul class="plan-base__list">
                       <li><strong>Tu web tiene 6 páginas propias:</strong> Inicio, Servicios, Sobre mí, Cómo trabajamos, Preguntas frecuentes y Contacto — con tu bio, tu foto y tus credenciales reales</li>
@@ -671,7 +674,7 @@
 
                 <div class="configurator__actions">
                   <button type="button" class="btn btn--secondary" data-back="1">← Cambiar de línea</button>
-                  <button type="button" class="btn btn--primary" data-next-to-extras>Continuar →</button>
+                  <button type="button" class="btn btn--primary" data-next-to-extras>Continuar</button>
                 </div>
               </div>
 
@@ -704,7 +707,7 @@
                 </div>
                 <div class="configurator__actions">
                   <button type="button" class="btn btn--secondary" data-back="2">← Atrás</button>
-                  <button type="button" class="btn btn--primary" data-next-to-result>Ver mi resumen →</button>
+                  <button type="button" class="btn btn--primary" data-next-to-result>Ver mi resumen</button>
                 </div>
               </div>
 
@@ -765,16 +768,17 @@
     </section>
 
     <!-- Setup, compromiso y condiciones -->
-    <section id="setup" class="section" aria-labelledby="setup-title">
-      <div class="container">
-        <div class="container--narrow text-center" style="margin-bottom: var(--space-8);">
-          <h2 class="section-title reveal" id="setup-title">SETUP, COMPROMISO Y CONDICIONES</h2>
+    <section id="setup" class="ed-section" aria-labelledby="setup-title">
+      <div class="ed-container">
+        <div class="ed-section__head">
+          <span class="ed-section__index">02 —</span>
+          <h2 class="ed-section__label" id="setup-title">Setup, compromiso y condiciones</h2>
         </div>
 
         <div class="setup-grid">
           <div class="setup-grid__main">
             <div class="setup-card">
-              <h3 class="setup-card__title">QUÉ INCLUYE LA IMPLEMENTACIÓN</h3>
+              <h3 class="setup-card__title">Qué incluye la implementación</h3>
               <p class="setup-card__lede">No es una landing de una pantalla: cada línea trae varias páginas reales (el detalle exacto está en "Base incluida" al elegir tu línea, arriba). Vos elegís <strong>qué</strong> va en cada página — tus servicios, tus fotos, tus precios —; nosotros armamos <strong>cómo</strong> se ve, sobre la estructura ya probada de tu línea (no es una plantilla genérica con tu logo pegado, pero tampoco es diseño libre desde cero).</p>
               <ul class="pricing-card__list setup-checklist">
                 <li class="pricing-card__item">Diseño visual a medida con identidad de tu negocio</li>
@@ -789,9 +793,9 @@
             </div>
 
             <div class="setup-card">
-              <h3 class="setup-card__title">CÓMO VER EL SISTEMA FUNCIONANDO ANTES DE FIRMAR</h3>
+              <h3 class="setup-card__title">Cómo ver el sistema funcionando antes de firmar</h3>
               <ul class="content-card__list">
-                <li class="content-card__item">Mirá las demos en vivo en <a href="/proyectos.html">proyectos.html</a>: Vera Store, Estudio Trazo, El Fogatero y Estudio Arroyo — negocios ficticios con el sistema completo funcionando</li>
+                <li class="content-card__item">Mirá las demos en vivo en <a href="/proyectos.html">proyectos.html</a>: Vera Store, Estudio Trazo, El Fogatero y Estudio Arroyo, negocios ficticios con el sistema completo funcionando</li>
                 <li class="content-card__item">Te mostramos el panel de administración real por videollamada o en persona antes de que firmes nada</li>
                 <li class="content-card__item">Tu implementación arranca después de firmar el contrato y pagar la seña — con tus datos reales, no los de una demo</li>
               </ul>
@@ -800,7 +804,7 @@
 
           <div class="setup-grid__side">
             <div class="setup-card">
-              <h3 class="setup-card__title">FORMA DE PAGO</h3>
+              <h3 class="setup-card__title">Forma de pago</h3>
               <dl class="setup-rows">
                 <div class="setup-row">
                   <dt class="setup-row__term">Seña</dt>
@@ -822,7 +826,7 @@
             </div>
 
             <div class="setup-card">
-              <h3 class="setup-card__title">OPCIÓN 2 — YA TENGO WEB</h3>
+              <h3 class="setup-card__title">Opción 2: ya tengo web</h3>
               <p class="setup-card__lede">Si ya tenés una web y solo querés integrar el sistema (agenda, pedidos, carta o consultas), te ahorrás el diseño a medida — el resto (integración de WhatsApp, panel, testing) es el mismo trabajo, por eso el costo varía según la línea:</p>
               <dl class="setup-rows">
                 <div class="setup-row">
@@ -846,7 +850,7 @@
             </div>
 
             <div class="setup-card">
-              <h3 class="setup-card__title">TIEMPO DE ENTREGA</h3>
+              <h3 class="setup-card__title">Tiempo de entrega</h3>
               <ul class="content-card__list">
                 <li class="content-card__item">5 a 10 días hábiles desde la confirmación del contenido y la seña</li>
                 <li class="content-card__item">La entrega depende de la complejidad del plan y la rapidez en proveer el contenido solicitado</li>
@@ -855,41 +859,41 @@
           </div>
         </div>
 
-        <h3 class="setup-subtitle">QUÉ NECESITAMOS DE VOS</h3>
-        <div class="content-grid">
-          <div class="content-card">
-            <p class="content-card__title">AGENDA</p>
-            <ul class="content-card__list">
-              <li class="content-card__item">Logo, fotos del local/servicios, lista de servicios con precio y duración, horarios, profesionales, redes sociales</li>
-            </ul>
+        <div class="ed-section__head" style="margin-top: var(--space-9);">
+          <span class="ed-section__index">02.1 —</span>
+          <h3 class="ed-section__label">Qué necesitamos de vos</h3>
+        </div>
+        <div class="ed-lettered ed-lettered--4">
+          <div class="ed-lettered__item reveal">
+            <span class="ed-lettered__badge">A</span>
+            <h4 class="ed-lettered__title">Agenda</h4>
+            <p class="ed-lettered__text">Logo, fotos del local o servicios, lista de servicios con precio y duración, horarios, profesionales, redes sociales.</p>
           </div>
-          <div class="content-card">
-            <p class="content-card__title">TIENDA</p>
-            <ul class="content-card__list">
-              <li class="content-card__item">Logo, fotos de cada producto (o catálogo existente), precios, descripciones, talles/colores, forma de entrega</li>
-            </ul>
+          <div class="ed-lettered__item reveal">
+            <span class="ed-lettered__badge">T</span>
+            <h4 class="ed-lettered__title">Tienda</h4>
+            <p class="ed-lettered__text">Logo, fotos de cada producto (o catálogo existente), precios, descripciones, talles o colores, forma de entrega.</p>
           </div>
-          <div class="content-card">
-            <p class="content-card__title">RESTÓ</p>
-            <ul class="content-card__list">
-              <li class="content-card__item">Logo, carta actualizada (platos/precios), fotos de platos, horarios de cocina, cantidad de mesas por franja, dirección</li>
-            </ul>
+          <div class="ed-lettered__item reveal">
+            <span class="ed-lettered__badge">R</span>
+            <h4 class="ed-lettered__title">Restó</h4>
+            <p class="ed-lettered__text">Logo, carta actualizada (platos y precios), fotos de platos, horarios de cocina, cantidad de mesas por franja, dirección.</p>
           </div>
-          <div class="content-card">
-            <p class="content-card__title">CONSULTA</p>
-            <ul class="content-card__list">
-              <li class="content-card__item">Foto profesional, bio, especialidades y credenciales/matrícula, horarios de consulta, testimonios, portfolio (si aplica)</li>
-            </ul>
+          <div class="ed-lettered__item reveal">
+            <span class="ed-lettered__badge">C</span>
+            <h4 class="ed-lettered__title">Consulta</h4>
+            <p class="ed-lettered__text">Foto profesional, bio, especialidades y credenciales o matrícula, horarios de consulta, testimonios, portfolio si aplica.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="section" aria-labelledby="faq-title">
-      <div class="container">
-        <div class="container--narrow text-center" style="margin-bottom: var(--space-8);">
-          <h2 class="section-title reveal" id="faq-title">PREGUNTAS FRECUENTES</h2>
+    <section id="faq" class="ed-section" aria-labelledby="faq-title">
+      <div class="ed-container">
+        <div class="ed-section__head">
+          <span class="ed-section__index">03 —</span>
+          <h2 class="ed-section__label" id="faq-title">Preguntas frecuentes</h2>
         </div>
         <div class="faq-list">
           <details class="faq-item" name="faq">
@@ -928,44 +932,59 @@
       </div>
     </section>
 
-    <!-- CTA final -->
-    <section id="cta" class="section" aria-labelledby="cta-title">
-      <div class="container">
-        <div class="cta-block reveal">
-          <p class="cta-block__title" id="cta-title">TU WEB, TU SISTEMA Y WHATSAPP, TODO JUNTO</p>
-          <p class="cta-block__text">Armá tu plan arriba y hablemos por WhatsApp con la cotización ya armada. Te mostramos el sistema funcionando en una demo real antes de que firmes nada. Planes desde $U 990/mes.</p>
-          <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20los%20planes%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="btn btn--primary">HABLAR POR WHATSAPP</a>
-          <a href="#planes" class="btn btn--secondary">VER PLANES</a>
-        </div>
+    </main>
+
+    <!-- Footer CTA -->
+    <section class="ed-section" style="border-top: none; padding-top: 0;" aria-labelledby="cta-title">
+      <div class="ed-cta reveal">
+        <p class="ed-cta__eyebrow">— Hablemos</p>
+        <p class="ed-cta__title" id="cta-title">Tu web, tu sistema y WhatsApp, <em>todo junto</em>.</p>
+        <p class="ed-cta__text">Armá tu plan arriba y hablemos por WhatsApp con la cotización ya armada. Te mostramos el sistema funcionando en una demo real antes de que firmes nada.</p>
+        <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20los%20planes%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="ed-cta__btn">Hablar por WhatsApp →</a>
+        <p class="ed-cta__meta">Cotización orientativa, la confirmamos por WhatsApp · Desde $U 990/mes</p>
       </div>
     </section>
 
-  </main>
+    <!-- Footer -->
+    <footer class="ed-footer" role="contentinfo">
+      <div class="ed-container">
+        <div class="ed-footer__write">
+          <span class="ed-footer__write-label">Escribinos</span>
+          <a href="mailto:contacto@cuadrastudio.uy" class="ed-footer__email">contacto@cuadrastudio.uy</a>
+        </div>
+
+        <div class="ed-footer__cols">
+          <div class="ed-footer__col">
+            <p class="ed-footer__col-title">Páginas</p>
+            <a href="/">Inicio</a>
+            <a href="/productos.html">Productos</a>
+            <a href="/proyectos.html">Proyectos</a>
+            <a href="/contacto.html">Contacto</a>
+          </div>
+          <div class="ed-footer__col">
+            <p class="ed-footer__col-title">Elsewhere</p>
+            <a href="https://www.instagram.com/cuadrastudio.uy" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+            <a href="https://wa.me/59899331909" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+          </div>
+          <div class="ed-footer__col">
+            <p class="ed-footer__col-title">Legal</p>
+            <a href="/aviso-legal.html">Aviso legal</a>
+            <a href="/privacidad.html">Privacidad</a>
+          </div>
+        </div>
+
+        <div class="ed-footer__bottom">
+          <span>&copy; 2026 <span class="brand-wordmark">CUADRA</span></span>
+          <span>Montevideo, Uruguay</span>
+        </div>
+      </div>
+    </footer>
+  </div>
 
   <!-- WhatsApp floating button -->
   <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20los%20planes%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="whatsapp-fab" aria-label="Contactar por WhatsApp">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C6.9 3 2.7 7.2 2.7 12.3c0 1.6.4 3.1 1.2 4.5L2.7 21.3l4.6-1.2c1.3.8 2.8 1.2 4.5 1.2 5.1 0 9.3-4.2 9.3-9.3S17.1 3 12 3z"/><path d="M9.3 8.6c-.2 0-.4.1-.5.3-.2.3-.7.9-.7 2s.7 2.4.8 2.5c.1.1 1.4 2.3 3.5 3.1 1.3.5 1.9.5 2.4.3.4-.1 1-.5 1.1-1 .1-.5.1-.9.1-1-.1-.1-.2-.2-.4-.2l-1.6-.7c-.2-.1-.4-.1-.5.1l-.6.9c-.1.2-.3.2-.5.1-.8-.3-1.6-.8-2.2-1.5-.5-.6-.9-1.3-1-1.5-.1-.2 0-.3.1-.4l.4-.5c.1-.2.1-.3 0-.4l-.3-.7c-.2-.9-.5-1.9-.7-2-.1-.2-.3-.3-.7-.3z"/></svg>
   </a>
-
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <img src="img/logo_white.svg" alt="CUADRA" class="footer__logo-img" width="104" height="31">
-        <span class="footer__brand-desc">Desarrollo web a medida</span>
-      </div>
-      <div class="footer__links">
-        <a href="mailto:contacto@cuadrastudio.uy" class="footer__link">Email</a>
-        <a href="https://wa.me/59899331909" target="_blank" rel="noopener noreferrer" class="footer__link">WhatsApp</a>
-        <a href="https://www.instagram.com/cuadrastudio.uy" target="_blank" rel="noopener noreferrer" class="footer__link">Instagram</a>
-        <a href="/aviso-legal.html" class="footer__link">Aviso legal</a>
-        <a href="/privacidad.html" class="footer__link">Privacidad</a>
-      </div>
-      <div class="footer__brand">
-        <p class="footer__copy">&copy; 2026 <span class="brand-wordmark">CUADRA</span></p>
-      </div>
-    </div>
-  </footer>
 
   <script src="js/main.js?v=20260915b" defer></script>
 </body>

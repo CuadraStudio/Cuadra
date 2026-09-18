@@ -7,7 +7,7 @@
   <meta name="description" content="Web, sistema integrado y WhatsApp automatizado para negocios locales en un servicio mensual. Planes desde $U 990. Agenda, Tienda, Restó y Consulta.">
   <link rel="canonical" href="https://cuadrastudio.uy/index-web.html">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#0F1111">
+  <meta name="theme-color" content="#F2F1ED">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -39,25 +39,29 @@
   <link rel="stylesheet" href="css/components.css?v=20260914b">
   <link rel="stylesheet" href="css/pages.css?v=20260915c">
   <link rel="stylesheet" href="css/animations.css?v=20260914">
+  <link rel="stylesheet" href="css/home-editorial.css?v=20260918">
 </head>
-<body>
+<body class="home-editorial section--light">
 
   <!-- Skip link -->
   <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
 
   <!-- Navigation -->
-  <nav class="nav" role="navigation" aria-label="Navegacion principal">
-    <div class="nav__inner">
-      <a href="/" class="nav__logo" aria-label="CUADRA - Inicio">
-        <img src="img/logo_white.svg" alt="" aria-hidden="true" class="nav__logo-img" width="104" height="31">
+  <nav class="ed-nav" role="navigation" aria-label="Navegacion principal">
+    <div class="ed-nav__inner">
+      <a href="/" class="ed-nav__brand" aria-label="CUADRA - Inicio">
+        <img src="assets/cuadra-isotipo-dark.svg" alt="">
+        <span>CUADRA</span>
       </a>
 
-      <div class="nav__links">
+      <div class="ed-nav__links">
         <a href="/" class="nav__link" aria-current="page">Inicio</a>
         <a href="/productos.html" class="nav__link">Productos</a>
         <a href="/proyectos.html" class="nav__link">Proyectos</a>
         <a href="/contacto.html" class="nav__link">Contacto</a>
       </div>
+
+      <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20los%20planes%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="ed-nav__cta">Hablar por WhatsApp ↗</a>
 
       <button class="nav__hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu de navegacion">
         <span class="nav__hamburger-line"></span>
@@ -75,118 +79,144 @@
     </div>
   </nav>
 
-  <main id="contenido" tabindex="-1">
+  <div class="ed-shell">
+    <div class="ed-metabar">
+      <div class="ed-container ed-metabar__inner">
+        <span>CUADRA · 2026</span>
+        <span class="ed-metabar__status"><span class="ed-metabar__dot" aria-hidden="true"></span>Abiertos a nuevos proyectos</span>
+      </div>
+    </div>
+
+    <main id="contenido" tabindex="-1">
 
     <!-- Hero -->
-    <header class="hero hero--construction section" role="banner">
-      <div class="container container--narrow text-center">
-        <img src="img/logo_white.svg" alt="" aria-hidden="true" class="hero__logo" width="285" height="77">
-        <h1 class="hero__label"><span>C</span><span>U</span><span>A</span><span>D</span><span>R</span><span>A</span></h1>
-        <div class="hero__rotator" aria-live="polite">
-          <p class="hero__rotator-line is-active">EXPERIENCIAS DIGITALES A MEDIDA.</p>
-          <p class="hero__rotator-line">SITIOS WEB PENSADOS PARA LO ESENCIAL.</p>
-          <p class="hero__rotator-line">RENDIMIENTO Y ESCALABILIDAD.</p>
-          <p class="hero__rotator-line">DISEÑO UX/UI CENTRADO EN LAS PERSONAS.</p>
-          <p class="hero__rotator-line">DESARROLLO SIN PLANTILLAS NI LÍMITES.</p>
-          <p class="hero__rotator-line">PRECISIÓN, ESTRUCTURA, CÓDIGO.</p>
-          <p class="hero__rotator-line">PROCESOS CLAROS, PLAZOS CUMPLIDOS.</p>
+    <header class="ed-hero">
+      <div class="ed-container">
+        <h1 class="ed-hero__title reveal">Un servicio, <em>todo lo que tu negocio necesita.</em></h1>
+
+        <div class="ed-hero__row">
+          <p class="ed-hero__subtitle reveal">Desarrollamos sitios web profesionales para negocios locales. Web, sistema integrado y WhatsApp, todo junto, en un servicio mensual. Sin complicaciones, sin comisiones, sin sorpresas.</p>
+          <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20los%20planes%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="ed-hero__link reveal">Hablar por WhatsApp ↗</a>
         </div>
-        <p class="hero__subtitle" style="margin-inline: auto;">Desarrollamos sitios web profesionales para negocios locales. Ahora como servicio mensual: web, sistema integrado y WhatsApp, todo junto. Sin complicaciones, sin comisiones, sin sorpresas.</p>
-        <p class="hero__actions">
-          <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20los%20planes%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="btn btn--primary">Hablemos por WhatsApp</a>
-          <a href="/productos.html" class="btn btn--secondary">Ver planes y precios</a>
-        </p>
-        <div class="hero__coords">34.90°S / 56.16°W</div>
+
+        <p class="ed-hero__coords">34.90°S / 56.16°W · Montevideo, Uruguay</p>
       </div>
     </header>
 
     <!-- Lineas de producto -->
-    <section id="lineas" class="section" aria-labelledby="lineas-title">
-      <div class="container">
-        <div class="container--narrow text-center" style="margin-bottom: var(--space-8);">
-          <h2 class="section-title reveal" id="lineas-title">LÍNEAS DE PRODUCTO</h2>
-          <p class="lines-lede">Tu web + tu sistema + WhatsApp, todo junto, en un servicio mensual.</p>
+    <section id="lineas" class="ed-section" aria-labelledby="lineas-title">
+      <div class="ed-container">
+        <div class="ed-section__head">
+          <span class="ed-section__index">01 —</span>
+          <h2 class="ed-section__label" id="lineas-title">Líneas de producto</h2>
         </div>
-        <p class="lines-pitch">CUADRA es el servicio integral para negocios locales que necesitan presencia online y operación digital: web profesional, sistema integrado (agenda, pedidos, carta, consultas), WhatsApp automatizado y soporte humano — sin complicaciones, sin comisiones, sin sorpresas.</p>
+        <p class="ed-section__lede reveal">CUADRA es el servicio integral para negocios locales que necesitan presencia online y operación digital: web profesional, sistema integrado (agenda, pedidos, carta, consultas), WhatsApp automatizado y soporte humano.</p>
 
-        <div class="lines-grid">
-          <article class="line-card">
-            <h3 class="line-card__title">CUADRA AGENDA</h3>
-            <p class="line-card__tagline">Tu agenda trabaja sola</p>
-            <p class="line-card__audience">Servicios con turnos: barberías, peluquerías, estéticas, masajes, tatuajes, gimnasios, clínicas</p>
-            <p class="line-card__outcome">Que tus clientes reserven solos 24/7 y no pierdas turnos por no-show</p>
-            <p class="line-card__quote">"No quiero una app. Quiero que la gente reserve sola y no me quede el hueco."</p>
-            <a href="/productos.html#planes-agenda" class="line-card__cta">VER PLANES</a>
-          </article>
+        <article class="ed-feature reveal">
+          <div>
+            <p class="ed-feature__eyebrow">Línea 01 · Servicios con turnos</p>
+            <h3 class="ed-feature__title">CUADRA Agenda</h3>
+            <p class="ed-feature__tagline">Tu agenda trabaja sola.</p>
+            <ul class="ed-feature__list">
+              <li>Servicios con turnos: barberías, peluquerías, estéticas, masajes, tatuajes, gimnasios, clínicas.</li>
+              <li>Que tus clientes reserven solos 24/7 y no pierdas turnos por no-show.</li>
+              <li>"No quiero una app. Quiero que la gente reserve sola y no me quede el hueco."</li>
+            </ul>
+            <a href="/productos.html#planes-agenda" class="ed-feature__cta">Ver planes de Agenda →</a>
+          </div>
+          <div class="ed-feature__media">
+            <img src="img/demoagenda.png" alt="Demo de un sitio CUADRA Agenda para una barbería, con reserva de turno y contacto por WhatsApp." width="1280" height="700" loading="lazy">
+          </div>
+        </article>
 
-          <article class="line-card">
-            <h3 class="line-card__title">CUADRA TIENDA</h3>
-            <p class="line-card__tagline">Tu catálogo en Google, tus pedidos por WhatsApp</p>
-            <p class="line-card__audience">Comercios con catálogo: tiendas de ropa, accesorios, productos locales, artesanías</p>
-            <p class="line-card__outcome">Que tu catálogo sea navegable en Google y los pedidos lleguen por WhatsApp</p>
-            <p class="line-card__quote">"Tengo todo en Instagram pero ahí no se busca, se scrollea. Necesito que me encuentren en Google con lo que vendo."</p>
-            <a href="/productos.html#planes-tienda" class="line-card__cta">VER PLANES</a>
-          </article>
-
-          <article class="line-card">
-            <h3 class="line-card__title">CUADRA RESTÓ</h3>
-            <p class="line-card__tagline">Tu carta digital, tus mesas reservadas, tus clientes contentos</p>
-            <p class="line-card__audience">Gastronomía: restaurantes, parrillas, cafés, bares, rotiserías, pizzerías</p>
-            <p class="line-card__outcome">Que tu carta sea digital, tus mesas se reserven online y tus clientes no se pierdan</p>
-            <p class="line-card__quote">"El viernes no doy abasto atendiendo llamadas y cocinando. Y el que no pudo llamar, no viene."</p>
-            <a href="/productos.html#planes-resto" class="line-card__cta">VER PLANES</a>
-          </article>
-
-          <article class="line-card">
-            <h3 class="line-card__title">CUADRA CONSULTA</h3>
-            <p class="line-card__tagline">Tu presencia profesional, seria y funcionando</p>
-            <p class="line-card__audience">Profesionales: abogados, contadores, consultores, arquitectos, psicólogos, nutricionistas</p>
-            <p class="line-card__outcome">Que te encuentren, te contacten y pidan hora sin vueltas</p>
-            <p class="line-card__quote">"No necesito vender. Necesito que me encuentren y que pedir hora no sea un trámite."</p>
-            <a href="/productos.html#planes-consulta" class="line-card__cta">VER PLANES</a>
-          </article>
+        <div class="ed-list">
+          <a href="/productos.html#planes-tienda" class="ed-row">
+            <span class="ed-row__index">L.02</span>
+            <img src="img/demotienda.png" alt="" class="ed-row__thumb" aria-hidden="true" loading="lazy">
+            <span class="ed-row__body">
+              <span class="ed-row__title">CUADRA Tienda</span>
+              <span class="ed-row__desc">Tu catálogo en Google, tus pedidos por WhatsApp.</span>
+            </span>
+            <span class="ed-row__tag">Comercios con catálogo</span>
+            <span class="ed-row__arrow" aria-hidden="true">↗</span>
+          </a>
+          <a href="/productos.html#planes-resto" class="ed-row">
+            <span class="ed-row__index">L.03</span>
+            <img src="img/demoresto.png" alt="" class="ed-row__thumb" aria-hidden="true" loading="lazy">
+            <span class="ed-row__body">
+              <span class="ed-row__title">CUADRA Restó</span>
+              <span class="ed-row__desc">Tu carta digital, tus mesas reservadas.</span>
+            </span>
+            <span class="ed-row__tag">Gastronomía</span>
+            <span class="ed-row__arrow" aria-hidden="true">↗</span>
+          </a>
+          <a href="/productos.html#planes-consulta" class="ed-row">
+            <span class="ed-row__index">L.04</span>
+            <img src="img/democonsulta.png" alt="" class="ed-row__thumb" aria-hidden="true" loading="lazy">
+            <span class="ed-row__body">
+              <span class="ed-row__title">CUADRA Consulta</span>
+              <span class="ed-row__desc">Tu presencia profesional, seria y funcionando.</span>
+            </span>
+            <span class="ed-row__tag">Profesionales</span>
+            <span class="ed-row__arrow" aria-hidden="true">↗</span>
+          </a>
         </div>
       </div>
     </section>
+
+    </main>
 
     <!-- CTA final -->
-    <section id="cta" class="section" aria-labelledby="cta-title">
-      <div class="container">
-        <div class="cta-block reveal">
-          <p class="cta-block__title" id="cta-title">TU WEB, TU SISTEMA Y WHATSAPP, TODO JUNTO</p>
-          <p class="cta-block__text">Elegí el plan de tu negocio y armá tu cotización en minutos. Te mostramos exactamente qué incluye y arrancamos cuando quieras. Planes desde $U 990/mes.</p>
-          <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20los%20planes%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="btn btn--primary">HABLAR POR WHATSAPP</a>
-          <a href="/productos.html" class="btn btn--secondary">VER PLANES</a>
-        </div>
+    <section class="ed-section" style="border-top: none; padding-top: 0;" aria-labelledby="cta-title">
+      <div class="ed-cta reveal">
+        <p class="ed-cta__eyebrow">— Hablemos</p>
+        <p class="ed-cta__title" id="cta-title">Tu web, tu sistema y WhatsApp, <em>todo junto</em>.</p>
+        <p class="ed-cta__text">Elegí el plan de tu negocio y armá tu cotización en minutos. Te mostramos exactamente qué incluye y arrancamos cuando quieras.</p>
+        <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20los%20planes%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="ed-cta__btn">Hablar por WhatsApp →</a>
+        <p class="ed-cta__meta">Desde $U 990/mes · Implementación + mensual, sin comisiones</p>
       </div>
     </section>
 
-  </main>
+    <!-- Footer -->
+    <footer class="ed-footer" role="contentinfo">
+      <div class="ed-container">
+        <div class="ed-footer__write">
+          <span class="ed-footer__write-label">Escribinos</span>
+          <a href="mailto:contacto@cuadrastudio.uy" class="ed-footer__email">contacto@cuadrastudio.uy</a>
+        </div>
+
+        <div class="ed-footer__cols">
+          <div class="ed-footer__col">
+            <p class="ed-footer__col-title">Páginas</p>
+            <a href="/">Inicio</a>
+            <a href="/productos.html">Productos</a>
+            <a href="/proyectos.html">Proyectos</a>
+            <a href="/contacto.html">Contacto</a>
+          </div>
+          <div class="ed-footer__col">
+            <p class="ed-footer__col-title">Elsewhere</p>
+            <a href="https://www.instagram.com/cuadrastudio.uy" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+            <a href="https://wa.me/59899331909" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+          </div>
+          <div class="ed-footer__col">
+            <p class="ed-footer__col-title">Legal</p>
+            <a href="/aviso-legal.html">Aviso legal</a>
+            <a href="/privacidad.html">Privacidad</a>
+          </div>
+        </div>
+
+        <div class="ed-footer__bottom">
+          <span>&copy; 2026 <span class="brand-wordmark">CUADRA</span></span>
+          <span>Montevideo, Uruguay</span>
+        </div>
+      </div>
+    </footer>
+  </div>
 
   <!-- WhatsApp floating button -->
   <a href="https://wa.me/59899331909?text=Hola!%20Vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20un%20sitio%20web" target="_blank" rel="noopener noreferrer" class="whatsapp-fab" aria-label="Contactar por WhatsApp">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C6.9 3 2.7 7.2 2.7 12.3c0 1.6.4 3.1 1.2 4.5L2.7 21.3l4.6-1.2c1.3.8 2.8 1.2 4.5 1.2 5.1 0 9.3-4.2 9.3-9.3S17.1 3 12 3z"/><path d="M9.3 8.6c-.2 0-.4.1-.5.3-.2.3-.7.9-.7 2s.7 2.4.8 2.5c.1.1 1.4 2.3 3.5 3.1 1.3.5 1.9.5 2.4.3.4-.1 1-.5 1.1-1 .1-.5.1-.9.1-1-.1-.1-.2-.2-.4-.2l-1.6-.7c-.2-.1-.4-.1-.5.1l-.6.9c-.1.2-.3.2-.5.1-.8-.3-1.6-.8-2.2-1.5-.5-.6-.9-1.3-1-1.5-.1-.2 0-.3.1-.4l.4-.5c.1-.2.1-.3 0-.4l-.3-.7c-.2-.9-.5-1.9-.7-2-.1-.2-.3-.3-.7-.3z"/></svg>
   </a>
-
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <img src="img/logo_white.svg" alt="CUADRA" class="footer__logo-img" width="104" height="31">
-        <span class="footer__brand-desc">Desarrollo web a medida</span>
-      </div>
-      <div class="footer__links">
-        <a href="mailto:contacto@cuadrastudio.uy" class="footer__link">Email</a>
-        <a href="https://wa.me/59899331909" target="_blank" rel="noopener noreferrer" class="footer__link">WhatsApp</a>
-        <a href="https://www.instagram.com/cuadrastudio.uy" target="_blank" rel="noopener noreferrer" class="footer__link">Instagram</a>
-        <a href="/aviso-legal.html" class="footer__link">Aviso legal</a>
-        <a href="/privacidad.html" class="footer__link">Privacidad</a>
-      </div>
-      <div class="footer__brand">
-        <p class="footer__copy">&copy; 2026 <span class="brand-wordmark">CUADRA</span></p>
-      </div>
-    </div>
-  </footer>
 
   <script src="js/main.js?v=20260915b" defer></script>
 </body>

@@ -6,22 +6,22 @@
   <title>CUADRA — Próximamente | Sitio en construcción</title>
   <meta name="description" content="CUADRA desarrolla sitios web profesionales para negocios. Estamos renovando nuestro sitio: pronto, una experiencia actualizada. Contactanos por WhatsApp o email.">
   <link rel="canonical" href="https://cuadrastudio.uy/">
-  <meta name="theme-color" content="#0F1111">
+  <meta name="theme-color" content="#F2F1ED">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="CUADRA — Próximamente | Sitio en construcción">
-  <meta property="og:description" content="CUADRA está rediseñando su sitio web. Próximamente, una experiencia renovada.">
+  <meta property="og:description" content="CUADRA está renovando su sitio web. Próximamente, una experiencia actualizada.">
   <meta property="og:url" content="https://cuadrastudio.uy/">
   <meta property="og:locale" content="es_UY">
-  <meta property="og:image" content="https://cuadrastudio.uy/img/og-image.png?v=20260914">
+  <meta property="og:image" content="https://cuadrastudio.uy/img/og-image.png?v=20260918">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Logo y nombre de CUADRA, desarrollo web para negocios locales">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="CUADRA — Próximamente | Sitio en construcción">
-  <meta name="twitter:description" content="CUADRA está rediseñando su sitio web. Próximamente, una experiencia renovada.">
-  <meta name="twitter:image" content="https://cuadrastudio.uy/img/og-image.png?v=20260914">
+  <meta name="twitter:description" content="CUADRA está renovando su sitio web. Próximamente, una experiencia actualizada.">
+  <meta name="twitter:image" content="https://cuadrastudio.uy/img/og-image.png?v=20260918">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -33,7 +33,6 @@
     "@type": "Organization",
     "name": "CUADRA",
     "url": "https://cuadrastudio.uy/",
-    "logo": "https://cuadrastudio.uy/img/logo_white.svg",
     "image": "https://cuadrastudio.uy/img/og-image.png",
     "description": "CUADRA desarrolla sitios web profesionales para negocios locales: web a medida, sistema de reservas o pedidos y WhatsApp automatizado en un solo servicio.",
     "email": "contacto@cuadrastudio.uy",
@@ -51,7 +50,7 @@
   }
   </script>
 
-  <!-- Fonts: Montserrat unica (roles por letter-spacing: wordmark/interface 0.38em, body 0.02em) -->
+  <!-- Fonts: Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -61,66 +60,82 @@
   <link rel="stylesheet" href="css/base.css?v=20260914">
   <link rel="stylesheet" href="css/layout.css?v=20260914">
   <link rel="stylesheet" href="css/components.css?v=20260914b">
-  <link rel="stylesheet" href="css/pages.css?v=20260915c">
   <link rel="stylesheet" href="css/animations.css?v=20260914">
+  <link rel="stylesheet" href="css/home-editorial.css?v=20260918">
 </head>
-<body>
+<body class="home-editorial section--light">
 
   <!-- Skip link -->
   <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
 
-  <main id="contenido" tabindex="-1">
+  <div class="ed-shell" style="padding-top: 0;">
+    <main id="contenido" tabindex="-1">
 
-    <!-- Hero — pantalla completa -->
-    <header class="hero hero--construction section" role="banner">
-      <div class="container container--narrow text-center">
-        <img src="img/logo_white.svg" alt="" aria-hidden="true" class="hero__logo" width="285" height="77">
-        <h1 class="hero__label"><span>C</span><span>U</span><span>A</span><span>D</span><span>R</span><span>A</span></h1>
-        <div class="hero__rotator" aria-live="polite">
-          <p class="hero__rotator-line is-active">EXPERIENCIAS DIGITALES A MEDIDA.</p>
-          <p class="hero__rotator-line">SITIOS WEB PENSADOS PARA LO ESENCIAL.</p>
-          <p class="hero__rotator-line">RENDIMIENTO Y ESCALABILIDAD.</p>
-          <p class="hero__rotator-line">DISEÑO UX/UI CENTRADO EN LAS PERSONAS.</p>
-          <p class="hero__rotator-line">DESARROLLO SIN PLANTILLAS NI LÍMITES.</p>
-          <p class="hero__rotator-line">PRECISIÓN, ESTRUCTURA, CÓDIGO.</p>
-          <p class="hero__rotator-line">PROCESOS CLAROS, PLAZOS CUMPLIDOS.</p>
+      <!-- Hero — teaser, sitio en construccion. Sin nav: todavia no hay nada
+           mas para explorar (productos/proyectos/contacto existen pero no
+           se exponen desde aca a proposito). -->
+      <header class="ed-hero ed-hero--construction hero--construction">
+        <div class="ed-container ed-hero__center">
+          <a href="/" class="ed-nav__brand ed-hero__brand" aria-label="CUADRA">
+            <img src="assets/cuadra-logo-black.svg" alt="">
+            <span>CUADRA</span>
+          </a>
+
+          <p class="ed-feature__eyebrow" style="margin: var(--space-8) 0 var(--space-3);">Próximamente</p>
+          <h1 class="ed-hero__title reveal" style="margin-inline: auto;">Estamos construyendo <em>algo nuevo.</em></h1>
+
+          <div class="hero__rotator" aria-live="polite">
+            <p class="hero__rotator-line is-active">Experiencias digitales a medida.</p>
+            <p class="hero__rotator-line">Sitios web pensados para lo esencial.</p>
+            <p class="hero__rotator-line">Rendimiento y escalabilidad.</p>
+            <p class="hero__rotator-line">Diseño UX/UI centrado en las personas.</p>
+            <p class="hero__rotator-line">Desarrollo sin plantillas ni límites.</p>
+            <p class="hero__rotator-line">Precisión, estructura, código.</p>
+            <p class="hero__rotator-line">Procesos claros, plazos cumplidos.</p>
+          </div>
+
+          <p class="ed-hero__subtitle reveal" style="margin: var(--space-5) auto 0;">Desarrollamos sitios web profesionales para negocios locales. Estamos renovando el nuestro: pronto, una experiencia actualizada. Mientras tanto, seguí en contacto con nosotros.</p>
+
+          <p class="ed-hero__actions">
+            <a href="https://wa.me/59899331909?text=Hola!%20Vi%20que%20el%20sitio%20est%C3%A1%20en%20construcci%C3%B3n%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Hablemos por WhatsApp</a>
+            <a href="mailto:contacto@cuadrastudio.uy" class="btn btn--secondary">Escribinos por email</a>
+            <a href="https://www.instagram.com/cuadrastudio.uy" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Seguinos en Instagram</a>
+          </p>
+
+          <p class="ed-hero__coords" style="margin-inline: auto;">34.90°S / 56.16°W · Montevideo, Uruguay</p>
         </div>
-        <p class="hero__subtitle" style="margin-inline: auto;">Desarrollamos sitios web profesionales para negocios locales. Estamos renovando el nuestro: pronto, una experiencia actualizada. Mientras tanto, seguí en contacto con nosotros.</p>
-        <p class="hero__actions">
-          <a href="https://wa.me/59899331909?text=Hola!%20Vi%20que%20el%20sitio%20est%C3%A1%20en%20construcci%C3%B3n%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Hablemos por WhatsApp</a>
-          <a href="mailto:contacto@cuadrastudio.uy" class="btn btn--secondary">Escribinos por email</a>
-          <a href="https://www.instagram.com/cuadrastudio.uy" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Seguinos en Instagram</a>
-        </p>
-        <div class="hero__coords">34.90°S / 56.16°W</div>
-      </div>
-    </header>
+      </header>
 
-  </main>
+    </main>
+
+    <!-- Footer -->
+    <footer class="ed-footer" role="contentinfo">
+      <div class="ed-container">
+        <div class="ed-footer__write">
+          <span class="ed-footer__write-label">Escribinos</span>
+          <a href="mailto:contacto@cuadrastudio.uy" class="ed-footer__email">contacto@cuadrastudio.uy</a>
+        </div>
+
+        <div class="ed-footer__cols" style="grid-template-columns: max-content;">
+          <div class="ed-footer__col">
+            <p class="ed-footer__col-title">Elsewhere</p>
+            <a href="https://www.instagram.com/cuadrastudio.uy" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+            <a href="https://wa.me/59899331909" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+          </div>
+        </div>
+
+        <div class="ed-footer__bottom">
+          <span>&copy; 2026 <span class="brand-wordmark">CUADRA</span></span>
+          <span>Montevideo, Uruguay</span>
+        </div>
+      </div>
+    </footer>
+  </div>
 
   <!-- WhatsApp floating button -->
   <a href="https://wa.me/59899331909?text=Hola!%20Vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20un%20sitio%20web" target="_blank" rel="noopener noreferrer" class="whatsapp-fab" aria-label="Contactar por WhatsApp">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C6.9 3 2.7 7.2 2.7 12.3c0 1.6.4 3.1 1.2 4.5L2.7 21.3l4.6-1.2c1.3.8 2.8 1.2 4.5 1.2 5.1 0 9.3-4.2 9.3-9.3S17.1 3 12 3z"/><path d="M9.3 8.6c-.2 0-.4.1-.5.3-.2.3-.7.9-.7 2s.7 2.4.8 2.5c.1.1 1.4 2.3 3.5 3.1 1.3.5 1.9.5 2.4.3.4-.1 1-.5 1.1-1 .1-.5.1-.9.1-1-.1-.1-.2-.2-.4-.2l-1.6-.7c-.2-.1-.4-.1-.5.1l-.6.9c-.1.2-.3.2-.5.1-.8-.3-1.6-.8-2.2-1.5-.5-.6-.9-1.3-1-1.5-.1-.2 0-.3.1-.4l.4-.5c.1-.2.1-.3 0-.4l-.3-.7c-.2-.9-.5-1.9-.7-2-.1-.2-.3-.3-.7-.3z"/></svg>
   </a>
-
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <img src="img/logo_white.svg" alt="CUADRA" class="footer__logo-img" width="104" height="31">
-        <span class="footer__brand-desc">Desarrollo web a medida</span>
-      </div>
-      <div class="footer__links">
-        <a href="mailto:contacto@cuadrastudio.uy" class="footer__link">Email</a>
-        <a href="https://wa.me/59899331909" target="_blank" rel="noopener noreferrer" class="footer__link">WhatsApp</a>
-        <a href="https://www.instagram.com/cuadrastudio.uy" target="_blank" rel="noopener noreferrer" class="footer__link">Instagram</a>
-        <a href="/aviso-legal.html" class="footer__link">Aviso legal</a>
-        <a href="/privacidad.html" class="footer__link">Privacidad</a>
-      </div>
-      <div class="footer__brand">
-        <p class="footer__copy">&copy; 2026 <span class="brand-wordmark">CUADRA</span></p>
-      </div>
-    </div>
-  </footer>
 
   <script src="js/main.js?v=20260915b" defer></script>
 </body>
