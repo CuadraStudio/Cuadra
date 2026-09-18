@@ -882,6 +882,17 @@
   }
 }
 
+/* 768-1023px: grid de 2 columnas, el item de la columna derecha en la
+   primera fila (nth-child(2)) queda con un border-right sobrante contra
+   el borde del contenedor (la regla base solo excluye :last-child, pensada
+   para 1 o 3 columnas). A 1024px+ vuelve a ser una columna interior y
+   recupera el borde por fuera de este rango. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ed-lettered--4 .ed-lettered__item:nth-child(2) {
+    border-right: none;
+  }
+}
+
 /* ============================================
    proyectos.html - misma logica: .card/.card--project
    ya son 100% token-driven (var(--color-*)), section--light
