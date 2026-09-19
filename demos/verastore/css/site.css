@@ -410,6 +410,48 @@ ul, ol { margin: 0 0 1em; padding-left: 1.2em; }
 .sticky-cta { position: fixed; left: var(--gutter); right: var(--gutter); bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 55; padding: 8px; background: color-mix(in srgb, var(--surface) 94%, transparent); backdrop-filter: blur(14px); border: 1px solid var(--line); border-radius: 999px; box-shadow: var(--shadow-lift); }
 @media (min-width: 880px) { .sticky-cta { display: none; } .wa-fab { bottom: 24px; } }
 
+/* ── Adaptacion por dispositivo ───────────────────────────────────────── */
+/* Puntero grueso (touch): el tamano de pantalla no dice el metodo de
+   entrada, pero estos controles son chicos para el dedo en cualquier
+   ancho. Se agranda solo con touch/stylus; mouse y trackpad quedan
+   como estan, mas densos. */
+@media (pointer: coarse) {
+  .nav__toggle { width: 44px; height: 44px; }
+  .lang-switch { min-width: 44px; height: 44px; }
+  .btn { padding-block: 15px; }
+  .btn--sm { padding-block: 12px; }
+  .chip { padding-block: 13px; }
+  .variant__opt span { padding-block: 13px; }
+  .slot { padding-block: 13px; }
+  .cart__qty button { width: 44px; height: 44px; }
+}
+
+/* Sin hover real (touch): el lift/zoom decorativo de cards, tiles y
+   chips se queda "pegado" tras el tap hasta el proximo toque en otro
+   lado (bug conocido de Safari/Chrome moviles). Se neutraliza solo ahi;
+   el tap y el click siguen funcionando igual. */
+@media (hover: none) {
+  .card:hover, .tile:hover, .quote:hover, .plan:hover, .promo:hover, .gallery__item:hover, .btn--primary:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+  }
+  .btn--primary:hover { box-shadow: none; }
+  .card:hover .card__media img, .tile:hover img, .gallery__item:hover img {
+    transform: none;
+  }
+  .chip:hover { transform: none; border-color: var(--line); }
+}
+
+/* Pantalla baja (mobile en landscape): el hero con foto sobra de alto y
+   el dock flotante le come todavia mas. Se acorta el padding vertical
+   para que el CTA quede visible sin scroll. */
+@media (max-height: 500px) and (max-width: 879px) {
+  .hero:has(.hero__media) { padding-block: 10px; }
+  .hero__media ~ .hero__inner, .hero:has(.hero__media) .hero__inner { padding-block: 16px; }
+  .hero__title { font-size: clamp(26px, 5vw, 38px); }
+  .sticky-cta { padding: 6px; }
+}
+
 @media print {
   .site-header, .site-footer, .wa-fab, .sticky-cta, .cta-band, .breadcrumbs { display: none !important; }
   body { font-size: 12pt; }
