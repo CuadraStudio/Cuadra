@@ -3,12 +3,12 @@
    Referencia estructural: sandeep.design (tipografía
    editorial grande, secciones numeradas, filas de lista
    con hairlines, cards con letra, bloque CTA final).
-   Paleta: misma familia CUADRA (paper = --color-white,
-   ink = --color-black, acento = sage oscurecido, ya
-   verificado AA en tokens.css). Namespace .ed- para no
-   pisar los componentes dark-first usados en el resto
-   del sitio; reusa .nav__hamburger/#mobile-menu/.reveal
-   para no duplicar el JS de main.js.
+   Paleta: misma familia CUADRA (paper = --color-black,
+   ink = --color-white, acento = sage sin oscurecer, ya
+   verificado AA en tokens.css contexto oscuro). Namespace
+   .ed- para no pisar los componentes dark-first usados en
+   el resto del sitio; reusa .nav__hamburger/#mobile-menu/
+   .reveal para no duplicar el JS de main.js.
    ============================================ */
 
 .home-editorial {
@@ -20,8 +20,6 @@
   --ed-border: rgba(242, 241, 237, 0.12);
   --ed-border-strong: rgba(242, 241, 237, 0.24);
   --ed-accent: #AFC8C2;
-  --ed-accent-solid: #AFC8C2;
-  --ed-accent-solid-hover: #C2D7D1;
 
   background: var(--ed-paper);
   color: var(--ed-ink);
@@ -109,24 +107,9 @@
   }
 }
 
-.ed-nav .nav__link {
-  font-family: var(--font-primary);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: var(--ed-muted);
-  padding: var(--space-2) 0;
-}
-
-.ed-nav .nav__link:hover,
-.ed-nav .nav__link[aria-current="page"] {
-  color: var(--ed-ink);
-}
-
-.ed-nav .nav__link[aria-current="page"]::after {
-  background: var(--ed-accent);
-}
+/* Desktop nav links reuse the shared .nav__link component as-is
+   (0.38em + caps interface style, DESIGN.md-compliant) instead of the
+   one-off sentence-case/0.02em skin this file used to add on top of it. */
 
 .ed-nav__cta {
   display: none;
@@ -393,7 +376,7 @@
 
 .ed-feature__media {
   border: 1px solid var(--ed-border-strong);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   overflow: hidden;
   background: var(--ed-paper-raised);
 }
@@ -451,7 +434,11 @@
 }
 
 .ed-row:hover {
-  background: rgba(15, 17, 17, 0.03);
+  background: rgba(242, 241, 237, 0.04);
+}
+
+.ed-row:active {
+  background: rgba(242, 241, 237, 0.07);
 }
 
 .ed-row__index {
@@ -537,6 +524,32 @@
 .ed-row:hover .ed-row__arrow {
   transform: translate(2px, -2px);
   color: var(--ed-accent);
+}
+
+/* ---- Attributed quote (real client copy, not a stat) ---- */
+.ed-quote {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--ed-border);
+}
+
+.ed-quote p {
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: -0.005em;
+  font-size: clamp(1.125rem, 2.4vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--ed-ink);
+  max-width: 42ch;
+}
+
+.ed-quote footer {
+  margin-top: var(--space-3);
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--ed-muted);
 }
 
 /* ---- Statement + lettered cards ---- */
@@ -661,7 +674,7 @@
   margin-inline: var(--space-page);
   padding: var(--space-8) var(--space-6);
   background: var(--ed-paper-raised);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
 }
 
 @media (min-width: 1160px) {
@@ -729,7 +742,7 @@
 }
 
 .ed-cta__meta {
-  margin-top: var(--space-5);
+  margin-block: var(--space-5);
   font-family: var(--font-primary);
   font-size: 0.75rem;
   letter-spacing: 0.04em;
