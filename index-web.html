@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="css/components.css?v=20260914b">
   <link rel="stylesheet" href="css/pages.css?v=20260918b">
   <link rel="stylesheet" href="css/animations.css?v=20260914">
-  <link rel="stylesheet" href="css/home-editorial.css?v=20260920b">
+  <link rel="stylesheet" href="css/home-editorial.css?v=20260920c">
 </head>
 <body class="home-editorial">
 
@@ -90,15 +90,38 @@
 
     <!-- Hero -->
     <header class="ed-hero">
-      <div class="ed-container">
-        <h1 class="ed-hero__title reveal">Un servicio, <em>todo lo que tu negocio necesita.</em></h1>
+      <div class="ed-container ed-hero__grid">
+        <div>
+          <div class="ed-hero__badge pill reveal">
+            <span class="ed-hero__badge-dot" aria-hidden="true"></span>
+            Estudio de desarrollo web · Montevideo, Uruguay
+          </div>
 
-        <div class="ed-hero__row">
-          <p class="ed-hero__subtitle reveal">Desarrollamos sitios web profesionales para negocios locales. Web, sistema integrado y WhatsApp, todo junto, en un servicio mensual. Sin complicaciones, sin comisiones, sin sorpresas.</p>
-          <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20los%20planes%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="ed-hero__link reveal">Hablar por WhatsApp ↗</a>
+          <h1 class="ed-hero__title reveal">Un servicio, <em>todo lo que tu negocio necesita.</em></h1>
+
+          <div class="ed-hero__row">
+            <p class="ed-hero__subtitle reveal">Desarrollamos sitios web profesionales para negocios locales. Web, sistema integrado y WhatsApp, todo junto, en un servicio mensual. Sin complicaciones, sin comisiones, sin sorpresas.</p>
+            <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20los%20planes%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="ed-hero__link reveal">Hablar por WhatsApp ↗</a>
+          </div>
+
+          <ul class="ed-hero__badges reveal">
+            <li class="pill">4 líneas de producto</li>
+            <li class="pill">Desde $U 990/mes</li>
+            <li class="pill">Soporte por WhatsApp incluido</li>
+          </ul>
+
+          <p class="ed-hero__coords">34.90°S / 56.16°W · Montevideo, Uruguay</p>
         </div>
 
-        <p class="ed-hero__coords">34.90°S / 56.16°W · Montevideo, Uruguay</p>
+        <div class="ed-hero__visual reveal">
+          <div class="ed-hero__visual-bar">
+            <span class="ed-hero__visual-dot" aria-hidden="true"></span>
+            <span class="ed-hero__visual-dot" aria-hidden="true"></span>
+            <span class="ed-hero__visual-dot" aria-hidden="true"></span>
+            <span class="ed-hero__visual-url">cuadrastudio.uy/demos/estudiotrazo</span>
+          </div>
+          <img src="img/demoagenda.png" alt="Demo de un sitio CUADRA Agenda para una barbería, con reserva de turno y contacto por WhatsApp." width="1280" height="700" loading="lazy">
+        </div>
       </div>
     </header>
 
@@ -164,6 +187,118 @@
           <p>&ldquo;No quiero una app. Quiero que la gente reserve sola y no me quede el hueco.&rdquo;</p>
           <footer>— cliente CUADRA Agenda, barbería</footer>
         </blockquote>
+      </div>
+    </section>
+
+    <!-- Como trabajamos -->
+    <section id="proceso" class="ed-section" aria-labelledby="proceso-title">
+      <div class="ed-container">
+        <div class="ed-section__head">
+          <span class="ed-section__index">02 —</span>
+          <h2 class="ed-section__label" id="proceso-title">Cómo trabajamos</h2>
+        </div>
+        <p class="ed-section__lede reveal">Del primer mensaje a tu web funcionando, sin vueltas.</p>
+
+        <div class="ed-timeline reveal">
+          <div class="ed-timeline__item">
+            <span class="ed-timeline__step">01</span>
+            <div>
+              <h3 class="ed-timeline__title">Elegís tu línea y tu plan</h3>
+              <p class="ed-timeline__text">Armás tu plan en el configurador: tu línea de negocio, qué incluye la base y qué extras sumás. El total se arma solo.</p>
+            </div>
+          </div>
+          <div class="ed-timeline__item">
+            <span class="ed-timeline__step">02</span>
+            <div>
+              <h3 class="ed-timeline__title">Confirmás contenido y seña</h3>
+              <p class="ed-timeline__text">Nos pasás tus textos, fotos y datos reales. Con la seña confirmada, arrancamos la implementación.</p>
+            </div>
+          </div>
+          <div class="ed-timeline__item">
+            <span class="ed-timeline__step">03</span>
+            <div>
+              <h3 class="ed-timeline__title">Recibís tu web funcionando</h3>
+              <p class="ed-timeline__text">En 5 a 10 días hábiles tenés tu sitio, sistema y WhatsApp funcionando, con soporte humano incluido.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demos reales -->
+    <section id="demos" class="ed-section" aria-labelledby="demos-title">
+      <div class="ed-container">
+        <div class="ed-section__head">
+          <span class="ed-section__index">03 —</span>
+          <h2 class="ed-section__label" id="demos-title">Demos reales, navegables</h2>
+        </div>
+        <p class="ed-section__lede reveal">Antes de contratar, mirá cómo se ve y cómo funciona cada línea en un sitio real.</p>
+
+        <div class="grid grid--3">
+          <article class="card card--project reveal" style="--reveal-index: 0">
+            <span class="project-card__badge">Demo de producto</span>
+            <img src="img/demoagenda.png" alt="Screenshot del sitio de Estudio Trazo, demo de producto de CUADRA Agenda, barbería ficticia en Montevideo" class="card__image" loading="lazy">
+            <div class="project-card__body">
+              <h3 class="card__title">Estudio Trazo</h3>
+              <p class="card__desc">CUADRA Agenda — reserva de turnos con horarios en vivo y confirmación automática.</p>
+              <div class="project-card__pills"><span class="pill">Agenda</span></div>
+              <a href="/demos/estudiotrazo/" target="_blank" rel="noopener noreferrer" class="card__link card__link--demo">Ver demo <span class="card__link-arrow" aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="card card--project reveal" style="--reveal-index: 1">
+            <span class="project-card__badge">Demo de producto</span>
+            <img src="img/demotienda.png" alt="Screenshot del sitio de Vera Store, demo de producto de CUADRA Tienda, boutique ficticia en Pocitos, Montevideo" class="card__image" loading="lazy">
+            <div class="project-card__body">
+              <h3 class="card__title">Vera Store</h3>
+              <p class="card__desc">CUADRA Tienda — catálogo con variantes y stock, carrito y pedidos por WhatsApp.</p>
+              <div class="project-card__pills"><span class="pill">Tienda</span></div>
+              <a href="/demos/verastore/" target="_blank" rel="noopener noreferrer" class="card__link card__link--demo">Ver demo <span class="card__link-arrow" aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="card card--project reveal" style="--reveal-index: 2">
+            <span class="project-card__badge">Demo de producto</span>
+            <img src="img/demoresto.png" alt="Screenshot del sitio de El Fogatero, demo de producto de CUADRA Restó, parrilla ficticia en el Cordón, Montevideo" class="card__image" loading="lazy">
+            <div class="project-card__body">
+              <h3 class="card__title">El Fogatero</h3>
+              <p class="card__desc">CUADRA Restó — carta digital y reservas de mesa con cupos por franja vía WhatsApp.</p>
+              <div class="project-card__pills"><span class="pill">Restó</span></div>
+              <a href="/demos/elfogatero/" target="_blank" rel="noopener noreferrer" class="card__link card__link--demo">Ver demo <span class="card__link-arrow" aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="ed-section" aria-labelledby="faq-title">
+      <div class="ed-container">
+        <div class="ed-section__head">
+          <span class="ed-section__index">04 —</span>
+          <h2 class="ed-section__label" id="faq-title">Preguntas frecuentes</h2>
+        </div>
+
+        <div class="ed-faq reveal">
+          <details class="ed-faq__item">
+            <summary>¿Cuánto tiempo tardo en tener mi web funcionando?</summary>
+            <p>De 5 a 10 días hábiles desde que confirmás el contenido y pagás la seña. El tiempo depende de la complejidad del plan y de la rapidez con la que nos proveas el contenido solicitado.</p>
+          </details>
+          <details class="ed-faq__item">
+            <summary>¿Puedo cambiar de plan después?</summary>
+            <p>Sí. Podés subir de plan en cualquier momento — la diferencia se ajusta en la siguiente factura. Si querés bajar de plan, se aplica con 30 días de aviso. No hay costo por cambio de plan.</p>
+          </details>
+          <details class="ed-faq__item">
+            <summary>¿El dominio es mío?</summary>
+            <p>Sí. El dominio se registra siempre a tu nombre desde el inicio (o usamos uno que ya tengas) — nunca a nombre de CUADRA. Nosotros solo lo administramos técnicamente (DNS, SSL) mientras dure el servicio.</p>
+          </details>
+          <details class="ed-faq__item">
+            <summary>¿Soporte técnico incluido?</summary>
+            <p>Sí. Todos los planes incluyen soporte humano por WhatsApp. Los planes Profesional y Premium tienen soporte prioritario, sin costo adicional.</p>
+          </details>
+        </div>
+
+        <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Tengo%20una%20consulta%20que%20no%20est%C3%A1%20en%20las%20preguntas%20frecuentes." target="_blank" rel="noopener noreferrer" class="ed-hero__link" style="margin-top: var(--space-6);">Tengo otra pregunta ↗</a>
       </div>
     </section>
 

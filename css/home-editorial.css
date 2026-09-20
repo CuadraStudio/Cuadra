@@ -194,6 +194,88 @@
   padding-block: var(--space-8) var(--space-9);
 }
 
+/* Hero grid (text + browser-mockup visual), badge eyebrow and feature
+   strip: structural pattern adapted from a referenced agency landing
+   (badge chip, feature-badge row, framed product screenshot), rebuilt
+   with the existing .pill/.ed-* tokens instead of importing its skin. */
+.ed-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .ed-hero__grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: var(--space-9);
+  }
+
+  .ed-hero__title {
+    font-size: clamp(2.25rem, 4.2vw, 3.75rem);
+  }
+}
+
+.ed-hero__badge.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--space-5);
+}
+
+.ed-hero__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ed-accent);
+  flex-shrink: 0;
+}
+
+.ed-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-7);
+  list-style: none;
+  padding: 0;
+}
+
+.ed-hero__visual {
+  border: 1px solid var(--ed-border-strong);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--ed-paper-raised);
+}
+
+.ed-hero__visual-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--ed-border);
+}
+
+.ed-hero__visual-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ed-border-strong);
+}
+
+.ed-hero__visual-url {
+  margin-left: 8px;
+  font-family: var(--font-primary);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: var(--ed-muted);
+}
+
+.ed-hero__visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .ed-hero__title {
   font-family: var(--font-display);
   font-weight: 600;
@@ -848,6 +930,55 @@
 .ed-footer__bottom .brand-wordmark {
   letter-spacing: 0.1em;
   color: var(--ed-ink-soft);
+}
+
+/* ---- FAQ (native <details>, no JS) ---- */
+.ed-faq {
+  border-top: 1px solid var(--ed-border);
+}
+
+.ed-faq__item {
+  border-bottom: 1px solid var(--ed-border);
+}
+
+.ed-faq__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-5);
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.005em;
+  font-size: 1rem;
+  color: var(--ed-ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.ed-faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.ed-faq__item summary::after {
+  content: '+';
+  font-size: 1.25rem;
+  color: var(--ed-muted);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.ed-faq__item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.ed-faq__item p {
+  padding-bottom: var(--space-5);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ed-ink-soft);
+  max-width: 60ch;
 }
 
 /* ============================================
