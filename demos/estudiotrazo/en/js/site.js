@@ -25,6 +25,12 @@
   };
   var qs = function (sel, root) { return (root || document).querySelector(sel); };
   var qsa = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
+  /** Devuelve el campo real de un [name]: si es un grupo de radios, el que
+   * está marcado (no el primero del DOM, que es lo que da un querySelector
+   * plano). Mismo campo semántico que antes era un <select> único. */
+  var fieldByName = function (form, name) {
+    return form.querySelector('[name="' + name + '"]:checked') || form.querySelector('[name="' + name + '"]');
+  };
   var params = new URLSearchParams(window.location.search);
   /* Multi-idioma: CFG.lang solo está presente ('en') en el árbol /en/ — ver
      lib/build.js::runtimeConfig. El resto de la interfaz (chrome de página)
@@ -270,6 +276,103 @@
     });
   }());
 
+  /* ── Wizard de reserva (paso a paso, formato barberia-madrid.com) ─────────
+     Puramente aditivo: solo corre si la página trae [data-wizard]. El resto
+     de las demos (sin este marcado) no lo cargan; el <form> semántico y sus
+     [name] no cambian, así que fetchSlots/forms()/mercadoPago() de arriba
+     siguen funcionando sin tocarlos. */
+  (function wizard() {
+    var root = qs('[data-wizard]');
+    if (!root) return;
+    var form = qs('form', root) || root.closest('form');
+    if (!form) return;
+    var stepper = qs('.stepper', root);
+    var steps = qsa('.wizard-step', root);
+    var slotsBox = qs('[data-slots]', form);
+
+    function setStep(n) {
+      steps.forEach(function (panel) {
+        panel.hidden = Number(panel.getAttribute('data-step')) !== n;
+      });
+      if (stepper) {
+        qsa('.stepper__item', stepper).forEach(function (item) {
+          var step = Number(item.getAttribute('data-step-nav'));
+          item.classList.toggle('is-active', step === n);
+          item.classList.toggle('is-done', step < n);
+        });
+      }
+      if (n === 4) paintSummary();
+      var heading = qs('.wizard-step__title', steps[n - 1]);
+      if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus(); }
+    }
+
+    qsa('[data-wizard-next]', root).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setStep(Number(btn.getAttribute('data-wizard-next')));
+      });
+    });
+    qsa('[data-wizard-back]', root).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setStep(Number(btn.getAttribute('data-wizard-back')));
+      });
+    });
+
+    /* Habilita "Continuar" cuando el paso tiene una selección válida. */
+    qsa('.wizard-step', root).forEach(function (panel) {
+      var nextBtn = qs('[data-wizard-next]', panel);
+      if (!nextBtn) return;
+      var radios = qsa('input[type="radio"]', panel);
+      if (radios.length) {
+        radios.forEach(function (r) {
+          r.addEventListener('change', function () { nextBtn.disabled = false; });
+        });
+      }
+    });
+
+    /* Paso 3 (fecha y hora): "Continuar" depende del slot, no de un radio. */
+    var step3Next = qs('.wizard-step[data-step="3"] [data-wizard-next]', root);
+    if (step3Next && slotsBox) {
+      slotsBox.addEventListener('click', function (ev) {
+        if (ev.target.closest('[data-slot]')) step3Next.disabled = false;
+      });
+      var fechaEl = form.querySelector('[name="fecha"]');
+      if (fechaEl) {
+        fechaEl.addEventListener('change', function () { step3Next.disabled = true; });
+      }
+    }
+
+    function selectedRadio(name) {
+      return form.querySelector('input[name="' + name + '"]:checked');
+    }
+
+    function paintSummary() {
+      var svc = selectedRadio('servicio');
+      var pro = selectedRadio('profesional');
+      var sucursalEl = form.querySelector('[name="sucursal"]');
+      var fechaEl = form.querySelector('[name="fecha"]');
+
+      setText('[data-summary-servicio]', svc ? svc.getAttribute('data-name') : '—');
+      setText('[data-summary-profesional]', (pro && pro.value) ? pro.getAttribute('data-name') : 'Primero disponible');
+      setText('[data-summary-sucursal]', sucursalEl ? fieldValue(sucursalEl) : '—');
+      setText('[data-summary-fecha]', fechaEl && fechaEl.value ? formatFechaLarga(fechaEl.value) : '—');
+      setText('[data-summary-hora]', (slotsBox && slotsBox.getAttribute('data-value')) || '—');
+      setText('[data-summary-total]', svc ? money(Number(svc.getAttribute('data-price')) || 0) : '—');
+    }
+
+    function setText(sel, text) {
+      var el = qs(sel, root);
+      if (el) el.textContent = text;
+    }
+  }());
+
+  /** "22 de septiembre" a partir de un input date (YYYY-MM-DD), sin desfasaje
+   * de huso horario (new Date('YYYY-MM-DD') se interpreta en UTC). */
+  function formatFechaLarga(ymd) {
+    var p = ymd.split('-');
+    var d = new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+    return d.toLocaleDateString('es-UY', { day: 'numeric', month: 'long' });
+  }
+
   /** Fecha local en YYYY-MM-DD. Nunca toISOString(): al pasar a UTC el "hoy"
    * depende de la zona horaria (en UY es -03:00) y a la noche ya es mañana. */
   function localYmd(d) {
@@ -342,7 +445,7 @@
     return String(Math.floor(min / 60)).padStart(2, '0') + ':' + String(min % 60).padStart(2, '0');
   }
   function value(form, name) {
-    var el = form.querySelector('[name="' + name + '"]');
+    var el = fieldByName(form, name);
     return el ? el.value : '';
   }
 
@@ -474,7 +577,7 @@
         }
 
         var get = function (name) {
-          var el = form.querySelector('[name="' + name + '"]');
+          var el = fieldByName(form, name);
           return el && !isHidden(el) ? el.value : '';
         };
 
@@ -551,11 +654,11 @@
     if (!demo.enabled || !window.CUADRA_DB) return;
     var DB = window.CUADRA_DB;
     var get = function (name) {
-      var el = form.querySelector('[name="' + name + '"]');
+      var el = fieldByName(form, name);
       return el && !isHidden(el) ? el.value : '';
     };
     var svcLabel = function (name) {
-      var el = form.querySelector('[name="' + name + '"]');
+      var el = fieldByName(form, name);
       return el && !isHidden(el) ? fieldValue(el) : '';
     };
     var hora = (slotBox && slotBox.getAttribute('data-value')) || get('horario') || '';
@@ -633,7 +736,11 @@
 
     lines.push('');
     qsa('input, select, textarea', form).forEach(function (el) {
-      if (!el.name || !el.value || el.type === 'radio' || isHidden(el)) return;
+      if (!el.name || isHidden(el)) return;
+      /* Grupo de radios (tarjetas del wizard): una sola línea por grupo,
+         la opción marcada — no una por cada tarjeta sin marcar. */
+      if (el.type === 'radio') { if (!el.checked || !el.value) return; }
+      else if (!el.value) { return; }
       lines.push(labelFor(el) + ': ' + fieldValue(el));
     });
     if (slotBox && slotBox.getAttribute('data-value')) {
@@ -667,12 +774,22 @@
     if (el.tagName === 'SELECT' && el.selectedIndex > -1) {
       return el.options[el.selectedIndex].textContent.trim();
     }
+    /* Tarjetas de selección (wizard): el radio lleva el nombre legible en
+       data-name, igual rol que el textContent de una <option>. */
+    if (el.type === 'radio' && el.getAttribute('data-name')) {
+      return el.getAttribute('data-name');
+    }
     return el.value;
   }
 
+  var RADIO_GROUP_LABELS = { servicio: 'Servicio', profesional: 'Profesional' };
+
   function labelFor(el) {
     var lab = el.id ? document.querySelector('label[for="' + el.id + '"]') : null;
-    return lab ? lab.textContent.replace('*', '').trim() : el.name;
+    if (lab) return lab.textContent.replace('*', '').trim();
+    /* Tarjetas de selección (wizard): sin <label for>, un solo <label>
+       envolvente por tarjeta — el nombre del grupo va en este mapa chico. */
+    return RADIO_GROUP_LABELS[el.name] || el.name;
   }
 
   function escapeHtml(s) {

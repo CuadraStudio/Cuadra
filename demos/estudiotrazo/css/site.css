@@ -401,6 +401,62 @@ body:has(.hero__media) .site-header.scrolled { background: rgba(250, 250, 250, .
 .flow__grid { display: grid; gap: 32px; }
 @media (min-width: 880px) { .flow__grid { grid-template-columns: 1.6fr .8fr; align-items: start; } }
 
+/* ── Wizard de reserva — indicador numerado, tarjetas de selección, resumen
+   (formato adaptado de barberia-madrid.com/reservar, en lenguaje editorial
+   mono: círculos en vez de pills, tarjetas con hairline en vez de sombra) ── */
+.stepper { display: flex; align-items: center; gap: 0; list-style: none; padding: 0; margin: var(--sp-lg) 0 0; overflow-x: auto; }
+.stepper__item { display: flex; align-items: center; gap: var(--sp-2xs); flex-shrink: 0; }
+.stepper__circle { display: grid; place-items: center; width: 32px; height: 32px; flex-shrink: 0; border: 1px solid var(--hairline); border-radius: 999px; font-family: var(--font-mono); font-size: .8125rem; color: var(--gray-mid); background: var(--paper); }
+.stepper__label { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-mid); white-space: nowrap; }
+.stepper__line { width: clamp(16px, 4vw, 40px); height: 1px; background: var(--hairline); flex-shrink: 0; margin: 0 var(--sp-2xs); }
+.stepper__item.is-active .stepper__circle { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+.stepper__item.is-active .stepper__label { color: var(--ink); }
+.stepper__item.is-done .stepper__circle { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+.stepper__item.is-done .stepper__circle::before { content: '✓'; }
+.stepper__item.is-done .stepper__circle > span { display: none; }
+.stepper__item.is-done ~ .stepper__item .stepper__line,
+.stepper__item.is-active ~ .stepper__item .stepper__line { background: var(--hairline); }
+@media (max-width: 479px) { .stepper__label { display: none; } .stepper__item.is-active .stepper__label { display: block; } }
+
+.wizard-step { margin-top: var(--sp-xl); }
+.wizard-step[hidden] { display: none; }
+.wizard-step__title { font-size: clamp(1.375rem, 3vw, 1.75rem); margin-bottom: var(--sp-md); }
+.wizard-step__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-sm); margin-top: var(--sp-lg); }
+.wizard-step__actions .btn--primary[disabled] { opacity: .4; pointer-events: none; }
+
+/* Tarjetas de selección: radio nativo oculto, <label> hace de tarjeta clicable */
+.service-grid, .barber-grid { display: grid; gap: var(--sp-sm); grid-template-columns: 1fr; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 640px) { .service-grid { grid-template-columns: repeat(2, 1fr); } .barber-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.service-card { display: flex; flex-direction: column; gap: var(--sp-2xs); padding: var(--sp-md); border: 1px solid var(--hairline); cursor: pointer; transition: background-color var(--dur-feedback) var(--ease-inout), color var(--dur-feedback) var(--ease-inout); }
+.service-card:has(input:checked) { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.service-card:has(input:focus-visible) { outline: 2px solid var(--ink); outline-offset: 2px; }
+.service-card__head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-sm); }
+.service-card__name { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 1.0625rem; }
+.service-card__price { font-family: var(--font-mono); font-size: 1rem; font-variant-numeric: tabular-nums; flex-shrink: 0; }
+.service-card__desc { font-size: .9375rem; color: var(--gray-strong); }
+.service-card:has(input:checked) .service-card__desc { color: var(--gray-on-dark); }
+.service-card__meta { display: flex; gap: var(--sp-md); margin-top: auto; padding-top: var(--sp-2xs); font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-mid); }
+.service-card:has(input:checked) .service-card__meta { color: var(--gray-on-dark); }
+
+.barber-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--sp-2xs); padding: var(--sp-lg) var(--sp-md); border: 1px solid var(--hairline); cursor: pointer; transition: background-color var(--dur-feedback) var(--ease-inout), color var(--dur-feedback) var(--ease-inout); }
+.barber-card:has(input:checked) { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.barber-card:has(input:focus-visible) { outline: 2px solid var(--ink); outline-offset: 2px; }
+.barber-card__avatar { width: 64px; height: 64px; border-radius: 999px; overflow: hidden; background: var(--hairline); display: grid; place-items: center; }
+.barber-card__avatar img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+.barber-card__avatar--any { font-size: 1.5rem; color: var(--gray-mid); }
+.barber-card:has(input:checked) .barber-card__avatar--any { color: var(--gray-on-dark); }
+.barber-card__name { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: .9375rem; }
+.barber-card__role { font-family: var(--font-mono); font-size: .75rem; color: var(--gray-mid); }
+.barber-card:has(input:checked) .barber-card__role { color: var(--gray-on-dark); }
+
+/* Resumen (paso final, antes de los datos) */
+.summary-card { background: var(--surface-alt); border: 1px solid var(--hairline); padding: var(--sp-md) var(--sp-lg); margin: 0 0 var(--sp-lg); }
+.summary-card__row { display: flex; justify-content: space-between; gap: var(--sp-md); padding: var(--sp-2xs) 0; }
+.summary-card__row dt { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--gray-mid); }
+.summary-card__row dd { margin: 0; font-family: var(--font-display); font-weight: 600; text-transform: none; text-align: right; }
+.summary-card__total { display: flex; justify-content: space-between; margin-top: var(--sp-2xs); padding-top: var(--sp-sm); border-top: 1px solid var(--hairline); font-family: var(--font-mono); font-size: 1rem; }
+
 .form { display: grid; gap: 18px; max-width: 44rem; }
 .field { display: grid; gap: 6px; }
 .field label { font-family: var(--font-mono); font-size: .8125rem; font-weight: 400; letter-spacing: .04em; }
