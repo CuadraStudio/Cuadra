@@ -51,6 +51,28 @@
     });
   }());
 
+  /* ── Header transparente sobre hero, sólido al hacer scroll ───────────
+     Inerte en demos cuyo CSS no define .site-header.scrolled (no hay nada
+     que reaccionar a la clase); solo Estudio Trazo la usa hoy. */
+
+  (function headerScroll() {
+    var header = qs('.site-header');
+    var hero = qs('.hero');
+    if (!header || !hero) return;
+    var ticking = false;
+    var onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        ticking = false;
+        var pastHero = hero.getBoundingClientRect().bottom <= header.offsetHeight;
+        header.classList.toggle('scrolled', pastHero);
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }());
+
   /* ── Filtros (catálogo, galería) ────────────────────────────────────── */
 
   (function filters() {
@@ -397,6 +419,121 @@
     if (tone) el.setAttribute('data-tone', tone); else el.removeAttribute('data-tone');
   }
 
+  /* ── Mercado Pago: pago real desde la web (sin pasar por WhatsApp) ──────
+     Botón [data-mp-pay="order"|"appointment"]: crea el pedido/turno en el
+     backend real (precio siempre calculado server-side, igual que
+     createOrder/createAppointment) y redirige al checkout de Mercado Pago
+     que ese pedido/turno generó. Solo corre si el tenant tiene la API
+     habilitada (CFG.api.enabled) — en site.js compartido con tenants que no
+     la tengan, el botón queda inerte con un aviso claro en vez de fallar. */
+
+  (function mercadoPago() {
+    var buttons = qsa('[data-mp-pay]');
+    if (!buttons.length) return;
+
+    function apiCall(action, payload) {
+      var api = CFG.api || {};
+      return fetch(api.base, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: action, payload: payload })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (body) {
+          if (!body || !body.ok) {
+            throw new Error((body && body.error && body.error.message) || T('Error de conexión.', 'Connection error.'));
+          }
+          return body.data;
+        });
+    }
+
+    buttons.forEach(function (btn) {
+      var kind = btn.getAttribute('data-mp-pay') === 'appointment' ? 'appointment' : 'order';
+      var form = btn.closest('form');
+      if (!form) return;
+      var status = qs('.form__status', form);
+
+      btn.addEventListener('click', function () {
+        var api = CFG.api || {};
+        if (!api.enabled || !api.base) {
+          setStatus(status, T('Mercado Pago todavía no está conectado en este sitio.', 'Mercado Pago is not connected on this site yet.'), 'error');
+          return;
+        }
+        var slotBox = qs('[data-slots]', form);
+        var missing = qsa('[required]', form).filter(function (el) {
+          return !el.value.trim() && !isHidden(el);
+        });
+        if (slotBox && !slotBox.getAttribute('data-value')) {
+          setStatus(status, T('Elegí un horario para continuar.', 'Pick a time to continue.'), 'error');
+          return;
+        }
+        if (missing.length) {
+          setStatus(status, T('Faltan datos: completá los campos marcados.', 'Missing info: fill in the marked fields.'), 'error');
+          missing[0].focus();
+          return;
+        }
+
+        var get = function (name) {
+          var el = form.querySelector('[name="' + name + '"]');
+          return el && !isHidden(el) ? el.value : '';
+        };
+
+        var doc, createAction, locationId;
+        if (kind === 'order') {
+          createAction = 'createOrder';
+          locationId = get('sucursal') || null;
+          doc = {
+            client_name: get('nombre'),
+            client_phone: get('telefono'),
+            client_email: get('email') || null,
+            items: Cart.read().map(function (i) { return { product_id: i.slug, qty: i.qty }; }),
+            fulfillment: get('entrega') === 'envio' ? 'delivery' : 'pickup',
+            note: [get('direccion'), get('zona'), get('notas')].filter(Boolean).join(' · ') || null
+          };
+        } else {
+          createAction = 'createAppointment';
+          locationId = get('sucursal') || null;
+          doc = {
+            service_id: get('servicio'),
+            provider_id: get('profesional') || null,
+            date: get('fecha'),
+            time: (slotBox && slotBox.getAttribute('data-value')) || '',
+            client_name: get('nombre'),
+            client_phone: get('telefono'),
+            client_email: get('email') || null,
+            note: get('notas') || null
+          };
+        }
+
+        btn.disabled = true;
+        setStatus(status, T('Conectando con Mercado Pago…', 'Connecting to Mercado Pago…'), '');
+
+        apiCall(createAction, { location_id: locationId, doc: doc })
+          .then(function (created) {
+            return apiCall('createPaymentPreference', { kind: kind, ref_id: created.id, return_url: window.location.href.split('?')[0] });
+          })
+          .then(function (pref) {
+            window.location.href = pref.sandbox_init_point || pref.init_point;
+          })
+          .catch(function (err) {
+            btn.disabled = false;
+            setStatus(status, T('No se pudo iniciar el pago: ', 'Could not start the payment: ') + (err && err.message ? err.message : err), 'error');
+          });
+      });
+    });
+
+    var mpStatus = params.get('mp_status');
+    if (mpStatus) {
+      var msg = {
+        success: T('¡Pago confirmado! Ya registramos tu pedido/turno.', 'Payment confirmed! Your order/booking is registered.'),
+        pending: T('Tu pago quedó pendiente de confirmación.', 'Your payment is pending confirmation.'),
+        failure: T('El pago no se completó. Podés intentar de nuevo o coordinar por WhatsApp.', 'The payment did not go through. You can try again or arrange it on WhatsApp.')
+      }[mpStatus];
+      var el = qs('.form__status');
+      if (msg && el) { setStatus(el, msg, mpStatus === 'failure' ? 'error' : ''); }
+    }
+  }());
+
   /**
    * Modo demo: guarda la reserva/pedido en CUADRA_DB (localStorage, ver
    * js/admin-db.js) para que el panel (/admin.html) lo liste igual que una
@@ -435,7 +572,9 @@
         time: hora,
         client_name: get('nombre'),
         client_phone: get('telefono'),
+        client_email: get('email') || null,
         note: get('notas') || get('mensaje') || null,
+        payment_method: get('metodo_pago') || null,
         status: 'pending',
         source: 'web'
       });
@@ -456,10 +595,12 @@
       promise = DB.createOrder({
         client_name: get('nombre'),
         client_phone: get('telefono'),
+        client_email: get('email') || null,
         entrega: get('modalidad') || get('entrega') || null,
         items: items,
         total: Cart.total(),
         note: [get('direccion'), svcLabel('zona'), get('notas')].filter(Boolean).join(' · ') || null,
+        payment_method: get('metodo_pago') || null,
         status: 'pending'
       });
     } else {

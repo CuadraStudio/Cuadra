@@ -15,13 +15,13 @@
   <meta property="og:image" content="https://cuadrastudio.uy/demos/estudiotrazo/img/hero.jpg">
   <meta property="og:locale" content="es_UY">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#1d1b19">
+  <meta name="theme-color" content="#111111">
   <link rel="icon" href="/demos/estudiotrazo/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/demos/estudiotrazo/img/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&amp;family=Inter:wght@400;500;600&amp;display=swap">
-  <link rel="stylesheet" href="/demos/estudiotrazo/css/site.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100..125,100..900&amp;family=Hanken+Grotesk:wght@400..700&amp;family=Space+Mono&amp;display=swap">
+  <link rel="stylesheet" href="/demos/estudiotrazo/css/site.css?v=20260920">
   <link rel="alternate" hreflang="es" href="https://cuadrastudio.uy/demos/estudiotrazo/">
   <link rel="alternate" hreflang="en" href="https://cuadrastudio.uy/demos/estudiotrazo/en/">
   <script type="application/ld+json">
@@ -64,39 +64,66 @@
       </div>
     </section>
 
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <div class="marquee__group">
+          <span class="marquee__item">ESTUDIO TRAZO</span><span class="marquee__sep">·</span>
+          <span class="marquee__item">CORTE</span><span class="marquee__sep">·</span>
+          <span class="marquee__item">BARBA</span><span class="marquee__sep">·</span>
+          <span class="marquee__item">COLOR</span><span class="marquee__sep">·</span>
+          <span class="marquee__item">PARQUE RODÓ</span><span class="marquee__sep">·</span>
+        </div>
+        <div class="marquee__group" aria-hidden="true">
+          <span class="marquee__item">ESTUDIO TRAZO</span><span class="marquee__sep">·</span>
+          <span class="marquee__item">CORTE</span><span class="marquee__sep">·</span>
+          <span class="marquee__item">BARBA</span><span class="marquee__sep">·</span>
+          <span class="marquee__item">COLOR</span><span class="marquee__sep">·</span>
+          <span class="marquee__item">PARQUE RODÓ</span><span class="marquee__sep">·</span>
+        </div>
+      </div>
+    </div>
+
     <section id="servicios" class="section" aria-labelledby="servicios-title">
       <div class="container">
         <header class="section__head">
-          <p class="kicker">Servicios</p>
+          <p class="kicker">01 · Servicios</p>
           <h2 id="servicios-title" class="section__title">Lo que hacemos</h2>
           <p class="section__lead">Todos los servicios incluyen lavado y peinado. Los precios son finales.</p>
         </header>
-        <div class="grid grid--3">
-          <article class="card">
-            <div class="card__media"><img src="/demos/estudiotrazo/img/servicios/corte-clasico.jpg" alt="Corte clásico en Estudio Trazo" width="600" height="450" loading="lazy" decoding="async"></div>
-            <div class="card__body">
-
-              <h3 class="card__title"><a class="card__link" href="/demos/estudiotrazo/servicios/corte-clasico/">Corte clásico</a></h3>
-              <p class="card__meta">40 min</p>
-              <p class="card__text">Corte a tijera y máquina, lavado y peinado. El trabajo completo, sin apuro.</p>
-              <p class="card__price">$ 650</p>
-
-              <a class="btn btn--sm btn--primary" href="/demos/estudiotrazo/reservar/">Reservar</a>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card__media"><img src="/demos/estudiotrazo/img/servicios/corte-y-barba.jpg" alt="Corte y barba con navaja" width="600" height="450" loading="lazy" decoding="async"></div>
-            <div class="card__body">
-
-              <h3 class="card__title"><a class="card__link" href="/demos/estudiotrazo/servicios/corte-y-barba/">Corte y barba</a></h3>
-              <p class="card__meta">60 min</p>
-              <p class="card__text">El combo completo: corte, perfilado de barba con navaja y toalla caliente.</p>
-              <p class="card__price">$ 900</p>
-
-              <a class="btn btn--sm btn--primary" href="/demos/estudiotrazo/reservar/">Reservar</a>
-            </div>
-          </article>
-        </div>
+        <ol class="pricelist">
+          <li class="pricelist__row">
+            <span class="pricelist__main">
+              <h3 class="pricelist__name"><a href="/demos/estudiotrazo/servicios/corte-clasico/">Corte clásico</a></h3>
+              <p class="pricelist__text">Corte a tijera y máquina, lavado y peinado. El trabajo completo, sin apuro.</p>
+            </span>
+            <span class="pricelist__side">
+              <span class="pricelist__meta">40 min</span>
+              <span class="pricelist__price">$ 650</span>
+              <span class="pricelist__arrow" aria-hidden="true">
+                <svg viewBox="0 0 16 16" width="16" height="16" focusable="false"><path d="M3 13 13 3M5 3h8v8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              </span>
+            </span>
+            <span class="pricelist__float" aria-hidden="true">
+              <img src="/demos/estudiotrazo/img/servicios/corte-clasico.jpg" alt="" loading="lazy" decoding="async">
+            </span>
+          </li>
+          <li class="pricelist__row">
+            <span class="pricelist__main">
+              <h3 class="pricelist__name"><a href="/demos/estudiotrazo/servicios/corte-y-barba/">Corte y barba</a></h3>
+              <p class="pricelist__text">El combo completo: corte, perfilado de barba con navaja y toalla caliente.</p>
+            </span>
+            <span class="pricelist__side">
+              <span class="pricelist__meta">60 min</span>
+              <span class="pricelist__price">$ 900</span>
+              <span class="pricelist__arrow" aria-hidden="true">
+                <svg viewBox="0 0 16 16" width="16" height="16" focusable="false"><path d="M3 13 13 3M5 3h8v8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              </span>
+            </span>
+            <span class="pricelist__float" aria-hidden="true">
+              <img src="/demos/estudiotrazo/img/servicios/corte-y-barba.jpg" alt="" loading="lazy" decoding="async">
+            </span>
+          </li>
+        </ol>
         <p class="section__more"><a class="btn btn--ghost" href="/demos/estudiotrazo/servicios/">Ver todos los servicios</a></p>
       </div>
     </section>
@@ -104,7 +131,7 @@
     <section id="nosotros" class="section section--alt" aria-labelledby="nosotros-title">
       <div class="container">
         <header class="section__head">
-          <p class="kicker">El estudio</p>
+          <p class="kicker">02 · El estudio</p>
           <h2 id="nosotros-title" class="section__title">Una barbería que trabaja como estudio</h2>
 
         </header>
@@ -116,7 +143,7 @@
     <section id="opiniones" class="section section--alt" aria-labelledby="opiniones-title">
       <div class="container">
         <header class="section__head">
-          <p class="kicker">Opiniones</p>
+          <p class="kicker">03 · Opiniones</p>
           <h2 id="opiniones-title" class="section__title">Lo que dicen quienes ya vinieron</h2>
 
         </header>
@@ -144,7 +171,7 @@
     <section id="instagram" class="section" aria-labelledby="instagram-title">
       <div class="container">
         <header class="section__head">
-          <p class="kicker">Instagram</p>
+          <p class="kicker">04 · Instagram</p>
           <h2 id="instagram-title" class="section__title">Seguinos en Instagram</h2>
           <p class="section__lead">Últimos trabajos y el día a día, directo desde el celular.</p>
         </header>
@@ -163,7 +190,7 @@
     <section id="ubicacion" class="section" aria-labelledby="ubicacion-title">
       <div class="container">
         <header class="section__head">
-          <p class="kicker">Dónde estamos</p>
+          <p class="kicker">05 · Dónde estamos</p>
           <h2 id="ubicacion-title" class="section__title">Bulevar Artigas 2026, Parque Rodó</h2>
 
         </header>
@@ -227,6 +254,6 @@
   </div>
   <script src="/demos/estudiotrazo/js/config.js?v=20260920"></script>
   <script src="/demos/estudiotrazo/js/admin-db.js"></script>
-  <script src="/demos/estudiotrazo/js/site.js?v=20260920c" defer></script>
+  <script src="/demos/estudiotrazo/js/site.js?v=20260920d" defer></script>
 </body>
 </html>

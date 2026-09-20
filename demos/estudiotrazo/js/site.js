@@ -51,6 +51,28 @@
     });
   }());
 
+  /* ── Header transparente sobre hero, sólido al hacer scroll ───────────
+     Inerte en demos cuyo CSS no define .site-header.scrolled (no hay nada
+     que reaccionar a la clase); solo Estudio Trazo la usa hoy. */
+
+  (function headerScroll() {
+    var header = qs('.site-header');
+    var hero = qs('.hero');
+    if (!header || !hero) return;
+    var ticking = false;
+    var onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        ticking = false;
+        var pastHero = hero.getBoundingClientRect().bottom <= header.offsetHeight;
+        header.classList.toggle('scrolled', pastHero);
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }());
+
   /* ── Filtros (catálogo, galería) ────────────────────────────────────── */
 
   (function filters() {
