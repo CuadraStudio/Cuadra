@@ -104,6 +104,14 @@
           <textarea id="f-notas" name="notas" rows="3"></textarea>
 
         </div>
+        <div class="field">
+          <label for="f-pago">How do you confirm?</label>
+          <select id="f-pago" name="metodo_pago">
+            <option value="local">No deposit — pay in store</option>
+            <option value="mercadopago">Deposit with Mercado Pago</option>
+          </select>
+          <p class="field__help" data-when="metodo_pago=mercadopago" hidden>We'll send you the Mercado Pago deposit link together with the WhatsApp confirmation.</p>
+        </div>
         <div class="form__actions">
           <button class="btn btn--primary btn--block" type="submit">Confirm booking</button>
         </div>
@@ -115,7 +123,7 @@
           <h2 class="aside-card__title">Prefer to talk?</h2>
           <p><a href="tel:+59899000000">099 000 000</a></p>
           <p><a class="btn btn--ghost btn--sm" href="https://wa.me/59899000000?text=Hi%20Estudio%20Trazo%2C%20I&#39;d%20like%20to%20book%20a%20slot." target="_blank" rel="noopener">WhatsApp</a></p>
-
+          <p class="aside-card__note" style="margin-top: 14px;">Payment methods: <span class="tag">Cash</span> <span class="tag">Bank transfer</span> <span class="tag">Mercado Pago</span></p>
         </div></aside>
         </div>
       </div>

@@ -436,6 +436,7 @@
         client_name: get('nombre'),
         client_phone: get('telefono'),
         note: get('notas') || get('mensaje') || null,
+        payment_method: get('metodo_pago') || null,
         status: 'pending',
         source: 'web'
       });
@@ -460,6 +461,7 @@
         items: items,
         total: Cart.total(),
         note: [get('direccion'), svcLabel('zona'), get('notas')].filter(Boolean).join(' · ') || null,
+        payment_method: get('metodo_pago') || null,
         status: 'pending'
       });
     } else {

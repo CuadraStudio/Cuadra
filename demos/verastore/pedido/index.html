@@ -90,10 +90,18 @@
           <textarea id="f-notas" name="notas" rows="3"></textarea>
 
         </div>
+        <div class="field">
+          <label for="f-pago">Método de pago</label>
+          <select id="f-pago" name="metodo_pago">
+            <option value="efectivo">Efectivo o transferencia (coordinamos por WhatsApp)</option>
+            <option value="mercadopago">Mercado Pago</option>
+          </select>
+          <p class="field__help" data-when="metodo_pago=mercadopago" hidden>Te enviamos el link de pago de Mercado Pago junto con la confirmación por WhatsApp.</p>
+        </div>
         <div class="form__actions">
           <button class="btn btn--primary btn--block" type="submit">Enviar pedido por WhatsApp</button>
         </div>
-        <p class="form__note">No se cobra nada desde el sitio. Coordinamos pago y entrega por WhatsApp.</p>
+        <p class="form__note">No se cobra nada desde el sitio al confirmar. Coordinamos el pago —efectivo, transferencia o Mercado Pago— y la entrega por WhatsApp.</p>
         <p class="form__status" role="status" aria-live="polite"></p>
       </form>
           </div>
@@ -102,6 +110,7 @@
           <p><a href="tel:+59899000000">099 000 000</a></p>
           <p><a class="btn btn--ghost btn--sm" href="https://wa.me/59899000000?text=Hola%20Vera%20Store%2C%20quiero%20hacer%20una%20consulta." target="_blank" rel="noopener">WhatsApp</a></p>
           <p class="aside-card__note">El envío se abona junto con el pedido, al recibirlo o por transferencia.</p>
+          <p class="aside-card__note" style="margin-top: 14px;">Formas de pago: <span class="tag">Efectivo</span> <span class="tag">Transferencia</span> <span class="tag">Mercado Pago</span></p>
         </div></aside>
         </div>
       </div>

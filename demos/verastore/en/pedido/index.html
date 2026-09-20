@@ -90,10 +90,18 @@
           <textarea id="f-notas" name="notas" rows="3"></textarea>
 
         </div>
+        <div class="field">
+          <label for="f-pago">Payment method</label>
+          <select id="f-pago" name="metodo_pago">
+            <option value="efectivo">Cash or bank transfer (arranged on WhatsApp)</option>
+            <option value="mercadopago">Mercado Pago</option>
+          </select>
+          <p class="field__help" data-when="metodo_pago=mercadopago" hidden>We'll send you the Mercado Pago payment link together with the WhatsApp confirmation.</p>
+        </div>
         <div class="form__actions">
           <button class="btn btn--primary btn--block" type="submit">Send order via WhatsApp</button>
         </div>
-        <p class="form__note">Nothing is charged from the site. We arrange payment and delivery on WhatsApp.</p>
+        <p class="form__note">Nothing is charged from the site on confirmation. We arrange payment —cash, bank transfer or Mercado Pago— and delivery on WhatsApp.</p>
         <p class="form__status" role="status" aria-live="polite"></p>
       </form>
           </div>
@@ -102,6 +110,7 @@
           <p><a href="tel:+59899000000">099 000 000</a></p>
           <p><a class="btn btn--ghost btn--sm" href="https://wa.me/59899000000?text=Hi%20Vera%20Store%2C%20I&#39;d%20like%20to%20make%20an%20inquiry." target="_blank" rel="noopener">WhatsApp</a></p>
           <p class="aside-card__note">Shipping is paid together with the order, on delivery or by bank transfer.</p>
+          <p class="aside-card__note" style="margin-top: 14px;">Payment methods: <span class="tag">Cash</span> <span class="tag">Bank transfer</span> <span class="tag">Mercado Pago</span></p>
         </div></aside>
         </div>
       </div>

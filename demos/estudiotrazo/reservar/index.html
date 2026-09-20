@@ -104,6 +104,14 @@
           <textarea id="f-notas" name="notas" rows="3"></textarea>
 
         </div>
+        <div class="field">
+          <label for="f-pago">¿Cómo confirmás?</label>
+          <select id="f-pago" name="metodo_pago">
+            <option value="local">Sin seña — pago en el local</option>
+            <option value="mercadopago">Seña con Mercado Pago</option>
+          </select>
+          <p class="field__help" data-when="metodo_pago=mercadopago" hidden>Te enviamos el link de la seña por Mercado Pago junto con la confirmación por WhatsApp.</p>
+        </div>
         <div class="form__actions">
           <button class="btn btn--primary btn--block" type="submit">Confirmar reserva</button>
         </div>
@@ -115,7 +123,7 @@
           <h2 class="aside-card__title">¿Preferís hablar?</h2>
           <p><a href="tel:+59899000000">099 000 000</a></p>
           <p><a class="btn btn--ghost btn--sm" href="https://wa.me/59899000000?text=Hola%20Estudio%20Trazo%2C%20quiero%20reservar%20un%20turno." target="_blank" rel="noopener">WhatsApp</a></p>
-
+          <p class="aside-card__note" style="margin-top: 14px;">Formas de pago: <span class="tag">Efectivo</span> <span class="tag">Transferencia</span> <span class="tag">Mercado Pago</span></p>
         </div></aside>
         </div>
       </div>
