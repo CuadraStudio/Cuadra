@@ -8,7 +8,7 @@ window.SITE_CONFIG = {
     "currency": "UYU"
   },
   "api": {
-    "enabled": false,
+    "enabled": true,
     "base": "https://cuadra-api-t7rg.onrender.com/api/verastore",
     "timeoutMs": 8000
   },

@@ -110,12 +110,15 @@
             <option value="local">Sin seña — pago en el local</option>
             <option value="mercadopago">Seña con Mercado Pago</option>
           </select>
-          <p class="field__help" data-when="metodo_pago=mercadopago" hidden>Te enviamos el link de la seña por Mercado Pago junto con la confirmación por WhatsApp.</p>
         </div>
-        <div class="form__actions">
+        <div class="form__actions" data-when="metodo_pago=local">
           <button class="btn btn--primary btn--block" type="submit">Confirmar reserva</button>
         </div>
-        <p class="form__note">Podés reprogramar o cancelar desde el link que te llega.</p>
+        <div class="form__actions" data-when="metodo_pago=mercadopago" hidden>
+          <button class="btn btn--primary btn--block" type="button" data-mp-pay="appointment">Pagar seña con Mercado Pago</button>
+        </div>
+        <p class="form__note" data-when="metodo_pago=local">Podés reprogramar o cancelar desde el link que te llega.</p>
+        <p class="form__note" data-when="metodo_pago=mercadopago" hidden>Te lleva al checkout de Mercado Pago. El resto del turno se paga en el local.</p>
         <p class="form__status" role="status" aria-live="polite"></p>
       </form>
           </div>
@@ -132,8 +135,8 @@
   <footer class="site-footer site-footer--minimal">
     <div class="container"><p class="site-footer__notice">Sitio de demostración. Todos los nombres, datos y servicios son ficticios.</p></div>
   </footer>
-  <script src="/demos/estudiotrazo/js/config.js"></script>
+  <script src="/demos/estudiotrazo/js/config.js?v=20260920"></script>
   <script src="/demos/estudiotrazo/js/admin-db.js"></script>
-  <script src="/demos/estudiotrazo/js/site.js" defer></script>
+  <script src="/demos/estudiotrazo/js/site.js?v=20260920" defer></script>
 </body>
 </html>

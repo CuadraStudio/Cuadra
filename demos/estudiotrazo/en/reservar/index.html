@@ -110,12 +110,15 @@
             <option value="local">No deposit — pay in store</option>
             <option value="mercadopago">Deposit with Mercado Pago</option>
           </select>
-          <p class="field__help" data-when="metodo_pago=mercadopago" hidden>We'll send you the Mercado Pago deposit link together with the WhatsApp confirmation.</p>
         </div>
-        <div class="form__actions">
+        <div class="form__actions" data-when="metodo_pago=local">
           <button class="btn btn--primary btn--block" type="submit">Confirm booking</button>
         </div>
-        <p class="form__note">You can reschedule or cancel from the link you receive.</p>
+        <div class="form__actions" data-when="metodo_pago=mercadopago" hidden>
+          <button class="btn btn--primary btn--block" type="button" data-mp-pay="appointment">Pay deposit with Mercado Pago</button>
+        </div>
+        <p class="form__note" data-when="metodo_pago=local">You can reschedule or cancel from the link you receive.</p>
+        <p class="form__note" data-when="metodo_pago=mercadopago" hidden>Takes you to Mercado Pago's checkout. The rest of the service is paid in store.</p>
         <p class="form__status" role="status" aria-live="polite"></p>
       </form>
           </div>
@@ -132,7 +135,7 @@
   <footer class="site-footer site-footer--minimal">
     <div class="container"><p class="site-footer__notice">Demo site. All names, data and services are fictitious.</p></div>
   </footer>
-  <script src="/demos/estudiotrazo/en/js/config.js"></script>
+  <script src="/demos/estudiotrazo/en/js/config.js?v=20260920"></script>
   <script src="/demos/estudiotrazo/en/js/admin-db.js"></script>
   <script src="/demos/estudiotrazo/en/js/site.js" defer></script>
 </body>

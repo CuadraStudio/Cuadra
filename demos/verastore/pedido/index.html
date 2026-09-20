@@ -96,12 +96,15 @@
             <option value="efectivo">Efectivo o transferencia (coordinamos por WhatsApp)</option>
             <option value="mercadopago">Mercado Pago</option>
           </select>
-          <p class="field__help" data-when="metodo_pago=mercadopago" hidden>Te enviamos el link de pago de Mercado Pago junto con la confirmación por WhatsApp.</p>
         </div>
-        <div class="form__actions">
+        <div class="form__actions" data-when="metodo_pago=efectivo">
           <button class="btn btn--primary btn--block" type="submit">Enviar pedido por WhatsApp</button>
         </div>
-        <p class="form__note">No se cobra nada desde el sitio al confirmar. Coordinamos el pago —efectivo, transferencia o Mercado Pago— y la entrega por WhatsApp.</p>
+        <div class="form__actions" data-when="metodo_pago=mercadopago" hidden>
+          <button class="btn btn--primary btn--block" type="button" data-mp-pay="order">Pagar con Mercado Pago</button>
+        </div>
+        <p class="form__note" data-when="metodo_pago=efectivo">No se cobra nada desde el sitio al confirmar. Coordinamos el pago y la entrega por WhatsApp.</p>
+        <p class="form__note" data-when="metodo_pago=mercadopago" hidden>Te lleva al checkout de Mercado Pago. La entrega se coordina después por WhatsApp.</p>
         <p class="form__status" role="status" aria-live="polite"></p>
       </form>
           </div>
@@ -119,8 +122,8 @@
   <footer class="site-footer site-footer--minimal">
     <div class="container"><p class="site-footer__notice">Sitio de demostración. Todos los nombres, datos y servicios son ficticios.</p></div>
   </footer>
-  <script src="/demos/verastore/js/config.js"></script>
+  <script src="/demos/verastore/js/config.js?v=20260920"></script>
   <script src="/demos/verastore/js/admin-db.js"></script>
-  <script src="/demos/verastore/js/site.js" defer></script>
+  <script src="/demos/verastore/js/site.js?v=20260920" defer></script>
 </body>
 </html>
