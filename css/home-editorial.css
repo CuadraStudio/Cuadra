@@ -12,16 +12,16 @@
    ============================================ */
 
 .home-editorial {
-  --ed-paper: #F2F1ED;
-  --ed-paper-raised: #D8E2DF;
-  --ed-ink: #0F1111;
-  --ed-ink-soft: #292E2D;
-  --ed-muted: #5A6060;
-  --ed-border: rgba(15, 17, 17, 0.12);
-  --ed-border-strong: rgba(15, 17, 17, 0.24);
-  --ed-accent: #3E6B62;
+  --ed-paper: #0F1111;
+  --ed-paper-raised: #292E2D;
+  --ed-ink: #F2F1ED;
+  --ed-ink-soft: #A7AAAD;
+  --ed-muted: #A7AAAD;
+  --ed-border: rgba(242, 241, 237, 0.12);
+  --ed-border-strong: rgba(242, 241, 237, 0.24);
+  --ed-accent: #AFC8C2;
   --ed-accent-solid: #AFC8C2;
-  --ed-accent-solid-hover: #9CB9B1;
+  --ed-accent-solid-hover: #C2D7D1;
 
   background: var(--ed-paper);
   color: var(--ed-ink);
@@ -395,7 +395,7 @@
   border: 1px solid var(--ed-border-strong);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: #fff;
+  background: var(--ed-paper-raised);
 }
 
 .ed-feature__media img {
