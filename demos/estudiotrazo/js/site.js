@@ -329,6 +329,23 @@
       }
     });
 
+    /* Avance automático en servicio y profesional: un clic/tap alcanza,
+       "Continuar" queda como respaldo (foco por teclado + flechas entre
+       radios de un mismo grupo NO dispara click, así que navegar con
+       flechas para comparar opciones sigue sin saltar de paso solo). */
+    qsa('.service-grid, .barber-grid', root).forEach(function (grid) {
+      grid.addEventListener('click', function (ev) {
+        var card = ev.target.closest('label');
+        if (!card || !qs('input', card)) return;
+        var panel = card.closest('.wizard-step');
+        var nextBtn = panel && qs('[data-wizard-next]', panel);
+        if (!nextBtn) return;
+        window.setTimeout(function () {
+          if (!nextBtn.disabled) setStep(Number(nextBtn.getAttribute('data-wizard-next')));
+        }, 180);
+      });
+    });
+
     /* Paso 3 (fecha y hora): "Continuar" depende del slot, no de un radio. */
     var step3Next = qs('.wizard-step[data-step="3"] [data-wizard-next]', root);
     if (step3Next && slotsBox) {
