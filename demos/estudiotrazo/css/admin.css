@@ -7,43 +7,47 @@
    el panel se ve igual en cualquier tenant sin importar su marca pública.
    Estructura, grid, a11y y responsive: sin cambios respecto al original. */
 :root {
-  /* Base — igual que el sitio público */
-  --bg: #FAFAF8;
+  /* Base — reciclado del sistema editorial mono de Ccesco Studio (Estudio
+     Trazo nunca respondió al pitch; el diseño se reusa acá). B/N estricto,
+     cero acento de color: el panel ya no tiene "color de marca" propio. */
+  --bg: #FAFAFA;
   --surface: #FFFFFF;
-  --ink: #0A0A0A;
-  --muted: #B5B5B0;                        /* texto secundario sobre chrome negro, ~9.4:1 */
-  --muted-text: #6E6D68;                   /* texto secundario sobre superficie clara */
-  --accent: #E1301F;                       /* rojo señal — CTA, foco, "hoy", cancelado */
-  --accent-strong: #B0230F;                /* hover del acento */
-  --accent-bright: #FF6A55;                /* acento legible sobre chrome negro (links, hover) */
+  --ink: #111111;
+  --muted: #8C8C8C;                        /* texto secundario sobre chrome tinta, ~5.6:1 */
+  --muted-text: #3D3D3D;                   /* texto secundario sobre superficie clara */
+  --accent: var(--ink);                    /* sin acento: la "acción" es tinta sólida */
+  --accent-strong: var(--ink);             /* el feedback de hover va por opacity, no color */
+  --accent-bright: var(--bg);              /* legible sobre chrome tinta (links, hover) */
   --on-accent: #FFFFFF;
   --on-strong: #FFFFFF;
-  --focus: #E1301F;
+  --focus: var(--ink);
   --focus-inverse: #FFFFFF;
-  --line: rgba(10, 10, 10, 0.16);
-  --line-strong: rgba(10, 10, 10, 0.9);
-  --line-on-dark: rgba(255, 255, 255, 0.18);
-  --header-bg: #0A0A0A;
-  --header-bg-solid: #0A0A0A;
+  --line: #E4E4E4;
+  --line-strong: rgba(17, 17, 17, 0.9);
+  --line-on-dark: #333333;
+  --header-bg: var(--ink);
+  --header-bg-solid: var(--ink);
 
-  /* Semántica de estado — solo para chips/badges/KPI, nunca para CTA/marca */
-  --danger: #E1301F;                       /* cancelado — mismo rojo de marca */
-  --warning: #8A5A00;                      /* pendiente — ámbar oscuro, AA sobre blanco */
-  --confirmed: #1F7A3D;                    /* confirmado — verde oscuro, AA sobre blanco */
+  /* Semántica de estado — únicas excepciones de color, exclusivas del panel
+     (DESIGN.md: prohibidas en el sitio público). Confirmado no lleva color
+     propio: es el estado "normal", se lee en tinta sólida como todo lo demás. */
+  --danger: #7A1111;                       /* cancelado */
+  --warning: #7A6211;                      /* pendiente */
+  --confirmed: var(--ink);                 /* confirmado — sin color, es el default */
 
   /* bridge — nombres legacy que siguen usando admin.css / admin.js */
   --color-paper: var(--bg);
   --color-ink: var(--ink);
-  --color-gray-strong: var(--muted);
+  --color-gray-strong: var(--muted-text);
   --color-gray-mid: var(--muted-text);
   --color-gray-on-dark: var(--muted);
   --color-danger: var(--danger);
   --color-warning: var(--warning);
   --hairline: var(--line);
 
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
   --fs-row: clamp(1.375rem, 1.1rem + 1.2vw, 1.875rem);
   --sp-3xs: 4px; --sp-xs: 12px; --sp-sm: 16px; --sp-md: 24px; --sp-lg: 32px;
   --sp-xl: 48px; --sp-2xl: 64px; --sp-3xl: 96px; --sp-4xl: 128px;
@@ -332,9 +336,9 @@
 }
 .admin-sound-toggle:hover { border-color: var(--bg); }
 .admin-sound-toggle:active {
-  background: var(--accent-strong);        /* pressed feedback, 8,69:1 */
-  color: var(--on-strong);
-  border-color: var(--accent-strong);
+  background: var(--bg);                   /* pressed feedback: inversión papel/tinta */
+  color: var(--ink);
+  border-color: var(--bg);
 }
 
 .admin-sound-toggle__icon { display: block; }
@@ -397,7 +401,7 @@
   position: fixed;
   inset: 0;
   z-index: 80;
-  background: rgba(10, 10, 10, 0.5);       /* scrim, sobre content claro */
+  background: rgba(17, 17, 17, 0.5);       /* scrim, sobre content claro */
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -875,12 +879,12 @@
   font-weight: 600;
   border-radius: 0;
 }
-.admin-btn--solid:hover { background: var(--accent-strong); color: var(--on-strong); opacity: 1; }  /* 8,69:1 */
+.admin-btn--solid:hover { opacity: 0.85; }
 .admin-btn--solid:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 .admin-btn--danger { border-color: var(--danger); color: var(--danger); }   /* 6,43:1 */
 .admin-btn--danger:hover { background: var(--danger); color: var(--bg); }   /* 5,88:1 */
 .admin-btn--ghosted { border-color: var(--line-strong); color: var(--ink); }
-.admin-btn--ghosted:hover { background: rgba(10, 10, 10, 0.06); color: var(--ink); }
+.admin-btn--ghosted:hover { background: rgba(17, 17, 17, 0.06); color: var(--ink); }
 
 /* CTA login "Entrar" — oliva sólido (§2.1/§2.13) */
 .btn-primary {
@@ -893,7 +897,7 @@
   height: 48px;
   cursor: pointer;
 }
-.btn-primary:hover { background: var(--accent-strong); color: var(--on-strong); }     /* 8,69:1 */
+.btn-primary:hover { background: var(--bg); color: var(--ink); border: 1px solid var(--ink); }
 .btn-primary:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 
