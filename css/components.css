@@ -102,6 +102,8 @@
 
 /* Hamburger button (3 lines, keeps existing JS classes) */
 .nav__hamburger {
+  position: relative;
+  z-index: calc(var(--z-overlay) + 1);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -427,7 +429,7 @@
 .project-card__badge {
   position: absolute;
   top: var(--space-4);
-  left: var(--space-4);
+  right: var(--space-4);
   z-index: 1;
   display: inline-block;
   padding: 5px 12px;

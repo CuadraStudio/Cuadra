@@ -109,6 +109,11 @@
         closeMenu();
       }
     });
+
+    // Close menu on tap/click outside the links (the overlay's own background)
+    mobileMenu.addEventListener('click', function (e) {
+      if (e.target === mobileMenu) closeMenu();
+    });
   }
 
   // ---- Active nav link ----
