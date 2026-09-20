@@ -463,6 +463,7 @@
           doc = {
             client_name: get('nombre'),
             client_phone: get('telefono'),
+            client_email: get('email') || null,
             items: Cart.read().map(function (i) { return { product_id: i.slug, qty: i.qty }; }),
             fulfillment: get('entrega') === 'envio' ? 'delivery' : 'pickup',
             note: [get('direccion'), get('zona'), get('notas')].filter(Boolean).join(' · ') || null
@@ -477,6 +478,7 @@
             time: (slotBox && slotBox.getAttribute('data-value')) || '',
             client_name: get('nombre'),
             client_phone: get('telefono'),
+            client_email: get('email') || null,
             note: get('notas') || null
           };
         }
@@ -548,6 +550,7 @@
         time: hora,
         client_name: get('nombre'),
         client_phone: get('telefono'),
+        client_email: get('email') || null,
         note: get('notas') || get('mensaje') || null,
         payment_method: get('metodo_pago') || null,
         status: 'pending',
@@ -570,6 +573,7 @@
       promise = DB.createOrder({
         client_name: get('nombre'),
         client_phone: get('telefono'),
+        client_email: get('email') || null,
         entrega: get('modalidad') || get('entrega') || null,
         items: items,
         total: Cart.total(),
