@@ -1003,6 +1003,84 @@ a.ed-lettered__item:hover {
   color: var(--ed-ink-soft);
 }
 
+/* ---- Contact sidebar (contacto.html) ---- */
+.ed-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .ed-contact-grid {
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-9);
+  }
+}
+
+.ed-contact-side {
+  padding: var(--space-6);
+  border: 1px solid var(--ed-border);
+  border-radius: var(--radius-lg);
+}
+
+.ed-contact-side__block {
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--ed-border);
+}
+
+.ed-contact-side__block:first-child {
+  padding-top: 0;
+}
+
+.ed-contact-side__label {
+  font-family: var(--font-primary);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+  margin-bottom: var(--space-2);
+}
+
+.ed-contact-side__value {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ed-ink);
+  text-decoration: none;
+}
+
+a.ed-contact-side__value:hover {
+  color: var(--ed-accent);
+}
+
+.ed-contact-side__quick {
+  padding-top: var(--space-5);
+}
+
+.ed-contact-quick-link {
+  display: block;
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--ed-border);
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.005em;
+  font-size: 0.9375rem;
+  color: var(--ed-ink);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.ed-contact-quick-link:last-child {
+  border-bottom: none;
+}
+
+.ed-contact-quick-link:hover {
+  color: var(--ed-accent);
+}
+
 /* ---- FAQ (native <details>, no JS) ---- */
 .ed-faq {
   border-top: 1px solid var(--ed-border);

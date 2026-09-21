@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="css/components.css?v=20260920d">
   <link rel="stylesheet" href="css/pages.css?v=20260918b">
   <link rel="stylesheet" href="css/animations.css?v=20260914">
-  <link rel="stylesheet" href="css/home-editorial.css?v=20260920f">
+  <link rel="stylesheet" href="css/home-editorial.css?v=20260920g">
 </head>
 <body class="home-editorial">
 
@@ -87,32 +87,58 @@
       <div class="ed-container">
         <p class="ed-feature__eyebrow reveal" style="margin-bottom: var(--space-3);">Hablemos</p>
         <h1 class="ed-hero__title reveal" style="font-size: clamp(2.25rem, 5vw, 3.5rem);">¿Tenés un negocio? <em>Hablemos.</em></h1>
+        <p class="ed-hero__subtitle reveal" style="margin-top: var(--space-5);">Contanos sobre tu negocio y te ayudamos a encontrar la línea que te conviene. Escribinos por acá o directo por WhatsApp.</p>
       </div>
     </header>
 
-    <!-- Form -->
+    <!-- Form + contacto directo -->
     <section class="ed-section" aria-labelledby="form-title">
-      <div class="ed-container">
-        <h2 class="sr-only" id="form-title">Formulario de contacto</h2>
-        <form class="contact-form reveal" id="contact-form" novalidate style="max-width: 560px;">
-          <div class="form-group">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Tu nombre" required autocomplete="name" aria-describedby="nombre-error" aria-required="true">
-            <span class="form-error" id="nombre-error" aria-live="polite"></span>
+      <div class="ed-container ed-contact-grid">
+        <div>
+          <h2 class="ed-section__label" id="form-title" style="margin-bottom: var(--space-5);">Contanos sobre tu proyecto</h2>
+          <form class="contact-form reveal" id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Tu nombre" required autocomplete="name" aria-describedby="nombre-error" aria-required="true">
+              <span class="form-error" id="nombre-error" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="tu@email.com" required autocomplete="email" aria-describedby="email-error" aria-required="true">
+              <span class="form-error" id="email-error" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label for="mensaje" class="form-label">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" class="form-textarea" placeholder="Contanos sobre tu negocio y tu proyecto..." required aria-describedby="mensaje-error" aria-required="true"></textarea>
+              <span class="form-error" id="mensaje-error" aria-live="polite"></span>
+            </div>
+            <div class="contact-form__status" id="form-status"></div>
+            <button type="submit" class="btn btn--primary btn--full" id="submit-btn">Enviar mensaje por WhatsApp</button>
+          </form>
+        </div>
+
+        <aside class="ed-contact-side reveal">
+          <div class="ed-contact-side__block">
+            <p class="ed-contact-side__label">Email</p>
+            <a href="mailto:contacto@cuadrastudio.uy" class="ed-contact-side__value">contacto@cuadrastudio.uy</a>
           </div>
-          <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" name="email" class="form-input" placeholder="tu@email.com" required autocomplete="email" aria-describedby="email-error" aria-required="true">
-            <span class="form-error" id="email-error" aria-live="polite"></span>
+          <div class="ed-contact-side__block">
+            <p class="ed-contact-side__label">WhatsApp</p>
+            <a href="https://wa.me/59899331909" target="_blank" rel="noopener noreferrer" class="ed-contact-side__value">+598 99 331 909</a>
           </div>
-          <div class="form-group">
-            <label for="mensaje" class="form-label">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" class="form-textarea" placeholder="Contanos sobre tu negocio y tu proyecto..." required aria-describedby="mensaje-error" aria-required="true"></textarea>
-            <span class="form-error" id="mensaje-error" aria-live="polite"></span>
+          <div class="ed-contact-side__block">
+            <p class="ed-contact-side__label">Ubicación</p>
+            <p class="ed-contact-side__value">Montevideo, Uruguay</p>
           </div>
-          <div class="contact-form__status" id="form-status"></div>
-          <button type="submit" class="btn btn--primary btn--full" id="submit-btn">Enviar mensaje por WhatsApp</button>
-        </form>
+
+          <div class="ed-contact-side__quick">
+            <p class="ed-contact-side__label">¿Preferís ir directo? Elegí tu línea</p>
+            <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Tengo%20un%20negocio%20de%20turnos%20(barber%C3%ADa%2C%20peluquer%C3%ADa%2C%20est%C3%A9tica...)%20y%20quiero%20informaci%C3%B3n%20sobre%20CUADRA%20Agenda." target="_blank" rel="noopener noreferrer" class="ed-contact-quick-link">CUADRA Agenda ↗</a>
+            <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Tengo%20un%20comercio%20con%20cat%C3%A1logo%20y%20quiero%20informaci%C3%B3n%20sobre%20CUADRA%20Tienda." target="_blank" rel="noopener noreferrer" class="ed-contact-quick-link">CUADRA Tienda ↗</a>
+            <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Tengo%20un%20restaurante%2Fparrilla%20y%20quiero%20informaci%C3%B3n%20sobre%20CUADRA%20Rest%C3%B3." target="_blank" rel="noopener noreferrer" class="ed-contact-quick-link">CUADRA Restó ↗</a>
+            <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Soy%20profesional%20y%20quiero%20informaci%C3%B3n%20sobre%20CUADRA%20Consulta." target="_blank" rel="noopener noreferrer" class="ed-contact-quick-link">CUADRA Consulta ↗</a>
+          </div>
+        </aside>
       </div>
     </section>
 
