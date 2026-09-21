@@ -666,8 +666,19 @@
 }
 
 .ed-lettered__item {
+  display: block;
   padding: var(--space-6) var(--space-5) var(--space-6) 0;
   border-bottom: 1px solid var(--ed-border);
+}
+
+a.ed-lettered__item {
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--transition-fast);
+}
+
+a.ed-lettered__item:hover {
+  border-color: var(--ed-accent);
 }
 
 @media (min-width: 768px) {
