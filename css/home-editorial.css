@@ -284,6 +284,26 @@
   transform: translateY(-1px);
 }
 
+.ed-hero__btn--ghost {
+  background: transparent;
+  color: var(--ed-ink);
+  border: 1px solid var(--ed-border-strong);
+}
+
+.ed-hero__btn--ghost:hover {
+  background: transparent;
+  border-color: var(--ed-accent);
+  color: var(--ed-accent);
+  transform: none;
+}
+
+.ed-hero__cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-7);
+}
+
 .ed-hero__coords {
   margin-top: var(--space-8);
   font-family: var(--font-primary);
