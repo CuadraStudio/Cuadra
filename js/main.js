@@ -563,6 +563,19 @@
     var restartBtn = root.querySelector('[data-restart]');
     if (restartBtn) restartBtn.addEventListener('click', resetAll);
 
+    // Links dentro de la misma pagina (ej. las tarjetas de "Soluciones") a #planes-tienda, etc.
+    // Un <a href="#planes-tienda"> normal solo mueve el hash: no dispara el deep-link de abajo
+    // (eso corre una sola vez al cargar la pagina), asi que preseleccionamos la linea a mano.
+    document.querySelectorAll('a[href^="#planes-"]').forEach(function (link) {
+      var m = link.getAttribute('href').match(/^#planes-(agenda|tienda|resto|consulta)$/);
+      if (!m) return;
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        selectLine(m[1], true);
+        history.replaceState(null, '', '#planes-' + m[1]);
+      });
+    });
+
     // Deep-link: index-web.html y otras paginas enlazan a productos.html#planes-tienda, etc.
     // Progressive enhancement: sin JS, todos los pasos y checkboxes quedan visibles (fallback de contenido completo).
     resetAll();

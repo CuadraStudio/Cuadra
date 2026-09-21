@@ -880,6 +880,61 @@ a.ed-lettered__item:hover {
   max-width: 30ch;
 }
 
+/* ---- Stepper de 5 pasos (productos.html - "Cómo lo hacemos") ---- */
+@media (min-width: 768px) {
+  .ed-stepper--5 {
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-4);
+  }
+
+  .ed-stepper--5 .ed-stepper__track {
+    left: calc(100% / 10);
+    right: calc(100% / 10);
+  }
+
+  .ed-stepper--5 .ed-stepper__circle {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .ed-stepper--5 .ed-stepper__text {
+    font-size: 0.8125rem;
+    max-width: 22ch;
+  }
+}
+
+/* ---- Subtitulo de subseccion (productos.html - grupos dentro de "Soluciones") ---- */
+.ed-subhead {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: 1.25rem;
+  color: var(--ed-ink);
+  margin: 0 0 var(--space-2);
+}
+
+.ed-subhead__lede {
+  font-size: 0.9375rem;
+  color: var(--ed-ink-soft);
+  margin: 0 0 var(--space-2);
+}
+
+/* ---- Grilla de 3 columnas (productos.html - "Inversion") ---- */
+.ed-invest-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-top: var(--space-7);
+}
+
+@media (min-width: 768px) {
+  .ed-invest-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 /* ---- Footer CTA block ---- */
 .ed-cta {
   margin-inline: var(--space-page);
