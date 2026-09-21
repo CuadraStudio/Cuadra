@@ -111,25 +111,6 @@
    (0.38em + caps interface style, DESIGN.md-compliant) instead of the
    one-off sentence-case/0.02em skin this file used to add on top of it. */
 
-.ed-nav__cta {
-  display: none;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-primary);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--ed-ink);
-  text-decoration: none;
-  padding-bottom: 2px;
-  border-bottom: 1px solid var(--ed-ink);
-}
-
-@media (min-width: 768px) {
-  .ed-nav__cta {
-    display: inline-flex;
-  }
-}
-
 .ed-nav .nav__hamburger {
   display: flex;
 }
@@ -194,28 +175,6 @@
   padding-block: var(--space-8) var(--space-9);
 }
 
-/* Hero grid (text + browser-mockup visual), badge eyebrow and feature
-   strip: structural pattern adapted from a referenced agency landing
-   (badge chip, feature-badge row, framed product screenshot), rebuilt
-   with the existing .pill/.ed-* tokens instead of importing its skin. */
-.ed-hero__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-8);
-  align-items: center;
-}
-
-@media (min-width: 960px) {
-  .ed-hero__grid {
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: var(--space-9);
-  }
-
-  .ed-hero__title {
-    font-size: clamp(2.25rem, 4.2vw, 3.75rem);
-  }
-}
-
 .ed-hero__badge.pill {
   display: inline-flex;
   align-items: center;
@@ -238,42 +197,6 @@
   margin-top: var(--space-7);
   list-style: none;
   padding: 0;
-}
-
-.ed-hero__visual {
-  border: 1px solid var(--ed-border-strong);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--ed-paper-raised);
-}
-
-.ed-hero__visual-bar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--ed-border);
-}
-
-.ed-hero__visual-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--ed-border-strong);
-}
-
-.ed-hero__visual-url {
-  margin-left: 8px;
-  font-family: var(--font-primary);
-  font-size: 0.6875rem;
-  letter-spacing: 0.04em;
-  color: var(--ed-muted);
-}
-
-.ed-hero__visual img {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 
 .ed-hero__title {
@@ -336,6 +259,29 @@
 .ed-hero__link:hover {
   color: var(--ed-accent);
   border-color: var(--ed-accent);
+}
+
+.ed-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 28px;
+  background: var(--ed-ink);
+  color: var(--ed-paper);
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.ed-hero__btn:hover {
+  background: var(--ed-accent);
+  transform: translateY(-1px);
 }
 
 .ed-hero__coords {
@@ -606,32 +552,6 @@
 .ed-row:hover .ed-row__arrow {
   transform: translate(2px, -2px);
   color: var(--ed-accent);
-}
-
-/* ---- Attributed quote (real client copy, not a stat) ---- */
-.ed-quote {
-  margin-top: var(--space-7);
-  padding-top: var(--space-6);
-  border-top: 1px solid var(--ed-border);
-}
-
-.ed-quote p {
-  font-family: var(--font-display);
-  font-weight: 500;
-  text-transform: none;
-  letter-spacing: -0.005em;
-  font-size: clamp(1.125rem, 2.4vw, 1.5rem);
-  line-height: 1.4;
-  color: var(--ed-ink);
-  max-width: 42ch;
-}
-
-.ed-quote footer {
-  margin-top: var(--space-3);
-  font-family: var(--font-primary);
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  color: var(--ed-muted);
 }
 
 /* ---- Statement + lettered cards ---- */
