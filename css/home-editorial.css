@@ -474,6 +474,128 @@
   transform: translateY(-1px);
 }
 
+/* ---- Tarjetas de producto simple: Landing / Institucional (productos.html) ---- */
+.ed-tier-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-top: var(--space-7);
+}
+
+@media (min-width: 768px) {
+  .ed-tier-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.ed-tier {
+  border: 1px solid var(--ed-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  background: var(--ed-paper-raised);
+}
+
+.ed-tier__eyebrow {
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ed-accent);
+  margin: 0 0 var(--space-3);
+}
+
+.ed-tier__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  color: var(--ed-ink);
+  margin: 0 0 var(--space-2);
+}
+
+.ed-tier__tagline {
+  font-size: 0.9375rem;
+  color: var(--ed-ink-soft);
+  margin: 0 0 var(--space-5);
+}
+
+.ed-tier__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ed-tier__list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ed-ink-soft);
+}
+
+.ed-tier__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 8px;
+  height: 1px;
+  background: var(--ed-accent);
+}
+
+.ed-tier__note {
+  font-size: 0.8125rem;
+  color: var(--ed-muted);
+  margin: 0 0 var(--space-5);
+}
+
+.ed-tier__price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--ed-border);
+}
+
+.ed-tier__price-impl {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: 1.0625rem;
+  color: var(--ed-ink);
+}
+
+.ed-tier__price-impl em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--ed-ink-soft);
+  font-size: 0.8125rem;
+}
+
+.ed-tier__price-mensual {
+  font-size: 0.8125rem;
+  color: var(--ed-ink-soft);
+}
+
+.ed-tier-grid__footnote {
+  margin-top: var(--space-7);
+  font-size: 0.875rem;
+  color: var(--ed-ink-soft);
+}
+
+.ed-tier-grid__footnote a {
+  color: var(--ed-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* ---- List rows ---- */
 .ed-list {
   display: flex;
