@@ -353,7 +353,7 @@
       return Number(n).toLocaleString('es-UY');
     }
 
-    function goToStep(n) {
+    function goToStep(n, skipScroll) {
       panels.forEach(function (p) {
         p.hidden = Number(p.getAttribute('data-step')) !== n;
       });
@@ -362,7 +362,9 @@
         s.classList.toggle('is-active', num === n);
         s.classList.toggle('is-done', num < n);
       });
-      root.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+      if (!skipScroll) {
+        root.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+      }
     }
 
     // Lee la base fija del panel de la linea + suma cada [data-feature] tildado dentro de ese panel.
@@ -487,7 +489,7 @@
       }
     }
 
-    function resetAll() {
+    function resetAll(skipScroll) {
       state = { line: null, combo: false, comboLine: null };
       lineChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); });
       comboChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); btn.hidden = false; });
@@ -501,7 +503,7 @@
       summaryContent.hidden = true;
       var step1Next = root.querySelector('[data-step="1"] [data-next]');
       if (step1Next) step1Next.disabled = true;
-      goToStep(1);
+      goToStep(1, skipScroll);
     }
 
     // ---- Eventos ----
@@ -561,7 +563,7 @@
     }
 
     var restartBtn = root.querySelector('[data-restart]');
-    if (restartBtn) restartBtn.addEventListener('click', resetAll);
+    if (restartBtn) restartBtn.addEventListener('click', function () { resetAll(); });
 
     // Links dentro de la misma pagina (ej. las tarjetas de "Soluciones") a #planes-tienda, etc.
     // Un <a href="#planes-tienda"> normal solo mueve el hash: no dispara el deep-link de abajo
@@ -578,7 +580,11 @@
 
     // Deep-link: index-web.html y otras paginas enlazan a productos.html#planes-tienda, etc.
     // Progressive enhancement: sin JS, todos los pasos y checkboxes quedan visibles (fallback de contenido completo).
-    resetAll();
+    // skipScroll=true: al cargar la pagina sin hash no hay que mover el scroll (goToStep hace
+    // scrollIntoView por defecto, y eso arrastraba la pagina entera hasta el configurador apenas
+    // cargaba, ya que ahora el configurador esta mas abajo en la pagina). Si hay hash, selectLine()
+    // de abajo si hace scroll a proposito, porque ese es un deep-link real.
+    resetAll(true);
     var hashId = window.location.hash.replace('#', '');
     var hashMatch = hashId.match(/^planes-(agenda|tienda|resto|consulta)$/);
     if (hashMatch) {
