@@ -725,41 +725,80 @@ a.ed-lettered__item:hover {
   color: var(--ed-muted);
 }
 
-/* ---- How-we-work timeline ---- */
-.ed-timeline {
+/* ---- How-we-work stepper (numbered circles + connecting line) ----
+   Structural pattern adapted from a referenced agency "cómo trabajamos"
+   section; rebuilt with CUADRA's own tokens (sage fill, no glow/blur ring
+   per DESIGN.md's no-decorative-shadow rule) and a single deliberate
+   circular exception to the otherwise-rectilinear shape language. */
+.ed-stepper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  margin-top: var(--space-7);
+}
+
+.ed-stepper__track {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .ed-stepper {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .ed-stepper__track {
+    display: block;
+    position: absolute;
+    top: 32px;
+    left: calc(100% / 6);
+    right: calc(100% / 6);
+    height: 1px;
+    background: var(--ed-border-strong);
+  }
+}
+
+.ed-stepper__item {
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.ed-timeline__item {
-  display: grid;
-  grid-template-columns: 64px 1fr;
-  gap: var(--space-5);
-  padding-block: var(--space-5);
-  border-bottom: 1px solid var(--ed-border);
-}
-
-.ed-timeline__step {
+.ed-stepper__circle {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--ed-accent);
+  color: var(--ed-paper);
   font-family: var(--font-primary);
-  font-size: 0.75rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  color: var(--ed-accent);
+  margin-bottom: var(--space-5);
 }
 
-.ed-timeline__title {
+.ed-stepper__title {
   font-family: var(--font-display);
   font-weight: 600;
   text-transform: none;
   font-size: 1.0625rem;
   color: var(--ed-ink);
-  margin-bottom: 4px;
+  margin-bottom: var(--space-2);
 }
 
-.ed-timeline__text {
+.ed-stepper__text {
   font-size: 0.9375rem;
   line-height: 1.5;
   color: var(--ed-muted);
-  max-width: 60ch;
+  max-width: 30ch;
 }
 
 /* ---- Footer CTA block ---- */
