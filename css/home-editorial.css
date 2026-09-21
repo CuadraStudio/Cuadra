@@ -107,9 +107,26 @@
   }
 }
 
-/* Desktop nav links reuse the shared .nav__link component as-is
-   (0.38em + caps interface style, DESIGN.md-compliant) instead of the
-   one-off sentence-case/0.02em skin this file used to add on top of it. */
+/* Desktop nav links: the shared .nav__link component's base 0.38em+caps
+   tracking (components.css) is the old wide-tracking system DESIGN.md no
+   longer documents (see its Typography section) — at 0.38em, 6+ nav items
+   overflow the header on real viewports. Sentence case + tight tracking,
+   matching the nav-links exception already documented in DESIGN.md. */
+.ed-nav .nav__link {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--ed-muted);
+}
+
+.ed-nav .nav__link:hover,
+.ed-nav .nav__link[aria-current="page"] {
+  color: var(--ed-ink);
+}
+
+.ed-nav .nav__link[aria-current="page"]::after {
+  background: var(--ed-accent);
+}
 
 .ed-nav .nav__hamburger {
   display: flex;
