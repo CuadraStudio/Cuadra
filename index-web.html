@@ -40,8 +40,9 @@
   <link rel="stylesheet" href="css/pages.css?v=20260918b">
   <link rel="stylesheet" href="css/animations.css?v=20260914">
   <link rel="stylesheet" href="css/home-editorial.css?v=20260921c">
+  <link rel="stylesheet" href="css/plano.css?v=20260930">
 </head>
-<body class="home-editorial">
+<body class="home-editorial plano-home">
 
   <!-- Skip link -->
   <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
@@ -88,14 +89,16 @@
     <main id="contenido" tabindex="-1">
 
     <!-- Hero -->
-    <header class="ed-hero">
+    <header class="ed-hero plano-hero">
+      <div class="plano-hero__grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <svg class="plano-hero__mark" viewBox="0 6 32 20" aria-hidden="true" focusable="false"><path pathLength="1" d="M 2,9 V 13.666 H 25.333 V 23 H 30 V 9 Z"/></svg>
       <div class="ed-container">
         <div class="ed-hero__badge pill reveal">
           <span class="ed-hero__badge-dot" aria-hidden="true"></span>
           Estudio de desarrollo web · Montevideo, Uruguay
         </div>
 
-        <h1 class="ed-hero__title reveal">Un servicio, <em>todo lo que tu negocio necesita.</em></h1>
+        <h1 class="ed-hero__title plano-hero__title reveal">Un servicio, <em>todo lo que tu negocio necesita.</em></h1>
 
         <div class="ed-hero__row">
           <p class="ed-hero__subtitle reveal">Desarrollamos sitios web profesionales para negocios locales. Web, sistema integrado y WhatsApp, todo junto, en un servicio mensual. Sin complicaciones, sin comisiones, sin sorpresas.</p>
@@ -147,7 +150,7 @@
     </section>
 
     <!-- Como trabajamos -->
-    <section id="proceso" class="ed-section" aria-labelledby="proceso-title">
+    <section id="proceso" class="ed-section plano-band plano-band--mist" aria-labelledby="proceso-title">
       <div class="ed-container">
         <div class="ed-section__head">
           <span class="ed-section__index">02 —</span>
@@ -177,7 +180,7 @@
     </section>
 
     <!-- Demos reales -->
-    <section id="demos" class="ed-section" aria-labelledby="demos-title">
+    <section id="demos" class="ed-section plano-band plano-band--graphite" aria-labelledby="demos-title">
       <div class="ed-container">
         <div class="ed-section__head">
           <span class="ed-section__index">03 —</span>
@@ -185,11 +188,11 @@
         </div>
         <p class="ed-section__lede reveal">Antes de contratar, mirá cómo se ve y cómo funciona cada línea en un sitio real.</p>
 
-        <div class="grid grid--2">
+        <div class="plano-demos">
           <article class="card card--project reveal" style="--reveal-index: 0">
-            <span class="project-card__badge">Demo de producto</span>
-            <img src="img/demoagenda.png" alt="Screenshot del sitio de Estudio Trazo, demo de producto de CUADRA Agenda, barbería ficticia en Montevideo" class="card__image" loading="lazy">
+            <div class="plano-frame plano-corners"><span class="plano-frame__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="img/demoagenda.png" alt="Screenshot del sitio de Estudio Trazo, demo de producto de CUADRA Agenda, barbería ficticia en Montevideo" class="card__image" loading="lazy"></div>
             <div class="project-card__body">
+              <span class="project-card__badge">Demo de producto</span>
               <h3 class="card__title">Estudio Trazo</h3>
               <p class="card__desc">CUADRA Agenda — reserva de turnos con horarios en vivo y confirmación automática.</p>
               <div class="project-card__pills"><span class="pill">Agenda</span></div>
@@ -198,9 +201,9 @@
           </article>
 
           <article class="card card--project reveal" style="--reveal-index: 1">
-            <span class="project-card__badge">Demo de producto</span>
-            <img src="img/demotienda.png" alt="Screenshot del sitio de Vera Store, demo de producto de CUADRA Tienda, boutique ficticia en Pocitos, Montevideo" class="card__image" loading="lazy">
+            <div class="plano-frame plano-corners"><span class="plano-frame__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="img/demotienda.png" alt="Screenshot del sitio de Vera Store, demo de producto de CUADRA Tienda, boutique ficticia en Pocitos, Montevideo" class="card__image" loading="lazy"></div>
             <div class="project-card__body">
+              <span class="project-card__badge">Demo de producto</span>
               <h3 class="card__title">Vera Store</h3>
               <p class="card__desc">CUADRA Tienda — catálogo con variantes y stock, carrito y pedidos por WhatsApp.</p>
               <div class="project-card__pills"><span class="pill">Tienda</span></div>
@@ -209,9 +212,9 @@
           </article>
 
           <article class="card card--project reveal" style="--reveal-index: 2">
-            <span class="project-card__badge">Demo de producto</span>
-            <img src="img/demoresto.png" alt="Screenshot del sitio de El Fogatero, demo de producto de CUADRA Restó, parrilla ficticia en el Cordón, Montevideo" class="card__image" loading="lazy">
+            <div class="plano-frame plano-corners"><span class="plano-frame__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="img/demoresto.png" alt="Screenshot del sitio de El Fogatero, demo de producto de CUADRA Restó, parrilla ficticia en el Cordón, Montevideo" class="card__image" loading="lazy"></div>
             <div class="project-card__body">
+              <span class="project-card__badge">Demo de producto</span>
               <h3 class="card__title">El Fogatero</h3>
               <p class="card__desc">CUADRA Restó — carta digital y reservas de mesa con cupos por franja vía WhatsApp.</p>
               <div class="project-card__pills"><span class="pill">Restó</span></div>
@@ -220,9 +223,9 @@
           </article>
 
           <article class="card card--project reveal" style="--reveal-index: 3">
-            <span class="project-card__badge">Demo de producto</span>
-            <img src="img/democonsulta.png" alt="Screenshot del sitio de Estudio Arroyo, demo de producto de CUADRA Consulta, estudio jurídico ficticio en Ciudad Vieja, Montevideo" class="card__image" loading="lazy">
+            <div class="plano-frame plano-corners"><span class="plano-frame__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="img/democonsulta.png" alt="Screenshot del sitio de Estudio Arroyo, demo de producto de CUADRA Consulta, estudio jurídico ficticio en Ciudad Vieja, Montevideo" class="card__image" loading="lazy"></div>
             <div class="project-card__body">
+              <span class="project-card__badge">Demo de producto</span>
               <h3 class="card__title">Estudio Arroyo</h3>
               <p class="card__desc">CUADRA Consulta — agendado de consultas por WhatsApp con panel de administración.</p>
               <div class="project-card__pills"><span class="pill">Consulta</span></div>
@@ -234,7 +237,7 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="ed-section" aria-labelledby="faq-title">
+    <section id="faq" class="ed-section plano-band plano-band--white" aria-labelledby="faq-title">
       <div class="ed-container">
         <div class="ed-section__head">
           <span class="ed-section__index">04 —</span>
@@ -267,8 +270,8 @@
     </main>
 
     <!-- CTA final -->
-    <section class="ed-section" style="border-top: none; padding-top: 0;" aria-labelledby="cta-title">
-      <div class="ed-cta reveal">
+    <section class="plano-cta-band" aria-labelledby="cta-title">
+      <div class="ed-cta ed-container reveal">
         <p class="ed-cta__eyebrow">— Hablemos</p>
         <p class="ed-cta__title" id="cta-title">Tu web, tu sistema y WhatsApp, <em>todo junto</em>.</p>
         <p class="ed-cta__text">Elegí el plan de tu negocio y armá tu cotización en minutos. Te mostramos exactamente qué incluye y arrancamos cuando quieras.</p>
@@ -295,7 +298,7 @@
             <a href="/contacto.html">Contacto</a>
           </div>
           <div class="ed-footer__col">
-            <p class="ed-footer__col-title">Elsewhere</p>
+            <p class="ed-footer__col-title">Redes</p>
             <a href="https://www.instagram.com/cuadrastudio.uy" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
             <a href="https://wa.me/59899331909" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
           </div>

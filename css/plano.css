@@ -1,0 +1,533 @@
+/* ============================================
+   plano.css - Direccion artistica v2 "Plano de manzana"
+   Se carga DESPUES de home-editorial.css. Dos capas:
+   1) Fundaciones globales (botones, FAB, lettered, stepper, CTA)
+   2) Home (.plano-home): hero con grilla, bandas de superficie,
+      demos en filas con marco de navegador, CTA sage full-bleed.
+   Ver docs/art-direction.md
+   ============================================ */
+
+/* ---------- 0. Utilidades ---------- */
+
+/* Marcas de esquina (derivadas del isotipo): 8 lineas finas */
+.plano-corners {
+  --corner: var(--ed-accent, var(--color-sage));
+  --corner-len: 14px;
+  position: relative;
+  background:
+    linear-gradient(var(--corner), var(--corner)) top left / var(--corner-len) 1px no-repeat,
+    linear-gradient(var(--corner), var(--corner)) top left / 1px var(--corner-len) no-repeat,
+    linear-gradient(var(--corner), var(--corner)) top right / var(--corner-len) 1px no-repeat,
+    linear-gradient(var(--corner), var(--corner)) top right / 1px var(--corner-len) no-repeat,
+    linear-gradient(var(--corner), var(--corner)) bottom left / var(--corner-len) 1px no-repeat,
+    linear-gradient(var(--corner), var(--corner)) bottom left / 1px var(--corner-len) no-repeat,
+    linear-gradient(var(--corner), var(--corner)) bottom right / var(--corner-len) 1px no-repeat,
+    linear-gradient(var(--corner), var(--corner)) bottom right / 1px var(--corner-len) no-repeat;
+}
+
+/* ---------- 1. Fundaciones globales ---------- */
+
+/* Botones: 600, tracking 0.06em (antes 0.3em+), altura comoda */
+.btn,
+.ed-hero__btn,
+.ed-cta__btn {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  min-height: 52px;
+  padding-inline: 28px;
+  border-radius: var(--radius-sm);
+}
+
+.btn--primary::after,
+.ed-hero__btn::after,
+.ed-cta__btn::after {
+  transition: transform var(--transition-fast);
+}
+
+.btn--primary:hover::after,
+.ed-hero__btn:hover::after,
+.ed-cta__btn:hover::after {
+  transform: translateX(4px);
+}
+
+/* Secundario: "encuadrar" -> las esquinas se cierran al hover */
+.btn--secondary {
+  position: relative;
+  border-color: var(--color-border-strong);
+}
+
+.btn--secondary:hover {
+  border-color: var(--color-accent-ink);
+  transform: none;
+}
+
+/* FAB de WhatsApp: circular, sage, sin tapar contenido */
+.whatsapp-fab {
+  width: 56px;
+  height: 56px;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+  background: var(--color-sage);
+  border: 0;
+}
+
+.whatsapp-fab svg {
+  stroke: var(--color-black);
+}
+
+.whatsapp-fab:hover {
+  background: var(--color-mist);
+  border: 0;
+}
+
+/* Labels mas legibles sobre negro */
+.ed-section__index,
+.ed-hero__coords,
+.ed-metabar__inner {
+  color: var(--ed-ink-soft);
+}
+
+/* Titulos de tarjeta en sentence case (DESIGN.md) */
+.card--project .card__title {
+  text-transform: none;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+/* Tarjetas de linea: numero grande en outline, hover con linea sage */
+.ed-lettered__item {
+  position: relative;
+  transition: background var(--transition-normal);
+}
+
+.ed-lettered__badge {
+  width: auto;
+  height: auto;
+  border: 0;
+  margin-bottom: var(--space-5);
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--ed-accent);
+}
+
+.ed-lettered__item::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--ed-accent);
+  transition: width var(--transition-normal);
+}
+
+a.ed-lettered__item:hover::before {
+  width: 100%;
+}
+
+.ed-lettered__title {
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+/* Stepper: numeros gigantes en outline conectados por hairline */
+.ed-stepper__circle {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--ed-accent);
+  font-size: 5rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-4);
+}
+
+.ed-stepper__item {
+  align-items: flex-start;
+  text-align: left;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--ed-border-strong);
+}
+
+.ed-stepper__track {
+  display: none !important;
+}
+
+.ed-stepper--5 .ed-stepper__circle {
+  width: auto;
+  height: auto;
+  font-size: 3rem;
+}
+
+/* FAQ: + rota a x, pregunta con mas presencia */
+.ed-faq__item summary {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.ed-faq__item[open] {
+  border-left: 2px solid var(--ed-accent);
+  padding-left: var(--space-4);
+}
+
+/* ---------- 2. HOME ---------- */
+
+/* 2.1 Hero: grilla visible + isotipo dibujado */
+.plano-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--space-9) var(--space-10);
+}
+
+.plano-hero > .ed-container {
+  position: relative;
+  z-index: 1;
+}
+
+.plano-hero__grid {
+  position: absolute;
+  inset: 0;
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-inline: var(--space-page);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.plano-hero__grid i {
+  width: 1px;
+  height: 100%;
+  background: rgba(242, 241, 237, 0.07);
+  transform-origin: top;
+  animation: plano-line 900ms var(--ease-out) both;
+}
+
+.plano-hero__grid i:nth-child(2) { animation-delay: 120ms; }
+.plano-hero__grid i:nth-child(3) { animation-delay: 240ms; }
+.plano-hero__grid i:nth-child(4) { animation-delay: 360ms; }
+.plano-hero__grid i:nth-child(5) { animation-delay: 480ms; }
+
+@keyframes plano-line {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+.plano-hero__mark {
+  position: absolute;
+  right: 4%;
+  top: 14%;
+  width: min(36vw, 520px);
+  height: auto;
+  fill: none;
+  stroke: var(--ed-accent);
+  stroke-width: 0.12;
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: plano-draw 2200ms var(--ease-out) 300ms forwards;
+}
+
+@keyframes plano-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.plano-hero__title {
+  font-size: clamp(2.75rem, 8vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  max-width: 11ch;
+}
+
+.plano-hero .ed-hero__subtitle {
+  font-size: 1.125rem;
+}
+
+.plano-hero .ed-hero__btn {
+  background: var(--ed-accent);
+  color: var(--ed-paper);
+}
+
+.plano-hero .ed-hero__btn:hover {
+  background: var(--color-mist);
+}
+
+.plano-hero .pill {
+  color: var(--ed-ink);
+  border-color: var(--ed-border-strong);
+}
+
+/* 2.2 Encabezados de seccion grandes (el h2 existente) */
+.plano-home .ed-section__head {
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.plano-home .ed-section__label {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  text-transform: none;
+}
+
+.plano-home .ed-section__index {
+  letter-spacing: 0.12em;
+}
+
+/* 2.3 Bandas de superficie (ritmo black > mist > graphite > white > sage) */
+.plano-band {
+  border-top: 0;
+}
+
+.plano-band--mist {
+  --ed-paper: #D8E2DF;
+  --ed-ink: #0F1111;
+  --ed-ink-soft: #292E2D;
+  --ed-muted: #3d4543;
+  --ed-border: rgba(15, 17, 17, 0.16);
+  --ed-border-strong: rgba(15, 17, 17, 0.32);
+  --ed-accent: #2F5A51;
+}
+
+.plano-band--graphite {
+  --ed-paper: #292E2D;
+  --ed-ink: #F2F1ED;
+  --ed-ink-soft: #C9CCCE;
+  --ed-muted: #B4B8BA;
+  --ed-border: rgba(242, 241, 237, 0.16);
+  --ed-border-strong: rgba(242, 241, 237, 0.3);
+  --ed-accent: #AFC8C2;
+}
+
+.plano-band--white {
+  --ed-paper: #F2F1ED;
+  --ed-ink: #0F1111;
+  --ed-ink-soft: #292E2D;
+  --ed-muted: #4a5150;
+  --ed-border: rgba(15, 17, 17, 0.14);
+  --ed-border-strong: rgba(15, 17, 17, 0.3);
+  --ed-accent: #2F5A51;
+}
+
+.plano-band {
+  background: var(--ed-paper);
+  color: var(--ed-ink);
+  padding-block: var(--space-10);
+}
+
+.plano-band .ed-hero__link {
+  color: var(--ed-ink);
+  border-color: var(--ed-ink);
+}
+
+.plano-band .pill {
+  color: var(--ed-ink-soft);
+  border-color: var(--ed-border-strong);
+}
+
+/* 2.4 Demos: filas alternadas con marco de navegador */
+.plano-demos {
+  display: grid;
+  gap: var(--space-9);
+  margin-top: var(--space-7);
+}
+
+.plano-demos .card--project {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+
+@media (min-width: 900px) {
+  .plano-demos .card--project {
+    grid-template-columns: 7fr 5fr;
+    gap: var(--space-8);
+  }
+
+  .plano-demos .card--project:nth-child(even) {
+    grid-template-columns: 5fr 7fr;
+  }
+
+  .plano-demos .card--project:nth-child(even) .plano-frame {
+    order: 2;
+  }
+}
+
+.plano-demos .card--project:hover .card__image {
+  transform: none;
+}
+
+.plano-frame {
+  --corner-len: 18px;
+  padding: 12px;
+  overflow: hidden;
+}
+
+.plano-frame__bar {
+  display: flex;
+  gap: 6px;
+  padding: 0 4px 10px;
+}
+
+.plano-frame__bar i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--ed-border-strong);
+}
+
+.plano-frame .card__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  background: var(--ed-paper-raised, #292E2D);
+  border: 1px solid var(--ed-border);
+  transition: object-position 2400ms ease-in-out;
+}
+
+.plano-demos .card--project:hover .plano-frame .card__image {
+  object-position: bottom;
+}
+
+.plano-demos .project-card__badge {
+  position: static;
+  display: inline-block;
+  margin-bottom: var(--space-4);
+  background: transparent;
+  color: var(--ed-accent);
+  border: 1px solid var(--ed-accent);
+}
+
+.plano-demos .project-card__body {
+  padding: 0;
+}
+
+.plano-demos .card--project .card__title {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.05;
+  margin-bottom: var(--space-3);
+}
+
+.plano-demos .card--project .card__desc {
+  color: var(--ed-ink-soft);
+  font-size: 1.0625rem;
+  -webkit-line-clamp: unset;
+}
+
+.plano-demos .card__link--demo {
+  display: inline-flex;
+  gap: 8px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--ed-accent);
+  color: var(--ed-ink);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+}
+
+.plano-demos .card__link--demo:hover .card__link-arrow {
+  transform: translateX(4px);
+}
+
+.plano-demos .card__link-arrow {
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+/* En movil, el badge va encima del marco */
+@media (max-width: 899px) {
+  .plano-demos .card--project {
+    gap: var(--space-4);
+  }
+}
+
+/* 2.5 CTA final: sage full-bleed */
+.plano-cta-band {
+  background: var(--color-sage);
+  color: var(--color-black);
+  padding-block: var(--space-10);
+}
+
+.plano-cta-band .ed-cta {
+  background: transparent;
+  padding: 0 var(--space-page);
+  margin: 0 auto;
+  max-width: 1160px;
+  border-radius: 0;
+}
+
+.plano-cta-band .ed-cta__eyebrow,
+.plano-cta-band .ed-cta__text,
+.plano-cta-band .ed-cta__meta {
+  color: #1d2322;
+}
+
+.plano-cta-band .ed-cta__title {
+  color: var(--color-black);
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  max-width: 14ch;
+}
+
+.plano-cta-band .ed-cta__title em {
+  color: var(--color-black);
+  -webkit-text-stroke: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.12em;
+}
+
+.plano-cta-band .ed-cta__btn {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.plano-cta-band .ed-cta__btn:hover {
+  background: var(--color-graphite);
+}
+
+/* 2.6 Footer: mayor aire */
+.plano-home .ed-footer {
+  border-top: 0;
+}
+
+/* ---------- 3. Movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .plano-hero__grid i,
+  .plano-hero__mark {
+    animation: none;
+    transform: none;
+    stroke-dashoffset: 0;
+  }
+
+  .plano-frame .card__image {
+    transition: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .plano-hero__mark { display: none; }
+  .plano-hero__grid i:nth-child(n+4) { display: none; }
+  .plano-band,
+  .plano-cta-band { padding-block: var(--space-9); }
+  .ed-stepper__circle { font-size: 3.5rem; }
+}
