@@ -309,6 +309,24 @@
       return valid;
     }
 
+    // Al enviar bien: se oculta el formulario y queda solo el mensaje de "enviado".
+    function showSent(email) {
+      form.reset();
+      form.classList.add('is-sent');
+      formStatus.innerHTML = '<div class="form-success" role="status"><strong>Mensaje enviado.</strong> ' +
+        'Te respondemos a <strong>' + escapeHtml(email) + '</strong>. <span data-copy-note></span>' +
+        '<button type="button" class="btn btn--secondary" data-send-another>Enviar otro mensaje</button></div>';
+      formStatus.setAttribute('tabindex', '-1');
+      formStatus.focus({ preventScroll: true });
+      formStatus.scrollIntoView({ block: 'center', behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      formStatus.querySelector('[data-send-another]').addEventListener('click', function () {
+        form.classList.remove('is-sent');
+        formStatus.innerHTML = '';
+        formStatus.removeAttribute('tabindex');
+        nombreInput.focus();
+      });
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       clearErrors();
@@ -325,8 +343,7 @@
 
       // Campo trampa para bots: si esta completo, se simula el exito sin enviar nada.
       if (honeypot && honeypot.value) {
-        formStatus.innerHTML = '<div class="form-success" role="status">¡Listo! Recibimos tu mensaje.</div>';
-        form.reset();
+        showSent(fields['Email']);
         return;
       }
 
@@ -335,9 +352,7 @@
       submitBtn.textContent = 'Enviando…';
 
       sendToOwner(fields, subject).then(function () {
-        formStatus.innerHTML = '<div class="form-success" role="status">¡Listo! Recibimos tu mensaje y te respondemos a <strong>' +
-          escapeHtml(fields['Email']) + '</strong>. <span data-copy-note></span></div>';
-        form.reset();
+        showSent(fields['Email']);
         sendCopyToClient('contact', fields).then(function (sent) {
           var note = formStatus.querySelector('[data-copy-note]');
           if (sent && note) note.innerHTML = copyNote(fields['Email']);

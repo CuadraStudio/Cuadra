@@ -1135,3 +1135,29 @@ html[data-logo-seen] .teaser-logo path {
     text-underline-offset: 0.3em;
   }
 }
+
+/* ---------- 17. Formulario de contacto enviado ---------- */
+.contact-form.is-sent > *:not(.contact-form__status) {
+  display: none;
+}
+
+.contact-dialog:has(.contact-form.is-sent) .contact-dialog__lede {
+  display: none;
+}
+
+.contact-form.is-sent .contact-form__status {
+  margin: 0;
+}
+
+.contact-form.is-sent .form-success {
+  padding: var(--space-5);
+  line-height: 1.5;
+}
+
+.contact-form.is-sent .form-success > strong:first-child {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-size: 1.375rem;
+  letter-spacing: -0.01em;
+  color: var(--color-sage);
+}
