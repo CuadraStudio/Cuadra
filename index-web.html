@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CUADRA | Web, sistema y WhatsApp para tu negocio</title>
+  <script src="/js/site-config.js"></script>
   <meta name="description" content="Web, sistema integrado y WhatsApp automatizado para negocios locales en un servicio mensual. Planes desde USD 10/mes. Agenda, Tienda, Restó y Consulta.">
   <link rel="canonical" href="https://cuadrastudio.uy/index-web.html">
   <meta name="robots" content="noindex, nofollow">
@@ -56,7 +57,7 @@
 
       <div class="ed-nav__links">
         <a href="/productos.html" class="nav__link">Planes</a>
-        <a href="/proyectos.html" class="nav__link">Demos</a>
+        <a href="/proyectos.html" class="nav__link" data-demos-only>Demos</a>
         <a href="/diferencias.html" class="nav__link">Nosotros</a>
         <a href="/contacto.html" class="nav__link">Contacto</a>
         <a href="/armar-plan.html" class="nav__cta">Armar mi plan</a>
@@ -73,7 +74,7 @@
     <!-- Mobile menu -->
     <div class="nav__mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu de navegacion">
       <a href="/productos.html" class="nav__mobile-link">Planes</a>
-      <a href="/proyectos.html" class="nav__mobile-link">Demos</a>
+      <a href="/proyectos.html" class="nav__mobile-link" data-demos-only>Demos</a>
       <a href="/diferencias.html" class="nav__mobile-link">Nosotros</a>
       <a href="/contacto.html" class="nav__mobile-link">Contacto</a>
       <a href="/armar-plan.html" class="nav__mobile-link nav__mobile-link--cta">Armar mi plan</a>
@@ -88,7 +89,7 @@
       </div>
     </div>
 
-    <main id="contenido" tabindex="-1">
+    <main id="contenido" tabindex="-1" data-renumber>
 
     <!-- Hero -->
     <header class="ed-hero plano-hero">
@@ -220,7 +221,7 @@
     </section>
 
     <!-- Demos reales -->
-    <section id="demos" class="ed-section plano-band plano-band--graphite" aria-labelledby="demos-title">
+    <section id="demos" data-demos-only class="ed-section plano-band plano-band--graphite" aria-labelledby="demos-title">
       <div class="ed-container">
         <div class="ed-section__head">
           <span class="ed-section__index">04 —</span>
@@ -333,7 +334,7 @@
             <p class="ed-footer__col-title">Páginas</p>
             <a href="/">Inicio</a>
             <a href="/productos.html">Planes</a>
-            <a href="/proyectos.html">Demos</a>
+            <a href="/proyectos.html" data-demos-only>Demos</a>
             <a href="/diferencias.html">Nosotros</a>
             <a href="/contacto.html">Contacto</a>
           </div>

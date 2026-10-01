@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diferencias - CUADRA | Web, sistema y WhatsApp</title>
-  <meta name="description" content="Qué hace diferente a CUADRA: precios claros, demos reales antes de pagar, una línea por rubro y soporte humano por email.">
+  <script src="/js/site-config.js"></script>
+  <meta name="description" content="Qué hace diferente a CUADRA: precios claros, todo confirmado por escrito antes de pagar, una línea por rubro y soporte humano por email.">
   <link rel="canonical" href="https://cuadrastudio.uy/diferencias.html">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#0F1111">
@@ -12,7 +13,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Diferencias - CUADRA">
-  <meta property="og:description" content="Qué hace diferente a CUADRA: precios claros, demos reales antes de pagar, una línea por rubro y soporte humano por email.">
+  <meta property="og:description" content="Qué hace diferente a CUADRA: precios claros, todo confirmado por escrito antes de pagar, una línea por rubro y soporte humano por email.">
   <meta property="og:url" content="https://cuadrastudio.uy/diferencias.html">
   <meta property="og:locale" content="es_UY">
   <meta property="og:image" content="https://cuadrastudio.uy/img/og-image.png?v=20260914">
@@ -21,7 +22,7 @@
   <meta property="og:image:alt" content="Logo y nombre de CUADRA, desarrollo web para negocios locales">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Diferencias - CUADRA">
-  <meta name="twitter:description" content="Qué hace diferente a CUADRA: precios claros, demos reales antes de pagar, una línea por rubro y soporte humano por email.">
+  <meta name="twitter:description" content="Qué hace diferente a CUADRA: precios claros, todo confirmado por escrito antes de pagar, una línea por rubro y soporte humano por email.">
   <meta name="twitter:image" content="https://cuadrastudio.uy/img/og-image.png?v=20260914">
 
   <!-- Favicon -->
@@ -56,7 +57,7 @@
 
       <div class="ed-nav__links">
         <a href="/productos.html" class="nav__link">Planes</a>
-        <a href="/proyectos.html" class="nav__link">Demos</a>
+        <a href="/proyectos.html" class="nav__link" data-demos-only>Demos</a>
         <a href="/diferencias.html" class="nav__link" aria-current="page">Nosotros</a>
         <a href="/contacto.html" class="nav__link">Contacto</a>
         <a href="/armar-plan.html" class="nav__cta">Armar mi plan</a>
@@ -72,7 +73,7 @@
     <!-- Mobile menu -->
     <div class="nav__mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu de navegacion">
       <a href="/productos.html" class="nav__mobile-link">Planes</a>
-      <a href="/proyectos.html" class="nav__mobile-link">Demos</a>
+      <a href="/proyectos.html" class="nav__mobile-link" data-demos-only>Demos</a>
       <a href="/diferencias.html" class="nav__mobile-link" aria-current="page">Nosotros</a>
       <a href="/contacto.html" class="nav__mobile-link">Contacto</a>
       <a href="/armar-plan.html" class="nav__mobile-link nav__mobile-link--cta">Armar mi plan</a>
@@ -114,10 +115,15 @@
             <h3 class="ed-lettered__title">Precios claros, sin sorpresas</h3>
             <p class="ed-lettered__text">Implementación y mensualidad fijas desde el primer mensaje. Sin comisiones ni letra chica.</p>
           </div>
-          <div class="ed-lettered__item">
+          <div class="ed-lettered__item" data-demos-only>
             <span class="ed-lettered__badge">02</span>
             <h3 class="ed-lettered__title">Demos reales, no mockups</h3>
             <p class="ed-lettered__text">Antes de pagar, navegás el sistema funcionando — no un diseño estático de Figma.</p>
+          </div>
+          <div class="ed-lettered__item" data-demos-off>
+            <span class="ed-lettered__badge">02</span>
+            <h3 class="ed-lettered__title">Todo por escrito, antes de pagar</h3>
+            <p class="ed-lettered__text">Alcance, precio final y plazos confirmados por email antes de la seña. Sin sorpresas después.</p>
           </div>
           <div class="ed-lettered__item">
             <span class="ed-lettered__badge">03</span>
@@ -171,7 +177,7 @@
         </div>
 
         <div class="ed-section__head" style="margin-top: var(--space-9);">
-          <span class="ed-section__index">08.1 —</span>
+          <span class="ed-section__index">02.1 —</span>
           <h3 class="ed-section__label">Qué necesitamos de vos</h3>
         </div>
         <div class="ed-lettered ed-lettered--4">
@@ -300,9 +306,11 @@
     <section class="plano-cta-band" aria-labelledby="cta-title">
       <div class="ed-cta ed-container reveal">
         <p class="ed-cta__eyebrow">— Hablemos</p>
-        <p class="ed-cta__title" id="cta-title">¿Querés ver esto <em>funcionando</em>?</p>
-        <p class="ed-cta__text">Mirá los demos reales de cada línea, o escribinos directo y te contamos cómo trabajamos con tu rubro.</p>
-        <a href="/proyectos.html" class="ed-cta__btn">Ver demos reales →</a>
+        <p class="ed-cta__title" id="cta-title">¿Listo para <em>arrancar</em>?</p>
+        <p class="ed-cta__text" data-demos-only>Mirá los demos reales de cada línea, o escribinos directo y te contamos cómo trabajamos con tu rubro.</p>
+        <a href="/proyectos.html" class="ed-cta__btn" data-demos-only>Ver demos reales →</a>
+        <p class="ed-cta__text" data-demos-off>Armá tu plan en minutos, o escribinos directo y te contamos cómo trabajamos con tu rubro.</p>
+        <a href="/armar-plan.html" class="ed-cta__btn" data-demos-off>Armar mi plan →</a>
       </div>
     </section>
 
@@ -319,7 +327,7 @@
             <p class="ed-footer__col-title">Páginas</p>
             <a href="/">Inicio</a>
             <a href="/productos.html">Planes</a>
-            <a href="/proyectos.html">Demos</a>
+            <a href="/proyectos.html" data-demos-only>Demos</a>
             <a href="/diferencias.html">Nosotros</a>
             <a href="/contacto.html">Contacto</a>
           </div>

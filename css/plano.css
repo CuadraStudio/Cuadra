@@ -976,3 +976,12 @@ html {
     min-height: 44px;
   }
 }
+
+/* ---------- 11. Interruptor de demos (js/site-config.js) ---------- */
+html:not([data-demos="on"]) [data-demos-only] {
+  display: none !important;
+}
+
+html[data-demos="on"] [data-demos-off] {
+  display: none !important;
+}
