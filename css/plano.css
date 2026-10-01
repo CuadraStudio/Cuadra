@@ -221,20 +221,29 @@ a.ed-lettered__item:hover::before {
 
 .plano-hero__mark {
   position: absolute;
-  right: 4%;
+  right: -3%;
   top: 14%;
-  width: min(36vw, 520px);
+  width: min(58vw, 820px);
   height: auto;
   fill: none;
   stroke: var(--ed-accent);
   stroke-width: 0.12;
-  opacity: 0.35;
+  opacity: 0.6;
   z-index: 0;
   pointer-events: none;
+}
+
+/* El logo se dibuja figura por figura: primero la escuadra, luego cada barra.
+   Cada trazo espera a que termine el anterior (duracion + delay encadenados). */
+.plano-hero__mark path {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  animation: plano-draw 2200ms var(--ease-out) 300ms forwards;
+  animation: plano-draw 2400ms cubic-bezier(0.45, 0, 0.2, 1) forwards;
 }
+
+.plano-hero__mark path:nth-child(1) { animation-delay: 500ms; }
+.plano-hero__mark path:nth-child(2) { animation-delay: 2900ms; }
+.plano-hero__mark path:nth-child(3) { animation-delay: 5300ms; }
 
 @keyframes plano-draw {
   to { stroke-dashoffset: 0; }
@@ -512,10 +521,13 @@ a.ed-lettered__item:hover::before {
 
 /* ---------- 3. Movimiento reducido ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .plano-hero__grid i,
-  .plano-hero__mark {
+  .plano-hero__grid i {
     animation: none;
     transform: none;
+  }
+
+  .plano-hero__mark path {
+    animation: none;
     stroke-dashoffset: 0;
   }
 
