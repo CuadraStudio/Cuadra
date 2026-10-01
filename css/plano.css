@@ -3,27 +3,14 @@
    Se carga DESPUES de home-editorial.css. Dos capas:
    1) Fundaciones globales (botones, FAB, lettered, stepper, CTA)
    2) Home (.plano-home): hero con grilla, bandas de superficie,
-      demos en filas con marco de navegador, CTA sage full-bleed.
+      CTA sage full-bleed.
    Ver docs/art-direction.md
    ============================================ */
 
 /* ---------- 0. Utilidades ---------- */
 
 /* Marcas de esquina (derivadas del isotipo): 8 lineas finas */
-.plano-corners {
-  --corner: var(--ed-accent, var(--color-sage));
-  --corner-len: 14px;
-  position: relative;
-  background:
-    linear-gradient(var(--corner), var(--corner)) top left / var(--corner-len) 1px no-repeat,
-    linear-gradient(var(--corner), var(--corner)) top left / 1px var(--corner-len) no-repeat,
-    linear-gradient(var(--corner), var(--corner)) top right / var(--corner-len) 1px no-repeat,
-    linear-gradient(var(--corner), var(--corner)) top right / 1px var(--corner-len) no-repeat,
-    linear-gradient(var(--corner), var(--corner)) bottom left / var(--corner-len) 1px no-repeat,
-    linear-gradient(var(--corner), var(--corner)) bottom left / 1px var(--corner-len) no-repeat,
-    linear-gradient(var(--corner), var(--corner)) bottom right / var(--corner-len) 1px no-repeat,
-    linear-gradient(var(--corner), var(--corner)) bottom right / 1px var(--corner-len) no-repeat;
-}
+
 
 /* ---------- 1. Fundaciones globales ---------- */
 
@@ -89,11 +76,7 @@
 }
 
 /* Titulos de tarjeta en sentence case (DESIGN.md) */
-.card--project .card__title {
-  text-transform: none;
-  letter-spacing: -0.01em;
-  font-weight: 600;
-}
+
 
 /* Tarjetas de linea: numero grande en outline, hover con linea sage */
 .ed-lettered__item {
@@ -344,130 +327,6 @@ a.ed-lettered__item:hover::before {
   border-color: var(--ed-border-strong);
 }
 
-/* 2.4 Demos: filas alternadas con marco de navegador */
-.plano-demos {
-  display: grid;
-  gap: var(--space-9);
-  margin-top: var(--space-7);
-}
-
-.plano-demos .card--project {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-6);
-  align-items: center;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  overflow: visible;
-}
-
-@media (min-width: 900px) {
-  .plano-demos .card--project {
-    grid-template-columns: 7fr 5fr;
-    gap: var(--space-8);
-  }
-
-  .plano-demos .card--project:nth-child(even) {
-    grid-template-columns: 5fr 7fr;
-  }
-
-  .plano-demos .card--project:nth-child(even) .plano-frame {
-    order: 2;
-  }
-}
-
-.plano-demos .card--project:hover .card__image {
-  transform: none;
-}
-
-.plano-frame {
-  --corner-len: 18px;
-  padding: 12px;
-  overflow: hidden;
-}
-
-.plano-frame__bar {
-  display: flex;
-  gap: 6px;
-  padding: 0 4px 10px;
-}
-
-.plano-frame__bar i {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: 1px solid var(--ed-border-strong);
-}
-
-.plano-frame .card__image {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: top;
-  background: var(--ed-paper-raised, #292E2D);
-  border: 1px solid var(--ed-border);
-  transition: object-position 2400ms ease-in-out;
-}
-
-.plano-demos .card--project:hover .plano-frame .card__image {
-  object-position: bottom;
-}
-
-.plano-demos .project-card__badge {
-  position: static;
-  display: inline-block;
-  margin-bottom: var(--space-4);
-  background: transparent;
-  color: var(--ed-accent);
-  border: 1px solid var(--ed-accent);
-}
-
-.plano-demos .project-card__body {
-  padding: 0;
-}
-
-.plano-demos .card--project .card__title {
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-  line-height: 1.05;
-  margin-bottom: var(--space-3);
-}
-
-.plano-demos .card--project .card__desc {
-  color: var(--ed-ink-soft);
-  font-size: 1.0625rem;
-  -webkit-line-clamp: unset;
-}
-
-.plano-demos .card__link--demo {
-  display: inline-flex;
-  gap: 8px;
-  padding-bottom: 3px;
-  border-bottom: 1px solid var(--ed-accent);
-  color: var(--ed-ink);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-size: 0.8125rem;
-}
-
-.plano-demos .card__link--demo:hover .card__link-arrow {
-  transform: translateX(4px);
-}
-
-.plano-demos .card__link-arrow {
-  display: inline-block;
-  transition: transform var(--transition-fast);
-}
-
-/* En movil, el badge va encima del marco */
-@media (max-width: 899px) {
-  .plano-demos .card--project {
-    gap: var(--space-4);
-  }
-}
-
 /* 2.5 CTA final: sage full-bleed */
 .plano-cta-band {
   background: var(--color-sage);
@@ -531,9 +390,7 @@ a.ed-lettered__item:hover::before {
     stroke-dashoffset: 0;
   }
 
-  .plano-frame .card__image {
-    transition: none;
-  }
+  
 }
 
 @media (max-width: 767px) {
@@ -562,19 +419,6 @@ a.ed-lettered__item:hover::before {
 .plano-subhero .ed-hero__subtitle {
   margin-top: var(--space-6) !important;
   font-size: 1.125rem;
-}
-
-/* Cards de proyectos (markup de proyectos.html) dentro de filas */
-.plano-demos .project-card__link--demo {
-  display: inline-flex;
-  gap: 8px;
-  padding-bottom: 3px;
-  border-bottom: 1px solid var(--ed-accent);
-  color: var(--ed-ink);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-size: 0.8125rem;
 }
 
 /* Contacto: inputs de linea inferior, panel lateral sin caja */
@@ -944,16 +788,7 @@ html {
 }
 
 @media (max-width: 767px) {
-  .card__link--demo,
-  .project-card__link--demo,
-  .ed-hero__link,
-  .ed-footer__col a,
-  .ed-footer__email,
-  .ed-nav__brand {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-  }
+  
 
   .ed-hero__link {
     padding-bottom: 0;
@@ -987,15 +822,6 @@ html {
     align-items: center;
     min-height: 44px;
   }
-}
-
-/* ---------- 11. Interruptor de demos (js/site-config.js) ---------- */
-html:not([data-demos="on"]) [data-demos-only] {
-  display: none !important;
-}
-
-html[data-demos="on"] [data-demos-off] {
-  display: none !important;
 }
 
 /* ---------- 12. Logo: home animado (1 vez por sesion), interiores estatico ---------- */
@@ -1289,4 +1115,23 @@ html[data-logo-seen] .teaser-logo path {
 
 .contact-dialog .plan-form__legal {
   margin-top: var(--space-3);
+}
+
+/* ---------- 16. Objetivos tactiles en movil (44px) ---------- */
+@media (max-width: 767px) {
+  .ed-hero__link,
+  .ed-footer__col a,
+  .ed-footer__email,
+  .ed-nav__brand {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .ed-hero__link {
+    padding-bottom: 0;
+    border-bottom: 0;
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
 }

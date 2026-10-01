@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /demos/verastore/en/gracias/
-Disallow: /demos/verastore/en/404.html
-Disallow: /demos/verastore/en/admin.html
-
-Sitemap: https://cuadrastudio.uy/demos/verastore/en/sitemap.xml

@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /demos/elfogatero/menu/
-Disallow: /demos/elfogatero/gracias/
-Disallow: /demos/elfogatero/404.html
-Disallow: /demos/elfogatero/admin.html
-
-Sitemap: https://cuadrastudio.uy/demos/elfogatero/sitemap.xml

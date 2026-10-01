@@ -13,7 +13,7 @@ hidden:
 live:
   - index.html          = home completa (indexable)
   - proximamente.html   = sitio en construccion (noindex, sin enlaces)
-  - paginas publicas    = indexables (Blog, Demos y 404 siguen noindex)
+  - paginas publicas    = indexables (Blog y 404 siguen noindex)
   - sitemap.xml         = todas las paginas publicas
 
 El script solo renombra archivos y ajusta <meta robots>, canonical y sitemap.

@@ -356,60 +356,12 @@
   transform: translateX(4px);
 }
 
-.card__link--demo {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-accent-ink);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  transition: color var(--transition-fast);
-}
-
-.card__link--demo:hover {
-  color: var(--color-accent-ink-hover);
-}
 
 /* Project card - larger editorial variant */
-.card--project {
-  padding: 0;
-  overflow: hidden;
-}
 
-.card--project .card__image {
-  border-radius: 0;               /* image bleeds to card edge on project variant */
-  margin-bottom: 0;
-  aspect-ratio: 16 / 10;
-  transition: transform 400ms var(--ease-out);
-}
-
-.card--project:hover .card__image {
-  transform: scale(1.02);         /* very subtle zoom, no shadow/glow (DS 16) */
-}
-
-.card--project .card__body {
-  padding: var(--space-6);
-}
-
-.card--project .card__title {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-}
-
-.card--project .card__desc {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  -webkit-line-clamp: 4;
-}
 
 /* Project metadata pills - sober, thin border (no saturated token) */
-.project-card__pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-bottom: var(--space-4);
-}
+
 
 .pill {
   display: inline-block;
@@ -424,24 +376,6 @@
   border-radius: var(--radius-md);
 }
 
-/* Demo badge - overlaid on project card screenshots so it reads at a
-   glance that these are product demos, not client work (DS 16 variant) */
-.project-card__badge {
-  position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
-  z-index: 1;
-  display: inline-block;
-  padding: 5px 12px;
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: var(--letter-spacing-interface);
-  text-transform: uppercase;
-  color: var(--color-black);
-  background: var(--color-sage);
-  border-radius: var(--radius-md);
-}
 
 /* ---- Hero avatar (isotipo block, geometric - DS 2.1) ---- */
 .avatar {
