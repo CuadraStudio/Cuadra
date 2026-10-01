@@ -715,3 +715,184 @@ a.ed-lettered__item:hover::before {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* ---------- 7. Web primero (Landing / Institucional) ---------- */
+.plano-web {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-7);
+}
+
+@media (min-width: 900px) {
+  .plano-web {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.plano-web__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-7) var(--space-6);
+  background: var(--color-white);
+  border: 1px solid var(--ed-border-strong);
+}
+
+.plano-web__card--featured {
+  background: var(--color-black);
+  color: var(--color-white);
+  --ed-ink: var(--color-white);
+  --ed-ink-soft: #C9CCCE;
+  --ed-accent: var(--color-sage);
+  --ed-paper: var(--color-black);
+  --color-text: var(--color-white);
+}
+
+.plano-web__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ed-accent);
+}
+
+.plano-web__title {
+  color: var(--ed-ink);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.plano-web__text {
+  color: var(--ed-ink-soft);
+  font-size: 1.0625rem;
+  max-width: 38ch;
+}
+
+.plano-web__list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+  color: var(--ed-ink-soft);
+}
+
+.plano-web__list li::before {
+  content: '— ';
+  color: var(--ed-accent);
+}
+
+.plano-web__price {
+  margin-top: auto;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--ed-border-strong);
+  color: var(--ed-ink-soft);
+}
+
+.plano-web__price span {
+  display: block;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ed-ink);
+}
+
+.plano-web__price em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ed-ink);
+}
+
+.plano-web__card .ed-hero__btn {
+  align-self: flex-start;
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.plano-web__card--featured .ed-hero__btn {
+  background: var(--color-sage);
+  color: var(--color-black);
+}
+
+/* Productos: Landing / Institucional con mas presencia */
+.ed-tier__price-impl {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Logo completo en el hero: proporcion 3.67:1 */
+.plano-hero__mark {
+  right: 4%;
+  top: 14%;
+  width: min(40vw, 560px);
+  stroke-width: 1.1;
+}
+
+.plano-subhero .plano-hero__mark {
+  width: min(32vw, 440px);
+  top: 12%;
+}
+
+/* ---------- 8. Posicion de scroll al navegar ---------- */
+html {
+  scroll-padding-top: 128px; /* nav 72 + metabar */
+}
+
+/* Productos: Landing / Institucional destacadas sobre las 4 lineas */
+.ed-tier--web {
+  background: var(--color-white);
+  border-color: var(--color-white);
+  --ed-ink: var(--color-black);
+  --ed-ink-soft: #292E2D;
+  --ed-muted: #3d4543;
+  --ed-accent: #2F5A51;
+  --ed-border: rgba(15, 17, 17, 0.16);
+  --ed-border-strong: rgba(15, 17, 17, 0.3);
+  color: var(--color-black);
+  padding-block: var(--space-7);
+}
+
+.ed-tier--web .ed-tier__title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  letter-spacing: -0.02em;
+  color: var(--color-black);
+}
+
+.ed-tier--web .ed-tier__eyebrow,
+.ed-tier--web .ed-tier__tagline,
+.ed-tier--web .ed-tier__list li,
+.ed-tier--web .ed-tier__note,
+.ed-tier--web .ed-tier__price-mensual {
+  color: #292E2D;
+}
+
+.ed-tier--web .ed-tier__eyebrow {
+  color: #2F5A51;
+}
+
+.ed-tier--web .ed-tier__price-impl {
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  line-height: 1;
+  color: var(--color-black);
+}
+
+.ed-tier--web .ed-feature__cta {
+  background: var(--color-black);
+  color: var(--color-white);
+  border: 0;
+  padding: 15px 28px;
+  display: inline-flex;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  border-radius: var(--radius-sm);
+}
+
+.ed-tier--web .ed-feature__cta:hover {
+  background: var(--color-graphite);
+}

@@ -406,8 +406,8 @@
       summaryPlan.textContent = totals.extras.length
         ? totals.extras.length + ' extra' + (totals.extras.length === 1 ? '' : 's') + ' seleccionado' + (totals.extras.length === 1 ? '' : 's')
         : 'Solo la base — sumá extras si querés';
-      summaryImpl.textContent = '$U ' + fmt(totals.impl) + ' (~USD ' + fmt(Math.round(totals.impl / 40)) + ')';
-      summaryMensual.textContent = '$U ' + fmt(totals.mensual) + '/mes (~USD ' + fmt(Math.round(totals.mensual / 40)) + ')';
+      summaryImpl.textContent = 'USD ' + fmt(totals.impl);
+      summaryMensual.textContent = 'USD ' + fmt(totals.mensual) + '/mes';
       if (state.combo && state.comboLine) {
         summaryCombo.hidden = false;
         summaryCombo.textContent = '+ Combo con ' + LINE_NAMES[state.comboLine] + ' (10% off en la 2da línea)';
@@ -456,13 +456,13 @@
       var totals = computeTotals(linePanel);
 
       resultLinePlan.textContent = LINE_NAMES[state.line];
-      resultImpl.textContent = '$U ' + fmt(totals.impl) + ' (~USD ' + fmt(Math.round(totals.impl / 40)) + ')';
-      resultMensual.textContent = '$U ' + fmt(totals.mensual) + '/mes (~USD ' + fmt(Math.round(totals.mensual / 40)) + ')';
+      resultImpl.textContent = 'USD ' + fmt(totals.impl);
+      resultMensual.textContent = 'USD ' + fmt(totals.mensual) + '/mes';
 
       resultExtras.innerHTML = '';
       totals.extras.forEach(function (extra) {
         var li = document.createElement('li');
-        li.textContent = extra.name + ' — +$U ' + fmt(extra.price) + (extra.type === 'mensual' ? '/mes' : ' único');
+        li.textContent = extra.name + ' — +USD ' + fmt(extra.price) + (extra.type === 'mensual' ? '/mes' : ' único');
         resultExtras.appendChild(li);
       });
 
@@ -473,8 +473,8 @@
       totals.extras.forEach(function (extra) {
         waLines.push('- ' + extra.name);
       });
-      waLines.push('Implementación: $U ' + fmt(totals.impl) + ' único');
-      waLines.push('Mensual: $U ' + fmt(totals.mensual) + '/mes');
+      waLines.push('Implementación: USD ' + fmt(totals.impl) + ' único');
+      waLines.push('Mensual: USD ' + fmt(totals.mensual) + '/mes');
 
       if (state.combo && state.comboLine) {
         resultCombo.hidden = false;
@@ -625,7 +625,28 @@
 
 
   // ---- Init all ----
+  // ---- Posicion de scroll al cambiar de pagina ----
+  // Sin hash: siempre arriba (el navegador a veces restaura una posicion de la
+  // pagina anterior). Con hash: salto inmediato al ancla, descontando la nav fija
+  // (scroll-padding-top en base.css/plano.css).
+  function initPageScroll() {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    var root = document.documentElement;
+    root.style.scrollBehavior = 'auto';
+    var id = decodeURIComponent(window.location.hash.replace('#', ''));
+    var target = id ? document.getElementById(id) : null;
+    if (target) {
+      target.scrollIntoView();
+    } else if (!id) {
+      window.scrollTo(0, 0);
+    }
+    window.requestAnimationFrame(function () {
+      root.style.scrollBehavior = '';
+    });
+  }
+
   function init() {
+    initPageScroll();
     initNav();
     initActiveNav();
     initScrollReveal();
