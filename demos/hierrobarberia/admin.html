@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de gestión — Hierro Barbería</title>
+  <meta name="description" content="Panel de gestión interno de Hierro Barbería. Página privada, fuera del índice de buscadores.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://cuadrastudio.uy/demos/hierrobarberia/admin.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/demos/hierrobarberia/css/admin.css">
+  <style>
+    :root {
+      --bg: #17140F;
+      --surface: #0E0D0C;
+      --ink: #EDE7DD;
+      --muted-text: color-mix(in srgb, #EDE7DD 58%, #0E0D0C);
+      --muted: color-mix(in srgb, #0E0D0C 78%, #B5502B);
+      --accent: #B5502B;
+      --accent-strong: color-mix(in srgb, #B5502B 78%, #000);
+      --accent-bright: color-mix(in srgb, #B5502B 65%, #fff);
+      --on-accent: #0E0D0C;
+      --on-strong: #0E0D0C;
+      --focus: #B5502B;
+      --focus-inverse: #0E0D0C;
+      --line: color-mix(in srgb, #EDE7DD 14%, #0E0D0C);
+      --line-strong: color-mix(in srgb, #EDE7DD 88%, #0E0D0C);
+      --line-on-dark: color-mix(in srgb, #0E0D0C 20%, #B5502B);
+      --header-bg: #B5502B;
+      --header-bg-solid: #B5502B;
+      --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+  </style>
+  <link rel="icon" href="/demos/hierrobarberia/img/favicon.svg" type="image/svg+xml">
+</head>
+<body class="admin-body">
+  <a class="skip-link" href="#admin-main">Saltar al contenido</a>
+
+  <div id="toast" class="admin-toast" role="status" aria-live="polite" hidden></div>
+
+  <div id="notif-banner" class="admin-notif-banner" hidden>
+    <div class="admin-notif-banner__inner">
+      <p id="notif-banner-title" class="admin-notif-banner__title"></p>
+      <ul id="notif-banner-list" class="admin-notif-banner__list"></ul>
+      <div class="admin-notif-banner__actions">
+        <button type="button" id="notif-banner-cta" class="admin-btn admin-btn--solid">Ver agenda</button>
+        <button type="button" id="notif-banner-close" class="admin-btn admin-btn--ghosted">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================== LOGIN ============================== -->
+  <div id="view-login" class="admin-login">
+    <p class="admin-login__brand"><span>Hierro</span><span>Barbería</span></p>
+    <p class="admin-login__values">Barbería / Salón · Montevideo</p>
+    <h1 class="admin-login__title">Gestión de turnos y servicios.</h1>
+
+    <form id="login-form" class="admin-login__card" novalidate>
+      <div class="field">
+        <label class="field__label" for="login-pin">PIN de acceso</label>
+        <input type="password" id="login-pin" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" required>
+      </div>
+      <p id="login-error" class="admin-error-text" role="alert" hidden></p>
+      <button type="submit" class="btn-primary admin-login__submit" id="btn-login-submit">Entrar</button>
+      <p class="admin-login__hint">Demo: PIN 0000. Sitio de demostración — este panel guarda todo en este navegador, no en un servidor.</p>
+      <a href="/demos/hierrobarberia/" class="admin-login__back">← Volver a la web</a>
+    </form>
+  </div>
+
+  <!-- ============================== PANEL ============================== -->
+  <div id="view-panel" hidden>
+    <div class="admin-shell">
+
+      <header class="admin-topbar">
+        <div class="admin-topbar__brand">
+          <span class="admin-topbar__label">Panel de gestión</span>
+          <strong class="admin-topbar__name">Hierro Barbería</strong>
+        </div>
+        <div class="admin-topbar__actions">
+          <button type="button" id="btn-sound-toggle" class="admin-sound-toggle" aria-pressed="true" aria-label="Silenciar sonido de notificaciones">
+            <svg class="admin-sound-toggle__icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <svg class="admin-sound-toggle__icon admin-sound-toggle__icon--muted" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          </button>
+          <a href="/demos/hierrobarberia/" class="admin-link admin-link--web">Ver web</a>
+          <button type="button" id="btn-logout" class="btn-outline-light">Salir</button>
+        </div>
+      </header>
+
+      <div class="admin-content">
+        <main id="admin-main">
+
+          <section id="tab-dashboard" class="admin-section is-active" aria-label="Operación del día" role="tabpanel" aria-labelledby="btn-dashboard">
+            <div class="admin-dash-header"><h2 class="admin-dash-header__title">Operación del día</h2></div>
+
+            <div class="admin-date-nav">
+              <button type="button" class="admin-btn admin-btn--ghosted" id="dash-date-prev" aria-label="Día anterior">‹</button>
+              <span class="admin-date-nav__label" id="dash-date-sub">Cargando…</span>
+              <button type="button" class="admin-btn" id="dash-date-today">Hoy</button>
+              <button type="button" class="admin-btn admin-btn--ghosted" id="dash-date-next" aria-label="Día siguiente">›</button>
+            </div>
+
+            <div class="admin-kpi-row" id="dash-kpis">
+              <div class="admin-kpi"><span class="admin-kpi__label">Turnos hoy</span><strong class="admin-kpi__value" id="kpi-today-count">—</strong></div>
+              <div class="admin-kpi"><span class="admin-kpi__label">Pendientes</span><strong class="admin-kpi__value admin-kpi__value--warn" id="kpi-pending">—</strong></div>
+              <div class="admin-kpi"><span class="admin-kpi__label">Confirmados</span><strong class="admin-kpi__value" id="kpi-confirmed">—</strong></div>
+              <div class="admin-kpi"><span class="admin-kpi__label">Ocupación semanal</span><strong class="admin-kpi__value" id="kpi-week-pct">—</strong></div>
+            </div>
+
+            <div class="admin-dash-section">
+              <h3 class="admin-dash-section__title">Equipo en salón</h3>
+              <div id="dash-team" class="admin-dash-team"></div>
+            </div>
+
+            <div class="admin-dash-section">
+              <h3 class="admin-dash-section__title">Servicios del día</h3>
+              <div id="dash-services" class="admin-dash-services"></div>
+            </div>
+
+            <div class="admin-dash-section">
+              <div class="admin-dash-section__head">
+                <h3 class="admin-dash-section__title">Agenda del día</h3>
+                <button type="button" class="admin-btn" id="dash-new-appt">+ Nuevo turno</button>
+              </div>
+              <div id="dash-appointments"></div>
+            </div>
+          </section>
+
+          <section id="tab-semana" class="admin-section" aria-label="Vista semanal" role="tabpanel" aria-labelledby="btn-semana">
+            <div class="admin-week-nav">
+              <button type="button" class="admin-btn admin-btn--ghosted" id="week-prev" aria-label="Semana anterior">‹</button>
+              <span class="admin-week-nav__label" id="week-range"></span>
+              <button type="button" class="admin-btn" id="week-today">Hoy</button>
+              <button type="button" class="admin-btn admin-btn--ghosted" id="week-next" aria-label="Semana siguiente">›</button>
+            </div>
+            <div class="admin-kpi-row" id="week-kpis">
+              <div class="admin-kpi"><span class="admin-kpi__label">Total semana</span><strong class="admin-kpi__value" id="wk-total">—</strong></div>
+              <div class="admin-kpi"><span class="admin-kpi__label">Pendientes</span><strong class="admin-kpi__value admin-kpi__value--warn" id="wk-pending">—</strong></div>
+              <div class="admin-kpi"><span class="admin-kpi__label">Confirmados</span><strong class="admin-kpi__value" id="wk-confirmed">—</strong></div>
+            </div>
+            <div id="week-days" class="admin-week-days"></div>
+          </section>
+
+          <section id="tab-semana" class="admin-section" aria-label="Semana" role="tabpanel" aria-labelledby="btn-semana"></section>
+
+          <section id="tab-servicios" class="admin-section" aria-label="Servicios" role="tabpanel" aria-labelledby="btn-servicios"></section>
+
+          <section id="tab-equipo" class="admin-section" aria-label="Equipo" role="tabpanel" aria-labelledby="btn-equipo"></section>
+
+          <section id="tab-horarios" class="admin-section" aria-label="Horarios" role="tabpanel" aria-labelledby="btn-horarios"></section>
+
+        </main>
+      </div>
+
+      <nav class="admin-bottomnav" aria-label="Secciones del panel">
+        <button type="button" class="admin-bottomnav__item is-active" data-tab="dashboard" aria-controls="tab-dashboard" aria-selected="true">
+          <svg class="admin-bottomnav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          <span>Operación</span>
+
+        </button>
+        <button type="button" class="admin-bottomnav__item" data-tab="semana" aria-controls="tab-semana" aria-selected="false">
+          <svg class="admin-bottomnav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Semana</span>
+          <span class="admin-bottomnav__badge" id="badge-week" hidden></span>
+        </button>
+        <button type="button" class="admin-bottomnav__item" data-tab="servicios" aria-controls="tab-servicios" aria-selected="false">
+          <svg class="admin-bottomnav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>Servicios</span>
+
+        </button>
+        <button type="button" class="admin-bottomnav__item" data-tab="equipo" aria-controls="tab-equipo" aria-selected="false">
+          <svg class="admin-bottomnav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Equipo</span>
+
+        </button>
+        <button type="button" class="admin-bottomnav__item" data-tab="horarios" aria-controls="tab-horarios" aria-selected="false">
+          <svg class="admin-bottomnav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Horarios</span>
+
+        </button>
+      </nav>
+
+    </div>
+  </div>
+
+  <div id="appt-edit-overlay" class="admin-appt-form-overlay" hidden></div>
+
+  <script src="/demos/hierrobarberia/js/config.js"></script>
+  <script src="/demos/hierrobarberia/js/admin-db.js"></script>
+  <script src="/demos/hierrobarberia/js/admin.js"></script>
+</body>
+</html>
