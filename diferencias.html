@@ -42,7 +42,7 @@
   <link rel="stylesheet" href="css/home-editorial.css?v=20260921c">
   <link rel="stylesheet" href="css/plano.css?v=20260930">
 </head>
-<body class="home-editorial">
+<body class="home-editorial plano-home plano-page">
 
   <!-- Skip link -->
   <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
@@ -88,16 +88,18 @@
     <main id="contenido" tabindex="-1">
 
     <!-- Page header -->
-    <header class="ed-hero" style="padding-bottom: var(--space-7);">
+    <header class="ed-hero plano-hero plano-subhero">
+      <div class="plano-hero__grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <svg class="plano-hero__mark" viewBox="0 6 32 20" aria-hidden="true" focusable="false"><path pathLength="1" d="M 2,9 V 13.666 H 25.333 V 23 H 30 V 9 Z"/></svg>
       <div class="ed-container">
         <p class="ed-feature__eyebrow reveal" style="margin-bottom: var(--space-3);">Diferencias</p>
-        <h1 class="ed-hero__title reveal" style="font-size: clamp(2.25rem, 5vw, 3.5rem);">¿Qué nos hace <em>diferentes</em>?</h1>
+        <h1 class="ed-hero__title plano-hero__title reveal">¿Qué nos hace <em>diferentes</em>?</h1>
         <p class="ed-hero__subtitle reveal" style="margin-top: var(--space-5);">No vendemos plantillas genéricas. Cada línea está pensada para cómo trabaja tu rubro, con precios claros y soporte real.</p>
       </div>
     </header>
 
     <!-- Lo que nos guía -->
-    <section id="valores" class="ed-section" aria-labelledby="valores-title">
+    <section id="valores" class="ed-section section--mist plano-band plano-band--mist" aria-labelledby="valores-title">
       <div class="ed-container">
         <div class="ed-section__head">
           <span class="ed-section__index">01 —</span>
@@ -132,8 +134,8 @@
     </main>
 
     <!-- CTA final -->
-    <section class="ed-section" style="border-top: none; padding-top: 0;" aria-labelledby="cta-title">
-      <div class="ed-cta reveal">
+    <section class="plano-cta-band" aria-labelledby="cta-title">
+      <div class="ed-cta ed-container reveal">
         <p class="ed-cta__eyebrow">— Hablemos</p>
         <p class="ed-cta__title" id="cta-title">¿Querés ver esto <em>funcionando</em>?</p>
         <p class="ed-cta__text">Mirá los demos reales de cada línea, o escribinos directo y te contamos cómo trabajamos con tu rubro.</p>

@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="css/home-editorial.css?v=20260921c">
   <link rel="stylesheet" href="css/plano.css?v=20260930">
 </head>
-<body class="home-editorial">
+<body class="home-editorial plano-home plano-page">
 
   <!-- Skip link -->
   <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
@@ -82,10 +82,12 @@
     <main id="contenido" tabindex="-1">
 
     <!-- Page header -->
-    <header class="ed-hero" style="padding-bottom: var(--space-7);">
+    <header class="ed-hero plano-hero plano-subhero">
+      <div class="plano-hero__grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <svg class="plano-hero__mark" viewBox="0 6 32 20" aria-hidden="true" focusable="false"><path pathLength="1" d="M 2,9 V 13.666 H 25.333 V 23 H 30 V 9 Z"/></svg>
       <div class="ed-container">
         <p class="ed-feature__eyebrow reveal" style="margin-bottom: var(--space-3);">Hablemos</p>
-        <h1 class="ed-hero__title reveal" style="font-size: clamp(2.25rem, 5vw, 3.5rem);">¿Tenés un negocio? <em>Hablemos.</em></h1>
+        <h1 class="ed-hero__title plano-hero__title reveal">¿Tenés un negocio? <em>Hablemos.</em></h1>
         <p class="ed-hero__subtitle reveal" style="margin-top: var(--space-5);">Contanos sobre tu negocio y te ayudamos a encontrar la línea que te conviene. Escribinos por acá o directo por WhatsApp.</p>
       </div>
     </header>

@@ -531,3 +531,117 @@ a.ed-lettered__item:hover::before {
   .plano-cta-band { padding-block: var(--space-9); }
   .ed-stepper__circle { font-size: 3.5rem; }
 }
+
+/* ---------- 4. Subpaginas ---------- */
+.plano-subhero {
+  padding-block: var(--space-9) var(--space-9);
+}
+
+.plano-subhero .plano-hero__title {
+  font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+  max-width: 15ch;
+}
+
+.plano-subhero .plano-hero__mark {
+  top: 12%;
+  width: min(30vw, 420px);
+}
+
+.plano-subhero .ed-hero__subtitle {
+  margin-top: var(--space-6) !important;
+  font-size: 1.125rem;
+}
+
+/* Cards de proyectos (markup de proyectos.html) dentro de filas */
+.plano-demos .project-card__link--demo {
+  display: inline-flex;
+  gap: 8px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--ed-accent);
+  color: var(--ed-ink);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+}
+
+/* Contacto: inputs de linea inferior, panel lateral sin caja */
+.plano-page .form-input,
+.plano-page .form-textarea {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--ed-border-strong);
+  border-radius: 0;
+  padding-inline: 0;
+  font-weight: 400;
+}
+
+.plano-page .form-input:focus,
+.plano-page .form-textarea:focus {
+  border-bottom-color: var(--ed-accent);
+  box-shadow: none;
+  outline: none;
+}
+
+.plano-page .form-input:focus-visible,
+.plano-page .form-textarea:focus-visible {
+  outline: 2px solid var(--ed-accent);
+  outline-offset: 4px;
+}
+
+.plano-page .ed-contact-side {
+  background: transparent;
+  border: 0;
+  border-left: 1px solid var(--ed-border-strong);
+  border-radius: 0;
+  padding-left: var(--space-6);
+}
+
+/* Teaser: acciones en una fila */
+.plano-teaser .ed-hero__actions .btn {
+  min-width: 0;
+}
+
+.plano-teaser .plano-hero__title {
+  max-width: 14ch;
+}
+
+.plano-teaser .plano-hero__mark {
+  display: none;
+}
+
+/* ---------- 5. Ajustes de revision ---------- */
+.plano-teaser .plano-hero__title {
+  font-size: clamp(2.25rem, 6.5vw, 5.25rem);
+  max-width: 18ch;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.plano-teaser .plano-hero__grid {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .plano-teaser .ed-hero__actions {
+    flex-wrap: nowrap;
+  }
+}
+
+.plano-subhero .ed-feature__eyebrow {
+  margin-bottom: var(--space-5) !important;
+}
+
+.plano-cta-band .ed-cta__title {
+  margin-bottom: var(--space-6);
+}
+
+.plano-cta-band .ed-cta__title em {
+  text-underline-offset: 0.1em;
+}
+
+.ed-contact-grid .ed-section__label {
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}

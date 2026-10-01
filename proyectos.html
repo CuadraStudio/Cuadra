@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="css/home-editorial.css?v=20260921c">
   <link rel="stylesheet" href="css/plano.css?v=20260930">
 </head>
-<body class="home-editorial">
+<body class="home-editorial plano-home plano-page">
 
   <!-- Skip link -->
   <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
@@ -82,28 +82,30 @@
     <main id="contenido" tabindex="-1">
 
     <!-- Page header -->
-    <header class="ed-hero" style="padding-bottom: var(--space-7);">
+    <header class="ed-hero plano-hero plano-subhero">
+      <div class="plano-hero__grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <svg class="plano-hero__mark" viewBox="0 6 32 20" aria-hidden="true" focusable="false"><path pathLength="1" d="M 2,9 V 13.666 H 25.333 V 23 H 30 V 9 Z"/></svg>
       <div class="ed-container">
         <p class="ed-feature__eyebrow reveal" style="margin-bottom: var(--space-3);">Demos</p>
-        <h1 class="ed-hero__title reveal" style="font-size: clamp(2.25rem, 5vw, 3.5rem);">Así se ven nuestros <em>productos</em> en acción.</h1>
+        <h1 class="ed-hero__title plano-hero__title reveal">Así se ven nuestros <em>productos</em> en acción.</h1>
         <p class="ed-hero__subtitle reveal" style="margin-top: var(--space-5);">Sitios de demostración con negocios ficticios, pensados para mostrarte cada línea de producto en detalle.</p>
       </div>
     </header>
 
     <!-- Project grid -->
-    <section class="ed-section" aria-labelledby="grid-proyectos">
+    <section class="ed-section section--dark plano-band plano-band--graphite" aria-labelledby="grid-proyectos">
       <div class="ed-container">
         <div class="ed-section__head">
           <span class="ed-section__index">01 —</span>
           <h2 class="ed-section__label" id="grid-proyectos">Demos de producto</h2>
         </div>
-        <div class="grid grid--2">
+        <div class="plano-demos">
 
           <!-- Vera Store (demo de producto CUADRA) -->
           <article class="card card--project reveal" style="--reveal-index: 0">
-            <span class="project-card__badge">Demo de producto</span>
-            <img src="img/demotienda.png" alt="Screenshot del sitio de Vera Store, demo de producto de la plataforma CUADRA, boutique ficticia en Pocitos, Montevideo" class="card__image" loading="lazy">
+            <div class="plano-frame plano-corners"><span class="plano-frame__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="img/demotienda.png" alt="Screenshot del sitio de Vera Store, demo de producto de la plataforma CUADRA, boutique ficticia en Pocitos, Montevideo" class="card__image" loading="lazy"></div>
             <div class="project-card__body">
+              <span class="project-card__badge">Demo de producto</span>
               <h3 class="card__title">Vera Store</h3>
               <p class="card__desc" style="-webkit-line-clamp: 4;">Pocitos, Montevideo – demo de producto CUADRA. Catálogo con variantes y stock, carrito y pedidos por WhatsApp.</p>
               <div class="project-card__pills">
@@ -119,9 +121,9 @@
 
           <!-- Estudio Trazo (demo de producto CUADRA) -->
           <article class="card card--project reveal" style="--reveal-index: 1">
-            <span class="project-card__badge">Demo de producto</span>
-            <img src="img/demoagenda.png" alt="Screenshot del sitio de Estudio Trazo, demo de producto de la plataforma CUADRA, barbería ficticia en Montevideo" class="card__image" loading="lazy">
+            <div class="plano-frame plano-corners"><span class="plano-frame__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="img/demoagenda.png" alt="Screenshot del sitio de Estudio Trazo, demo de producto de la plataforma CUADRA, barbería ficticia en Montevideo" class="card__image" loading="lazy"></div>
             <div class="project-card__body">
+              <span class="project-card__badge">Demo de producto</span>
               <h3 class="card__title">Estudio Trazo</h3>
               <p class="card__desc" style="-webkit-line-clamp: 4;">Bulevar Artigas 2026, Montevideo – demo de producto CUADRA. Barbería ficticia: reserva de turnos con horarios en vivo y confirmación automática.</p>
               <div class="project-card__pills">
@@ -137,9 +139,9 @@
 
           <!-- El Fogatero (demo de producto CUADRA) -->
           <article class="card card--project reveal" style="--reveal-index: 2">
-            <span class="project-card__badge">Demo de producto</span>
-            <img src="img/demoresto.png" alt="Screenshot del sitio de El Fogatero, demo de producto de la plataforma CUADRA, parrilla ficticia en el Cordón, Montevideo" class="card__image" loading="lazy">
+            <div class="plano-frame plano-corners"><span class="plano-frame__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="img/demoresto.png" alt="Screenshot del sitio de El Fogatero, demo de producto de la plataforma CUADRA, parrilla ficticia en el Cordón, Montevideo" class="card__image" loading="lazy"></div>
             <div class="project-card__body">
+              <span class="project-card__badge">Demo de producto</span>
               <h3 class="card__title">El Fogatero</h3>
               <p class="card__desc" style="-webkit-line-clamp: 4;">Cordón, Montevideo – demo de producto CUADRA. Carta digital, reservas de mesa con cupos por franja vía WhatsApp.</p>
               <div class="project-card__pills">
@@ -155,9 +157,9 @@
 
           <!-- Estudio Arroyo (demo de producto CUADRA) -->
           <article class="card card--project reveal" style="--reveal-index: 3">
-            <span class="project-card__badge">Demo de producto</span>
-            <img src="img/democonsulta.png" alt="Screenshot del sitio de Estudio Arroyo, demo de producto de la plataforma CUADRA, estudio jurídico ficticio en Ciudad Vieja, Montevideo" class="card__image" loading="lazy">
+            <div class="plano-frame plano-corners"><span class="plano-frame__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="img/democonsulta.png" alt="Screenshot del sitio de Estudio Arroyo, demo de producto de la plataforma CUADRA, estudio jurídico ficticio en Ciudad Vieja, Montevideo" class="card__image" loading="lazy"></div>
             <div class="project-card__body">
+              <span class="project-card__badge">Demo de producto</span>
               <h3 class="card__title">Estudio Arroyo</h3>
               <p class="card__desc" style="-webkit-line-clamp: 4;">Ciudad Vieja, Montevideo – demo de producto CUADRA. Estudio jurídico ficticio: agendado de consultas por WhatsApp con panel admin demo.</p>
               <div class="project-card__pills">
@@ -178,8 +180,8 @@
     </main>
 
     <!-- CTA -->
-    <section class="ed-section" style="border-top: none; padding-top: 0;" aria-labelledby="cta-proyectos">
-      <div class="ed-cta reveal">
+    <section class="plano-cta-band" aria-labelledby="cta-proyectos">
+      <div class="ed-cta ed-container reveal">
         <p class="ed-cta__eyebrow">— Hablemos</p>
         <p class="ed-cta__title" id="cta-proyectos">¿Te gustó lo que <em>ves</em>?</p>
         <p class="ed-cta__text">Podemos hacer algo así para tu negocio. Cotización sin cargo.</p>

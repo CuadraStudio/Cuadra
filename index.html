@@ -64,7 +64,7 @@
   <link rel="stylesheet" href="css/home-editorial.css?v=20260921c">
   <link rel="stylesheet" href="css/plano.css?v=20260930">
 </head>
-<body class="home-editorial">
+<body class="home-editorial plano-home plano-teaser">
 
   <!-- Skip link -->
   <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
@@ -75,7 +75,9 @@
       <!-- Hero — teaser, sitio en construccion. Sin nav: todavia no hay nada
            mas para explorar (productos/proyectos/contacto existen pero no
            se exponen desde aca a proposito). -->
-      <header class="ed-hero ed-hero--construction hero--construction">
+      <header class="ed-hero ed-hero--construction hero--construction plano-hero">
+      <div class="plano-hero__grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <svg class="plano-hero__mark" viewBox="0 6 32 20" aria-hidden="true" focusable="false"><path pathLength="1" d="M 2,9 V 13.666 H 25.333 V 23 H 30 V 9 Z"/></svg>
         <div class="ed-container ed-hero__center">
           <a href="/" class="ed-nav__brand ed-hero__brand" aria-label="CUADRA">
             <img src="assets/cuadra-logo-white.svg" alt="">
@@ -83,7 +85,7 @@
           </a>
 
           <p class="ed-feature__eyebrow" style="margin: var(--space-8) 0 var(--space-3);">Próximamente</p>
-          <h1 class="ed-hero__title reveal" style="margin-inline: auto;">Estamos construyendo <em>algo nuevo.</em></h1>
+          <h1 class="ed-hero__title plano-hero__title reveal" style="margin-inline: auto;">Estamos construyendo <em>algo nuevo.</em></h1>
 
           <div class="hero__rotator" aria-live="polite">
             <p class="hero__rotator-line is-active">Experiencias digitales a medida.</p>
