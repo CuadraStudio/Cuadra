@@ -251,22 +251,23 @@
 
       if (!validate()) return;
 
-      // Build WhatsApp message
+      // Build email message
       var nombre = nombreInput.value.trim();
       var email = emailInput.value.trim();
       var mensaje = mensajeInput.value.trim();
 
-      var text = 'Hola! Quiero un sitio web.\n\n'
-        + '*Nombre:* ' + nombre + '\n'
-        + '*Email:* ' + email + '\n'
-        + '*Mensaje:* ' + mensaje;
+      var body = 'Hola! Quiero un sitio web.\n\n'
+        + 'Nombre: ' + nombre + '\n'
+        + 'Email: ' + email + '\n'
+        + 'Mensaje: ' + mensaje;
 
-      var url = 'https://wa.me/59899331909?text=' + encodeURIComponent(text);
-      window.open(url, '_blank');
+      var url = 'mailto:cuadrastudio.uy@gmail.com?subject=' + encodeURIComponent('Consulta desde la web: ' + nombre)
+        + '&body=' + encodeURIComponent(body.replace(/\n/g, '\r\n'));
+      window.location.href = url;
 
       // Show success
       submitBtn.disabled = false;
-      formStatus.innerHTML = '<div class="form-success">Abriendo WhatsApp... Si no se abre, <a href="' + url + '" target="_blank" rel="noopener noreferrer">hacé clic acá</a>.</div>';
+      formStatus.innerHTML = '<div class="form-success">Abriendo tu app de correo… Si no se abre, escribinos a <strong>cuadrastudio.uy@gmail.com</strong> o <a href="' + url + '">hacé clic acá</a>.</div>';
       form.reset();
     });
 

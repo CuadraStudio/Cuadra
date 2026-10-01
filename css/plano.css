@@ -62,7 +62,7 @@
 }
 
 /* FAB de WhatsApp: circular, sage, sin tapar contenido */
-.whatsapp-fab {
+.contact-fab {
   width: 56px;
   height: 56px;
   bottom: 20px;
@@ -72,11 +72,11 @@
   border: 0;
 }
 
-.whatsapp-fab svg {
+.contact-fab svg {
   stroke: var(--color-black);
 }
 
-.whatsapp-fab:hover {
+.contact-fab:hover {
   background: var(--color-mist);
   border: 0;
 }
