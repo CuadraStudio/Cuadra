@@ -896,3 +896,16 @@ html {
 .ed-tier--web .ed-feature__cta:hover {
   background: var(--color-graphite);
 }
+
+/* ---------- 9. Resumen por email ---------- */
+.result-email-note {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--ed-ink-soft);
+  flex-basis: 100%;
+}
+
+.result-email-note strong {
+  color: var(--ed-ink);
+  user-select: all;
+}

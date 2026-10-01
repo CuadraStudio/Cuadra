@@ -315,21 +315,18 @@
     });
   }
 
-  // ---- Configurador de planes: a la carte (linea -> extras con precio propio -> combo -> resumen) ----
+  // ---- Configurador de planes: a la carte (linea -> plan y extras con precio propio -> resumen por email) ----
   function initPlanConfigurator() {
     var root = document.querySelector('[data-configurator]');
     if (!root) return;
 
     var LINE_NAMES = { landing: 'CUADRA Landing', institucional: 'CUADRA Institucional', agenda: 'CUADRA Agenda', tienda: 'CUADRA Tienda', resto: 'CUADRA Restó', consulta: 'CUADRA Consulta' };
-    var WA_NUMBER = '59899331909';
+    var CONTACT_EMAIL = 'cuadrastudio.uy@gmail.com';
 
     var panels = root.querySelectorAll('.configurator__panel');
     var stepIndicators = root.querySelectorAll('[data-step-indicator]');
     var lineChoices = root.querySelectorAll('[data-choose-line]');
     var linePanels = root.querySelectorAll('[data-line-panel]');
-    var comboToggle = root.querySelector('[data-combo-toggle]');
-    var comboChoicesWrap = root.querySelector('[data-combo-choices]');
-    var comboChoices = root.querySelectorAll('[data-choose-combo]');
     var selectedLineName = root.querySelector('[data-selected-line-name]');
 
     var summaryEmpty = root.querySelector('[data-summary-empty]');
@@ -338,16 +335,17 @@
     var summaryPlan = root.querySelector('[data-summary-plan-name]');
     var summaryImpl = root.querySelector('[data-summary-impl]');
     var summaryMensual = root.querySelector('[data-summary-mensual]');
-    var summaryCombo = root.querySelector('[data-summary-combo]');
-
+    
     var resultLinePlan = root.querySelector('[data-result-line-plan]');
     var resultExtras = root.querySelector('[data-result-extras]');
     var resultImpl = root.querySelector('[data-result-impl]');
     var resultMensual = root.querySelector('[data-result-mensual]');
-    var resultCombo = root.querySelector('[data-result-combo]');
-    var waResultLink = root.querySelector('[data-whatsapp-result]');
+    var emailResultLink = root.querySelector('[data-email-result]');
+    var copyResultBtn = root.querySelector('[data-copy-result]');
+    var copyStatus = root.querySelector('[data-copy-status]');
+    var lastSummary = '';
 
-    var state = { line: null, combo: false, comboLine: null };
+    var state = { line: null };
 
     function fmt(n) {
       return Number(n).toLocaleString('es-UY');
@@ -408,12 +406,6 @@
         : 'Solo la base — sumá extras si querés';
       summaryImpl.textContent = 'USD ' + fmt(totals.impl);
       summaryMensual.textContent = 'USD ' + fmt(totals.mensual) + '/mes';
-      if (state.combo && state.comboLine) {
-        summaryCombo.hidden = false;
-        summaryCombo.textContent = '+ Combo con ' + LINE_NAMES[state.comboLine] + ' (10% off en la 2da línea)';
-      } else {
-        summaryCombo.hidden = true;
-      }
     }
 
     function selectLine(line, jumpToStep2) {
@@ -428,26 +420,9 @@
       var step1Next = root.querySelector('[data-step="1"] [data-next]');
       if (step1Next) step1Next.disabled = false;
 
-      // La linea principal no puede combinarse consigo misma: se oculta esa opcion del paso 3.
-      comboChoices.forEach(function (btn) {
-        var isPrimary = btn.getAttribute('data-choose-combo') === line;
-        btn.hidden = isPrimary;
-        if (isPrimary && state.comboLine === line) {
-          state.comboLine = null;
-          btn.setAttribute('aria-pressed', 'false');
-        }
-      });
 
       updateSummary();
       if (jumpToStep2) goToStep(2);
-    }
-
-    function selectCombo(line) {
-      state.comboLine = line;
-      comboChoices.forEach(function (btn) {
-        btn.setAttribute('aria-pressed', btn.getAttribute('data-choose-combo') === line ? 'true' : 'false');
-      });
-      updateSummary();
     }
 
     function renderResult() {
@@ -466,39 +441,40 @@
         resultExtras.appendChild(li);
       });
 
-      var waLines = [
+      var lines = [
         'Hola CUADRA! Armé mi plan en la web:',
-        isWebOnly() ? LINE_NAMES[state.line] : LINE_NAMES[state.line] + ' (base + ' + totals.extras.length + ' extra' + (totals.extras.length === 1 ? '' : 's') + ')'
+        '',
+        'Línea: ' + LINE_NAMES[state.line]
       ];
-      totals.extras.forEach(function (extra) {
-        waLines.push('- ' + extra.name);
-      });
-      waLines.push('Implementación: USD ' + fmt(totals.impl) + ' único');
-      waLines.push('Mensual: USD ' + fmt(totals.mensual) + '/mes');
-
-      if (state.combo && state.comboLine) {
-        resultCombo.hidden = false;
-        resultCombo.textContent = 'También me interesa combinar con ' + LINE_NAMES[state.comboLine] + ' — se cotiza con 10% de descuento sobre la segunda línea, a confirmar por WhatsApp.';
-        waLines.push('También quiero cotizar un combo con ' + LINE_NAMES[state.comboLine] + '.');
-      } else {
-        resultCombo.hidden = true;
+      if (totals.extras.length) {
+        lines.push('Extras:');
+        totals.extras.forEach(function (extra) {
+          lines.push('- ' + extra.name + ' (+USD ' + fmt(extra.price) + (extra.type === 'mensual' ? '/mes' : ' único') + ')');
+        });
       }
-      waLines.push('¿Seguimos?');
-      if (waResultLink) {
-        waResultLink.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waLines.join('\n'));
+      lines.push('');
+      lines.push('Implementación: USD ' + fmt(totals.impl) + ' único');
+      lines.push('Mensualidad: USD ' + fmt(totals.mensual) + '/mes');
+      lines.push('');
+      lines.push('Mis datos:');
+      lines.push('Nombre:');
+      lines.push('Negocio:');
+      lines.push('Teléfono (opcional):');
+      lastSummary = lines.join('\n');
+      if (emailResultLink) {
+        emailResultLink.href = 'mailto:' + CONTACT_EMAIL +
+          '?subject=' + encodeURIComponent('Plan armado: ' + LINE_NAMES[state.line]) +
+          '&body=' + encodeURIComponent(lastSummary.replace(/\n/g, '\r\n'));
       }
     }
 
     function resetAll(skipScroll) {
-      state = { line: null, combo: false, comboLine: null };
+      state = { line: null };
       lineChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); });
-      comboChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); btn.hidden = false; });
       linePanels.forEach(function (panel) {
         panel.hidden = true;
         panel.querySelectorAll('[data-feature]').forEach(function (input) { input.checked = false; });
       });
-      if (comboToggle) comboToggle.checked = false;
-      if (comboChoicesWrap) comboChoicesWrap.hidden = true;
       summaryEmpty.hidden = false;
       summaryContent.hidden = true;
       var step1Next = root.querySelector('[data-step="1"] [data-next]');
@@ -519,50 +495,14 @@
       }
     });
 
-    if (comboToggle) {
-      comboToggle.addEventListener('change', function () {
-        state.combo = comboToggle.checked;
-        if (comboChoicesWrap) comboChoicesWrap.hidden = !comboToggle.checked;
-        if (!comboToggle.checked) {
-          state.comboLine = null;
-          comboChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); });
-        }
-        updateSummary();
-      });
-    }
-
-    comboChoices.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        selectCombo(btn.getAttribute('data-choose-combo'));
-      });
-    });
 
     root.querySelector('[data-step="1"] [data-next]').addEventListener('click', function () {
       if (state.line) goToStep(2);
     });
 
-    // Landing e Institucional no tienen extras ni combo: del plan van directo al resumen.
-    function isWebOnly() {
-      return state.line === 'landing' || state.line === 'institucional';
-    }
-
-    var nextToExtras = root.querySelector('[data-next-to-extras]');
-    if (nextToExtras) {
-      nextToExtras.addEventListener('click', function () {
-        if (isWebOnly()) {
-          renderResult();
-          goToStep(4);
-        } else {
-          goToStep(3);
-        }
-      });
-    }
-
     root.querySelectorAll('[data-back]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var target = Number(btn.getAttribute('data-back'));
-        if (target === 3 && isWebOnly()) target = 2;
-        goToStep(target);
+        goToStep(Number(btn.getAttribute('data-back')));
       });
     });
 
@@ -570,7 +510,22 @@
     if (nextToResult) {
       nextToResult.addEventListener('click', function () {
         renderResult();
-        goToStep(4);
+        goToStep(3);
+      });
+    }
+
+    if (copyResultBtn) {
+      copyResultBtn.addEventListener('click', function () {
+        var done = function (ok) {
+          if (copyStatus) copyStatus.textContent = ok
+            ? 'Resumen copiado. Pegalo en un email a ' + CONTACT_EMAIL + '.'
+            : 'No pudimos copiarlo automáticamente: seleccioná el resumen y escribinos a ' + CONTACT_EMAIL + '.';
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(lastSummary).then(function () { done(true); }, function () { done(false); });
+        } else {
+          done(false);
+        }
       });
     }
 
