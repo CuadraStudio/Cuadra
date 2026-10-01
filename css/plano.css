@@ -1051,3 +1051,54 @@ html[data-logo-seen] .plano-hero:not(.plano-subhero) .plano-hero__mark path {
     transition: none;
   }
 }
+
+/* ---------- 14. Sitio en construccion: logo animado ---------- */
+.teaser-logo {
+  display: block;
+  width: clamp(190px, 36vw, 340px);
+  height: auto;
+  overflow: visible;
+}
+
+/* Tres figuras en secuencia (escuadra, barra superior, barra inferior);
+   al terminar, el logo se rellena y queda como el logo real. */
+.teaser-logo path {
+  fill: transparent;
+  stroke: var(--color-sage);
+  stroke-width: 0.9;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: plano-draw 1900ms cubic-bezier(0.45, 0, 0.2, 1) forwards,
+             teaser-fill 1000ms ease forwards;
+}
+
+.teaser-logo path:nth-child(1) { animation-delay: 400ms, 6700ms; }
+.teaser-logo path:nth-child(2) { animation-delay: 2500ms, 6700ms; }
+.teaser-logo path:nth-child(3) { animation-delay: 4600ms, 6700ms; }
+
+@keyframes teaser-fill {
+  to {
+    fill: var(--color-white);
+    stroke: var(--color-white);
+  }
+}
+
+html[data-logo-seen] .teaser-logo path {
+  animation: none;
+  stroke-dashoffset: 0;
+  fill: var(--color-white);
+  stroke: var(--color-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .teaser-logo path {
+    animation: none;
+    stroke-dashoffset: 0;
+    fill: var(--color-white);
+    stroke: var(--color-white);
+  }
+}
+
+.plano-teaser .ed-hero__brand {
+  gap: var(--space-4);
+}

@@ -30,7 +30,7 @@
   } catch (e) { /* sin sessionStorage: se anima siempre en la home */ }
 
   function markLogoPlayed() {
-    var mark = document.querySelector('.plano-hero:not(.plano-subhero) .plano-hero__mark');
+    var mark = document.querySelector('.plano-hero:not(.plano-subhero) .plano-hero__mark, .teaser-logo');
     if (!mark) return;
     try { window.sessionStorage.setItem(LOGO_KEY, '1'); } catch (e) { /* ignorar */ }
   }
