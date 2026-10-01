@@ -229,6 +229,23 @@
       '&body=' + encodeURIComponent(lines.join('\r\n'));
   }
 
+  // Copia para el visitante ("correo enviado"): un Worker con Resend le manda lo que
+  // envio. Solo se llama despues de que el aviso a CUADRA salio bien. Es opcional: si
+  // confirmEndpoint esta vacio o falla, el envio principal no se ve afectado.
+  function sendCopyToClient(kind, fields) {
+    var endpoint = (window.CUADRA_SITE && window.CUADRA_SITE.confirmEndpoint) || '';
+    if (!endpoint || typeof fetch !== 'function') return Promise.resolve(false);
+    return fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ kind: kind, fields: fields })
+    }).then(function (res) { return res.ok; }).catch(function () { return false; });
+  }
+
+  function copyNote(email) {
+    return 'También te enviamos una copia a <strong>' + escapeHtml(email) + '</strong>.';
+  }
+
   function failureBox(fields, subject) {
     return '<div class="form-error-box" role="alert">No pudimos enviar el mensaje. Probá de nuevo en un momento o ' +
       '<a href="' + mailtoFallback(fields, subject) + '">enviá estos datos desde tu app de correo</a> ' +
@@ -319,8 +336,12 @@
 
       sendToOwner(fields, subject).then(function () {
         formStatus.innerHTML = '<div class="form-success" role="status">¡Listo! Recibimos tu mensaje y te respondemos a <strong>' +
-          escapeHtml(fields['Email']) + '</strong>.</div>';
+          escapeHtml(fields['Email']) + '</strong>. <span data-copy-note></span></div>';
         form.reset();
+        sendCopyToClient('contact', fields).then(function (sent) {
+          var note = formStatus.querySelector('[data-copy-note]');
+          if (sent && note) note.innerHTML = copyNote(fields['Email']);
+        });
       }).catch(function () {
         formStatus.innerHTML = failureBox(fields, subject);
       }).then(function () {
@@ -655,17 +676,23 @@
         var subject = 'Plan CUADRA: ' + LINE_NAMES[state.line] + (business ? ' — ' + business : '');
         var submitBtn = planForm.querySelector('[type="submit"]');
 
-        function showSuccess() {
+        function showSuccess(isBot) {
           planForm.hidden = true;
           if (planFormStatus) {
             planFormStatus.innerHTML = '<div class="form-success" role="status"><strong>¡Recibimos tu plan!</strong> ' +
               'Te respondemos a <strong>' + escapeHtml(fields['Email'] || '') + '</strong> para confirmar contenido, alcance y precio final. ' +
+              '<span data-copy-note></span> ' +
               '<button type="button" class="btn btn--secondary" data-restart>Armar otro plan</button></div>';
+            if (isBot === true) return;
+            sendCopyToClient('plan', fields).then(function (sent) {
+              var note = planFormStatus.querySelector('[data-copy-note]');
+              if (sent && note) note.innerHTML = copyNote(fields['Email'] || '');
+            });
           }
         }
 
         if (honeypot && honeypot.value) {
-          showSuccess();
+          showSuccess(true);
           return;
         }
 
@@ -673,7 +700,7 @@
         submitBtn.disabled = true;
         submitBtn.textContent = 'Enviando…';
 
-        sendToOwner(fields, subject).then(showSuccess).catch(function () {
+        sendToOwner(fields, subject).then(function () { showSuccess(false); }).catch(function () {
           if (planFormStatus) planFormStatus.innerHTML = failureBox(fields, subject);
         }).then(function () {
           submitBtn.disabled = false;

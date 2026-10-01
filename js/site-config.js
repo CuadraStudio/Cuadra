@@ -10,7 +10,12 @@
    ============================================ */
 (function () {
   var SITE = {
-    formEndpoint: 'https://formsubmit.co/ajax/cuadrastudio.uy@gmail.com'
+    formEndpoint: 'https://formsubmit.co/ajax/cuadrastudio.uy@gmail.com',
+
+    // Worker que manda al visitante una copia de lo que envio ("correo enviado")
+    // usando Resend. Ver workers/confirm-email/README.md. Mientras este vacio no se
+    // envia ninguna copia y la web funciona igual.
+    confirmEndpoint: ''
   };
   window.CUADRA_SITE = SITE;
 
