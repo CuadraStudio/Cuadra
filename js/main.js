@@ -188,6 +188,53 @@
     });
   }
 
+  // ---- Envio de formularios al correo del sitio ----
+  // La web es estatica: el envio lo hace un servicio de formularios (formEndpoint en
+  // js/site-config.js) que reenvia el mensaje por email a CONTACT_EMAIL. Si falla,
+  // se ofrece abrir el correo con los datos como respaldo.
+  var CONTACT_EMAIL = 'cuadrastudio.uy@gmail.com';
+
+  function escapeHtml(text) {
+    return String(text).replace(/[&<>"']/g, function (ch) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+    });
+  }
+
+  function sendToOwner(fields, subject) {
+    var endpoint = (window.CUADRA_SITE && window.CUADRA_SITE.formEndpoint) || '';
+    if (!endpoint || typeof fetch !== 'function') {
+      return Promise.reject(new Error('sin-endpoint'));
+    }
+    var payload = {};
+    Object.keys(fields).forEach(function (key) { payload[key] = fields[key]; });
+    payload._subject = subject;
+    payload._template = 'table';
+    payload._captcha = 'false';
+    return fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (data) {
+        var ok = res.ok && data.success !== false && data.success !== 'false';
+        if (!ok) throw new Error('envio-fallido');
+        return data;
+      });
+    });
+  }
+
+  function mailtoFallback(fields, subject) {
+    var lines = Object.keys(fields).map(function (key) { return key + ': ' + fields[key]; });
+    return 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(lines.join('\r\n'));
+  }
+
+  function failureBox(fields, subject) {
+    return '<div class="form-error-box" role="alert">No pudimos enviar el mensaje. Probá de nuevo en un momento o ' +
+      '<a href="' + mailtoFallback(fields, subject) + '">enviá estos datos desde tu app de correo</a> ' +
+      '(también podés escribir a <strong>' + CONTACT_EMAIL + '</strong>).</div>';
+  }
+
   // ---- Form handling ----
   function initForm() {
     var form = document.getElementById('contact-form');
@@ -251,24 +298,35 @@
 
       if (!validate()) return;
 
-      // Build email message
-      var nombre = nombreInput.value.trim();
-      var email = emailInput.value.trim();
-      var mensaje = mensajeInput.value.trim();
+      var honeypot = form.querySelector('[name="_honey"]');
+      var fields = {
+        'Nombre': nombreInput.value.trim(),
+        'Email': emailInput.value.trim(),
+        'Mensaje': mensajeInput.value.trim()
+      };
+      var subject = 'Consulta desde la web: ' + fields['Nombre'];
 
-      var body = 'Hola! Quiero un sitio web.\n\n'
-        + 'Nombre: ' + nombre + '\n'
-        + 'Email: ' + email + '\n'
-        + 'Mensaje: ' + mensaje;
+      // Campo trampa para bots: si esta completo, se simula el exito sin enviar nada.
+      if (honeypot && honeypot.value) {
+        formStatus.innerHTML = '<div class="form-success" role="status">¡Listo! Recibimos tu mensaje.</div>';
+        form.reset();
+        return;
+      }
 
-      var url = 'mailto:cuadrastudio.uy@gmail.com?subject=' + encodeURIComponent('Consulta desde la web: ' + nombre)
-        + '&body=' + encodeURIComponent(body.replace(/\n/g, '\r\n'));
-      window.location.href = url;
+      var originalLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando…';
 
-      // Show success
-      submitBtn.disabled = false;
-      formStatus.innerHTML = '<div class="form-success">Abriendo tu app de correo… Si no se abre, escribinos a <strong>cuadrastudio.uy@gmail.com</strong> o <a href="' + url + '">hacé clic acá</a>.</div>';
-      form.reset();
+      sendToOwner(fields, subject).then(function () {
+        formStatus.innerHTML = '<div class="form-success" role="status">¡Listo! Recibimos tu mensaje y te respondemos a <strong>' +
+          escapeHtml(fields['Email']) + '</strong>.</div>';
+        form.reset();
+      }).catch(function () {
+        formStatus.innerHTML = failureBox(fields, subject);
+      }).then(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      });
     });
 
     // Clear error on input
@@ -316,13 +374,50 @@
     });
   }
 
+  // ---- Dialogo de contacto (sitio en construccion) ----
+  function initContactDialog() {
+    var dialog = document.getElementById('contact-dialog');
+    if (!dialog) return;
+    var openers = document.querySelectorAll('[data-open-contact]');
+
+    function open() {
+      if (typeof dialog.showModal === 'function') {
+        dialog.showModal();
+      } else {
+        dialog.setAttribute('open', '');
+      }
+      var first = dialog.querySelector('input:not([type="hidden"]):not(.hp)');
+      if (first) first.focus();
+    }
+
+    function close() {
+      if (typeof dialog.close === 'function') {
+        dialog.close();
+      } else {
+        dialog.removeAttribute('open');
+      }
+    }
+
+    openers.forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        open();
+      });
+    });
+    dialog.querySelectorAll('[data-close-contact]').forEach(function (btn) {
+      btn.addEventListener('click', close);
+    });
+    dialog.addEventListener('click', function (e) {
+      if (e.target === dialog) close();
+    });
+  }
+
   // ---- Configurador de planes: a la carte (linea -> plan y extras con precio propio -> resumen por email) ----
   function initPlanConfigurator() {
     var root = document.querySelector('[data-configurator]');
     if (!root) return;
 
     var LINE_NAMES = { landing: 'CUADRA Landing', institucional: 'CUADRA Institucional', agenda: 'CUADRA Agenda', tienda: 'CUADRA Tienda', resto: 'CUADRA Restó', consulta: 'CUADRA Consulta' };
-    var CONTACT_EMAIL = 'cuadrastudio.uy@gmail.com';
 
     var panels = root.querySelectorAll('.configurator__panel');
     var stepIndicators = root.querySelectorAll('[data-step-indicator]');
@@ -341,10 +436,11 @@
     var resultExtras = root.querySelector('[data-result-extras]');
     var resultImpl = root.querySelector('[data-result-impl]');
     var resultMensual = root.querySelector('[data-result-mensual]');
-    var emailResultLink = root.querySelector('[data-email-result]');
-    var copyResultBtn = root.querySelector('[data-copy-result]');
-    var copyStatus = root.querySelector('[data-copy-status]');
-    var lastSummary = '';
+    var planForm = root.querySelector('[data-plan-form]');
+    var openPlanFormBtn = root.querySelector('[data-open-plan-form]');
+    var resultActions = root.querySelector('[data-result-actions]');
+    var planFormStatus = root.querySelector('[data-plan-form-status]');
+    var lastTotals = null;
 
     var state = { line: null };
 
@@ -445,31 +541,8 @@
         resultExtras.appendChild(li);
       });
 
-      var lines = [
-        'Hola CUADRA! Armé mi plan en la web:',
-        '',
-        'Línea: ' + LINE_NAMES[state.line]
-      ];
-      if (totals.extras.length) {
-        lines.push('Extras:');
-        totals.extras.forEach(function (extra) {
-          lines.push('- ' + extra.name + ' (+USD ' + fmt(extra.price) + (extra.type === 'mensual' ? '/mes' : ' único') + ')');
-        });
-      }
-      lines.push('');
-      lines.push('Implementación: USD ' + fmt(totals.impl) + ' único');
-      lines.push('Mensualidad: USD ' + fmt(totals.mensual) + '/mes');
-      lines.push('');
-      lines.push('Mis datos:');
-      lines.push('Nombre:');
-      lines.push('Negocio:');
-      lines.push('Teléfono (opcional):');
-      lastSummary = lines.join('\n');
-      if (emailResultLink) {
-        emailResultLink.href = 'mailto:' + CONTACT_EMAIL +
-          '?subject=' + encodeURIComponent('Plan armado: ' + LINE_NAMES[state.line]) +
-          '&body=' + encodeURIComponent(lastSummary.replace(/\n/g, '\r\n'));
-      }
+      lastTotals = totals;
+      resetPlanForm();
     }
 
     function resetAll(skipScroll) {
@@ -481,6 +554,7 @@
       });
       summaryEmpty.hidden = false;
       summaryContent.hidden = true;
+      resetPlanForm();
       var step1Next = root.querySelector('[data-step="1"] [data-next]');
       if (step1Next) step1Next.disabled = true;
       goToStep(1, skipScroll);
@@ -489,7 +563,8 @@
     // ---- Eventos ----
     lineChoices.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        selectLine(btn.getAttribute('data-choose-line'), false);
+        // Al elegir una linea se avanza solo al paso 2 (sin boton "Continuar").
+        selectLine(btn.getAttribute('data-choose-line'), true);
       });
     });
 
@@ -499,10 +574,6 @@
       }
     });
 
-
-    root.querySelector('[data-step="1"] [data-next]').addEventListener('click', function () {
-      if (state.line) goToStep(2);
-    });
 
     root.querySelectorAll('[data-back]').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -518,23 +589,103 @@
       });
     }
 
-    if (copyResultBtn) {
-      copyResultBtn.addEventListener('click', function () {
-        var done = function (ok) {
-          if (copyStatus) copyStatus.textContent = ok
-            ? 'Resumen copiado. Pegalo en un email a ' + CONTACT_EMAIL + '.'
-            : 'No pudimos copiarlo automáticamente: seleccioná el resumen y escribinos a ' + CONTACT_EMAIL + '.';
-        };
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(lastSummary).then(function () { done(true); }, function () { done(false); });
-        } else {
-          done(false);
-        }
+    // ---- Formulario de datos del plan (paso 3): campos segun la linea elegida ----
+    function syncPlanForm() {
+      if (!planForm) return;
+      planForm.querySelectorAll('[data-lines]').forEach(function (group) {
+        var on = group.getAttribute('data-lines').split(' ').indexOf(state.line) !== -1;
+        group.hidden = !on;
+        group.querySelectorAll('input, select, textarea').forEach(function (field) {
+          field.disabled = !on;
+        });
       });
     }
 
-    var restartBtn = root.querySelector('[data-restart]');
-    if (restartBtn) restartBtn.addEventListener('click', function () { resetAll(); });
+    function resetPlanForm() {
+      if (!planForm) return;
+      planForm.hidden = true;
+      if (resultActions) resultActions.hidden = false;
+      if (planFormStatus) planFormStatus.innerHTML = '';
+    }
+
+    function collectPlanFields() {
+      var fields = { 'Plan': LINE_NAMES[state.line] };
+      if (lastTotals) {
+        fields['Extras elegidos'] = lastTotals.extras.length
+          ? lastTotals.extras.map(function (x) {
+              return x.name + ' (+USD ' + fmt(x.price) + (x.type === 'mensual' ? '/mes' : ' único') + ')';
+            }).join('; ')
+          : 'Solo la base';
+        fields['Implementación (pago único)'] = 'USD ' + fmt(lastTotals.impl);
+        fields['Mensualidad'] = 'USD ' + fmt(lastTotals.mensual) + '/mes';
+      }
+      planForm.querySelectorAll('input, select, textarea').forEach(function (field) {
+        if (field.disabled || field.name === '_honey') return;
+        var value = field.value.trim();
+        if (!value) return;
+        fields[field.getAttribute('data-label') || field.name] = value;
+      });
+      return fields;
+    }
+
+    if (openPlanFormBtn && planForm) {
+      openPlanFormBtn.addEventListener('click', function () {
+        syncPlanForm();
+        planForm.hidden = false;
+        if (resultActions) resultActions.hidden = true;
+        var first = planForm.querySelector('input:not([disabled]), select:not([disabled])');
+        planForm.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+        if (first) first.focus({ preventScroll: true });
+      });
+
+      planForm.querySelectorAll('[data-plan-form-back]').forEach(function (btn) {
+        btn.addEventListener('click', resetPlanForm);
+      });
+
+      planForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (planFormStatus) planFormStatus.innerHTML = '';
+        if (!planForm.checkValidity()) {
+          planForm.reportValidity();
+          return;
+        }
+        var honeypot = planForm.querySelector('[name="_honey"]');
+        var fields = collectPlanFields();
+        var business = fields['Nombre del negocio'] || fields['Nombre y apellido'] || '';
+        var subject = 'Plan CUADRA: ' + LINE_NAMES[state.line] + (business ? ' — ' + business : '');
+        var submitBtn = planForm.querySelector('[type="submit"]');
+
+        function showSuccess() {
+          planForm.hidden = true;
+          if (planFormStatus) {
+            planFormStatus.innerHTML = '<div class="form-success" role="status"><strong>¡Recibimos tu plan!</strong> ' +
+              'Te respondemos a <strong>' + escapeHtml(fields['Email'] || '') + '</strong> para confirmar contenido, alcance y precio final. ' +
+              '<button type="button" class="btn btn--secondary" data-restart>Armar otro plan</button></div>';
+          }
+        }
+
+        if (honeypot && honeypot.value) {
+          showSuccess();
+          return;
+        }
+
+        var originalLabel = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Enviando…';
+
+        sendToOwner(fields, subject).then(showSuccess).catch(function () {
+          if (planFormStatus) planFormStatus.innerHTML = failureBox(fields, subject);
+        }).then(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        });
+      });
+    }
+
+    // "Armar otro plan" aparece dinamicamente: se usa delegacion de eventos.
+    root.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('[data-restart]')) resetAll();
+    });
 
     // Links dentro de la misma pagina (ej. las tarjetas de "Soluciones") a #planes-tienda, etc.
     // Un <a href="#planes-tienda"> normal solo mueve el hash: no dispara el deep-link de abajo
@@ -610,6 +761,7 @@
     initActiveNav();
     initScrollReveal();
     initForm();
+    initContactDialog();
     initPlanConfigurator();
     initSmoothScroll();
   }

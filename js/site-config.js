@@ -10,14 +10,21 @@
      - la pagina proyectos.html (redirige al inicio + noindex)
    Para volver a mostrarlas: cambiar a  showDemos: true  (un solo cambio).
 
+   formEndpoint: servicio que envia por email lo que completan en los formularios.
+
    Nota: las carpetas /demos/* siguen existiendo en el repo; este
    interruptor las deja sin enlaces, pero quien conozca la URL directa
    puede abrirlas. Para quitarlas del todo, excluir /demos del deploy.
    ============================================ */
 (function () {
   var SITE = {
-    showDemos: false
+    showDemos: false,
+    // Servicio que recibe los formularios y los reenvia por email a cuadrastudio.uy@gmail.com.
+    // FormSubmit: la primera vez que llegue un mensaje, envia un correo de activacion a esa
+    // direccion; hay que confirmarlo una vez. Para cambiar de proveedor, cambiar solo esta URL.
+    formEndpoint: 'https://formsubmit.co/ajax/cuadrastudio.uy@gmail.com'
   };
+  window.CUADRA_SITE = SITE;
 
   var root = document.documentElement;
   root.setAttribute('data-demos', SITE.showDemos ? 'on' : 'off');

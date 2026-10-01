@@ -116,8 +116,10 @@
               <textarea id="mensaje" name="mensaje" class="form-textarea" placeholder="Contanos sobre tu negocio y tu proyecto..." required aria-describedby="mensaje-error" aria-required="true"></textarea>
               <span class="form-error" id="mensaje-error" aria-live="polite"></span>
             </div>
+            <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="contact-form__status" id="form-status"></div>
-            <button type="submit" class="btn btn--primary btn--full" id="submit-btn">Enviar mensaje por email</button>
+            <button type="submit" class="btn btn--primary btn--full" id="submit-btn">Enviar mensaje</button>
+            <p class="plan-form__legal">Al enviar aceptás nuestra <a href="/privacidad.html">política de privacidad</a>: usamos tus datos solo para responderte.</p>
           </form>
         </div>
 
@@ -133,10 +135,10 @@
 
           <div class="ed-contact-side__quick">
             <p class="ed-contact-side__label">¿Preferís ir directo? Elegí tu línea</p>
-            <a href="mailto:cuadrastudio.uy@gmail.com?subject=Consulta%20CUADRA&amp;body=Hola%20CUADRA!%20Tengo%20un%20negocio%20de%20turnos%20(barber%C3%ADa%2C%20peluquer%C3%ADa%2C%20est%C3%A9tica...)%20y%20quiero%20informaci%C3%B3n%20sobre%20CUADRA%20Agenda." class="ed-contact-quick-link">CUADRA Agenda ↗</a>
-            <a href="mailto:cuadrastudio.uy@gmail.com?subject=Consulta%20CUADRA&amp;body=Hola%20CUADRA!%20Tengo%20un%20comercio%20con%20cat%C3%A1logo%20y%20quiero%20informaci%C3%B3n%20sobre%20CUADRA%20Tienda." class="ed-contact-quick-link">CUADRA Tienda ↗</a>
-            <a href="mailto:cuadrastudio.uy@gmail.com?subject=Consulta%20CUADRA&amp;body=Hola%20CUADRA!%20Tengo%20un%20restaurante%2Fparrilla%20y%20quiero%20informaci%C3%B3n%20sobre%20CUADRA%20Rest%C3%B3." class="ed-contact-quick-link">CUADRA Restó ↗</a>
-            <a href="mailto:cuadrastudio.uy@gmail.com?subject=Consulta%20CUADRA&amp;body=Hola%20CUADRA!%20Soy%20profesional%20y%20quiero%20informaci%C3%B3n%20sobre%20CUADRA%20Consulta." class="ed-contact-quick-link">CUADRA Consulta ↗</a>
+            <a href="/armar-plan.html?linea=agenda" class="ed-contact-quick-link">CUADRA Agenda ↗</a>
+            <a href="/armar-plan.html?linea=tienda" class="ed-contact-quick-link">CUADRA Tienda ↗</a>
+            <a href="/armar-plan.html?linea=resto" class="ed-contact-quick-link">CUADRA Restó ↗</a>
+            <a href="/armar-plan.html?linea=consulta" class="ed-contact-quick-link">CUADRA Consulta ↗</a>
           </div>
         </aside>
       </div>
@@ -181,7 +183,7 @@
   </div>
 
   <!-- WhatsApp floating button -->
-  <a href="mailto:cuadrastudio.uy@gmail.com" class="contact-fab" aria-label="Escribirnos por email"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg></a>
+  <a href="/contacto.html" class="contact-fab" aria-label="Escribirnos por email"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg></a>
 
   <script src="js/main.js?v=20260920d" defer></script>
 </body>

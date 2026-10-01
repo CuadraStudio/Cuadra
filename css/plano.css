@@ -1102,3 +1102,191 @@ html[data-logo-seen] .teaser-logo path {
 .plano-teaser .ed-hero__brand {
   gap: var(--space-4);
 }
+
+/* ---------- 15. Formularios (contacto, plan, dialogo) ---------- */
+.hp {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.form-select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 14px) 55%, calc(100% - 9px) 55%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 32px;
+}
+
+.form-select option {
+  color: #0F1111;
+  background: #F2F1ED;
+}
+
+.form-hint {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: 0.8125rem;
+  color: var(--ed-ink-soft);
+}
+
+.form-error-box {
+  padding: var(--space-4);
+  border: 1px solid var(--color-error);
+  color: var(--color-text);
+  background: rgba(229, 142, 126, 0.08);
+  line-height: 1.5;
+}
+
+.form-error-box a {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+.form-success .btn {
+  margin-top: var(--space-3);
+}
+
+.plan-form {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--ed-border-strong);
+}
+
+.plan-form[hidden] {
+  display: none;
+}
+
+.plan-form__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.plan-form__lede,
+.plan-form__legal {
+  margin: 0;
+  color: var(--ed-ink-soft);
+  font-size: 0.9375rem;
+  max-width: 62ch;
+}
+
+.plan-form__legal {
+  font-size: 0.8125rem;
+}
+
+.plan-form__legal a {
+  color: var(--ed-ink);
+  text-decoration: underline;
+}
+
+.plan-form__group {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.plan-form__group[hidden] {
+  display: none;
+}
+
+.plan-form__legend {
+  padding: 0;
+  margin-bottom: var(--space-3);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ed-accent);
+}
+
+.plan-form__grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .plan-form__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .plan-form__grid > .form-group:not(.plan-form__half) {
+    grid-column: 1 / -1;
+  }
+}
+
+.plan-form .form-group {
+  margin: 0;
+  min-width: 0;
+}
+
+.plan-form input:user-invalid,
+.plan-form select:user-invalid,
+.plan-form textarea:user-invalid {
+  border-bottom-color: var(--color-error);
+}
+
+/* Dialogo de contacto del sitio en construccion */
+.contact-dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  padding: var(--space-6);
+  color: var(--color-white);
+  background: #171A1A;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  overflow: auto;
+  --ed-ink: var(--color-white);
+  --ed-ink-soft: #C9CCCE;
+  --ed-accent: var(--color-sage);
+  --ed-border-strong: rgba(242, 241, 237, 0.28);
+}
+
+.contact-dialog::backdrop {
+  background: rgba(15, 17, 17, 0.8);
+}
+
+.contact-dialog__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.contact-dialog__title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.contact-dialog__close {
+  width: 44px;
+  height: 44px;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--color-white);
+  background: transparent;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.contact-dialog__lede {
+  margin: var(--space-3) 0 var(--space-5);
+  color: var(--ed-ink-soft);
+}
+
+.contact-dialog .plan-form__legal {
+  margin-top: var(--space-3);
+}
