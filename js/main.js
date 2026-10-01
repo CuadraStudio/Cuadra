@@ -320,7 +320,7 @@
     var root = document.querySelector('[data-configurator]');
     if (!root) return;
 
-    var LINE_NAMES = { agenda: 'CUADRA Agenda', tienda: 'CUADRA Tienda', resto: 'CUADRA Restó', consulta: 'CUADRA Consulta' };
+    var LINE_NAMES = { landing: 'CUADRA Landing', institucional: 'CUADRA Institucional', agenda: 'CUADRA Agenda', tienda: 'CUADRA Tienda', resto: 'CUADRA Restó', consulta: 'CUADRA Consulta' };
     var WA_NUMBER = '59899331909';
 
     var panels = root.querySelectorAll('.configurator__panel');
@@ -468,7 +468,7 @@
 
       var waLines = [
         'Hola CUADRA! Armé mi plan en la web:',
-        LINE_NAMES[state.line] + ' (base + ' + totals.extras.length + ' extra' + (totals.extras.length === 1 ? '' : 's') + ')'
+        isWebOnly() ? LINE_NAMES[state.line] : LINE_NAMES[state.line] + ' (base + ' + totals.extras.length + ' extra' + (totals.extras.length === 1 ? '' : 's') + ')'
       ];
       totals.extras.forEach(function (extra) {
         waLines.push('- ' + extra.name);
@@ -541,16 +541,28 @@
       if (state.line) goToStep(2);
     });
 
+    // Landing e Institucional no tienen extras ni combo: del plan van directo al resumen.
+    function isWebOnly() {
+      return state.line === 'landing' || state.line === 'institucional';
+    }
+
     var nextToExtras = root.querySelector('[data-next-to-extras]');
     if (nextToExtras) {
       nextToExtras.addEventListener('click', function () {
-        goToStep(3);
+        if (isWebOnly()) {
+          renderResult();
+          goToStep(4);
+        } else {
+          goToStep(3);
+        }
       });
     }
 
     root.querySelectorAll('[data-back]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        goToStep(Number(btn.getAttribute('data-back')));
+        var target = Number(btn.getAttribute('data-back'));
+        if (target === 3 && isWebOnly()) target = 2;
+        goToStep(target);
       });
     });
 
@@ -569,7 +581,7 @@
     // Un <a href="#planes-tienda"> normal solo mueve el hash: no dispara el deep-link de abajo
     // (eso corre una sola vez al cargar la pagina), asi que preseleccionamos la linea a mano.
     document.querySelectorAll('a[href^="#planes-"]').forEach(function (link) {
-      var m = link.getAttribute('href').match(/^#planes-(agenda|tienda|resto|consulta)$/);
+      var m = link.getAttribute('href').match(/^#planes-(agenda|tienda|resto|consulta|landing|institucional)$/);
       if (!m) return;
       link.addEventListener('click', function (e) {
         e.preventDefault();
@@ -585,8 +597,26 @@
     // cargaba, ya que ahora el configurador esta mas abajo en la pagina). Si hay hash, selectLine()
     // de abajo si hace scroll a proposito, porque ese es un deep-link real.
     resetAll(true);
+    // Preseleccion desde otras paginas: ?linea=agenda o enlaces con data-preselect-line.
+    function preselect(line) {
+      if (!LINE_NAMES[line]) return;
+      selectLine(line, true);
+    }
+
+    document.querySelectorAll('[data-preselect-line]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        preselect(a.getAttribute('data-preselect-line'));
+      });
+    });
+
+    try {
+      var qLine = new URLSearchParams(window.location.search).get('linea');
+      if (qLine) preselect(qLine);
+    } catch (err) { /* sin URLSearchParams: se ignora */ }
+
     var hashId = window.location.hash.replace('#', '');
-    var hashMatch = hashId.match(/^planes-(agenda|tienda|resto|consulta)$/);
+    var hashMatch = hashId.match(/^planes-(agenda|tienda|resto|consulta|landing|institucional)$/);
     if (hashMatch) {
       selectLine(hashMatch[1], true);
       history.replaceState(null, '', '#' + hashId);

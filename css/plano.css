@@ -645,3 +645,73 @@ a.ed-lettered__item:hover::before {
   letter-spacing: -0.01em;
   line-height: 1.2;
 }
+
+/* ---------- 6. Flujo de compra / navegacion ---------- */
+.ed-nav .nav__cta {
+  display: inline-flex;
+  align-items: center;
+  margin-left: var(--space-3);
+  padding: 9px 16px;
+  background: var(--color-sage);
+  color: var(--color-black);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background var(--transition-fast);
+}
+
+.ed-nav .nav__cta:hover {
+  background: var(--color-mist);
+  color: var(--color-black);
+}
+
+.nav__mobile-link--cta {
+  color: var(--color-sage);
+}
+
+.plano-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.plano-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.plano-cta-band .ed-cta__btn--ghost {
+  background: transparent;
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
+}
+
+.plano-cta-band .ed-cta__btn--ghost:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.plano-lines-note {
+  margin-top: var(--space-6);
+  color: var(--ed-ink-soft);
+}
+
+.plano-lines-note a {
+  color: var(--ed-ink);
+  border-bottom: 1px solid var(--ed-accent);
+}
+
+/* Configurador: 6 opciones en 2 columnas, web simple primero */
+.line-choice-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .line-choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
