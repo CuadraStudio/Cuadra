@@ -352,7 +352,10 @@
       return Number(n).toLocaleString('es-UY');
     }
 
+    var progressLogo = root.querySelector('[data-progress-logo]');
+
     function goToStep(n, skipScroll) {
+      if (progressLogo) progressLogo.setAttribute('data-progress', String(n));
       panels.forEach(function (p) {
         p.hidden = Number(p.getAttribute('data-step')) !== n;
       });

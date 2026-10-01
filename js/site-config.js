@@ -21,6 +21,26 @@
 
   var root = document.documentElement;
   root.setAttribute('data-demos', SITE.showDemos ? 'on' : 'off');
+
+  // Logo del hero: la secuencia completa se ve una vez por sesion (en la home);
+  // despues queda dibujado. Las paginas interiores siempre lo muestran estatico (CSS).
+  var LOGO_KEY = 'cuadra-logo-played';
+  try {
+    if (window.sessionStorage.getItem(LOGO_KEY)) root.setAttribute('data-logo-seen', '');
+  } catch (e) { /* sin sessionStorage: se anima siempre en la home */ }
+
+  function markLogoPlayed() {
+    var mark = document.querySelector('.plano-hero:not(.plano-subhero) .plano-hero__mark');
+    if (!mark) return;
+    try { window.sessionStorage.setItem(LOGO_KEY, '1'); } catch (e) { /* ignorar */ }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', markLogoPlayed);
+  } else {
+    markLogoPlayed();
+  }
+
   if (SITE.showDemos) return;
 
   // Pagina de demos: no indexar y volver al inicio.

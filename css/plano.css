@@ -997,3 +997,57 @@ html:not([data-demos="on"]) [data-demos-only] {
 html[data-demos="on"] [data-demos-off] {
   display: none !important;
 }
+
+/* ---------- 12. Logo: home animado (1 vez por sesion), interiores estatico ---------- */
+.plano-subhero .plano-hero__mark path,
+html[data-logo-seen] .plano-hero:not(.plano-subhero) .plano-hero__mark path {
+  animation: none;
+  stroke-dashoffset: 0;
+}
+
+/* ---------- 13. Logo como progreso del configurador (3 figuras = 3 pasos) ---------- */
+.plano-progress-logo {
+  display: block;
+  width: min(220px, 56vw);
+  height: auto;
+  margin: 0 auto var(--space-5);
+  overflow: visible;
+}
+
+.plano-progress-logo g {
+  fill: none;
+  stroke-width: 1.1;
+}
+
+.plano-progress-logo .ghost {
+  stroke: var(--ed-border-strong);
+}
+
+.plano-progress-logo .live {
+  stroke: var(--ed-accent);
+}
+
+.plano-progress-logo .live path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  fill: transparent;
+  transition: stroke-dashoffset 1100ms cubic-bezier(0.45, 0, 0.2, 1),
+              fill 600ms ease 700ms;
+}
+
+.plano-progress-logo[data-progress="1"] .live path:nth-child(-n+1),
+.plano-progress-logo[data-progress="2"] .live path:nth-child(-n+2),
+.plano-progress-logo[data-progress="3"] .live path {
+  stroke-dashoffset: 0;
+}
+
+/* Al llegar al resumen el logo queda completo y relleno */
+.plano-progress-logo[data-progress="3"] .live path {
+  fill: var(--ed-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plano-progress-logo .live path {
+    transition: none;
+  }
+}
