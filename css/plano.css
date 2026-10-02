@@ -1161,3 +1161,10 @@ html[data-logo-seen] .teaser-logo path {
   letter-spacing: -0.01em;
   color: var(--color-sage);
 }
+
+/* 18) Demos: enlace "Ver demo" al pie de cada tarjeta */
+#demos .ed-lettered__text + .ed-lettered__text {
+  margin-top: var(--space-3);
+  color: var(--ed-accent);
+  font-weight: 600;
+}
