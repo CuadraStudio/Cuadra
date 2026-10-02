@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reservar turno | Barbería Hierro</title>
+  <meta name="description" content="Reservá tu turno en Barbería Hierro: elegí servicio, barbero, día y hora.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#15171A">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preload" href="../fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="poste" aria-hidden="true"></div>
+<header class="cab">
+  <div class="wrap cab__in">
+    <a class="marca" href="../">Hierro<small>BARBERÍA</small></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="../#servicios">Servicios</a>
+      <a class="btn" href="../turno/" aria-current="page">Reservar turno</a>
+    </nav>
+  </div>
+</header>
+<main id="contenido">
+  <div class="wrap">
+    <header class="cab-pag">
+      <h1>Reservar turno</h1>
+      <p>Elegí el servicio, con quién y un horario. Los horarios tachados ya están ocupados.</p>
+    </header>
+
+    <div>
+    <form id="turno" class="agenda" novalidate data-agenda>
+      <div>
+        <fieldset class="bloque"><legend><span class="num">1</span>Servicio</legend><div class="opciones" data-servicios></div></fieldset>
+        <fieldset class="bloque"><legend><span class="num">2</span>Barbero</legend><div class="opciones" data-barberos></div></fieldset>
+        <fieldset class="bloque"><legend><span class="num">3</span>Día</legend><div class="dias" data-dias></div></fieldset>
+        <fieldset class="bloque"><legend><span class="num">4</span>Hora</legend><div data-horas></div></fieldset>
+        <section class="bloque" aria-labelledby="datos-t">
+          <h2 id="datos-t"><span class="num">5</span>Tus datos</h2>
+          <div class="formu">
+            <div class="campo"><label for="nombre">Nombre</label><input id="nombre" autocomplete="name" required><span class="error" data-error="nombre" role="alert"></span></div>
+            <div class="campo"><label for="email">Email</label><input id="email" type="email" autocomplete="email" required><span class="error" data-error="email" role="alert"></span></div>
+            <div class="campo"><label for="nota">Algo que quieras contarnos <small>(opcional)</small></label><textarea id="nota" placeholder="Por ejemplo: degradado bajo, o vengo con mi hijo."></textarea></div>
+          </div>
+        </section>
+      </div>
+      <aside class="ficha" aria-labelledby="ficha-t" aria-live="polite">
+        <h2 id="ficha-t">Tu turno</h2>
+        <dl>
+          <div><dt>Servicio</dt><dd data-f-servicio>Corte clásico · 30 min</dd></div>
+          <div><dt>Barbero</dt><dd data-f-barbero>El primero libre</dd></div>
+          <div><dt>Cuándo</dt><dd data-f-cuando data-vacio="true">Elegí día y hora</dd></div>
+          <div><dt>Precio</dt><dd data-f-precio>$U 450 · se paga en el local</dd></div>
+        </dl>
+        <button class="btn btn--full" type="submit" data-confirmar disabled>Confirmar turno</button>
+        <p class="ficha__nota">Podés cancelar hasta 12 horas antes. Esta es una demo: no se envía ni se guarda nada.</p>
+      </aside>
+    </form>
+    </div>
+    <div class="ticket-zona" data-ticket hidden></div>
+  </div>
+</main>
+<footer class="pie">
+  <div class="wrap pie__in">
+    <p>Barbería Hierro es un negocio ficticio. Demo de CUADRA Agenda, diseñada a medida.</p>
+    <p><a href="https://cuadrastudio.uy">cuadrastudio.uy</a></p>
+  </div>
+</footer>
+<script src="../js/site.js" defer></script>
+<script src="../js/turno.js" defer></script>
+</body>
+</html>
