@@ -3,6 +3,7 @@
 
   python3 scripts/site-mode.py hidden   # en la raiz "/" se ve solo el sitio en construccion
   python3 scripts/site-mode.py live     # en la raiz "/" se ve la web completa
+  python3 scripts/site-mode.py preview  # web completa accesible, noindex y con aviso "en construccion"
   python3 scripts/site-mode.py status   # muestra el modo actual
 
 hidden:
@@ -69,11 +70,22 @@ def sitemap(paths):
     write('sitemap.xml', '\n'.join(out) + '\n')
 
 
+CFG = 'js/site-config.js'
+FLAG = re.compile(r'(construction: )(true|false)')
+
+
+def set_construction(on):
+    write(CFG, FLAG.sub(lambda m: m.group(1) + ('true' if on else 'false'), read(CFG), count=1))
+
+
 def mode():
-    return 'hidden' if os.path.exists(p('index-web.html')) else 'live'
+    if os.path.exists(p('index-web.html')):
+        return 'hidden'
+    return 'preview' if FLAG.search(read(CFG)).group(2) == 'true' else 'live'
 
 
 def to_hidden():
+    set_construction(False)
     if mode() == 'hidden':
         return
     os.rename(p('index.html'), p('index-web.html'))
@@ -88,17 +100,30 @@ def to_hidden():
 
 
 def to_live():
-    if mode() == 'live':
-        return
+    set_construction(False)
+    if os.path.exists(p('index-web.html')):
+        _swap_to_live()
+    for n in ['index'] + PUBLIC:
+        set_noindex(n + '.html', False)
+    sitemap(['/'] + ['/' + n + '.html' for n in PUBLIC])
+
+
+def to_preview():
+    if os.path.exists(p('index-web.html')):
+        _swap_to_live()
+    set_construction(True)
+    for n in ['index'] + PUBLIC:
+        set_noindex(n + '.html', True)
+    sitemap(['/'])
+
+
+def _swap_to_live():
     os.rename(p('index.html'), p('proximamente.html'))
     os.rename(p('index-web.html'), p('index.html'))
     set_canonical('proximamente.html', '/proximamente.html')
     set_noindex('proximamente.html', True)
     set_canonical('index.html', '/')
     set_noindex('index.html', False)
-    for n in PUBLIC:
-        set_noindex(n + '.html', False)
-    sitemap(['/'] + ['/' + n + '.html' for n in PUBLIC])
 
 
 if __name__ == '__main__':
@@ -107,6 +132,8 @@ if __name__ == '__main__':
         to_hidden()
     elif cmd == 'live':
         to_live()
+    elif cmd == 'preview':
+        to_preview()
     elif cmd != 'status':
         sys.exit(__doc__)
     print('modo actual:', mode())
