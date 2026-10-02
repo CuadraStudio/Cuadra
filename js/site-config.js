@@ -19,7 +19,7 @@
 
     // true = el sitio completo es accesible pero avisa que esta en construccion
     // (lo cambia scripts/site-mode.py: preview = true, live/hidden = false).
-    construction: true
+    construction: false
   };
   window.CUADRA_SITE = SITE;
 
