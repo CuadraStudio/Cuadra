@@ -467,6 +467,7 @@
     var summaryPlan = root.querySelector('[data-summary-plan-name]');
     var summaryImpl = root.querySelector('[data-summary-impl]');
     var summaryMensual = root.querySelector('[data-summary-mensual]');
+    var summaryBreakdown = root.querySelector('[data-summary-breakdown]');
     
     var resultLinePlan = root.querySelector('[data-result-line-plan]');
     var resultExtras = root.querySelector('[data-result-extras]');
@@ -504,11 +505,13 @@
     // Lee la base fija del panel de la linea + suma cada [data-feature] tildado dentro de ese panel.
     function computeTotals(linePanel) {
       if (!linePanel) return null;
-      var impl = Number(linePanel.getAttribute('data-base-impl'));
-      var mensual = Number(linePanel.getAttribute('data-base-mensual'));
+      var baseImpl = Number(linePanel.getAttribute('data-base-impl'));
+      var baseMensual = Number(linePanel.getAttribute('data-base-mensual'));
+      var impl = baseImpl;
+      var mensual = baseMensual;
       var extras = [];
       linePanel.querySelectorAll('[data-feature]:checked').forEach(function (input) {
-        var price = Number(input.getAttribute('data-price'));
+        var unitPrice = Number(input.getAttribute('data-price'));
         var type = input.getAttribute('data-type');
         var nameEl = input.closest('.extra-toggle').querySelector('.extra-toggle__name');
         var name = nameEl ? nameEl.textContent.trim() : '';
@@ -516,16 +519,62 @@
         var unit = input.getAttribute('data-unit');
         var qtyEl = unit ? input.closest('.extra-toggle').querySelector('[data-qty]') : null;
         var qty = qtyEl ? Math.min(20, Math.max(1, Math.floor(Number(qtyEl.value)) || 1)) : 1;
-        if (unit) name += ' (' + qty + ' ' + (qty === 1 ? unit : input.getAttribute('data-unit-plural')) + ')';
-        price = price * qty;
+        var price = unitPrice * qty;
         if (type === 'mensual') {
           mensual += price;
         } else {
           impl += price;
         }
-        extras.push({ name: name, type: type, price: price });
+        extras.push({
+          name: name, type: type, price: price, unitPrice: unitPrice, qty: qty,
+          perUnit: !!unit, unit: unit ? (qty === 1 ? unit : input.getAttribute('data-unit-plural')) : ''
+        });
       });
-      return { impl: impl, mensual: mensual, extras: extras };
+      return { impl: impl, mensual: mensual, baseImpl: baseImpl, baseMensual: baseMensual, extras: extras };
+    }
+
+    function usd(n) { return 'USD ' + fmt(n); }
+
+    // "USD 25" o, si se cobra por unidad, "5 × USD 15 = USD 75" (con "/mes" si es mensual).
+    function extraAmount(x) {
+      var per = x.type === 'mensual' ? '/mes' : '';
+      if (x.perUnit) return x.qty + ' × ' + usd(x.unitPrice) + per + ' = ' + usd(x.price) + per;
+      return usd(x.price) + per;
+    }
+
+    function extraLabel(x) {
+      return x.perUnit ? x.name + ' — ' + x.qty + ' ' + x.unit : x.name;
+    }
+
+    // Desglose: cada cosa que se suma, agrupada en implementación y mantenimiento/soporte.
+    function renderBreakdown(ul, totals) {
+      if (!ul || !totals) return;
+      var rows = [{ head: 'Implementación' }, { label: 'Base ' + LINE_NAMES[state.line], amount: usd(totals.baseImpl) }];
+      totals.extras.filter(function (x) { return x.type !== 'mensual'; }).forEach(function (x) {
+        rows.push({ label: extraLabel(x), amount: extraAmount(x) });
+      });
+      rows.push({ head: 'Mantenimiento y soporte (por mes)' });
+      rows.push({ label: 'Hosting, mantenimiento y soporte', amount: usd(totals.baseMensual) + '/mes' });
+      totals.extras.filter(function (x) { return x.type === 'mensual'; }).forEach(function (x) {
+        rows.push({ label: extraLabel(x), amount: extraAmount(x) });
+      });
+      ul.innerHTML = '';
+      rows.forEach(function (row) {
+        var li = document.createElement('li');
+        if (row.head) {
+          li.className = 'breakdown__head';
+          li.textContent = row.head;
+        } else {
+          li.className = 'breakdown__row';
+          var l = document.createElement('span');
+          l.textContent = row.label;
+          var m = document.createElement('span');
+          m.textContent = row.amount;
+          li.appendChild(l);
+          li.appendChild(m);
+        }
+        ul.appendChild(li);
+      });
     }
 
     function activeLinePanel() {
@@ -548,6 +597,7 @@
         : 'Solo la base — sumá extras si querés';
       summaryImpl.textContent = 'USD ' + fmt(totals.impl);
       summaryMensual.textContent = 'USD ' + fmt(totals.mensual) + '/mes';
+      renderBreakdown(summaryBreakdown, totals);
     }
 
     function selectLine(line, jumpToStep2) {
@@ -576,12 +626,7 @@
       resultImpl.textContent = 'USD ' + fmt(totals.impl);
       resultMensual.textContent = 'USD ' + fmt(totals.mensual) + '/mes';
 
-      resultExtras.innerHTML = '';
-      totals.extras.forEach(function (extra) {
-        var li = document.createElement('li');
-        li.textContent = extra.name + ' — +USD ' + fmt(extra.price) + (extra.type === 'mensual' ? '/mes' : ' único');
-        resultExtras.appendChild(li);
-      });
+      renderBreakdown(resultExtras, totals);
 
       lastTotals = totals;
       resetPlanForm();
@@ -664,11 +709,11 @@
       if (lastTotals) {
         fields['Extras elegidos'] = lastTotals.extras.length
           ? lastTotals.extras.map(function (x) {
-              return x.name + ' (+USD ' + fmt(x.price) + (x.type === 'mensual' ? '/mes' : ' único') + ')';
+              return extraLabel(x) + ' (' + extraAmount(x) + ')';
             }).join('; ')
           : 'Solo la base';
-        fields['Implementación (pago único)'] = 'USD ' + fmt(lastTotals.impl);
-        fields['Mensualidad'] = 'USD ' + fmt(lastTotals.mensual) + '/mes';
+        fields['Implementación'] = 'USD ' + fmt(lastTotals.impl);
+        fields['Mantenimiento y soporte'] = 'USD ' + fmt(lastTotals.mensual) + '/mes';
       }
       planForm.querySelectorAll('input, select, textarea').forEach(function (field) {
         if (field.disabled || field.name === '_honey') return;

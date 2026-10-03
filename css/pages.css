@@ -888,6 +888,59 @@
   font-weight: 600;
 }
 
+/* Desglose de lo que se suma (resumen lateral y resultado) */
+.breakdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.result-summary__extras.breakdown {
+  padding: var(--space-3) 0;
+}
+
+.breakdown > li {
+  padding-left: 0;
+}
+
+.breakdown > li::before {
+  content: none;
+}
+
+.breakdown__head {
+  margin-top: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.breakdown__head:first-child {
+  margin-top: 0;
+}
+
+.breakdown__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.breakdown__row > span:last-child {
+  margin-left: auto;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+}
+
 .result-summary__label {
   font-family: var(--font-primary);
   font-size: 0.75rem;
@@ -994,6 +1047,7 @@
   font-family: var(--font-display);
   font-weight: 300;
   color: var(--color-text);
+  white-space: nowrap;
 }
 
 .configurator__summary-combo {
