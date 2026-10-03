@@ -239,19 +239,14 @@
                   <div class="extras-group">
                     <p class="extras-group__title">Específico de Agenda</p>
                     <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="impl" data-price="90">
-                      <span class="extra-toggle__title"><span class="extra-toggle__name">Gestión de múltiples profesionales (providers)</span><span class="extra-toggle__desc">Si trabajás con más de un barbero o estilista, cada uno tiene su propia agenda y el cliente elige con quién reservar. Agrega la página Equipo + una ficha propia por cada profesional.</span></span>
-                      <span class="extra-toggle__price">+USD 90 único</span>
+                      <input type="checkbox" data-feature data-type="impl" data-price="15" data-unit="profesional adicional" data-unit-plural="profesionales adicionales">
+                      <span class="extra-toggle__title"><span class="extra-toggle__name">Gestión de múltiples profesionales (providers)</span><span class="extra-toggle__desc">Si trabajás con más de un barbero o estilista, cada uno tiene su propia agenda y el cliente elige con quién reservar. Agrega la página Equipo + una ficha propia por cada profesional. El primero ya está incluido: pagás solo por cada profesional adicional.</span><span class="extra-toggle__qty-wrap">Profesionales adicionales<input type="number" class="extra-toggle__qty" data-qty min="1" max="20" value="1" aria-label="Cantidad de profesionales adicionales"></span></span>
+                      <span class="extra-toggle__price">+USD 15 por cada uno</span>
                     </label>
                     <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="impl" data-price="100">
-                      <span class="extra-toggle__title"><span class="extra-toggle__name">Multi-sucursal (horarios y catálogo independientes)</span><span class="extra-toggle__desc">Si tenés más de un local, cada uno con sus propios horarios y servicios, todo dentro de la misma web. Agrega la página Sucursales + una ficha propia por cada local.</span></span>
-                      <span class="extra-toggle__price">+USD 100 único</span>
-                    </label>
-                    <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="mensual" data-price="3">
-                      <span class="extra-toggle__title"><span class="extra-toggle__name">Waitlist con aviso automático por WhatsApp</span><span class="extra-toggle__desc">Si un horario está lleno, el cliente se anota en lista de espera y le avisamos por WhatsApp apenas se libera un lugar.</span></span>
-                      <span class="extra-toggle__price">+USD 3/mes</span>
+                      <input type="checkbox" data-feature data-type="impl" data-price="40" data-unit="sede adicional" data-unit-plural="sedes adicionales">
+                      <span class="extra-toggle__title"><span class="extra-toggle__name">Multi-sucursal (horarios y catálogo independientes)</span><span class="extra-toggle__desc">Si tenés más de un local, cada uno con sus propios horarios y servicios, todo dentro de la misma web. Agrega la página Sucursales + una ficha propia por cada local. El primero ya está incluido: pagás solo por cada local adicional.</span><span class="extra-toggle__qty-wrap">Sedes adicionales<input type="number" class="extra-toggle__qty" data-qty min="1" max="20" value="1" aria-label="Cantidad de sedes adicionales"></span></span>
+                      <span class="extra-toggle__price">+USD 40 por cada una</span>
                     </label>
                   </div>
 
@@ -259,7 +254,7 @@
                     <p class="extras-group__title">Comunicación y clientes</p>
                     <label class="extra-toggle">
                       <input type="checkbox" data-feature data-type="mensual" data-price="10">
-                      <span class="extra-toggle__title"><span class="extra-toggle__name">Confirmación y recordatorios automáticos por WhatsApp</span><span class="extra-toggle__desc">Tu cliente recibe un WhatsApp automático al reservar y otro recordatorio antes de la hora — así no se olvida y vos no tenés que escribirle a mano.</span></span>
+                      <span class="extra-toggle__title"><span class="extra-toggle__name">Confirmación y recordatorios automáticos por WhatsApp</span><span class="extra-toggle__desc">Tu cliente recibe un WhatsApp automático al reservar y otro recordatorio antes de la hora — así no se olvida y vos no tenés que escribirle a mano. Incluye la lista de espera: si un horario está lleno, el cliente puede anotarse.</span></span>
                       <span class="extra-toggle__price">+USD 10/mes</span>
                     </label>
                     <label class="extra-toggle">
@@ -273,9 +268,9 @@
                       <span class="extra-toggle__price">+USD 3/mes</span>
                     </label>
                     <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="impl" data-price="40">
+                      <input type="checkbox" data-feature data-type="impl" data-price="25">
                       <span class="extra-toggle__title"><span class="extra-toggle__name">Sincronización con Google Calendar</span><span class="extra-toggle__desc">Cada turno reservado aparece solo en tu Google Calendar, junto con el resto de tu agenda personal.</span></span>
-                      <span class="extra-toggle__price">+USD 40 único</span>
+                      <span class="extra-toggle__price">+USD 25 único</span>
                     </label>
                     <label class="extra-toggle">
                       <input type="checkbox" data-feature data-type="impl" data-price="50">
@@ -337,6 +332,7 @@
                       <li>Web a medida con diseño responsive y dominio a tu nombre</li>
                       <li>Hosting, SSL y mantenimiento incluidos</li>
                       <li>Catálogo navegable con categorías, fotos, precios y descripciones</li>
+                      <li>Control de disponibilidad: marcás cada producto como disponible o agotado desde el panel</li>
                       <li>Pedido por WhatsApp: el cliente arma el carrito y envía el pedido formateado</li>
                       <li>Confirmación automática por email en cada pedido (el aviso por WhatsApp es un extra, más abajo)</li>
                       <li>Panel de administración con vista del día + botón WhatsApp flotante</li>
@@ -349,14 +345,9 @@
                   <div class="extras-group">
                     <p class="extras-group__title">Específico de Tienda</p>
                     <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="impl" data-price="100">
+                      <input type="checkbox" data-feature data-type="impl" data-price="40">
                       <span class="extra-toggle__title"><span class="extra-toggle__name">Variantes de producto (talle/color)</span><span class="extra-toggle__desc">Un mismo producto puede tener varios talles o colores para elegir, cada uno con su propio precio si hace falta.</span></span>
-                      <span class="extra-toggle__price">+USD 100 único</span>
-                    </label>
-                    <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="impl" data-price="65">
-                      <span class="extra-toggle__title"><span class="extra-toggle__name">Control de stock simple (disponible/agotado)</span><span class="extra-toggle__desc">Marcás vos mismo qué productos están disponibles o agotados desde el panel, y la web se actualiza sola.</span></span>
-                      <span class="extra-toggle__price">+USD 65 único</span>
+                      <span class="extra-toggle__price">+USD 40 único</span>
                     </label>
                   </div>
 
@@ -488,9 +479,9 @@
                       <span class="extra-toggle__price">+USD 3/mes</span>
                     </label>
                     <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="impl" data-price="40">
+                      <input type="checkbox" data-feature data-type="impl" data-price="25">
                       <span class="extra-toggle__title"><span class="extra-toggle__name">Sincronización con Google Calendar</span><span class="extra-toggle__desc">Cada turno reservado aparece solo en tu Google Calendar, junto con el resto de tu agenda personal.</span></span>
-                      <span class="extra-toggle__price">+USD 40 único</span>
+                      <span class="extra-toggle__price">+USD 25 único</span>
                     </label>
                     <label class="extra-toggle">
                       <input type="checkbox" data-feature data-type="impl" data-price="50">
@@ -598,9 +589,9 @@
                       <span class="extra-toggle__price">+USD 3/mes</span>
                     </label>
                     <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="impl" data-price="40">
+                      <input type="checkbox" data-feature data-type="impl" data-price="25">
                       <span class="extra-toggle__title"><span class="extra-toggle__name">Sincronización con Google Calendar</span><span class="extra-toggle__desc">Cada turno reservado aparece solo en tu Google Calendar, junto con el resto de tu agenda personal.</span></span>
-                      <span class="extra-toggle__price">+USD 40 único</span>
+                      <span class="extra-toggle__price">+USD 25 único</span>
                     </label>
                     <label class="extra-toggle">
                       <input type="checkbox" data-feature data-type="impl" data-price="50">
