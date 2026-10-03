@@ -378,6 +378,12 @@
         var type = input.getAttribute('data-type');
         var nameEl = input.closest('.extra-toggle').querySelector('.extra-toggle__name');
         var name = nameEl ? nameEl.textContent.trim() : '';
+        // Extras por unidad adicional (profesionales, sedes): precio x cantidad.
+        var unit = input.getAttribute('data-unit');
+        var qtyEl = unit ? input.closest('.extra-toggle').querySelector('[data-qty]') : null;
+        var qty = qtyEl ? Math.min(20, Math.max(1, Math.floor(Number(qtyEl.value)) || 1)) : 1;
+        if (unit) name += ' (' + qty + ' ' + (qty === 1 ? unit : input.getAttribute('data-unit-plural')) + ')';
+        price = price * qty;
         if (type === 'mensual') {
           mensual += price;
         } else {
@@ -496,6 +502,7 @@
       linePanels.forEach(function (panel) {
         panel.hidden = true;
         panel.querySelectorAll('[data-feature]').forEach(function (input) { input.checked = false; });
+        panel.querySelectorAll('[data-qty]').forEach(function (input) { input.value = 1; });
       });
       if (comboToggle) comboToggle.checked = false;
       if (comboChoicesWrap) comboChoicesWrap.hidden = true;
@@ -517,6 +524,14 @@
       if (e.target.matches('[data-feature]')) {
         updateSummary();
       }
+    });
+
+    // Cantidad de un extra por unidad: tocarla tilda el extra y recalcula.
+    root.addEventListener('input', function (e) {
+      if (!e.target.matches('[data-qty]')) return;
+      var box = e.target.closest('.extra-toggle').querySelector('[data-feature]');
+      if (box) box.checked = true;
+      updateSummary();
     });
 
     if (comboToggle) {

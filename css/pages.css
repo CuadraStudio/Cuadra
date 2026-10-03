@@ -808,12 +808,34 @@
   background: var(--color-bg-card-hover);
 }
 
-.extra-toggle input {
+.extra-toggle input[type="checkbox"] {
   width: 18px;
   height: 18px;
   flex-shrink: 0;
   margin-top: 3px;
   accent-color: var(--color-sage);
+}
+
+/* Cantidad de unidades adicionales (extras que se cobran por unidad) */
+.extra-toggle__qty-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.extra-toggle__qty {
+  width: 4rem;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.875rem;
 }
 
 .extra-toggle__title {

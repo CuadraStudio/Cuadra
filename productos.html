@@ -386,7 +386,7 @@
                 <li>Confirmación y recordatorios automáticos por WhatsApp — $U 400/mes</li>
                 <li>Base de clientes con historial y tags — $U 180/mes</li>
                 <li>Estadísticas + exportación de reportes — $U 100/mes</li>
-                <li>Sincronización con Google Calendar — $U 1.500 único (no aplica a Tienda)</li>
+                <li>Sincronización con Google Calendar — $U 1.000 único (no aplica a Tienda)</li>
                 <li>Multi-idioma ES/EN — $U 2.000 único</li>
                 <li>Campañas de WhatsApp broadcast + cupones — $U 450/mes</li>
                 <li>Sistema de fidelización (puntos, recompra) — $U 400/mes</li>
@@ -529,19 +529,14 @@
                   <div class="extras-group">
                     <p class="extras-group__title">Específico de Agenda</p>
                     <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="impl" data-price="3500">
-                      <span class="extra-toggle__title"><span class="extra-toggle__name">Gestión de múltiples profesionales (providers)</span><span class="extra-toggle__desc">Si trabajás con más de un barbero o estilista, cada uno tiene su propia agenda y el cliente elige con quién reservar. Agrega la página Equipo + una ficha propia por cada profesional.</span></span>
-                      <span class="extra-toggle__price">+$U 3.500 único</span>
+                      <input type="checkbox" data-feature data-type="impl" data-price="600" data-unit="profesional adicional" data-unit-plural="profesionales adicionales">
+                      <span class="extra-toggle__title"><span class="extra-toggle__name">Gestión de múltiples profesionales (providers)</span><span class="extra-toggle__desc">Si trabajás con más de un barbero o estilista, cada uno tiene su propia agenda y el cliente elige con quién reservar. Agrega la página Equipo + una ficha propia por cada profesional. El primero ya está incluido: pagás solo por cada profesional adicional.</span><span class="extra-toggle__qty-wrap">Profesionales adicionales<input type="number" class="extra-toggle__qty" data-qty min="1" max="20" value="1" aria-label="Cantidad de profesionales adicionales"></span></span>
+                      <span class="extra-toggle__price">+$U 600 por cada uno</span>
                     </label>
                     <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="impl" data-price="4000">
-                      <span class="extra-toggle__title"><span class="extra-toggle__name">Multi-sucursal (horarios y catálogo independientes)</span><span class="extra-toggle__desc">Si tenés más de un local, cada uno con sus propios horarios y servicios, todo dentro de la misma web. Agrega la página Sucursales + una ficha propia por cada local.</span></span>
-                      <span class="extra-toggle__price">+$U 4.000 único</span>
-                    </label>
-                    <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="mensual" data-price="100">
-                      <span class="extra-toggle__title"><span class="extra-toggle__name">Waitlist con aviso automático por WhatsApp</span><span class="extra-toggle__desc">Si un horario está lleno, el cliente se anota en lista de espera y le avisamos por WhatsApp apenas se libera un lugar.</span></span>
-                      <span class="extra-toggle__price">+$U 100/mes</span>
+                      <input type="checkbox" data-feature data-type="impl" data-price="1500" data-unit="sede adicional" data-unit-plural="sedes adicionales">
+                      <span class="extra-toggle__title"><span class="extra-toggle__name">Multi-sucursal (horarios y catálogo independientes)</span><span class="extra-toggle__desc">Si tenés más de un local, cada uno con sus propios horarios y servicios, todo dentro de la misma web. Agrega la página Sucursales + una ficha propia por cada local. El primero ya está incluido: pagás solo por cada local adicional.</span><span class="extra-toggle__qty-wrap">Sedes adicionales<input type="number" class="extra-toggle__qty" data-qty min="1" max="20" value="1" aria-label="Cantidad de sedes adicionales"></span></span>
+                      <span class="extra-toggle__price">+$U 1.500 por cada una</span>
                     </label>
                   </div>
 
@@ -549,7 +544,7 @@
                     <p class="extras-group__title">Comunicación y clientes</p>
                     <label class="extra-toggle">
                       <input type="checkbox" data-feature data-type="mensual" data-price="400">
-                      <span class="extra-toggle__title"><span class="extra-toggle__name">Confirmación y recordatorios automáticos por WhatsApp</span><span class="extra-toggle__desc">Tu cliente recibe un WhatsApp automático al reservar y otro recordatorio antes de la hora — así no se olvida y vos no tenés que escribirle a mano.</span></span>
+                      <span class="extra-toggle__title"><span class="extra-toggle__name">Confirmación y recordatorios automáticos por WhatsApp</span><span class="extra-toggle__desc">Tu cliente recibe un WhatsApp automático al reservar y otro recordatorio antes de la hora — así no se olvida y vos no tenés que escribirle a mano. Incluye la lista de espera: si un horario está lleno, el cliente puede anotarse.</span></span>
                       <span class="extra-toggle__price">+$U 400/mes</span>
                     </label>
                     <label class="extra-toggle">
@@ -563,9 +558,9 @@
                       <span class="extra-toggle__price">+$U 100/mes</span>
                     </label>
                     <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="impl" data-price="1500">
+                      <input type="checkbox" data-feature data-type="impl" data-price="1000">
                       <span class="extra-toggle__title"><span class="extra-toggle__name">Sincronización con Google Calendar</span><span class="extra-toggle__desc">Cada turno reservado aparece solo en tu Google Calendar, junto con el resto de tu agenda personal.</span></span>
-                      <span class="extra-toggle__price">+$U 1.500 único</span>
+                      <span class="extra-toggle__price">+$U 1.000 único</span>
                     </label>
                     <label class="extra-toggle">
                       <input type="checkbox" data-feature data-type="impl" data-price="2000">
@@ -627,6 +622,7 @@
                       <li>Web a medida con diseño responsive y dominio a tu nombre</li>
                       <li>Hosting, SSL y mantenimiento incluidos</li>
                       <li>Catálogo navegable con categorías, fotos, precios y descripciones</li>
+                      <li>Control de disponibilidad: marcás cada producto como disponible o agotado desde el panel</li>
                       <li>Pedido por WhatsApp: el cliente arma el carrito y envía el pedido formateado</li>
                       <li>Confirmación automática por email en cada pedido (el aviso por WhatsApp es un extra, más abajo)</li>
                       <li>Panel de administración con vista del día + botón WhatsApp flotante</li>
@@ -639,14 +635,9 @@
                   <div class="extras-group">
                     <p class="extras-group__title">Específico de Tienda</p>
                     <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="impl" data-price="4000">
+                      <input type="checkbox" data-feature data-type="impl" data-price="1500">
                       <span class="extra-toggle__title"><span class="extra-toggle__name">Variantes de producto (talle/color)</span><span class="extra-toggle__desc">Un mismo producto puede tener varios talles o colores para elegir, cada uno con su propio precio si hace falta.</span></span>
-                      <span class="extra-toggle__price">+$U 4.000 único</span>
-                    </label>
-                    <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="impl" data-price="2500">
-                      <span class="extra-toggle__title"><span class="extra-toggle__name">Control de stock simple (disponible/agotado)</span><span class="extra-toggle__desc">Marcás vos mismo qué productos están disponibles o agotados desde el panel, y la web se actualiza sola.</span></span>
-                      <span class="extra-toggle__price">+$U 2.500 único</span>
+                      <span class="extra-toggle__price">+$U 1.500 único</span>
                     </label>
                   </div>
 
@@ -778,9 +769,9 @@
                       <span class="extra-toggle__price">+$U 100/mes</span>
                     </label>
                     <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="impl" data-price="1500">
+                      <input type="checkbox" data-feature data-type="impl" data-price="1000">
                       <span class="extra-toggle__title"><span class="extra-toggle__name">Sincronización con Google Calendar</span><span class="extra-toggle__desc">Cada turno reservado aparece solo en tu Google Calendar, junto con el resto de tu agenda personal.</span></span>
-                      <span class="extra-toggle__price">+$U 1.500 único</span>
+                      <span class="extra-toggle__price">+$U 1.000 único</span>
                     </label>
                     <label class="extra-toggle">
                       <input type="checkbox" data-feature data-type="impl" data-price="2000">
@@ -888,9 +879,9 @@
                       <span class="extra-toggle__price">+$U 100/mes</span>
                     </label>
                     <label class="extra-toggle">
-                      <input type="checkbox" data-feature data-type="impl" data-price="1500">
+                      <input type="checkbox" data-feature data-type="impl" data-price="1000">
                       <span class="extra-toggle__title"><span class="extra-toggle__name">Sincronización con Google Calendar</span><span class="extra-toggle__desc">Cada turno reservado aparece solo en tu Google Calendar, junto con el resto de tu agenda personal.</span></span>
-                      <span class="extra-toggle__price">+$U 1.500 único</span>
+                      <span class="extra-toggle__price">+$U 1.000 único</span>
                     </label>
                     <label class="extra-toggle">
                       <input type="checkbox" data-feature data-type="impl" data-price="2000">
