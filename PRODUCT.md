@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Static HTML/CSS/vanilla JS, sin build step. Deploy en Render Static Site (dominio cuadrastudio.uy).
+Static HTML/CSS/vanilla JS, sin build step. Deploy en Render Static Site (dominio cuadrastudio.uy). Formularios por email vía FormSubmit (`js/site-config.js`); `workers/confirm-email/` (Worker + Resend) manda la copia al visitante y está desactivado mientras `confirmEndpoint` esté vacío. Modo del sitio con `scripts/site-mode.py`: hoy **hidden** (en `/` solo el teaser "en construcción"; la home completa vive en `/index-web.html`, noindex).
 
 ## Users
 
@@ -43,24 +43,27 @@ El dueño del negocio gestiona casi todo por WhatsApp: confirma reservas/pedidos
 ## Capabilities and Constraints
 
 - 4 líneas de producto, cada una con base fija + extras propios (específicos de línea + comunicación/clientes + crecimiento/fidelización, compartidos entre líneas).
-- 2 productos de presencia web sin sistema, precio fijo (no a la carta, sin extras ni configurador): **Landing** (1 página, $U 8.000 único ~USD 200 + $U 390/mes) e **Institucional** (hasta 5 páginas, $U 13.000 único ~USD 325 + $U 590/mes). Ninguno incluye panel de administración ni reservas/pedidos/agenda.
-- Pago: seña 50% al firmar + 50% contra entrega; mensualidad arranca con la entrega.
-- Sin checkout de pago online todavía (roadmap, no implementado).
-- Combo entre dos líneas posible: mismo tenant, una web, 10% off en la segunda línea.
-- Opción 2 ("ya tengo web"): se cobra solo el setup de integración del sistema, exento si hay compromiso de 6 meses.
+- **Precios públicos en USD**, netos, sin IVA (IVA 22% trasladable a empresas); equivalen a los $U de `docs/negocio/planes-producto-cuadra.md` en el repo Webs (TC 1 USD ≈ $U 40). Implementación + mantenimiento y soporte mensual:
+  - **Landing:** USD 200 + USD 10/mes (~$U 8.000 + 390). **Institucional:** USD 325 + USD 15/mes (~$U 13.000 + 590). Precio fijo, sin extras ni panel de administración, sin reservas/pedidos/agenda.
+  - **Líneas a medida:** Agenda USD 550 · Restó USD 625 · Tienda USD 700 · Consulta USD 375, todas con USD 25/mes (~$U 990). Extras individuales, a la carta (p. ej. recordatorios por WhatsApp USD 10/mes, clientes con historial USD 5/mes, Google Calendar USD 25, multi-idioma USD 50, profesional adicional USD 15, sede adicional USD 40); el listado completo está en `armar-plan.html`.
+- Cómo se contrata: el visitante arma su plan en `armar-plan.html` y lo envía **por email**; CUADRA responde para confirmar contenido, alcance y precio final. Seña 50% por transferencia al firmar + 50% contra entrega; el mantenimiento arranca con la entrega. Plazo: 5 a 10 días hábiles desde la seña.
+- Contacto de Cuadra: email (`cuadrastudio.uy@gmail.com`) y botón flotante de WhatsApp; el teléfono se quitó de todo el sitio.
+- Sin checkout de pago online todavía (roadmap, no implementado); pedidos y reservas de los negocios clientes se gestionan por WhatsApp.
+- Opción 2 ("ya tengo web"): setup de integración escalado por línea (Agenda USD 110, Tienda USD 140, Restó USD 125, Consulta USD 75), eximido con compromiso de 6 meses; si se cancela antes, se factura en el último mes.
+- El paso "combo" se quitó del configurador; la regla comercial de combo entre dos líneas no figura hoy en el sitio.
 
 ## Brand Commitments
 
 - Nombre: **CUADRA**. Descriptor condicional: "Desarrollo web a medida" (solo cuando el contexto lo requiere).
 - Isotipo geométrico, interpretación de "¬=" (bracket + doble barra). Archivo correcto: `assets/cuadra-logo-black.svg` / `assets/cuadra-logo-white.svg` (285×77.7, proporción real, nunca deformar). `assets/cuadra-isotipo-dark.svg`/`cuadra-isotipo.svg` son una versión reducida (solo el fragmento "¬"), válida para usos muy chicos (favicon-like), no como logo principal.
-- Tipografía: Montserrat (pesos 300–700 cargados).
-- **El sistema visual está en medio de un rediseño activo iniciado esta misma sesión**: se pasó de un sistema dark-first arquitectónico (negro/grafito/sage, Montserrat Light 300 con tracking ancho) a un sistema editorial claro tipo portfolio (fondo papel cálido `#F2F1ED`, tinta casi negra `#0F1111`, acento verde oscurecido `#3E6B62`, tipografía peso 600 en sentence-case), inspirado estructuralmente en sandeep.design. **`DESIGN.md` todavía describe el sistema viejo y no refleja la implementación actual** — no usarlo como fuente de verdad visual sin contrastarlo primero contra el CSS real (`css/home-editorial.css`, `css/tokens.css` con `.section--light`) y los estilos computados en pantalla.
+- Tipografía: **Montserrat por rol**, peso mínimo 400 (nada de Light 300): titulares 600 en sentence-case con tracking negativo; botones, eyebrows y etiquetas en mayúsculas con 500–600 y tracking 0,04–0,14em; cuerpo 400. Detalle en `DESIGN.md`.
+- **Sistema visual vigente (verificado contra `origin/master` el 2026-10-03):** dark-first y editorial. Black `#0F1111`, Graphite, Sage `#AFC8C2` (acento; nunca como texto sobre claro), Mist y Warm White como bandas de respiro. Dirección artística "Plano de manzana" (`docs/art-direction.md`): grilla visible, marcas de esquina, cotas y coordenadas; ritmo de superficies hero en black, bandas mist/graphite/warm white y CTA final en sage. `DESIGN.md` y `docs/` de este repo son la fuente de verdad visual del sitio. La guía de marca general (redes, voz, tokens) está en el repo Webs: `docs/brand-guidelines.md` (borrador, sin APROBADO). Algunos documentos de este repo (`docs/typography-montserrat.md`, `copy-empresa.md`) conservan descripciones del sistema viejo.
 
 ## Evidence on Hand
 
-- Demos de producto reales y funcionando, con negocios ficticios: **Vera Store** (Tienda), **Estudio Trazo** (Agenda), **El Fogatero** (Restó), **Estudio Arroyo** (Consulta). Screenshots en `img/demoagenda.png`, `img/demotienda.png`, `img/demoresto.png`, `img/democonsulta.png`.
-- Backend real de precios (referencia, no se edita desde el sitio estático): `backend/render_web_services/api/plans.js`, `backend/render_web_services/api/extrasCatalog.js`.
-- El dominio de producción (`cuadrastudio.uy`, repo `fedMiranda/Cuadra`) es un sitio real y separado de esta copia de trabajo (`Cuadra_static_site_draft`); no confundir ni empujar cambios de acá hacia ese repo sin confirmación explícita.
+- Cuatro demos hechos a mano con negocios ficticios, enlazados desde la home: **Cantina Bianchi** (Restó, `/demos/cantina-bianchi/`), **Cebador** (Tienda, `/demos/cebador/`), **Estudio Olmos** (Consulta, `/demos/olmos/`) y **Barbería Hierro** (Agenda, `/demos/hierro/`). En `demos/` quedan además carpetas sin enlace desde el sitio (`elfogatero`, `estudioarroyo`, `verastore`, `hierrobarberia`, y `brunoentrena` sin versionar): conviene revisarlas.
+- Backend real de precios y extras (referencia, no se edita desde el sitio estático): `backend/render-api/api/plans.js` y `backend/render-api/api/extrasCatalog.js` en el repo Webs.
+- Esta carpeta es un clon de `fedMiranda/Cuadra` (dominio de producción `cuadrastudio.uy`). `master` se sincronizó con `origin/master` el 2026-10-03 (merge `cb218ea`); no empujar cambios al remoto sin confirmación explícita.
 
 ## Product Principles
 
