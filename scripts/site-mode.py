@@ -78,6 +78,16 @@ def set_construction(on):
     write(CFG, FLAG.sub(lambda m: m.group(1) + ('true' if on else 'false'), read(CFG), count=1))
 
 
+def set_demos_link(hidden):
+    # En hidden, "/" es el teaser: la seccion Demos vive en /index-web.html. En live/preview, en "/".
+    old, new = ('/#demos', '/index-web.html#demos') if hidden else ('/index-web.html#demos', '/#demos')
+    for f in os.listdir(ROOT):
+        if f.endswith('.html'):
+            s = read(f)
+            if 'href="%s"' % old in s:
+                write(f, s.replace('href="%s"' % old, 'href="%s"' % new))
+
+
 def mode():
     if os.path.exists(p('index-web.html')):
         return 'hidden'
@@ -86,6 +96,7 @@ def mode():
 
 def to_hidden():
     set_construction(False)
+    set_demos_link(True)
     if mode() == 'hidden':
         return
     os.rename(p('index.html'), p('index-web.html'))
@@ -101,6 +112,7 @@ def to_hidden():
 
 def to_live():
     set_construction(False)
+    set_demos_link(False)
     if os.path.exists(p('index-web.html')):
         _swap_to_live()
     for n in ['index'] + PUBLIC:
@@ -109,6 +121,7 @@ def to_live():
 
 
 def to_preview():
+    set_demos_link(False)
     if os.path.exists(p('index-web.html')):
         _swap_to_live()
     set_construction(True)

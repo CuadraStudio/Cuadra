@@ -1168,3 +1168,45 @@ html[data-logo-seen] .teaser-logo path {
   color: var(--ed-accent);
   font-weight: 600;
 }
+
+/* 19) Hover en "Qué recibe tu negocio" y "Cómo funciona" (productos.html): sus ítems no son enlaces,
+   así que repiten el gesto de las tarjetas-enlace: la línea de acento recorre el borde superior
+   y el borde pasa a acento. Solo en dispositivos con cursor. */
+.ed-lettered__item {
+  transition: background var(--transition-normal), border-color var(--transition-fast);
+}
+
+.ed-stepper__item {
+  position: relative;
+  transition: border-color var(--transition-fast);
+}
+
+.ed-stepper__item::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--ed-accent);
+  transition: width var(--transition-normal);
+}
+
+@media (hover: hover) {
+  .ed-lettered__item:hover {
+    border-color: var(--ed-accent);
+  }
+
+  .ed-lettered__item:hover::before,
+  .ed-stepper__item:hover::before {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ed-lettered__item,
+  .ed-stepper__item,
+  .ed-stepper__item::before {
+    transition: none;
+  }
+}
