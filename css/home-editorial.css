@@ -477,7 +477,7 @@
 /* ---- Tarjetas de producto simple: Landing / Institucional (productos.html) ---- */
 .ed-tier-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-6);
   margin-top: var(--space-7);
 }
