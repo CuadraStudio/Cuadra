@@ -13,12 +13,12 @@
     formEndpoint: 'https://formsubmit.co/ajax/cuadrastudio.uy@gmail.com',
 
     // Worker que manda al visitante una copia de lo que envio ("correo enviado")
-    // usando Resend. Ver workers/confirm-email/README.md. Mientras este vacio no se
+    // usando Resend. Ver Webs/docs/sitio-cuadra/workers/confirm-email/README.md. Mientras este vacio no se
     // envia ninguna copia y la web funciona igual.
     confirmEndpoint: '',
 
     // true = el sitio completo es accesible pero avisa que esta en construccion
-    // (lo cambia scripts/site-mode.py: preview = true, live/hidden = false).
+    // (lo cambia Webs/docs/sitio-cuadra/scripts/site-mode.py: preview = true, live/hidden = false).
     construction: false
   };
   window.CUADRA_SITE = SITE;
