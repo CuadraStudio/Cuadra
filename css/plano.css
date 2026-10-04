@@ -824,11 +824,12 @@ html {
   }
 }
 
-/* ---------- 12. Logo: home animado (1 vez por sesion), interiores estatico ---------- */
+/* ---------- 12. Logo: 1ra visita a la home con la secuencia larga (3 figuras una tras otra);
+   repeticiones e interiores lo dibujan igual, pero con el trazo corto de Plano de manzana ---------- */
 .plano-subhero .plano-hero__mark path,
 html[data-logo-seen] .plano-hero:not(.plano-subhero) .plano-hero__mark path {
-  animation: none;
-  stroke-dashoffset: 0;
+  animation-duration: 2200ms;
+  animation-delay: 300ms;
 }
 
 /* ---------- 13. Logo como progreso del configurador (3 figuras = 3 pasos) ---------- */
