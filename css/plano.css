@@ -1220,3 +1220,27 @@ html[data-logo-seen] .teaser-logo path {
 .ed-tier__tagline {
   font-size: 0.875rem;
 }
+
+/* 20) Logo fijo al scroll: contorno grande y tenue a la derecha que acompana la lectura.
+   Va sobre el contenido (pointer-events: none) y por debajo del menu. Su tinta la fija
+   initLogoInk() en main.js segun la superficie; sin JS queda el acento de la seccion.
+   En celular se oculta (regla de la seccion 5). El teaser conserva su logo central. */
+.plano-hero__mark,
+.plano-subhero .plano-hero__mark {
+  position: fixed;
+  top: 50%;
+  right: 3%;
+  width: min(36vw, 520px);
+  transform: translateY(-50%);
+  stroke: var(--logo-ink, var(--ed-accent));
+  opacity: 0.32;
+  z-index: 50;
+  transition: stroke 400ms var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plano-hero__mark,
+  .plano-subhero .plano-hero__mark {
+    transition: none;
+  }
+}

@@ -857,6 +857,57 @@
     });
   }
 
+  // ---- Logo fijo: el color del trazo sigue la superficie que tiene detras ----
+  // El logo (.plano-hero__mark) queda fijo en pantalla (CSS). Con cada scroll se mira
+  // que fondo hay bajo su centro y se elige una tinta de la paleta con buen contraste:
+  // sobre oscuro, sage; sobre sage, negro; sobre claro (mist / warm white), verde.
+  function initLogoInk() {
+    var mark = document.querySelector('.plano-hero__mark');
+    if (!mark || window.getComputedStyle(mark).display === 'none') return;
+    var root = document.documentElement;
+    var last = '';
+    var queued = false;
+
+    function luminance(rgb) {
+      var c = rgb.map(function (v) {
+        v = v / 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+      });
+      return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+    }
+
+    function surfaceAt(x, y) {
+      var el = document.elementFromPoint(x, y);
+      while (el) {
+        var m = window.getComputedStyle(el).backgroundColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+        if (m && (m[4] === undefined || parseFloat(m[4]) > 0.5)) return [+m[1], +m[2], +m[3]];
+        el = el.parentElement;
+      }
+      return [15, 17, 17];
+    }
+
+    function update() {
+      queued = false;
+      var r = mark.getBoundingClientRect();
+      var l = luminance(surfaceAt(r.left + r.width / 2, r.top + r.height / 2));
+      var ink = l < 0.3 ? '#AFC8C2' : (l < 0.65 ? '#0F1111' : '#3E6B62');
+      if (ink !== last) {
+        last = ink;
+        root.style.setProperty('--logo-ink', ink);
+      }
+    }
+
+    function schedule() {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(update);
+    }
+
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    update();
+  }
+
   function init() {
     initPageScroll();
     initNav();
@@ -866,6 +917,7 @@
     initContactDialog();
     initPlanConfigurator();
     initSmoothScroll();
+    initLogoInk();
   }
 
   if (document.readyState === 'loading') {
