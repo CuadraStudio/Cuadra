@@ -38,9 +38,9 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showConstructionNote);
   else showConstructionNote();
 
-  // Logo animado: la secuencia completa se ve una vez por sesion (home y sitio
-  // en construccion); despues queda dibujado. Las paginas interiores siempre
-  // lo muestran estatico (CSS).
+  // Logo animado: la secuencia completa (escuadra, luego las dos barras) se ve una
+  // vez por sesion (home y sitio en construccion). En repeticiones de la home y en
+  // las paginas interiores se dibuja con un trazo corto (CSS); el teaser queda dibujado.
   var LOGO_KEY = 'cuadra-logo-played';
   try {
     if (window.sessionStorage.getItem(LOGO_KEY)) root.setAttribute('data-logo-seen', '');
