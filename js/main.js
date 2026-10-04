@@ -188,6 +188,70 @@
     });
   }
 
+  // ---- Envio de formularios al correo del sitio ----
+  // La web es estatica: el envio lo hace un servicio de formularios (formEndpoint en
+  // js/site-config.js) que reenvia el mensaje por email a CONTACT_EMAIL. Si falla,
+  // se ofrece abrir el correo con los datos como respaldo.
+  var CONTACT_EMAIL = 'cuadrastudio.uy@gmail.com';
+
+  function escapeHtml(text) {
+    return String(text).replace(/[&<>"']/g, function (ch) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+    });
+  }
+
+  function sendToOwner(fields, subject) {
+    var endpoint = (window.CUADRA_SITE && window.CUADRA_SITE.formEndpoint) || '';
+    if (!endpoint || typeof fetch !== 'function') {
+      return Promise.reject(new Error('sin-endpoint'));
+    }
+    var payload = {};
+    Object.keys(fields).forEach(function (key) { payload[key] = fields[key]; });
+    payload._subject = subject;
+    payload._template = 'table';
+    payload._captcha = 'false';
+    return fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (data) {
+        var ok = res.ok && data.success !== false && data.success !== 'false';
+        if (!ok) throw new Error('envio-fallido');
+        return data;
+      });
+    });
+  }
+
+  function mailtoFallback(fields, subject) {
+    var lines = Object.keys(fields).map(function (key) { return key + ': ' + fields[key]; });
+    return 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(lines.join('\r\n'));
+  }
+
+  // Copia para el visitante ("correo enviado"): un Worker con Resend le manda lo que
+  // envio. Solo se llama despues de que el aviso a CUADRA salio bien. Es opcional: si
+  // confirmEndpoint esta vacio o falla, el envio principal no se ve afectado.
+  function sendCopyToClient(kind, fields) {
+    var endpoint = (window.CUADRA_SITE && window.CUADRA_SITE.confirmEndpoint) || '';
+    if (!endpoint || typeof fetch !== 'function') return Promise.resolve(false);
+    return fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ kind: kind, fields: fields })
+    }).then(function (res) { return res.ok; }).catch(function () { return false; });
+  }
+
+  function copyNote(email) {
+    return 'También te enviamos una copia a <strong>' + escapeHtml(email) + '</strong>.';
+  }
+
+  function failureBox(fields, subject) {
+    return '<div class="form-error-box" role="alert">No pudimos enviar el mensaje. Probá de nuevo en un momento o ' +
+      '<a href="' + mailtoFallback(fields, subject) + '">enviá estos datos desde tu app de correo</a> ' +
+      '(también podés escribir a <strong>' + CONTACT_EMAIL + '</strong>).</div>';
+  }
+
   // ---- Form handling ----
   function initForm() {
     var form = document.getElementById('contact-form');
@@ -245,29 +309,60 @@
       return valid;
     }
 
+    // Al enviar bien: se oculta el formulario y queda solo el mensaje de "enviado".
+    function showSent(email) {
+      form.reset();
+      form.classList.add('is-sent');
+      formStatus.innerHTML = '<div class="form-success" role="status"><strong>Mensaje enviado.</strong> ' +
+        'Te respondemos a <strong>' + escapeHtml(email) + '</strong>. <span data-copy-note></span>' +
+        '<button type="button" class="btn btn--secondary" data-send-another>Enviar otro mensaje</button></div>';
+      formStatus.setAttribute('tabindex', '-1');
+      formStatus.focus({ preventScroll: true });
+      formStatus.scrollIntoView({ block: 'center', behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      formStatus.querySelector('[data-send-another]').addEventListener('click', function () {
+        form.classList.remove('is-sent');
+        formStatus.innerHTML = '';
+        formStatus.removeAttribute('tabindex');
+        nombreInput.focus();
+      });
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       clearErrors();
 
       if (!validate()) return;
 
-      // Build WhatsApp message
-      var nombre = nombreInput.value.trim();
-      var email = emailInput.value.trim();
-      var mensaje = mensajeInput.value.trim();
+      var honeypot = form.querySelector('[name="_honey"]');
+      var fields = {
+        'Nombre': nombreInput.value.trim(),
+        'Email': emailInput.value.trim(),
+        'Mensaje': mensajeInput.value.trim()
+      };
+      var subject = 'Consulta desde la web: ' + fields['Nombre'];
 
-      var text = 'Hola! Quiero un sitio web.\n\n'
-        + '*Nombre:* ' + nombre + '\n'
-        + '*Email:* ' + email + '\n'
-        + '*Mensaje:* ' + mensaje;
+      // Campo trampa para bots: si esta completo, se simula el exito sin enviar nada.
+      if (honeypot && honeypot.value) {
+        showSent(fields['Email']);
+        return;
+      }
 
-      var url = 'https://wa.me/59899331909?text=' + encodeURIComponent(text);
-      window.open(url, '_blank');
+      var originalLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando…';
 
-      // Show success
-      submitBtn.disabled = false;
-      formStatus.innerHTML = '<div class="form-success">Abriendo WhatsApp... Si no se abre, <a href="' + url + '" target="_blank" rel="noopener noreferrer">hacé clic acá</a>.</div>';
-      form.reset();
+      sendToOwner(fields, subject).then(function () {
+        showSent(fields['Email']);
+        sendCopyToClient('contact', fields).then(function (sent) {
+          var note = formStatus.querySelector('[data-copy-note]');
+          if (sent && note) note.innerHTML = copyNote(fields['Email']);
+        });
+      }).catch(function () {
+        formStatus.innerHTML = failureBox(fields, subject);
+      }).then(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      });
     });
 
     // Clear error on input
@@ -315,21 +410,55 @@
     });
   }
 
-  // ---- Configurador de planes: a la carte (linea -> extras con precio propio -> combo -> resumen) ----
+  // ---- Dialogo de contacto (sitio en construccion) ----
+  function initContactDialog() {
+    var dialog = document.getElementById('contact-dialog');
+    if (!dialog) return;
+    var openers = document.querySelectorAll('[data-open-contact]');
+
+    function open() {
+      if (typeof dialog.showModal === 'function') {
+        dialog.showModal();
+      } else {
+        dialog.setAttribute('open', '');
+      }
+      var first = dialog.querySelector('input:not([type="hidden"]):not(.hp)');
+      if (first) first.focus();
+    }
+
+    function close() {
+      if (typeof dialog.close === 'function') {
+        dialog.close();
+      } else {
+        dialog.removeAttribute('open');
+      }
+    }
+
+    openers.forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        open();
+      });
+    });
+    dialog.querySelectorAll('[data-close-contact]').forEach(function (btn) {
+      btn.addEventListener('click', close);
+    });
+    dialog.addEventListener('click', function (e) {
+      if (e.target === dialog) close();
+    });
+  }
+
+  // ---- Configurador de planes: a la carte (linea -> plan y extras con precio propio -> resumen por email) ----
   function initPlanConfigurator() {
     var root = document.querySelector('[data-configurator]');
     if (!root) return;
 
-    var LINE_NAMES = { agenda: 'CUADRA Agenda', tienda: 'CUADRA Tienda', resto: 'CUADRA Restó', consulta: 'CUADRA Consulta' };
-    var WA_NUMBER = '59899331909';
+    var LINE_NAMES = { landing: 'CUADRA Landing', institucional: 'CUADRA Institucional', agenda: 'CUADRA Agenda', tienda: 'CUADRA Tienda', resto: 'CUADRA Restó', consulta: 'CUADRA Consulta' };
 
     var panels = root.querySelectorAll('.configurator__panel');
     var stepIndicators = root.querySelectorAll('[data-step-indicator]');
     var lineChoices = root.querySelectorAll('[data-choose-line]');
     var linePanels = root.querySelectorAll('[data-line-panel]');
-    var comboToggle = root.querySelector('[data-combo-toggle]');
-    var comboChoicesWrap = root.querySelector('[data-combo-choices]');
-    var comboChoices = root.querySelectorAll('[data-choose-combo]');
     var selectedLineName = root.querySelector('[data-selected-line-name]');
 
     var summaryEmpty = root.querySelector('[data-summary-empty]');
@@ -338,22 +467,28 @@
     var summaryPlan = root.querySelector('[data-summary-plan-name]');
     var summaryImpl = root.querySelector('[data-summary-impl]');
     var summaryMensual = root.querySelector('[data-summary-mensual]');
-    var summaryCombo = root.querySelector('[data-summary-combo]');
-
+    var summaryBreakdown = root.querySelector('[data-summary-breakdown]');
+    
     var resultLinePlan = root.querySelector('[data-result-line-plan]');
     var resultExtras = root.querySelector('[data-result-extras]');
     var resultImpl = root.querySelector('[data-result-impl]');
     var resultMensual = root.querySelector('[data-result-mensual]');
-    var resultCombo = root.querySelector('[data-result-combo]');
-    var waResultLink = root.querySelector('[data-whatsapp-result]');
+    var planForm = root.querySelector('[data-plan-form]');
+    var openPlanFormBtn = root.querySelector('[data-open-plan-form]');
+    var resultActions = root.querySelector('[data-result-actions]');
+    var planFormStatus = root.querySelector('[data-plan-form-status]');
+    var lastTotals = null;
 
-    var state = { line: null, combo: false, comboLine: null };
+    var state = { line: null };
 
     function fmt(n) {
       return Number(n).toLocaleString('es-UY');
     }
 
+    var progressLogo = root.querySelector('[data-progress-logo]');
+
     function goToStep(n, skipScroll) {
+      if (progressLogo) progressLogo.setAttribute('data-progress', String(n));
       panels.forEach(function (p) {
         p.hidden = Number(p.getAttribute('data-step')) !== n;
       });
@@ -370,11 +505,13 @@
     // Lee la base fija del panel de la linea + suma cada [data-feature] tildado dentro de ese panel.
     function computeTotals(linePanel) {
       if (!linePanel) return null;
-      var impl = Number(linePanel.getAttribute('data-base-impl'));
-      var mensual = Number(linePanel.getAttribute('data-base-mensual'));
+      var baseImpl = Number(linePanel.getAttribute('data-base-impl'));
+      var baseMensual = Number(linePanel.getAttribute('data-base-mensual'));
+      var impl = baseImpl;
+      var mensual = baseMensual;
       var extras = [];
       linePanel.querySelectorAll('[data-feature]:checked').forEach(function (input) {
-        var price = Number(input.getAttribute('data-price'));
+        var unitPrice = Number(input.getAttribute('data-price'));
         var type = input.getAttribute('data-type');
         var nameEl = input.closest('.extra-toggle').querySelector('.extra-toggle__name');
         var name = nameEl ? nameEl.textContent.trim() : '';
@@ -382,16 +519,62 @@
         var unit = input.getAttribute('data-unit');
         var qtyEl = unit ? input.closest('.extra-toggle').querySelector('[data-qty]') : null;
         var qty = qtyEl ? Math.min(20, Math.max(1, Math.floor(Number(qtyEl.value)) || 1)) : 1;
-        if (unit) name += ' (' + qty + ' ' + (qty === 1 ? unit : input.getAttribute('data-unit-plural')) + ')';
-        price = price * qty;
+        var price = unitPrice * qty;
         if (type === 'mensual') {
           mensual += price;
         } else {
           impl += price;
         }
-        extras.push({ name: name, type: type, price: price });
+        extras.push({
+          name: name, type: type, price: price, unitPrice: unitPrice, qty: qty,
+          perUnit: !!unit, unit: unit ? (qty === 1 ? unit : input.getAttribute('data-unit-plural')) : ''
+        });
       });
-      return { impl: impl, mensual: mensual, extras: extras };
+      return { impl: impl, mensual: mensual, baseImpl: baseImpl, baseMensual: baseMensual, extras: extras };
+    }
+
+    function usd(n) { return 'USD ' + fmt(n); }
+
+    // "USD 25" o, si se cobra por unidad, "5 × USD 15 = USD 75" (con "/mes" si es mensual).
+    function extraAmount(x) {
+      var per = x.type === 'mensual' ? '/mes' : '';
+      if (x.perUnit) return x.qty + ' × ' + usd(x.unitPrice) + per + ' = ' + usd(x.price) + per;
+      return usd(x.price) + per;
+    }
+
+    function extraLabel(x) {
+      return x.perUnit ? x.name + ' — ' + x.qty + ' ' + x.unit : x.name;
+    }
+
+    // Desglose: cada cosa que se suma, agrupada en implementación y mantenimiento/soporte.
+    function renderBreakdown(ul, totals) {
+      if (!ul || !totals) return;
+      var rows = [{ head: 'Implementación' }, { label: 'Base ' + LINE_NAMES[state.line], amount: usd(totals.baseImpl) }];
+      totals.extras.filter(function (x) { return x.type !== 'mensual'; }).forEach(function (x) {
+        rows.push({ label: extraLabel(x), amount: extraAmount(x) });
+      });
+      rows.push({ head: 'Mantenimiento y soporte (por mes)' });
+      rows.push({ label: 'Hosting, mantenimiento y soporte', amount: usd(totals.baseMensual) + '/mes' });
+      totals.extras.filter(function (x) { return x.type === 'mensual'; }).forEach(function (x) {
+        rows.push({ label: extraLabel(x), amount: extraAmount(x) });
+      });
+      ul.innerHTML = '';
+      rows.forEach(function (row) {
+        var li = document.createElement('li');
+        if (row.head) {
+          li.className = 'breakdown__head';
+          li.textContent = row.head;
+        } else {
+          li.className = 'breakdown__row';
+          var l = document.createElement('span');
+          l.textContent = row.label;
+          var m = document.createElement('span');
+          m.textContent = row.amount;
+          li.appendChild(l);
+          li.appendChild(m);
+        }
+        ul.appendChild(li);
+      });
     }
 
     function activeLinePanel() {
@@ -412,14 +595,9 @@
       summaryPlan.textContent = totals.extras.length
         ? totals.extras.length + ' extra' + (totals.extras.length === 1 ? '' : 's') + ' seleccionado' + (totals.extras.length === 1 ? '' : 's')
         : 'Solo la base — sumá extras si querés';
-      summaryImpl.textContent = '$U ' + fmt(totals.impl) + ' (~USD ' + fmt(Math.round(totals.impl / 40)) + ')';
-      summaryMensual.textContent = '$U ' + fmt(totals.mensual) + '/mes (~USD ' + fmt(Math.round(totals.mensual / 40)) + ')';
-      if (state.combo && state.comboLine) {
-        summaryCombo.hidden = false;
-        summaryCombo.textContent = '+ Combo con ' + LINE_NAMES[state.comboLine] + ' (10% off en la 2da línea)';
-      } else {
-        summaryCombo.hidden = true;
-      }
+      summaryImpl.textContent = 'USD ' + fmt(totals.impl);
+      summaryMensual.textContent = 'USD ' + fmt(totals.mensual) + '/mes';
+      renderBreakdown(summaryBreakdown, totals);
     }
 
     function selectLine(line, jumpToStep2) {
@@ -434,26 +612,9 @@
       var step1Next = root.querySelector('[data-step="1"] [data-next]');
       if (step1Next) step1Next.disabled = false;
 
-      // La linea principal no puede combinarse consigo misma: se oculta esa opcion del paso 3.
-      comboChoices.forEach(function (btn) {
-        var isPrimary = btn.getAttribute('data-choose-combo') === line;
-        btn.hidden = isPrimary;
-        if (isPrimary && state.comboLine === line) {
-          state.comboLine = null;
-          btn.setAttribute('aria-pressed', 'false');
-        }
-      });
 
       updateSummary();
       if (jumpToStep2) goToStep(2);
-    }
-
-    function selectCombo(line) {
-      state.comboLine = line;
-      comboChoices.forEach(function (btn) {
-        btn.setAttribute('aria-pressed', btn.getAttribute('data-choose-combo') === line ? 'true' : 'false');
-      });
-      updateSummary();
     }
 
     function renderResult() {
@@ -462,52 +623,26 @@
       var totals = computeTotals(linePanel);
 
       resultLinePlan.textContent = LINE_NAMES[state.line];
-      resultImpl.textContent = '$U ' + fmt(totals.impl) + ' (~USD ' + fmt(Math.round(totals.impl / 40)) + ')';
-      resultMensual.textContent = '$U ' + fmt(totals.mensual) + '/mes (~USD ' + fmt(Math.round(totals.mensual / 40)) + ')';
+      resultImpl.textContent = 'USD ' + fmt(totals.impl);
+      resultMensual.textContent = 'USD ' + fmt(totals.mensual) + '/mes';
 
-      resultExtras.innerHTML = '';
-      totals.extras.forEach(function (extra) {
-        var li = document.createElement('li');
-        li.textContent = extra.name + ' — +$U ' + fmt(extra.price) + (extra.type === 'mensual' ? '/mes' : ' único');
-        resultExtras.appendChild(li);
-      });
+      renderBreakdown(resultExtras, totals);
 
-      var waLines = [
-        'Hola CUADRA! Armé mi plan en la web:',
-        LINE_NAMES[state.line] + ' (base + ' + totals.extras.length + ' extra' + (totals.extras.length === 1 ? '' : 's') + ')'
-      ];
-      totals.extras.forEach(function (extra) {
-        waLines.push('- ' + extra.name);
-      });
-      waLines.push('Implementación: $U ' + fmt(totals.impl) + ' único');
-      waLines.push('Mensual: $U ' + fmt(totals.mensual) + '/mes');
-
-      if (state.combo && state.comboLine) {
-        resultCombo.hidden = false;
-        resultCombo.textContent = 'También me interesa combinar con ' + LINE_NAMES[state.comboLine] + ' — se cotiza con 10% de descuento sobre la segunda línea, a confirmar por WhatsApp.';
-        waLines.push('También quiero cotizar un combo con ' + LINE_NAMES[state.comboLine] + '.');
-      } else {
-        resultCombo.hidden = true;
-      }
-      waLines.push('¿Seguimos?');
-      if (waResultLink) {
-        waResultLink.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waLines.join('\n'));
-      }
+      lastTotals = totals;
+      resetPlanForm();
     }
 
     function resetAll(skipScroll) {
-      state = { line: null, combo: false, comboLine: null };
+      state = { line: null };
       lineChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); });
-      comboChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); btn.hidden = false; });
       linePanels.forEach(function (panel) {
         panel.hidden = true;
         panel.querySelectorAll('[data-feature]').forEach(function (input) { input.checked = false; });
         panel.querySelectorAll('[data-qty]').forEach(function (input) { input.value = 1; });
       });
-      if (comboToggle) comboToggle.checked = false;
-      if (comboChoicesWrap) comboChoicesWrap.hidden = true;
       summaryEmpty.hidden = false;
       summaryContent.hidden = true;
+      resetPlanForm();
       var step1Next = root.querySelector('[data-step="1"] [data-next]');
       if (step1Next) step1Next.disabled = true;
       goToStep(1, skipScroll);
@@ -516,7 +651,8 @@
     // ---- Eventos ----
     lineChoices.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        selectLine(btn.getAttribute('data-choose-line'), false);
+        // Al elegir una linea se avanza solo al paso 2 (sin boton "Continuar").
+        selectLine(btn.getAttribute('data-choose-line'), true);
       });
     });
 
@@ -534,34 +670,6 @@
       updateSummary();
     });
 
-    if (comboToggle) {
-      comboToggle.addEventListener('change', function () {
-        state.combo = comboToggle.checked;
-        if (comboChoicesWrap) comboChoicesWrap.hidden = !comboToggle.checked;
-        if (!comboToggle.checked) {
-          state.comboLine = null;
-          comboChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); });
-        }
-        updateSummary();
-      });
-    }
-
-    comboChoices.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        selectCombo(btn.getAttribute('data-choose-combo'));
-      });
-    });
-
-    root.querySelector('[data-step="1"] [data-next]').addEventListener('click', function () {
-      if (state.line) goToStep(2);
-    });
-
-    var nextToExtras = root.querySelector('[data-next-to-extras]');
-    if (nextToExtras) {
-      nextToExtras.addEventListener('click', function () {
-        goToStep(3);
-      });
-    }
 
     root.querySelectorAll('[data-back]').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -573,18 +681,119 @@
     if (nextToResult) {
       nextToResult.addEventListener('click', function () {
         renderResult();
-        goToStep(4);
+        goToStep(3);
       });
     }
 
-    var restartBtn = root.querySelector('[data-restart]');
-    if (restartBtn) restartBtn.addEventListener('click', function () { resetAll(); });
+    // ---- Formulario de datos del plan (paso 3): campos segun la linea elegida ----
+    function syncPlanForm() {
+      if (!planForm) return;
+      planForm.querySelectorAll('[data-lines]').forEach(function (group) {
+        var on = group.getAttribute('data-lines').split(' ').indexOf(state.line) !== -1;
+        group.hidden = !on;
+        group.querySelectorAll('input, select, textarea').forEach(function (field) {
+          field.disabled = !on;
+        });
+      });
+    }
+
+    function resetPlanForm() {
+      if (!planForm) return;
+      planForm.hidden = true;
+      if (resultActions) resultActions.hidden = false;
+      if (planFormStatus) planFormStatus.innerHTML = '';
+    }
+
+    function collectPlanFields() {
+      var fields = { 'Plan': LINE_NAMES[state.line] };
+      if (lastTotals) {
+        fields['Extras elegidos'] = lastTotals.extras.length
+          ? lastTotals.extras.map(function (x) {
+              return extraLabel(x) + ' (' + extraAmount(x) + ')';
+            }).join('; ')
+          : 'Solo la base';
+        fields['Implementación'] = 'USD ' + fmt(lastTotals.impl);
+        fields['Mantenimiento y soporte'] = 'USD ' + fmt(lastTotals.mensual) + '/mes';
+      }
+      planForm.querySelectorAll('input, select, textarea').forEach(function (field) {
+        if (field.disabled || field.name === '_honey') return;
+        var value = field.value.trim();
+        if (!value) return;
+        fields[field.getAttribute('data-label') || field.name] = value;
+      });
+      return fields;
+    }
+
+    if (openPlanFormBtn && planForm) {
+      openPlanFormBtn.addEventListener('click', function () {
+        syncPlanForm();
+        planForm.hidden = false;
+        if (resultActions) resultActions.hidden = true;
+        var first = planForm.querySelector('input:not([disabled]), select:not([disabled])');
+        planForm.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+        if (first) first.focus({ preventScroll: true });
+      });
+
+      planForm.querySelectorAll('[data-plan-form-back]').forEach(function (btn) {
+        btn.addEventListener('click', resetPlanForm);
+      });
+
+      planForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (planFormStatus) planFormStatus.innerHTML = '';
+        if (!planForm.checkValidity()) {
+          planForm.reportValidity();
+          return;
+        }
+        var honeypot = planForm.querySelector('[name="_honey"]');
+        var fields = collectPlanFields();
+        var business = fields['Nombre del negocio'] || fields['Nombre y apellido'] || '';
+        var subject = 'Plan CUADRA: ' + LINE_NAMES[state.line] + (business ? ' — ' + business : '');
+        var submitBtn = planForm.querySelector('[type="submit"]');
+
+        function showSuccess(isBot) {
+          planForm.hidden = true;
+          if (planFormStatus) {
+            planFormStatus.innerHTML = '<div class="form-success" role="status"><strong>¡Recibimos tu plan!</strong> ' +
+              'Te respondemos a <strong>' + escapeHtml(fields['Email'] || '') + '</strong> para confirmar contenido, alcance y precio final. ' +
+              '<span data-copy-note></span> ' +
+              '<button type="button" class="btn btn--secondary" data-restart>Armar otro plan</button></div>';
+            if (isBot === true) return;
+            sendCopyToClient('plan', fields).then(function (sent) {
+              var note = planFormStatus.querySelector('[data-copy-note]');
+              if (sent && note) note.innerHTML = copyNote(fields['Email'] || '');
+            });
+          }
+        }
+
+        if (honeypot && honeypot.value) {
+          showSuccess(true);
+          return;
+        }
+
+        var originalLabel = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Enviando…';
+
+        sendToOwner(fields, subject).then(function () { showSuccess(false); }).catch(function () {
+          if (planFormStatus) planFormStatus.innerHTML = failureBox(fields, subject);
+        }).then(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        });
+      });
+    }
+
+    // "Armar otro plan" aparece dinamicamente: se usa delegacion de eventos.
+    root.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('[data-restart]')) resetAll();
+    });
 
     // Links dentro de la misma pagina (ej. las tarjetas de "Soluciones") a #planes-tienda, etc.
     // Un <a href="#planes-tienda"> normal solo mueve el hash: no dispara el deep-link de abajo
     // (eso corre una sola vez al cargar la pagina), asi que preseleccionamos la linea a mano.
     document.querySelectorAll('a[href^="#planes-"]').forEach(function (link) {
-      var m = link.getAttribute('href').match(/^#planes-(agenda|tienda|resto|consulta)$/);
+      var m = link.getAttribute('href').match(/^#planes-(agenda|tienda|resto|consulta|landing|institucional)$/);
       if (!m) return;
       link.addEventListener('click', function (e) {
         e.preventDefault();
@@ -600,8 +809,26 @@
     // cargaba, ya que ahora el configurador esta mas abajo en la pagina). Si hay hash, selectLine()
     // de abajo si hace scroll a proposito, porque ese es un deep-link real.
     resetAll(true);
+    // Preseleccion desde otras paginas: ?linea=agenda o enlaces con data-preselect-line.
+    function preselect(line) {
+      if (!LINE_NAMES[line]) return;
+      selectLine(line, true);
+    }
+
+    document.querySelectorAll('[data-preselect-line]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        preselect(a.getAttribute('data-preselect-line'));
+      });
+    });
+
+    try {
+      var qLine = new URLSearchParams(window.location.search).get('linea');
+      if (qLine) preselect(qLine);
+    } catch (err) { /* sin URLSearchParams: se ignora */ }
+
     var hashId = window.location.hash.replace('#', '');
-    var hashMatch = hashId.match(/^planes-(agenda|tienda|resto|consulta)$/);
+    var hashMatch = hashId.match(/^planes-(agenda|tienda|resto|consulta|landing|institucional)$/);
     if (hashMatch) {
       selectLine(hashMatch[1], true);
       history.replaceState(null, '', '#' + hashId);
@@ -610,11 +837,33 @@
 
 
   // ---- Init all ----
+  // ---- Posicion de scroll al cambiar de pagina ----
+  // Sin hash: siempre arriba (el navegador a veces restaura una posicion de la
+  // pagina anterior). Con hash: salto inmediato al ancla, descontando la nav fija
+  // (scroll-padding-top en base.css/plano.css).
+  function initPageScroll() {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    var root = document.documentElement;
+    root.style.scrollBehavior = 'auto';
+    var id = decodeURIComponent(window.location.hash.replace('#', ''));
+    var target = id ? document.getElementById(id) : null;
+    if (target) {
+      target.scrollIntoView();
+    } else if (!id) {
+      window.scrollTo(0, 0);
+    }
+    window.requestAnimationFrame(function () {
+      root.style.scrollBehavior = '';
+    });
+  }
+
   function init() {
+    initPageScroll();
     initNav();
     initActiveNav();
     initScrollReveal();
     initForm();
+    initContactDialog();
     initPlanConfigurator();
     initSmoothScroll();
   }

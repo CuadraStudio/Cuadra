@@ -1,0 +1,17 @@
+name = "cuadra-confirm-email"
+main = "index.js"
+compatibility_date = "2026-09-01"
+
+# Opcional pero recomendado: limite de envios por IP y por destinatario.
+# Crear el namespace con:  npx wrangler kv namespace create RATE
+# y pegar abajo el id que devuelve (descomentar las 3 lineas).
+# [[kv_namespaces]]
+# binding = "RATE"
+# id = "PEGAR_ID_AQUI"
+
+[vars]
+FROM_EMAIL = "CUADRA <no-reply@cuadrastudio.uy>"
+REPLY_TO = "cuadrastudio.uy@gmail.com"
+ALLOWED_ORIGINS = "https://cuadrastudio.uy,https://www.cuadrastudio.uy"
+
+# La clave de Resend NO va aca: se guarda como secreto (ver README.md).

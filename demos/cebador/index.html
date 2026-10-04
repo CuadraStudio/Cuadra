@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cebador | Todo para el mate</title>
+  <meta name="description" content="Mates, bombillas, termos y yerba artesanal. Catálogo con variantes y stock, carrito y pedido. Demo ficticia de CUADRA Tienda.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F4C430">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preload" href="fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="cab">
+  <div class="wrap cab__in">
+    <a class="logo" href="./">cebador</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="catalogo/">Catálogo</a>
+      <a class="carro" href="carrito/" data-carrito-enlace aria-label="Carrito, 0 productos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="carro__cant" data-carrito-cant hidden>0</span><span>Carrito</span></a>
+    </nav>
+  </div>
+</header>
+<main id="contenido">
+  <section class="wrap portada" aria-labelledby="titulo">
+    <h1 class="portada__nombre" id="titulo">cebador</h1>
+    <div class="portada__fila">
+      <div>
+        <p class="portada__bajada">Mates, bombillas y termos para tomarse en serio.</p>
+        <div class="portada__acciones">
+          <a class="btn" href="catalogo/">Ver el catálogo</a>
+          <a class="link" href="producto/?id=kit-inicio">Armá tu primer kit</a>
+        </div>
+      </div>
+      <div class="bloques" data-bloques></div>
+    </div>
+  </section>
+
+  <section class="wrap seccion" aria-labelledby="pedidos-t">
+    <div class="seccion__cab"><h2 id="pedidos-t">Lo más pedido</h2><a class="link" href="catalogo/">Ver todo</a></div>
+    <div class="grilla" data-mas-pedidos><noscript>Activá JavaScript para ver el catálogo de esta demo.</noscript></div>
+  </section>
+  <section class="wrap info" aria-label="Cómo comprar">
+  <div><h2>Elegís la variante exacta</h2><p>Color, material y tamaño. Ves al instante si hay stock de esa combinación y cuántas unidades quedan.</p></div>
+  <div><h2>Pagás cuando te llega</h2><p>Transferencia o efectivo contra entrega. Te mandamos los datos por email al hacer el pedido.</p></div>
+  <div><h2>Retirás o te lo enviamos</h2><p>Retiro gratis en Cordón. Envíos a Montevideo y al interior. Cambios dentro de los 30 días.</p></div>
+</section>
+</main>
+<footer class="pie">
+  <div class="wrap pie__in">
+    <p>Cebador es un negocio ficticio. Demo de CUADRA Tienda, diseñada a medida.</p>
+    <p><a href="https://cuadrastudio.uy">cuadrastudio.uy</a></p>
+  </div>
+</footer>
+<script src="js/datos.js" defer></script>
+<script src="js/arte.js" defer></script>
+<script src="js/carro.js" defer></script>
+<script src="js/vista.js" defer></script>
+  <script src="js/home.js" defer></script>
+</body>
+</html>

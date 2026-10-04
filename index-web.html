@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CUADRA | Web, sistema y WhatsApp para tu negocio</title>
-  <meta name="description" content="Web, sistema integrado y WhatsApp automatizado para negocios locales en un servicio mensual. Planes desde $U 990. Agenda, Tienda, Restó y Consulta.">
+  <script src="/js/site-config.js"></script>
+  <meta name="description" content="Web, sistema integrado y WhatsApp automatizado para negocios locales, con mantenimiento y soporte incluidos. Planes desde USD 10/mes. Agenda, Tienda, Restó y Consulta.">
   <link rel="canonical" href="https://cuadrastudio.uy/index-web.html">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#0F1111">
@@ -12,8 +13,8 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="CUADRA | Web, sistema y WhatsApp para tu negocio">
-  <meta property="og:description" content="Web profesional, sistema integrado (agenda, pedidos, carta, consultas) y WhatsApp automatizado para negocios locales. Planes desde $U 990.">
-  <meta property="og:url" content="https://cuadrastudio.uy/index-web.html">
+  <meta property="og:description" content="Web profesional, sistema integrado (agenda, pedidos, carta, consultas) y WhatsApp automatizado para negocios locales. Planes desde USD 10/mes.">
+  <meta property="og:url" content="https://cuadrastudio.uy/">
   <meta property="og:locale" content="es_UY">
   <meta property="og:image" content="https://cuadrastudio.uy/img/og-image.png?v=20260914">
   <meta property="og:image:width" content="1200">
@@ -21,7 +22,7 @@
   <meta property="og:image:alt" content="Logo y nombre de CUADRA, desarrollo web para negocios locales">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="CUADRA | Web, sistema y WhatsApp para tu negocio">
-  <meta name="twitter:description" content="Web profesional, sistema integrado (agenda, pedidos, carta, consultas) y WhatsApp automatizado para negocios locales. Planes desde $U 990.">
+  <meta name="twitter:description" content="Web profesional, sistema integrado (agenda, pedidos, carta, consultas) y WhatsApp automatizado para negocios locales. Planes desde USD 10/mes.">
   <meta name="twitter:image" content="https://cuadrastudio.uy/img/og-image.png?v=20260914">
 
   <!-- Favicon -->
@@ -40,8 +41,9 @@
   <link rel="stylesheet" href="css/pages.css?v=20260918b">
   <link rel="stylesheet" href="css/animations.css?v=20260914">
   <link rel="stylesheet" href="css/home-editorial.css?v=20260921c">
+  <link rel="stylesheet" href="css/plano.css?v=20260930">
 </head>
-<body class="home-editorial">
+<body class="home-editorial plano-home">
 
   <!-- Skip link -->
   <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
@@ -54,10 +56,11 @@
       </a>
 
       <div class="ed-nav__links">
-        <a href="/productos.html" class="nav__link">Productos</a>
-        <a href="/proyectos.html" class="nav__link">Proyectos</a>
-        <a href="/diferencias.html" class="nav__link">Diferencias</a>
+        <a href="/productos.html" class="nav__link">Planes</a>
+        <a href="/#demos" class="nav__link">Demos</a>
+        <a href="/diferencias.html" class="nav__link">Nosotros</a>
         <a href="/contacto.html" class="nav__link">Contacto</a>
+        <a href="/armar-plan.html" class="nav__cta">Armar mi plan</a>
       </div>
 
 
@@ -70,10 +73,11 @@
 
     <!-- Mobile menu -->
     <div class="nav__mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu de navegacion">
-      <a href="/productos.html" class="nav__mobile-link">Productos</a>
-      <a href="/proyectos.html" class="nav__mobile-link">Proyectos</a>
-      <a href="/diferencias.html" class="nav__mobile-link">Diferencias</a>
+      <a href="/productos.html" class="nav__mobile-link">Planes</a>
+      <a href="/#demos" class="nav__mobile-link">Demos</a>
+      <a href="/diferencias.html" class="nav__mobile-link">Nosotros</a>
       <a href="/contacto.html" class="nav__mobile-link">Contacto</a>
+      <a href="/armar-plan.html" class="nav__mobile-link nav__mobile-link--cta">Armar mi plan</a>
     </div>
   </nav>
 
@@ -88,69 +92,147 @@
     <main id="contenido" tabindex="-1">
 
     <!-- Hero -->
-    <header class="ed-hero">
+    <header class="ed-hero plano-hero">
+      <div class="plano-hero__grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <svg class="plano-hero__mark" viewBox="0 0 285 77.73" aria-hidden="true" focusable="false"><g transform="translate(-6.5908,-64.092)"><path pathLength="1" d="M 6.5908052,64.091977 V 90.000002 H 32.498835 58.409197 84.317231 110.2276 v 25.910348 25.90802 h 25.90802 V 115.91035 90.000002 64.091977 H 110.2276 84.317231 58.409197 32.498835 Z"/><path pathLength="1" d="M 162.04598,64.091977 v 25.908025 h 25.90804 25.91036 25.90804 25.91036 25.90802 V 64.091977 h -25.90802 -25.91036 -25.90804 -25.91036 z"/><path pathLength="1" d="M 162.04598,115.91035 v 25.90802 h 25.90804 25.91036 25.90804 25.91036 25.90802 v -25.90802 h -25.90802 -25.91036 -25.90804 -25.91036 z"/></g></svg>
       <div class="ed-container">
         <div class="ed-hero__badge pill reveal">
           <span class="ed-hero__badge-dot" aria-hidden="true"></span>
           Estudio de desarrollo web · Montevideo, Uruguay
         </div>
 
-        <h1 class="ed-hero__title reveal">Un servicio, <em>todo lo que tu negocio necesita.</em></h1>
+        <h1 class="ed-hero__title plano-hero__title reveal">Un servicio, <em>todo lo que tu negocio necesita.</em></h1>
 
         <div class="ed-hero__row">
-          <p class="ed-hero__subtitle reveal">Desarrollamos sitios web profesionales para negocios locales. Web, sistema integrado y WhatsApp, todo junto, en un servicio mensual. Sin complicaciones, sin comisiones, sin sorpresas.</p>
-          <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20los%20planes%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="ed-hero__btn reveal">Hablar por WhatsApp ↗</a>
+          <p class="ed-hero__subtitle reveal">Desarrollamos sitios web profesionales para negocios locales. Web, sistema integrado y WhatsApp, todo junto, con mantenimiento y soporte incluidos. Sin complicaciones, sin comisiones, sin sorpresas.</p>
+          <div class="plano-hero__ctas reveal"><a href="/armar-plan.html" class="ed-hero__btn">Armar mi plan</a><a href="/contacto.html" class="ed-hero__link">Prefiero consultar primero ↗</a></div>
         </div>
 
         <ul class="ed-hero__badges reveal">
-          <li class="pill">4 líneas de producto</li>
-          <li class="pill">Desde $U 990/mes</li>
-          <li class="pill">Soporte por WhatsApp incluido</li>
+          <li class="pill">Landing desde USD 200</li>
+          <li class="pill">Desde USD 10/mes</li>
+          <li class="pill">Seña 50% por transferencia</li>
         </ul>
 
         <p class="ed-hero__coords">34.90°S / 56.16°W · Montevideo, Uruguay</p>
       </div>
     </header>
 
+    <!-- Presencia web: Landing + Institucional primero -->
+    <section id="web" class="ed-section section--mist plano-band plano-band--mist" aria-labelledby="web-title">
+      <div class="ed-container">
+        <div class="ed-section__head">
+          <span class="ed-section__index">01 —</span>
+          <h2 class="ed-section__label" id="web-title">Tu web, lista para salir</h2>
+        </div>
+        <p class="ed-section__lede reveal">Empezá por lo esencial: una web profesional, a medida, con dominio propio, hosting y WhatsApp. Precio cerrado, sin sorpresas.</p>
+
+        <div class="plano-web reveal">
+          <article class="plano-web__card">
+            <p class="plano-web__eyebrow">Landing</p>
+            <h3 class="plano-web__title">CUADRA Landing</h3>
+            <p class="plano-web__text">Una página con todo lo esencial: quién sos, qué ofrecés y cómo contactarte.</p>
+            <ul class="plano-web__list">
+              <li>1 página a medida, responsive</li>
+              <li>Dominio propio, hosting y SSL</li>
+              <li>Botón de WhatsApp y SEO básico</li>
+            </ul>
+            <p class="plano-web__price"><span>USD 200</span> implementación <em>+ USD 10/mes de mantenimiento y soporte</em></p>
+            <a href="/armar-plan.html?linea=landing" class="ed-hero__btn">Armar mi plan</a>
+          </article>
+          <article class="plano-web__card plano-web__card--featured">
+            <p class="plano-web__eyebrow">Institucional</p>
+            <h3 class="plano-web__title">CUADRA Institucional</h3>
+            <p class="plano-web__text">Varias páginas para contar todo: quiénes son, qué hacen y dónde están.</p>
+            <ul class="plano-web__list">
+              <li>Hasta 5 páginas a medida, responsive</li>
+              <li>Dominio propio, hosting y SSL</li>
+              <li>Formulario de contacto, WhatsApp y SEO</li>
+            </ul>
+            <p class="plano-web__price"><span>USD 325</span> implementación <em>+ USD 15/mes de mantenimiento y soporte</em></p>
+            <a href="/armar-plan.html?linea=institucional" class="ed-hero__btn">Armar mi plan</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- Lineas de producto -->
     <section id="lineas" class="ed-section" aria-labelledby="lineas-title">
       <div class="ed-container">
         <div class="ed-section__head">
-          <span class="ed-section__index">01 —</span>
-          <h2 class="ed-section__label" id="lineas-title">Líneas de producto</h2>
+          <span class="ed-section__index">02 —</span>
+          <h2 class="ed-section__label" id="lineas-title">¿Necesitás reservas, pedidos o carta?</h2>
         </div>
-        <p class="ed-section__lede reveal">CUADRA es el servicio integral para negocios locales que necesitan presencia online y operación digital: web profesional, sistema integrado (agenda, pedidos, carta, consultas), WhatsApp automatizado y soporte humano.</p>
+        <p class="ed-section__lede reveal">Si tu negocio necesita algo más que una web, estas cuatro líneas suman un sistema a medida: web profesional, sistema integrado (agenda, pedidos, carta, consultas), WhatsApp automatizado y soporte humano.</p>
 
         <div class="ed-lettered ed-lettered--4 reveal">
-          <a href="/productos.html#planes-agenda" class="ed-lettered__item">
+          <a href="/armar-plan.html?linea=agenda" class="ed-lettered__item">
             <span class="ed-lettered__badge">01</span>
             <h3 class="ed-lettered__title">CUADRA Agenda</h3>
             <p class="ed-lettered__text">Tu agenda trabaja sola. Servicios con turnos: barberías, peluquerías, estéticas, masajes, tatuajes, gimnasios, clínicas.</p>
           </a>
-          <a href="/productos.html#planes-tienda" class="ed-lettered__item">
+          <a href="/armar-plan.html?linea=tienda" class="ed-lettered__item">
             <span class="ed-lettered__badge">02</span>
             <h3 class="ed-lettered__title">CUADRA Tienda</h3>
             <p class="ed-lettered__text">Tu catálogo en Google, tus pedidos por WhatsApp. Comercios con catálogo.</p>
           </a>
-          <a href="/productos.html#planes-resto" class="ed-lettered__item">
+          <a href="/armar-plan.html?linea=resto" class="ed-lettered__item">
             <span class="ed-lettered__badge">03</span>
             <h3 class="ed-lettered__title">CUADRA Restó</h3>
             <p class="ed-lettered__text">Tu carta digital, tus mesas reservadas. Gastronomía.</p>
           </a>
-          <a href="/productos.html#planes-consulta" class="ed-lettered__item">
+          <a href="/armar-plan.html?linea=consulta" class="ed-lettered__item">
             <span class="ed-lettered__badge">04</span>
             <h3 class="ed-lettered__title">CUADRA Consulta</h3>
             <p class="ed-lettered__text">Tu presencia profesional, seria y funcionando. Profesionales.</p>
+          </a>
+        </div>
+              </div>
+    </section>
+
+    <!-- Demos -->
+    <section id="demos" class="ed-section" aria-labelledby="demos-title">
+      <div class="ed-container">
+        <div class="ed-section__head">
+          <span class="ed-section__index">03 —</span>
+          <h2 class="ed-section__label" id="demos-title">Mirá cómo quedaría</h2>
+        </div>
+        <p class="ed-section__lede reveal">Cuatro negocios ficticios, cuatro diseños hechos a mano. Cada demo funciona de verdad: reservá una mesa, armá un pedido, pedí un turno o una consulta. No usamos plantillas: cada web se diseña a medida para el negocio.</p>
+
+        <div class="ed-lettered ed-lettered--4 reveal">
+          <a href="/demos/cantina-bianchi/" class="ed-lettered__item" target="_blank" rel="noopener">
+            <span class="ed-lettered__badge">Restó</span>
+            <h3 class="ed-lettered__title">Cantina Bianchi</h3>
+            <p class="ed-lettered__text">Carta con filtros, pizarra del día y reserva de mesa. Una cantina de barrio.</p>
+            <p class="ed-lettered__text">Ver demo ↗</p>
+          </a>
+          <a href="/demos/cebador/" class="ed-lettered__item" target="_blank" rel="noopener">
+            <span class="ed-lettered__badge">Tienda</span>
+            <h3 class="ed-lettered__title">Cebador</h3>
+            <p class="ed-lettered__text">Catálogo con variantes y stock, carrito y pedido. Mates, bombillas y yerba.</p>
+            <p class="ed-lettered__text">Ver demo ↗</p>
+          </a>
+          <a href="/demos/hierro/" class="ed-lettered__item" target="_blank" rel="noopener">
+            <span class="ed-lettered__badge">Agenda</span>
+            <h3 class="ed-lettered__title">Barbería Hierro</h3>
+            <p class="ed-lettered__text">Turnos libres por barbero y reserva con ticket numerado.</p>
+            <p class="ed-lettered__text">Ver demo ↗</p>
+          </a>
+          <a href="/demos/olmos/" class="ed-lettered__item" target="_blank" rel="noopener">
+            <span class="ed-lettered__badge">Consulta</span>
+            <h3 class="ed-lettered__title">Estudio Olmos</h3>
+            <p class="ed-lettered__text">Selector de caso, honorarios claros y pedido de consulta. Un estudio contable.</p>
+            <p class="ed-lettered__text">Ver demo ↗</p>
           </a>
         </div>
       </div>
     </section>
 
     <!-- Como trabajamos -->
-    <section id="proceso" class="ed-section" aria-labelledby="proceso-title">
+    <section id="proceso" class="ed-section plano-band plano-band--mist" aria-labelledby="proceso-title">
       <div class="ed-container">
         <div class="ed-section__head">
-          <span class="ed-section__index">02 —</span>
+          <span class="ed-section__index">04 —</span>
           <h2 class="ed-section__label" id="proceso-title">Cómo trabajamos</h2>
         </div>
         <p class="ed-section__lede reveal">Del primer mensaje a tu web funcionando, sin vueltas.</p>
@@ -160,7 +242,7 @@
           <div class="ed-stepper__item">
             <span class="ed-stepper__circle">1</span>
             <h3 class="ed-stepper__title">Elegís tu línea y tu plan</h3>
-            <p class="ed-stepper__text">Armás tu plan en el configurador: tu línea de negocio, qué incluye la base y qué extras sumás. El total se arma solo.</p>
+            <p class="ed-stepper__text">Armás tu plan en el <a href="/armar-plan.html">configurador</a>: tu línea de negocio, qué incluye la base y qué extras sumás. El total se arma solo y lo enviás por email.</p>
           </div>
           <div class="ed-stepper__item">
             <span class="ed-stepper__circle">2</span>
@@ -176,68 +258,11 @@
       </div>
     </section>
 
-    <!-- Demos reales -->
-    <section id="demos" class="ed-section" aria-labelledby="demos-title">
-      <div class="ed-container">
-        <div class="ed-section__head">
-          <span class="ed-section__index">03 —</span>
-          <h2 class="ed-section__label" id="demos-title">Demos reales, navegables</h2>
-        </div>
-        <p class="ed-section__lede reveal">Antes de contratar, mirá cómo se ve y cómo funciona cada línea en un sitio real.</p>
-
-        <div class="grid grid--2">
-          <article class="card card--project reveal" style="--reveal-index: 0">
-            <span class="project-card__badge">Demo de producto</span>
-            <img src="img/demoagenda.png" alt="Screenshot del sitio de Estudio Trazo, demo de producto de CUADRA Agenda, barbería ficticia en Montevideo" class="card__image" loading="lazy">
-            <div class="project-card__body">
-              <h3 class="card__title">Estudio Trazo</h3>
-              <p class="card__desc">CUADRA Agenda — reserva de turnos con horarios en vivo y confirmación automática.</p>
-              <div class="project-card__pills"><span class="pill">Agenda</span></div>
-              <a href="/demos/estudiotrazo/" target="_blank" rel="noopener noreferrer" class="card__link card__link--demo">Ver demo <span class="card__link-arrow" aria-hidden="true">→</span></a>
-            </div>
-          </article>
-
-          <article class="card card--project reveal" style="--reveal-index: 1">
-            <span class="project-card__badge">Demo de producto</span>
-            <img src="img/demotienda.png" alt="Screenshot del sitio de Vera Store, demo de producto de CUADRA Tienda, boutique ficticia en Pocitos, Montevideo" class="card__image" loading="lazy">
-            <div class="project-card__body">
-              <h3 class="card__title">Vera Store</h3>
-              <p class="card__desc">CUADRA Tienda — catálogo con variantes y stock, carrito y pedidos por WhatsApp.</p>
-              <div class="project-card__pills"><span class="pill">Tienda</span></div>
-              <a href="/demos/verastore/" target="_blank" rel="noopener noreferrer" class="card__link card__link--demo">Ver demo <span class="card__link-arrow" aria-hidden="true">→</span></a>
-            </div>
-          </article>
-
-          <article class="card card--project reveal" style="--reveal-index: 2">
-            <span class="project-card__badge">Demo de producto</span>
-            <img src="img/demoresto.png" alt="Screenshot del sitio de El Fogatero, demo de producto de CUADRA Restó, parrilla ficticia en el Cordón, Montevideo" class="card__image" loading="lazy">
-            <div class="project-card__body">
-              <h3 class="card__title">El Fogatero</h3>
-              <p class="card__desc">CUADRA Restó — carta digital y reservas de mesa con cupos por franja vía WhatsApp.</p>
-              <div class="project-card__pills"><span class="pill">Restó</span></div>
-              <a href="/demos/elfogatero/" target="_blank" rel="noopener noreferrer" class="card__link card__link--demo">Ver demo <span class="card__link-arrow" aria-hidden="true">→</span></a>
-            </div>
-          </article>
-
-          <article class="card card--project reveal" style="--reveal-index: 3">
-            <span class="project-card__badge">Demo de producto</span>
-            <img src="img/democonsulta.png" alt="Screenshot del sitio de Estudio Arroyo, demo de producto de CUADRA Consulta, estudio jurídico ficticio en Ciudad Vieja, Montevideo" class="card__image" loading="lazy">
-            <div class="project-card__body">
-              <h3 class="card__title">Estudio Arroyo</h3>
-              <p class="card__desc">CUADRA Consulta — agendado de consultas por WhatsApp con panel de administración.</p>
-              <div class="project-card__pills"><span class="pill">Consulta</span></div>
-              <a href="/demos/estudioarroyo/" target="_blank" rel="noopener noreferrer" class="card__link card__link--demo">Ver demo <span class="card__link-arrow" aria-hidden="true">→</span></a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <!-- FAQ -->
-    <section id="faq" class="ed-section" aria-labelledby="faq-title">
+    <section id="faq" class="ed-section plano-band plano-band--white" aria-labelledby="faq-title">
       <div class="ed-container">
         <div class="ed-section__head">
-          <span class="ed-section__index">04 —</span>
+          <span class="ed-section__index">05 —</span>
           <h2 class="ed-section__label" id="faq-title">Preguntas frecuentes</h2>
         </div>
 
@@ -256,24 +281,24 @@
           </details>
           <details class="ed-faq__item">
             <summary>¿Soporte técnico incluido?</summary>
-            <p>Sí. Todos los planes incluyen soporte humano por WhatsApp. Los planes Profesional y Premium tienen soporte prioritario, sin costo adicional.</p>
+            <p>Sí. Todos los planes incluyen soporte humano por email. Los planes Profesional y Premium tienen soporte prioritario, sin costo adicional.</p>
           </details>
         </div>
 
-        <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Tengo%20una%20consulta%20que%20no%20est%C3%A1%20en%20las%20preguntas%20frecuentes." target="_blank" rel="noopener noreferrer" class="ed-hero__link" style="margin-top: var(--space-6);">Tengo otra pregunta ↗</a>
+        <a href="/contacto.html" class="ed-hero__link" style="margin-top: var(--space-6);">Tengo otra pregunta ↗</a>
       </div>
     </section>
 
     </main>
 
     <!-- CTA final -->
-    <section class="ed-section" style="border-top: none; padding-top: 0;" aria-labelledby="cta-title">
-      <div class="ed-cta reveal">
-        <p class="ed-cta__eyebrow">— Hablemos</p>
+    <section class="plano-cta-band" aria-labelledby="cta-title">
+      <div class="ed-cta ed-container reveal">
+        <p class="ed-cta__eyebrow">— Empezá cuando quieras</p>
         <p class="ed-cta__title" id="cta-title">Tu web, tu sistema y WhatsApp, <em>todo junto</em>.</p>
-        <p class="ed-cta__text">Elegí el plan de tu negocio y armá tu cotización en minutos. Te mostramos exactamente qué incluye y arrancamos cuando quieras.</p>
-        <p class="ed-cta__meta">Desde $U 990/mes · Implementación + mensual, sin comisiones</p>
-        <a href="https://wa.me/59899331909?text=Hola%20CUADRA!%20Quiero%20informaci%C3%B3n%20sobre%20los%20planes%20para%20mi%20negocio." target="_blank" rel="noopener noreferrer" class="ed-cta__btn">Hablar por WhatsApp →</a>
+        <p class="ed-cta__text">Armá tu cotización en minutos y mirá qué incluye. Si preferís no decidir solo, escribinos: lo vemos juntos por email, sin compromiso.</p>
+        <p class="ed-cta__meta">Desde USD 10/mes · Implementación + mantenimiento y soporte, sin comisiones</p>
+        <div class="plano-cta-actions"><a href="/armar-plan.html" class="ed-cta__btn">Armar mi plan →</a><a href="/contacto.html" class="ed-cta__btn ed-cta__btn--ghost">Escribinos por email ↗</a></div>
       </div>
     </section>
 
@@ -289,15 +314,14 @@
           <div class="ed-footer__col">
             <p class="ed-footer__col-title">Páginas</p>
             <a href="/">Inicio</a>
-            <a href="/productos.html">Productos</a>
-            <a href="/proyectos.html">Proyectos</a>
-            <a href="/diferencias.html">Diferencias</a>
+            <a href="/productos.html">Planes</a>
+            <a href="/#demos">Demos</a>
+            <a href="/diferencias.html">Nosotros</a>
             <a href="/contacto.html">Contacto</a>
           </div>
           <div class="ed-footer__col">
-            <p class="ed-footer__col-title">Elsewhere</p>
+            <p class="ed-footer__col-title">Redes</p>
             <a href="https://www.instagram.com/cuadrastudio.uy" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
-            <a href="https://wa.me/59899331909" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
           </div>
           <div class="ed-footer__col">
             <p class="ed-footer__col-title">Legal</p>
@@ -315,9 +339,7 @@
   </div>
 
   <!-- WhatsApp floating button -->
-  <a href="https://wa.me/59899331909?text=Hola!%20Vi%20tu%20p%C3%A1gina%20y%20me%20interesa%20un%20sitio%20web" target="_blank" rel="noopener noreferrer" class="whatsapp-fab" aria-label="Contactar por WhatsApp">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C6.9 3 2.7 7.2 2.7 12.3c0 1.6.4 3.1 1.2 4.5L2.7 21.3l4.6-1.2c1.3.8 2.8 1.2 4.5 1.2 5.1 0 9.3-4.2 9.3-9.3S17.1 3 12 3z"/><path d="M9.3 8.6c-.2 0-.4.1-.5.3-.2.3-.7.9-.7 2s.7 2.4.8 2.5c.1.1 1.4 2.3 3.5 3.1 1.3.5 1.9.5 2.4.3.4-.1 1-.5 1.1-1 .1-.5.1-.9.1-1-.1-.1-.2-.2-.4-.2l-1.6-.7c-.2-.1-.4-.1-.5.1l-.6.9c-.1.2-.3.2-.5.1-.8-.3-1.6-.8-2.2-1.5-.5-.6-.9-1.3-1-1.5-.1-.2 0-.3.1-.4l.4-.5c.1-.2.1-.3 0-.4l-.3-.7c-.2-.9-.5-1.9-.7-2-.1-.2-.3-.3-.7-.3z"/></svg>
-  </a>
+  <a href="/contacto.html" class="contact-fab" aria-label="Escribirnos por email"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg></a>
 
   <script src="js/main.js?v=20260920d" defer></script>
 </body>

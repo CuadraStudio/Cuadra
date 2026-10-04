@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Producto | Cebador</title>
+  <meta name="description" content="Ficha de producto de Cebador, con variantes, stock y carrito.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F4C430">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preload" href="../fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="cab">
+  <div class="wrap cab__in">
+    <a class="logo" href="../">cebador</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="../catalogo/">Catálogo</a>
+      <a class="carro" href="../carrito/" data-carrito-enlace aria-label="Carrito, 0 productos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="carro__cant" data-carrito-cant hidden>0</span><span>Carrito</span></a>
+    </nav>
+  </div>
+</header>
+<main id="contenido" class="wrap" data-producto>
+  <p class="migas" data-migas></p>
+  <div class="prod">
+    <div class="prod__arte f-sol" data-arte></div>
+    <div>
+      <h1 class="prod__nombre" data-nombre></h1>
+      <p class="prod__precio" data-precio></p>
+      <p class="prod__desc" data-desc></p>
+      <div data-opciones></div>
+      <p class="stock" data-stock role="status"></p>
+      <div class="compra">
+        <div class="cantidad" role="group" aria-label="Cantidad">
+          <button type="button" data-menos aria-label="Una unidad menos">−</button>
+          <output data-cant aria-live="polite">1</output>
+          <button type="button" data-mas aria-label="Una unidad más">+</button>
+        </div>
+        <button class="btn" type="button" data-agregar>Agregar al carrito</button>
+      </div>
+      <p class="aviso" data-aviso role="status"></p>
+      <div class="detalles">
+        <details open><summary>Detalles</summary><ul data-detalles></ul></details>
+        <details><summary>Envíos y cambios</summary><p>Retiro gratis en Cordón. Envío en Montevideo $U 180 y al interior $U 320. Cambios dentro de los 30 días con el producto sin uso.</p></details>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="pie">
+  <div class="wrap pie__in">
+    <p>Cebador es un negocio ficticio. Demo de CUADRA Tienda, diseñada a medida.</p>
+    <p><a href="https://cuadrastudio.uy">cuadrastudio.uy</a></p>
+  </div>
+</footer>
+<script src="../js/datos.js" defer></script>
+<script src="../js/arte.js" defer></script>
+<script src="../js/carro.js" defer></script>
+<script src="../js/vista.js" defer></script>
+  <script src="../js/producto.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1170 @@
+/* ============================================
+   plano.css - Direccion artistica v2 "Plano de manzana"
+   Se carga DESPUES de home-editorial.css. Dos capas:
+   1) Fundaciones globales (botones, FAB, lettered, stepper, CTA)
+   2) Home (.plano-home): hero con grilla, bandas de superficie,
+      CTA sage full-bleed.
+   Ver docs/art-direction.md
+   ============================================ */
+
+/* ---------- 0. Utilidades ---------- */
+
+/* Marcas de esquina (derivadas del isotipo): 8 lineas finas */
+
+
+/* ---------- 1. Fundaciones globales ---------- */
+
+/* Botones: 600, tracking 0.06em (antes 0.3em+), altura comoda */
+.btn,
+.ed-hero__btn,
+.ed-cta__btn {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  min-height: 52px;
+  padding-inline: 28px;
+  border-radius: var(--radius-sm);
+}
+
+.btn--primary::after,
+.ed-hero__btn::after,
+.ed-cta__btn::after {
+  transition: transform var(--transition-fast);
+}
+
+.btn--primary:hover::after,
+.ed-hero__btn:hover::after,
+.ed-cta__btn:hover::after {
+  transform: translateX(4px);
+}
+
+/* Secundario: "encuadrar" -> las esquinas se cierran al hover */
+.btn--secondary {
+  position: relative;
+  border-color: var(--color-border-strong);
+}
+
+.btn--secondary:hover {
+  border-color: var(--color-accent-ink);
+  transform: none;
+}
+
+/* FAB de WhatsApp: circular, sage, sin tapar contenido */
+.contact-fab {
+  width: 56px;
+  height: 56px;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+  background: var(--color-sage);
+  border: 0;
+}
+
+.contact-fab svg {
+  stroke: var(--color-black);
+}
+
+.contact-fab:hover {
+  background: var(--color-mist);
+  border: 0;
+}
+
+/* Labels mas legibles sobre negro */
+.ed-section__index,
+.ed-hero__coords,
+.ed-metabar__inner {
+  color: var(--ed-ink-soft);
+}
+
+/* Titulos de tarjeta en sentence case (DESIGN.md) */
+
+
+/* Tarjetas de linea: numero grande en outline, hover con linea sage */
+.ed-lettered__item {
+  position: relative;
+  transition: background var(--transition-normal);
+}
+
+.ed-lettered__badge {
+  width: auto;
+  height: auto;
+  border: 0;
+  margin-bottom: var(--space-5);
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--ed-accent);
+}
+
+.ed-lettered__item::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--ed-accent);
+  transition: width var(--transition-normal);
+}
+
+a.ed-lettered__item:hover::before {
+  width: 100%;
+}
+
+.ed-lettered__title {
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+/* Stepper: numeros gigantes en outline conectados por hairline */
+.ed-stepper__circle {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--ed-accent);
+  font-size: 5rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-4);
+}
+
+.ed-stepper__item {
+  align-items: flex-start;
+  text-align: left;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--ed-border-strong);
+}
+
+.ed-stepper__track {
+  display: none !important;
+}
+
+.ed-stepper--5 .ed-stepper__circle {
+  width: auto;
+  height: auto;
+  font-size: 3rem;
+}
+
+/* FAQ: + rota a x, pregunta con mas presencia */
+.ed-faq__item summary {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.ed-faq__item[open] {
+  border-left: 2px solid var(--ed-accent);
+  padding-left: var(--space-4);
+}
+
+/* ---------- 2. HOME ---------- */
+
+/* 2.1 Hero: grilla visible + isotipo dibujado */
+.plano-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: var(--space-9) var(--space-10);
+}
+
+.plano-hero > .ed-container {
+  position: relative;
+  z-index: 1;
+}
+
+.plano-hero__grid {
+  position: absolute;
+  inset: 0;
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-inline: var(--space-page);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.plano-hero__grid i {
+  width: 1px;
+  height: 100%;
+  background: rgba(242, 241, 237, 0.07);
+  transform-origin: top;
+  animation: plano-line 900ms var(--ease-out) both;
+}
+
+.plano-hero__grid i:nth-child(2) { animation-delay: 120ms; }
+.plano-hero__grid i:nth-child(3) { animation-delay: 240ms; }
+.plano-hero__grid i:nth-child(4) { animation-delay: 360ms; }
+.plano-hero__grid i:nth-child(5) { animation-delay: 480ms; }
+
+@keyframes plano-line {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+.plano-hero__mark {
+  position: absolute;
+  right: -3%;
+  top: 14%;
+  width: min(58vw, 820px);
+  height: auto;
+  fill: none;
+  stroke: var(--ed-accent);
+  stroke-width: 0.12;
+  opacity: 0.6;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* El logo se dibuja figura por figura: primero la escuadra, luego cada barra.
+   Cada trazo espera a que termine el anterior (duracion + delay encadenados). */
+.plano-hero__mark path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: plano-draw 2400ms cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+
+.plano-hero__mark path:nth-child(1) { animation-delay: 500ms; }
+.plano-hero__mark path:nth-child(2) { animation-delay: 2900ms; }
+.plano-hero__mark path:nth-child(3) { animation-delay: 5300ms; }
+
+@keyframes plano-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.plano-hero__title {
+  font-size: clamp(2.75rem, 8vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  max-width: 11ch;
+}
+
+.plano-hero .ed-hero__subtitle {
+  font-size: 1.125rem;
+}
+
+.plano-hero .ed-hero__btn {
+  background: var(--ed-accent);
+  color: var(--ed-paper);
+}
+
+.plano-hero .ed-hero__btn:hover {
+  background: var(--color-mist);
+}
+
+.plano-hero .pill {
+  color: var(--ed-ink);
+  border-color: var(--ed-border-strong);
+}
+
+/* 2.2 Encabezados de seccion grandes (el h2 existente) */
+.plano-home .ed-section__head {
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.plano-home .ed-section__label {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  text-transform: none;
+}
+
+.plano-home .ed-section__index {
+  letter-spacing: 0.12em;
+}
+
+/* 2.3 Bandas de superficie (ritmo black > mist > graphite > white > sage) */
+.plano-band {
+  border-top: 0;
+}
+
+.plano-band--mist {
+  --ed-paper: #D8E2DF;
+  --ed-ink: #0F1111;
+  --ed-ink-soft: #292E2D;
+  --ed-muted: #3d4543;
+  --ed-border: rgba(15, 17, 17, 0.16);
+  --ed-border-strong: rgba(15, 17, 17, 0.32);
+  --ed-accent: #2F5A51;
+}
+
+.plano-band--graphite {
+  --ed-paper: #292E2D;
+  --ed-ink: #F2F1ED;
+  --ed-ink-soft: #C9CCCE;
+  --ed-muted: #B4B8BA;
+  --ed-border: rgba(242, 241, 237, 0.16);
+  --ed-border-strong: rgba(242, 241, 237, 0.3);
+  --ed-accent: #AFC8C2;
+}
+
+.plano-band--white {
+  --ed-paper: #F2F1ED;
+  --ed-ink: #0F1111;
+  --ed-ink-soft: #292E2D;
+  --ed-muted: #4a5150;
+  --ed-border: rgba(15, 17, 17, 0.14);
+  --ed-border-strong: rgba(15, 17, 17, 0.3);
+  --ed-accent: #2F5A51;
+}
+
+.plano-band {
+  background: var(--ed-paper);
+  color: var(--ed-ink);
+  padding-block: var(--space-10);
+}
+
+.plano-band .ed-hero__link {
+  color: var(--ed-ink);
+  border-color: var(--ed-ink);
+}
+
+.plano-band .pill {
+  color: var(--ed-ink-soft);
+  border-color: var(--ed-border-strong);
+}
+
+/* 2.5 CTA final: sage full-bleed */
+.plano-cta-band {
+  background: var(--color-sage);
+  color: var(--color-black);
+  padding-block: var(--space-10);
+}
+
+.plano-cta-band .ed-cta {
+  background: transparent;
+  padding: 0 var(--space-page);
+  margin: 0 auto;
+  max-width: 1160px;
+  border-radius: 0;
+}
+
+.plano-cta-band .ed-cta__eyebrow,
+.plano-cta-band .ed-cta__text,
+.plano-cta-band .ed-cta__meta {
+  color: #1d2322;
+}
+
+.plano-cta-band .ed-cta__title {
+  color: var(--color-black);
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  max-width: 14ch;
+}
+
+.plano-cta-band .ed-cta__title em {
+  color: var(--color-black);
+  -webkit-text-stroke: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.12em;
+}
+
+.plano-cta-band .ed-cta__btn {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.plano-cta-band .ed-cta__btn:hover {
+  background: var(--color-graphite);
+}
+
+/* 2.6 Footer: mayor aire */
+.plano-home .ed-footer {
+  border-top: 0;
+}
+
+/* ---------- 3. Movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .plano-hero__grid i {
+    animation: none;
+    transform: none;
+  }
+
+  .plano-hero__mark path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  
+}
+
+@media (max-width: 767px) {
+  .plano-hero__mark { display: none; }
+  .plano-hero__grid i:nth-child(n+4) { display: none; }
+  .plano-band,
+  .plano-cta-band { padding-block: var(--space-9); }
+  .ed-stepper__circle { font-size: 3.5rem; }
+}
+
+/* ---------- 4. Subpaginas ---------- */
+.plano-subhero {
+  padding-block: var(--space-9) var(--space-9);
+}
+
+.plano-subhero .plano-hero__title {
+  font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+  max-width: 15ch;
+}
+
+.plano-subhero .plano-hero__mark {
+  top: 12%;
+  width: min(30vw, 420px);
+}
+
+.plano-subhero .ed-hero__subtitle {
+  margin-top: var(--space-6) !important;
+  font-size: 1.125rem;
+}
+
+/* Contacto: inputs de linea inferior, panel lateral sin caja */
+.plano-page .form-input,
+.plano-page .form-textarea {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--ed-border-strong);
+  border-radius: 0;
+  padding-inline: 0;
+  font-weight: 400;
+}
+
+.plano-page .form-input:focus,
+.plano-page .form-textarea:focus {
+  border-bottom-color: var(--ed-accent);
+  box-shadow: none;
+  outline: none;
+}
+
+.plano-page .form-input:focus-visible,
+.plano-page .form-textarea:focus-visible {
+  outline: 2px solid var(--ed-accent);
+  outline-offset: 4px;
+}
+
+.plano-page .ed-contact-side {
+  background: transparent;
+  border: 0;
+  border-left: 1px solid var(--ed-border-strong);
+  border-radius: 0;
+  padding-left: var(--space-6);
+}
+
+/* Teaser: acciones en una fila */
+.plano-teaser .ed-hero__actions .btn {
+  min-width: 0;
+}
+
+.plano-teaser .plano-hero__title {
+  max-width: 14ch;
+}
+
+.plano-teaser .plano-hero__mark {
+  display: none;
+}
+
+/* ---------- 5. Ajustes de revision ---------- */
+.plano-teaser .plano-hero__title {
+  font-size: clamp(2.25rem, 6.5vw, 5.25rem);
+  max-width: 18ch;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.plano-teaser .plano-hero__grid {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .plano-teaser .ed-hero__actions {
+    flex-wrap: nowrap;
+  }
+}
+
+.plano-subhero .ed-feature__eyebrow {
+  margin-bottom: var(--space-5) !important;
+}
+
+.plano-cta-band .ed-cta__title {
+  margin-bottom: var(--space-6);
+}
+
+.plano-cta-band .ed-cta__title em {
+  text-underline-offset: 0.1em;
+}
+
+.ed-contact-grid .ed-section__label {
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* ---------- 6. Flujo de compra / navegacion ---------- */
+.ed-nav .nav__cta {
+  display: inline-flex;
+  align-items: center;
+  margin-left: var(--space-3);
+  padding: 9px 16px;
+  background: var(--color-sage);
+  color: var(--color-black);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background var(--transition-fast);
+}
+
+.ed-nav .nav__cta:hover {
+  background: var(--color-mist);
+  color: var(--color-black);
+}
+
+.nav__mobile-link--cta {
+  color: var(--color-sage);
+}
+
+.plano-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.plano-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.plano-cta-band .ed-cta__btn--ghost {
+  background: transparent;
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
+}
+
+.plano-cta-band .ed-cta__btn--ghost:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.plano-lines-note {
+  margin-top: var(--space-6);
+  color: var(--ed-ink-soft);
+}
+
+.plano-lines-note a {
+  color: var(--ed-ink);
+  border-bottom: 1px solid var(--ed-accent);
+}
+
+/* Configurador: 6 opciones en 2 columnas, web simple primero */
+.line-choice-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .line-choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- 7. Web primero (Landing / Institucional) ---------- */
+.plano-web {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-7);
+}
+
+@media (min-width: 900px) {
+  .plano-web {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.plano-web__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-7) var(--space-6);
+  background: var(--color-white);
+  border: 1px solid var(--ed-border-strong);
+}
+
+.plano-web__card--featured {
+  background: var(--color-black);
+  color: var(--color-white);
+  --ed-ink: var(--color-white);
+  --ed-ink-soft: #C9CCCE;
+  --ed-accent: var(--color-sage);
+  --ed-paper: var(--color-black);
+  --color-text: var(--color-white);
+}
+
+.plano-web__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ed-accent);
+}
+
+.plano-web__title {
+  color: var(--ed-ink);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.plano-web__text {
+  color: var(--ed-ink-soft);
+  font-size: 1.0625rem;
+  max-width: 38ch;
+}
+
+.plano-web__list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+  color: var(--ed-ink-soft);
+}
+
+.plano-web__list li::before {
+  content: '— ';
+  color: var(--ed-accent);
+}
+
+.plano-web__price {
+  margin-top: auto;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--ed-border-strong);
+  color: var(--ed-ink-soft);
+}
+
+.plano-web__price span {
+  display: block;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ed-ink);
+}
+
+.plano-web__price em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ed-ink);
+}
+
+.plano-web__card .ed-hero__btn {
+  align-self: flex-start;
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
+.plano-web__card--featured .ed-hero__btn {
+  background: var(--color-sage);
+  color: var(--color-black);
+}
+
+/* Productos: Landing / Institucional con mas presencia */
+.ed-tier__price-impl {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Logo completo en el hero: proporcion 3.67:1 */
+.plano-hero__mark {
+  right: 4%;
+  top: 14%;
+  width: min(40vw, 560px);
+  stroke-width: 1.1;
+}
+
+.plano-subhero .plano-hero__mark {
+  width: min(32vw, 440px);
+  top: 12%;
+}
+
+/* ---------- 8. Posicion de scroll al navegar ---------- */
+html {
+  scroll-padding-top: 128px; /* nav 72 + metabar */
+}
+
+/* Productos: Landing / Institucional destacadas sobre las 4 lineas */
+.ed-tier--web {
+  background: var(--color-white);
+  border-color: var(--color-white);
+  --ed-ink: var(--color-black);
+  --ed-ink-soft: #292E2D;
+  --ed-muted: #3d4543;
+  --ed-accent: #2F5A51;
+  --ed-border: rgba(15, 17, 17, 0.16);
+  --ed-border-strong: rgba(15, 17, 17, 0.3);
+  color: var(--color-black);
+  padding-block: var(--space-7);
+}
+
+.ed-tier--web .ed-tier__title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  letter-spacing: -0.02em;
+  color: var(--color-black);
+}
+
+.ed-tier--web .ed-tier__eyebrow,
+.ed-tier--web .ed-tier__tagline,
+.ed-tier--web .ed-tier__list li,
+.ed-tier--web .ed-tier__note,
+.ed-tier--web .ed-tier__price-mensual {
+  color: #292E2D;
+}
+
+.ed-tier--web .ed-tier__eyebrow {
+  color: #2F5A51;
+}
+
+.ed-tier--web .ed-tier__price-impl {
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  line-height: 1;
+  color: var(--color-black);
+}
+
+.ed-tier--web .ed-feature__cta {
+  background: var(--color-black);
+  color: var(--color-white);
+  border: 0;
+  padding: 15px 28px;
+  display: inline-flex;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  border-radius: var(--radius-sm);
+}
+
+.ed-tier--web .ed-feature__cta:hover {
+  background: var(--color-graphite);
+}
+
+/* ---------- 9. Resumen por email ---------- */
+.result-email-note {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--ed-ink-soft);
+  flex-basis: 100%;
+}
+
+.result-email-note strong {
+  color: var(--ed-ink);
+  user-select: all;
+}
+
+/* ---------- 10. Contraste y objetivos tactiles (revision movil) ---------- */
+/* Enlaces de texto dentro de bandas: tinta de la banda, subrayados (sage sobre mist/blanco no pasa AA) */
+.plano-band p a:not([class]),
+.ed-stepper__text a,
+.plano-lines-note a {
+  color: var(--ed-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.plano-cta-band .ed-cta__meta a {
+  color: var(--color-black);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.ed-stepper__circle,
+.ed-lettered__badge {
+  -webkit-text-stroke-width: 1.5px;
+}
+
+@media (max-width: 767px) {
+  
+
+  .ed-hero__link {
+    padding-bottom: 0;
+    border-bottom: 0;
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+
+  .plano-hero__ctas {
+    gap: var(--space-3);
+  }
+
+  .plano-hero__ctas .ed-hero__btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .plano-web__card {
+    padding: var(--space-6) var(--space-5);
+  }
+}
+
+.ed-nav .nav__mobile-link.nav__mobile-link--cta {
+  color: var(--color-sage);
+  border-bottom: 1px solid var(--color-sage);
+}
+
+@media (max-width: 767px) {
+  .ed-contact-side__value {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+/* ---------- 12. Logo: home animado (1 vez por sesion), interiores estatico ---------- */
+.plano-subhero .plano-hero__mark path,
+html[data-logo-seen] .plano-hero:not(.plano-subhero) .plano-hero__mark path {
+  animation: none;
+  stroke-dashoffset: 0;
+}
+
+/* ---------- 13. Logo como progreso del configurador (3 figuras = 3 pasos) ---------- */
+.plano-progress-logo {
+  display: block;
+  width: min(220px, 56vw);
+  height: auto;
+  margin: 0 auto var(--space-5);
+  overflow: visible;
+}
+
+.plano-progress-logo g {
+  fill: none;
+  stroke-width: 1.1;
+}
+
+.plano-progress-logo .ghost {
+  stroke: var(--ed-border-strong);
+}
+
+.plano-progress-logo .live {
+  stroke: var(--ed-accent);
+}
+
+.plano-progress-logo .live path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  fill: transparent;
+  transition: stroke-dashoffset 1100ms cubic-bezier(0.45, 0, 0.2, 1),
+              fill 600ms ease 700ms;
+}
+
+.plano-progress-logo[data-progress="1"] .live path:nth-child(-n+1),
+.plano-progress-logo[data-progress="2"] .live path:nth-child(-n+2),
+.plano-progress-logo[data-progress="3"] .live path {
+  stroke-dashoffset: 0;
+}
+
+/* Al llegar al resumen el logo queda completo y relleno */
+.plano-progress-logo[data-progress="3"] .live path {
+  fill: var(--ed-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plano-progress-logo .live path {
+    transition: none;
+  }
+}
+
+/* ---------- 14. Sitio en construccion: logo animado ---------- */
+.teaser-logo {
+  display: block;
+  width: clamp(190px, 36vw, 340px);
+  height: auto;
+  overflow: visible;
+}
+
+/* Tres figuras en secuencia (escuadra, barra superior, barra inferior);
+   al terminar, el logo se rellena y queda como el logo real. */
+.teaser-logo path {
+  fill: transparent;
+  stroke: var(--color-sage);
+  stroke-width: 0.9;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: plano-draw 1900ms cubic-bezier(0.45, 0, 0.2, 1) forwards,
+             teaser-fill 1000ms ease forwards;
+}
+
+.teaser-logo path:nth-child(1) { animation-delay: 400ms, 6700ms; }
+.teaser-logo path:nth-child(2) { animation-delay: 2500ms, 6700ms; }
+.teaser-logo path:nth-child(3) { animation-delay: 4600ms, 6700ms; }
+
+@keyframes teaser-fill {
+  to {
+    fill: var(--color-white);
+    stroke: var(--color-white);
+  }
+}
+
+html[data-logo-seen] .teaser-logo path {
+  animation: none;
+  stroke-dashoffset: 0;
+  fill: var(--color-white);
+  stroke: var(--color-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .teaser-logo path {
+    animation: none;
+    stroke-dashoffset: 0;
+    fill: var(--color-white);
+    stroke: var(--color-white);
+  }
+}
+
+.plano-teaser .ed-hero__brand {
+  gap: var(--space-4);
+}
+
+/* ---------- 15. Formularios (contacto, plan, dialogo) ---------- */
+.hp {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.form-select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position: calc(100% - 14px) 55%, calc(100% - 9px) 55%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 32px;
+}
+
+.form-select option {
+  color: #0F1111;
+  background: #F2F1ED;
+}
+
+.form-hint {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: 0.8125rem;
+  color: var(--ed-ink-soft);
+}
+
+.form-error-box {
+  padding: var(--space-4);
+  border: 1px solid var(--color-error);
+  color: var(--color-text);
+  background: rgba(229, 142, 126, 0.08);
+  line-height: 1.5;
+}
+
+.form-error-box a {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+.form-success .btn {
+  margin-top: var(--space-3);
+}
+
+.plan-form {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--ed-border-strong);
+}
+
+.plan-form[hidden] {
+  display: none;
+}
+
+.plan-form__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.plan-form__lede,
+.plan-form__legal {
+  margin: 0;
+  color: var(--ed-ink-soft);
+  font-size: 0.9375rem;
+  max-width: 62ch;
+}
+
+.plan-form__legal {
+  font-size: 0.8125rem;
+}
+
+.plan-form__legal a {
+  color: var(--ed-ink);
+  text-decoration: underline;
+}
+
+.plan-form__group {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.plan-form__group[hidden] {
+  display: none;
+}
+
+.plan-form__legend {
+  padding: 0;
+  margin-bottom: var(--space-3);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ed-accent);
+}
+
+.plan-form__grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .plan-form__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .plan-form__grid > .form-group:not(.plan-form__half) {
+    grid-column: 1 / -1;
+  }
+}
+
+.plan-form .form-group {
+  margin: 0;
+  min-width: 0;
+}
+
+.plan-form input:user-invalid,
+.plan-form select:user-invalid,
+.plan-form textarea:user-invalid {
+  border-bottom-color: var(--color-error);
+}
+
+/* Dialogo de contacto del sitio en construccion */
+.contact-dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  padding: var(--space-6);
+  color: var(--color-white);
+  background: #171A1A;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  overflow: auto;
+  --ed-ink: var(--color-white);
+  --ed-ink-soft: #C9CCCE;
+  --ed-accent: var(--color-sage);
+  --ed-border-strong: rgba(242, 241, 237, 0.28);
+}
+
+.contact-dialog::backdrop {
+  background: rgba(15, 17, 17, 0.8);
+}
+
+.contact-dialog__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.contact-dialog__title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.contact-dialog__close {
+  width: 44px;
+  height: 44px;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--color-white);
+  background: transparent;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.contact-dialog__lede {
+  margin: var(--space-3) 0 var(--space-5);
+  color: var(--ed-ink-soft);
+}
+
+.contact-dialog .plan-form__legal {
+  margin-top: var(--space-3);
+}
+
+/* ---------- 16. Objetivos tactiles en movil (44px) ---------- */
+@media (max-width: 767px) {
+  .ed-hero__link,
+  .ed-footer__col a,
+  .ed-footer__email,
+  .ed-nav__brand {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .ed-hero__link {
+    padding-bottom: 0;
+    border-bottom: 0;
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+}
+
+/* ---------- 17. Formulario de contacto enviado ---------- */
+.contact-form.is-sent > *:not(.contact-form__status) {
+  display: none;
+}
+
+.contact-dialog:has(.contact-form.is-sent) .contact-dialog__lede {
+  display: none;
+}
+
+.contact-form.is-sent .contact-form__status {
+  margin: 0;
+}
+
+.contact-form.is-sent .form-success {
+  padding: var(--space-5);
+  line-height: 1.5;
+}
+
+.contact-form.is-sent .form-success > strong:first-child {
+  display: block;
+  margin-bottom: var(--space-1);
+  font-size: 1.375rem;
+  letter-spacing: -0.01em;
+  color: var(--color-sage);
+}
+
+/* 18) Demos: enlace "Ver demo" al pie de cada tarjeta */
+#demos .ed-lettered__text + .ed-lettered__text {
+  margin-top: var(--space-3);
+  color: var(--ed-accent);
+  font-weight: 600;
+}

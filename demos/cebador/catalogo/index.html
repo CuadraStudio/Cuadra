@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo | Cebador</title>
+  <meta name="description" content="Todo el catálogo de Cebador: mates, bombillas, termos, yerba, bolsos y accesorios.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F4C430">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preload" href="../fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/site.css">
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="cab">
+  <div class="wrap cab__in">
+    <a class="logo" href="../">cebador</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="../catalogo/" aria-current="page">Catálogo</a>
+      <a class="carro" href="../carrito/" data-carrito-enlace aria-label="Carrito, 0 productos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="carro__cant" data-carrito-cant hidden>0</span><span>Carrito</span></a>
+    </nav>
+  </div>
+</header>
+<main id="contenido">
+  <div class="wrap">
+    <header class="cat-cab">
+      <h1>Catálogo</h1>
+      <p>Mates, bombillas, termos y todo lo que va en el bolso. El stock de cada variante se ve en la ficha.</p>
+    </header>
+    <div class="controles">
+      <div class="controles" role="radiogroup" aria-label="Categoría" data-chips style="padding:0"></div>
+      <div class="controles__fin">
+        <label class="chip"><input type="checkbox" id="solo-stock"><span>Solo con stock</span></label>
+        <label><span class="cuenta">Ordenar </span><select id="orden"><option value="">Destacados</option><option value="menor">Menor precio</option><option value="mayor">Mayor precio</option></select></label>
+        <p class="cuenta" data-cuenta aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="grilla" data-grilla></div>
+    <p class="vacio" data-vacio hidden>No hay productos con esos filtros. Probá sacando “Solo con stock”.</p>
+  </div>
+  <section class="wrap info" aria-label="Cómo comprar">
+  <div><h2>Elegís la variante exacta</h2><p>Color, material y tamaño. Ves al instante si hay stock de esa combinación y cuántas unidades quedan.</p></div>
+  <div><h2>Pagás cuando te llega</h2><p>Transferencia o efectivo contra entrega. Te mandamos los datos por email al hacer el pedido.</p></div>
+  <div><h2>Retirás o te lo enviamos</h2><p>Retiro gratis en Cordón. Envíos a Montevideo y al interior. Cambios dentro de los 30 días.</p></div>
+</section>
+</main>
+<footer class="pie">
+  <div class="wrap pie__in">
+    <p>Cebador es un negocio ficticio. Demo de CUADRA Tienda, diseñada a medida.</p>
+    <p><a href="https://cuadrastudio.uy">cuadrastudio.uy</a></p>
+  </div>
+</footer>
+<script src="../js/datos.js" defer></script>
+<script src="../js/arte.js" defer></script>
+<script src="../js/carro.js" defer></script>
+<script src="../js/vista.js" defer></script>
+  <script src="../js/catalogo.js" defer></script>
+</body>
+</html>

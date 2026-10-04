@@ -95,20 +95,20 @@
   --color-before-strong: var(--color-concrete);
 
   /* ---- Typography scale (section 6) ---- */
-  --text-display-xl: 300 clamp(2.5rem, 5vw, 3.75rem)/1.0 var(--font-display);
-  --text-display-lg: 300 clamp(1.75rem, 4vw, 2.75rem)/1.05 var(--font-display);
-  --text-display-md: 300 clamp(1.5rem, 3vw, 2rem)/1.12 var(--font-display);
-  --text-h2: 300 1.375rem/1.2 var(--font-display);
-  --text-h3: 300 1.125rem/1.35 var(--font-display);
-  --text-body-lg: 300 1.125rem/1.6 var(--font-body);
-  --text-body: 300 1rem/1.6 var(--font-body);
-  --text-body-sm: 300 0.875rem/1.5 var(--font-body);
+  --text-display-xl: 600 clamp(2.5rem, 5vw, 3.75rem)/1.0 var(--font-display);
+  --text-display-lg: 600 clamp(1.75rem, 4vw, 2.75rem)/1.05 var(--font-display);
+  --text-display-md: 600 clamp(1.5rem, 3vw, 2rem)/1.12 var(--font-display);
+  --text-h2: 600 1.375rem/1.2 var(--font-display);
+  --text-h3: 600 1.125rem/1.35 var(--font-display);
+  --text-body-lg: 400 1.125rem/1.6 var(--font-body);
+  --text-body: 400 1rem/1.6 var(--font-body);
+  --text-body-sm: 400 0.875rem/1.5 var(--font-body);
   --text-label: 400 0.8125rem/1.4 var(--font-body);   /* 13px minimum for Light weight legibility */
   --text-caption: 400 0.75rem/1.5 var(--font-body);     /* 12px minimum */
-  --text-stat: 300 clamp(2rem, 4vw, 3rem)/1.0 var(--font-display);
+  --text-stat: 400 clamp(2rem, 4vw, 3rem)/1.0 var(--font-display);
 
-  --letter-spacing-interface: 0.38em;    /* caps + wide tracking for short interface text */
-  --letter-spacing-display: 0.18em;      /* reduced tracking for longer display phrases */
+  --letter-spacing-interface: 0.12em;    /* caps + wide tracking for short interface text */
+  --letter-spacing-display: 0.08em;      /* reduced tracking for longer display phrases */
   --letter-spacing-body: 0.02em;         /* normal reading tracking for paragraphs */
   --letter-spacing-tight: 0em;           /* reserved, not used with Montserrat Light */
 
