@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /demos/hierrobarberia/turno/
-Disallow: /demos/hierrobarberia/gracias/
-Disallow: /demos/hierrobarberia/404.html
-Disallow: /demos/hierrobarberia/admin.html
-
-Sitemap: https://cuadrastudio.uy/demos/hierrobarberia/sitemap.xml

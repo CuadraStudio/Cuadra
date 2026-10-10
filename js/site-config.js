@@ -17,6 +17,23 @@
     // envia ninguna copia y la web funciona igual.
     confirmEndpoint: '',
 
+    // WhatsApp de CUADRA: solo digitos con codigo de pais (ej. 59899123456).
+    // Vacio = no se muestra ningun boton ni enlace de WhatsApp (no hay numero confirmado).
+    whatsapp: '',
+
+    // Precios en USD, sin IVA. Fuente de verdad: Webs/docs/negocio/modelo-visual-productos.md.
+    // main.js los vuelca en los elementos [data-price="producto.campo"]; el HTML trae el mismo
+    // numero como texto por defecto (sin JS). Al cambiar un precio, cambiarlo aca y en el HTML.
+    // launchSlots: clientes por tipo de producto con precio de lanzamiento (con permiso para mostrar el proyecto).
+    launchSlots: 3,
+    prices: {
+      landing: { list: 249, launch: 179, monthly: 29 },
+      web: { list: 399, launch: 319, monthly: 39 },
+      refresh: { landingList: 199, landingLaunch: 149, webList: 319, webLaunch: 249 },
+      tienda: { list: 449, launch: 359, monthly: 39 },
+      extraPage: 50
+    },
+
     // true = el sitio completo es accesible pero avisa que esta en construccion
     // (lo cambia Webs/docs/sitio-cuadra/scripts/site-mode.py: preview = true, live/hidden = false).
     construction: false

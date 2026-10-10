@@ -1,3 +1,5 @@
 ﻿.orion/
 .playwright-cli/
 node_modules/
+
+demos/

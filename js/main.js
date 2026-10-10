@@ -1,5 +1,5 @@
 /* ============================================
-   main.js - Nav toggle, scroll reveal, form handling
+   main.js - Nav toggle, scroll reveal, form handling, precios y WhatsApp desde site-config.js
    ============================================ */
 
 (function () {
@@ -253,68 +253,73 @@
   }
 
   // ---- Form handling ----
+  // Formulario generico: cada campo con "name" (sin guion bajo inicial) se valida y se envia con su etiqueta.
+  // Obligatorios: los que tienen "required". Un campo con data-validate="contact" acepta email o WhatsApp.
   function initForm() {
     var form = document.getElementById('contact-form');
     if (!form) return;
 
-    var nombreInput = document.getElementById('nombre');
-    var emailInput = document.getElementById('email');
-    var mensajeInput = document.getElementById('mensaje');
-    var nombreError = document.getElementById('nombre-error');
-    var emailError = document.getElementById('email-error');
-    var mensajeError = document.getElementById('mensaje-error');
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var formStatus = document.getElementById('form-status');
     var submitBtn = document.getElementById('submit-btn');
+    var controls = Array.prototype.filter.call(form.querySelectorAll('input, textarea, select'), function (el) {
+      return el.name && el.name.charAt(0) !== '_' && el.type !== 'hidden' && el.type !== 'submit';
+    });
 
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    function clearErrors() {
-      nombreError.textContent = '';
-      emailError.textContent = '';
-      mensajeError.textContent = '';
-      nombreInput.classList.remove('form-input--error');
-      emailInput.classList.remove('form-input--error');
-      mensajeInput.classList.remove('form-textarea--error');
-      formStatus.innerHTML = '';
+    function labelOf(el) {
+      var label = form.querySelector('label[for="' + el.id + '"]');
+      return label ? label.textContent.replace(/\s*\(opcional\)\s*$/i, '').trim() : el.name;
+    }
+    function errorBox(el) { return document.getElementById(el.id + '-error'); }
+    function errorClass(el) { return el.tagName === 'TEXTAREA' ? 'form-textarea--error' : 'form-input--error'; }
+    function clearError(el) {
+      var box = errorBox(el);
+      if (box) box.textContent = '';
+      el.classList.remove(errorClass(el));
+      el.removeAttribute('aria-invalid');
+    }
+    function setError(el, message) {
+      var box = errorBox(el);
+      if (box) box.textContent = message;
+      el.classList.add(errorClass(el));
+      el.setAttribute('aria-invalid', 'true');
+    }
+    function valueOf(name) {
+      var el = form.elements[name];
+      return el && el.value ? el.value.trim() : '';
+    }
+    function isContact(value) {
+      return emailRegex.test(value) || value.replace(/\D/g, '').length >= 8;
     }
 
     function validate() {
-      var valid = true;
-
-      // Nombre
-      if (!nombreInput.value.trim()) {
-        nombreError.textContent = 'El nombre es obligatorio.';
-        nombreInput.classList.add('form-input--error');
-        valid = false;
-      }
-
-      // Email
-      if (!emailInput.value.trim()) {
-        emailError.textContent = 'El email es obligatorio.';
-        emailInput.classList.add('form-input--error');
-        valid = false;
-      } else if (!emailRegex.test(emailInput.value.trim())) {
-        emailError.textContent = 'Ingresá un email válido.';
-        emailInput.classList.add('form-input--error');
-        valid = false;
-      }
-
-      // Mensaje
-      if (!mensajeInput.value.trim()) {
-        mensajeError.textContent = 'El mensaje es obligatorio.';
-        mensajeInput.classList.add('form-textarea--error');
-        valid = false;
-      }
-
-      return valid;
+      var firstInvalid = null;
+      controls.forEach(function (el) {
+        clearError(el);
+        var value = el.value.trim();
+        var message = '';
+        if (el.required && !value) {
+          message = 'Este campo es obligatorio.';
+        } else if (value && el.type === 'email' && !emailRegex.test(value)) {
+          message = 'Ingresá un email válido.';
+        } else if (value && el.getAttribute('data-validate') === 'contact' && !isContact(value)) {
+          message = 'Escribí un email o un número de WhatsApp válido.';
+        }
+        if (message) {
+          setError(el, message);
+          if (!firstInvalid) firstInvalid = el;
+        }
+      });
+      if (firstInvalid) firstInvalid.focus();
+      return !firstInvalid;
     }
 
     // Al enviar bien: se oculta el formulario y queda solo el mensaje de "enviado".
-    function showSent(email) {
+    function showSent(replyTo) {
       form.reset();
       form.classList.add('is-sent');
       formStatus.innerHTML = '<div class="form-success" role="status"><strong>Mensaje enviado.</strong> ' +
-        'Te respondemos a <strong>' + escapeHtml(email) + '</strong>. <span data-copy-note></span>' +
+        'Te respondemos a <strong>' + escapeHtml(replyTo) + '</strong>. <span data-copy-note></span>' +
         '<button type="button" class="btn btn--secondary" data-send-another>Enviar otro mensaje</button></div>';
       formStatus.setAttribute('tabindex', '-1');
       formStatus.focus({ preventScroll: true });
@@ -323,27 +328,29 @@
         form.classList.remove('is-sent');
         formStatus.innerHTML = '';
         formStatus.removeAttribute('tabindex');
-        nombreInput.focus();
+        if (controls[0]) controls[0].focus();
       });
     }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      clearErrors();
-
+      formStatus.innerHTML = '';
       if (!validate()) return;
 
-      var honeypot = form.querySelector('[name="_honey"]');
-      var fields = {
-        'Nombre': nombreInput.value.trim(),
-        'Email': emailInput.value.trim(),
-        'Mensaje': mensajeInput.value.trim()
-      };
-      var subject = 'Consulta desde la web: ' + fields['Nombre'];
+      var fields = {};
+      controls.forEach(function (el) {
+        var value = el.value.trim();
+        if (value) fields[labelOf(el)] = value;
+      });
+      var who = valueOf('negocio') || valueOf('nombre');
+      var subject = (form.getAttribute('data-subject') || 'Consulta desde la web') + ': ' + who;
+      var replyTo = valueOf('email') || valueOf('contacto');
+      var replyEmail = emailRegex.test(valueOf('email')) ? valueOf('email') : (emailRegex.test(valueOf('contacto')) ? valueOf('contacto') : '');
 
       // Campo trampa para bots: si esta completo, se simula el exito sin enviar nada.
+      var honeypot = form.querySelector('[name="_honey"]');
       if (honeypot && honeypot.value) {
-        showSent(fields['Email']);
+        showSent(replyTo);
         return;
       }
 
@@ -352,11 +359,13 @@
       submitBtn.textContent = 'Enviando…';
 
       sendToOwner(fields, subject).then(function () {
-        showSent(fields['Email']);
-        sendCopyToClient('contact', fields).then(function (sent) {
-          var note = formStatus.querySelector('[data-copy-note]');
-          if (sent && note) note.innerHTML = copyNote(fields['Email']);
-        });
+        showSent(replyTo);
+        if (replyEmail) {
+          sendCopyToClient('contact', fields).then(function (sent) {
+            var note = formStatus.querySelector('[data-copy-note]');
+            if (sent && note) note.innerHTML = copyNote(replyEmail);
+          });
+        }
       }).catch(function () {
         formStatus.innerHTML = failureBox(fields, subject);
       }).then(function () {
@@ -365,20 +374,8 @@
       });
     });
 
-    // Clear error on input
-    nombreInput.addEventListener('input', function () {
-      nombreError.textContent = '';
-      nombreInput.classList.remove('form-input--error');
-    });
-
-    emailInput.addEventListener('input', function () {
-      emailError.textContent = '';
-      emailInput.classList.remove('form-input--error');
-    });
-
-    mensajeInput.addEventListener('input', function () {
-      mensajeError.textContent = '';
-      mensajeInput.classList.remove('form-textarea--error');
+    controls.forEach(function (el) {
+      el.addEventListener('input', function () { clearError(el); });
     });
   }
 
@@ -448,393 +445,33 @@
     });
   }
 
-  // ---- Configurador de planes: a la carte (linea -> plan y extras con precio propio -> resumen por email) ----
-  function initPlanConfigurator() {
-    var root = document.querySelector('[data-configurator]');
-    if (!root) return;
-
-    var LINE_NAMES = { landing: 'CUADRA Landing', institucional: 'CUADRA Institucional', agenda: 'CUADRA Agenda', tienda: 'CUADRA Tienda', resto: 'CUADRA Restó', consulta: 'CUADRA Consulta' };
-
-    var panels = root.querySelectorAll('.configurator__panel');
-    var stepIndicators = root.querySelectorAll('[data-step-indicator]');
-    var lineChoices = root.querySelectorAll('[data-choose-line]');
-    var linePanels = root.querySelectorAll('[data-line-panel]');
-    var selectedLineName = root.querySelector('[data-selected-line-name]');
-
-    var summaryEmpty = root.querySelector('[data-summary-empty]');
-    var summaryContent = root.querySelector('[data-summary-content]');
-    var summaryLine = root.querySelector('[data-summary-line-name]');
-    var summaryPlan = root.querySelector('[data-summary-plan-name]');
-    var summaryImpl = root.querySelector('[data-summary-impl]');
-    var summaryMensual = root.querySelector('[data-summary-mensual]');
-    var summaryBreakdown = root.querySelector('[data-summary-breakdown]');
-    
-    var resultLinePlan = root.querySelector('[data-result-line-plan]');
-    var resultExtras = root.querySelector('[data-result-extras]');
-    var resultImpl = root.querySelector('[data-result-impl]');
-    var resultMensual = root.querySelector('[data-result-mensual]');
-    var planForm = root.querySelector('[data-plan-form]');
-    var openPlanFormBtn = root.querySelector('[data-open-plan-form]');
-    var resultActions = root.querySelector('[data-result-actions]');
-    var planFormStatus = root.querySelector('[data-plan-form-status]');
-    var lastTotals = null;
-
-    var state = { line: null };
-
-    function fmt(n) {
-      return Number(n).toLocaleString('es-UY');
-    }
-
-    var progressLogo = root.querySelector('[data-progress-logo]');
-
-    function goToStep(n, skipScroll) {
-      if (progressLogo) progressLogo.setAttribute('data-progress', String(n));
-      panels.forEach(function (p) {
-        p.hidden = Number(p.getAttribute('data-step')) !== n;
-      });
-      stepIndicators.forEach(function (s) {
-        var num = Number(s.getAttribute('data-step-indicator'));
-        s.classList.toggle('is-active', num === n);
-        s.classList.toggle('is-done', num < n);
-      });
-      if (!skipScroll) {
-        root.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
-      }
-    }
-
-    // Lee la base fija del panel de la linea + suma cada [data-feature] tildado dentro de ese panel.
-    function computeTotals(linePanel) {
-      if (!linePanel) return null;
-      var baseImpl = Number(linePanel.getAttribute('data-base-impl'));
-      var baseMensual = Number(linePanel.getAttribute('data-base-mensual'));
-      var impl = baseImpl;
-      var mensual = baseMensual;
-      var extras = [];
-      linePanel.querySelectorAll('[data-feature]:checked').forEach(function (input) {
-        var unitPrice = Number(input.getAttribute('data-price'));
-        var type = input.getAttribute('data-type');
-        var nameEl = input.closest('.extra-toggle').querySelector('.extra-toggle__name');
-        var name = nameEl ? nameEl.textContent.trim() : '';
-        // Extras por unidad adicional (profesionales, sedes): precio x cantidad.
-        var unit = input.getAttribute('data-unit');
-        var qtyEl = unit ? input.closest('.extra-toggle').querySelector('[data-qty]') : null;
-        var qty = qtyEl ? Math.min(20, Math.max(1, Math.floor(Number(qtyEl.value)) || 1)) : 1;
-        var price = unitPrice * qty;
-        if (type === 'mensual') {
-          mensual += price;
-        } else {
-          impl += price;
-        }
-        extras.push({
-          name: name, type: type, price: price, unitPrice: unitPrice, qty: qty,
-          perUnit: !!unit, unit: unit ? (qty === 1 ? unit : input.getAttribute('data-unit-plural')) : ''
-        });
-      });
-      return { impl: impl, mensual: mensual, baseImpl: baseImpl, baseMensual: baseMensual, extras: extras };
-    }
-
-    function usd(n) { return 'USD ' + fmt(n); }
-
-    // "USD 25" o, si se cobra por unidad, "5 × USD 15 = USD 75" (con "/mes" si es mensual).
-    function extraAmount(x) {
-      var per = x.type === 'mensual' ? '/mes' : '';
-      if (x.perUnit) return x.qty + ' × ' + usd(x.unitPrice) + per + ' = ' + usd(x.price) + per;
-      return usd(x.price) + per;
-    }
-
-    function extraLabel(x) {
-      return x.perUnit ? x.name + ' — ' + x.qty + ' ' + x.unit : x.name;
-    }
-
-    // Desglose: cada cosa que se suma, agrupada en implementación y mantenimiento/soporte.
-    function renderBreakdown(ul, totals) {
-      if (!ul || !totals) return;
-      var rows = [{ head: 'Implementación' }, { label: 'Base ' + LINE_NAMES[state.line], amount: usd(totals.baseImpl) }];
-      totals.extras.filter(function (x) { return x.type !== 'mensual'; }).forEach(function (x) {
-        rows.push({ label: extraLabel(x), amount: extraAmount(x) });
-      });
-      rows.push({ head: 'Mantenimiento y soporte (por mes)' });
-      rows.push({ label: 'Hosting, mantenimiento y soporte', amount: usd(totals.baseMensual) + '/mes' });
-      totals.extras.filter(function (x) { return x.type === 'mensual'; }).forEach(function (x) {
-        rows.push({ label: extraLabel(x), amount: extraAmount(x) });
-      });
-      ul.innerHTML = '';
-      rows.forEach(function (row) {
-        var li = document.createElement('li');
-        if (row.head) {
-          li.className = 'breakdown__head';
-          li.textContent = row.head;
-        } else {
-          li.className = 'breakdown__row';
-          var l = document.createElement('span');
-          l.textContent = row.label;
-          var m = document.createElement('span');
-          m.textContent = row.amount;
-          li.appendChild(l);
-          li.appendChild(m);
-        }
-        ul.appendChild(li);
-      });
-    }
-
-    function activeLinePanel() {
-      if (!state.line) return null;
-      return root.querySelector('[data-line-panel="' + state.line + '"]');
-    }
-
-    function updateSummary() {
-      if (!state.line) {
-        summaryEmpty.hidden = false;
-        summaryContent.hidden = true;
-        return;
-      }
-      var totals = computeTotals(activeLinePanel());
-      summaryEmpty.hidden = true;
-      summaryContent.hidden = false;
-      summaryLine.textContent = LINE_NAMES[state.line];
-      summaryPlan.textContent = totals.extras.length
-        ? totals.extras.length + ' extra' + (totals.extras.length === 1 ? '' : 's') + ' seleccionado' + (totals.extras.length === 1 ? '' : 's')
-        : 'Solo la base — sumá extras si querés';
-      summaryImpl.textContent = 'USD ' + fmt(totals.impl);
-      summaryMensual.textContent = 'USD ' + fmt(totals.mensual) + '/mes';
-      renderBreakdown(summaryBreakdown, totals);
-    }
-
-    function selectLine(line, jumpToStep2) {
-      state.line = line;
-      lineChoices.forEach(function (btn) {
-        btn.setAttribute('aria-pressed', btn.getAttribute('data-choose-line') === line ? 'true' : 'false');
-      });
-      linePanels.forEach(function (panel) {
-        panel.hidden = panel.getAttribute('data-line-panel') !== line;
-      });
-      if (selectedLineName) selectedLineName.textContent = LINE_NAMES[line];
-      var step1Next = root.querySelector('[data-step="1"] [data-next]');
-      if (step1Next) step1Next.disabled = false;
-
-
-      updateSummary();
-      if (jumpToStep2) goToStep(2);
-    }
-
-    function renderResult() {
-      var linePanel = activeLinePanel();
-      if (!linePanel) return;
-      var totals = computeTotals(linePanel);
-
-      resultLinePlan.textContent = LINE_NAMES[state.line];
-      resultImpl.textContent = 'USD ' + fmt(totals.impl);
-      resultMensual.textContent = 'USD ' + fmt(totals.mensual) + '/mes';
-
-      renderBreakdown(resultExtras, totals);
-
-      lastTotals = totals;
-      resetPlanForm();
-    }
-
-    function resetAll(skipScroll) {
-      state = { line: null };
-      lineChoices.forEach(function (btn) { btn.setAttribute('aria-pressed', 'false'); });
-      linePanels.forEach(function (panel) {
-        panel.hidden = true;
-        panel.querySelectorAll('[data-feature]').forEach(function (input) { input.checked = false; });
-        panel.querySelectorAll('[data-qty]').forEach(function (input) { input.value = 1; });
-      });
-      summaryEmpty.hidden = false;
-      summaryContent.hidden = true;
-      resetPlanForm();
-      var step1Next = root.querySelector('[data-step="1"] [data-next]');
-      if (step1Next) step1Next.disabled = true;
-      goToStep(1, skipScroll);
-    }
-
-    // ---- Eventos ----
-    lineChoices.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        // Al elegir una linea se avanza solo al paso 2 (sin boton "Continuar").
-        selectLine(btn.getAttribute('data-choose-line'), true);
-      });
+  // ---- Precios: se vuelcan desde site-config.js (el HTML trae el mismo numero por defecto) ----
+  function initPrices() {
+    var site = window.CUADRA_SITE || {};
+    var prices = site.prices;
+    if (!prices) return;
+    document.querySelectorAll('[data-price]').forEach(function (el) {
+      var value = el.getAttribute('data-price').split('.').reduce(function (obj, key) {
+        return obj == null ? undefined : obj[key];
+      }, prices);
+      if (typeof value === 'number') el.textContent = 'USD ' + value;
     });
-
-    root.addEventListener('change', function (e) {
-      if (e.target.matches('[data-feature]')) {
-        updateSummary();
-      }
+    document.querySelectorAll('[data-launch-slots]').forEach(function (el) {
+      if (typeof site.launchSlots === 'number') el.textContent = String(site.launchSlots);
     });
-
-    // Cantidad de un extra por unidad: tocarla tilda el extra y recalcula.
-    root.addEventListener('input', function (e) {
-      if (!e.target.matches('[data-qty]')) return;
-      var box = e.target.closest('.extra-toggle').querySelector('[data-feature]');
-      if (box) box.checked = true;
-      updateSummary();
-    });
-
-
-    root.querySelectorAll('[data-back]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        goToStep(Number(btn.getAttribute('data-back')));
-      });
-    });
-
-    var nextToResult = root.querySelector('[data-next-to-result]');
-    if (nextToResult) {
-      nextToResult.addEventListener('click', function () {
-        renderResult();
-        goToStep(3);
-      });
-    }
-
-    // ---- Formulario de datos del plan (paso 3): campos segun la linea elegida ----
-    function syncPlanForm() {
-      if (!planForm) return;
-      planForm.querySelectorAll('[data-lines]').forEach(function (group) {
-        var on = group.getAttribute('data-lines').split(' ').indexOf(state.line) !== -1;
-        group.hidden = !on;
-        group.querySelectorAll('input, select, textarea').forEach(function (field) {
-          field.disabled = !on;
-        });
-      });
-    }
-
-    function resetPlanForm() {
-      if (!planForm) return;
-      planForm.hidden = true;
-      if (resultActions) resultActions.hidden = false;
-      if (planFormStatus) planFormStatus.innerHTML = '';
-    }
-
-    function collectPlanFields() {
-      var fields = { 'Plan': LINE_NAMES[state.line] };
-      if (lastTotals) {
-        fields['Extras elegidos'] = lastTotals.extras.length
-          ? lastTotals.extras.map(function (x) {
-              return extraLabel(x) + ' (' + extraAmount(x) + ')';
-            }).join('; ')
-          : 'Solo la base';
-        fields['Implementación'] = 'USD ' + fmt(lastTotals.impl);
-        fields['Mantenimiento y soporte'] = 'USD ' + fmt(lastTotals.mensual) + '/mes';
-      }
-      planForm.querySelectorAll('input, select, textarea').forEach(function (field) {
-        if (field.disabled || field.name === '_honey') return;
-        var value = field.value.trim();
-        if (!value) return;
-        fields[field.getAttribute('data-label') || field.name] = value;
-      });
-      return fields;
-    }
-
-    if (openPlanFormBtn && planForm) {
-      openPlanFormBtn.addEventListener('click', function () {
-        syncPlanForm();
-        planForm.hidden = false;
-        if (resultActions) resultActions.hidden = true;
-        var first = planForm.querySelector('input:not([disabled]), select:not([disabled])');
-        planForm.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
-        if (first) first.focus({ preventScroll: true });
-      });
-
-      planForm.querySelectorAll('[data-plan-form-back]').forEach(function (btn) {
-        btn.addEventListener('click', resetPlanForm);
-      });
-
-      planForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (planFormStatus) planFormStatus.innerHTML = '';
-        if (!planForm.checkValidity()) {
-          planForm.reportValidity();
-          return;
-        }
-        var honeypot = planForm.querySelector('[name="_honey"]');
-        var fields = collectPlanFields();
-        var business = fields['Nombre del negocio'] || fields['Nombre y apellido'] || '';
-        var subject = 'Plan CUADRA: ' + LINE_NAMES[state.line] + (business ? ' — ' + business : '');
-        var submitBtn = planForm.querySelector('[type="submit"]');
-
-        function showSuccess(isBot) {
-          planForm.hidden = true;
-          if (planFormStatus) {
-            planFormStatus.innerHTML = '<div class="form-success" role="status"><strong>¡Recibimos tu plan!</strong> ' +
-              'Te respondemos a <strong>' + escapeHtml(fields['Email'] || '') + '</strong> para confirmar contenido, alcance y precio final. ' +
-              '<span data-copy-note></span> ' +
-              '<button type="button" class="btn btn--secondary" data-restart>Armar otro plan</button></div>';
-            if (isBot === true) return;
-            sendCopyToClient('plan', fields).then(function (sent) {
-              var note = planFormStatus.querySelector('[data-copy-note]');
-              if (sent && note) note.innerHTML = copyNote(fields['Email'] || '');
-            });
-          }
-        }
-
-        if (honeypot && honeypot.value) {
-          showSuccess(true);
-          return;
-        }
-
-        var originalLabel = submitBtn.textContent;
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Enviando…';
-
-        sendToOwner(fields, subject).then(function () { showSuccess(false); }).catch(function () {
-          if (planFormStatus) planFormStatus.innerHTML = failureBox(fields, subject);
-        }).then(function () {
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalLabel;
-        });
-      });
-    }
-
-    // "Armar otro plan" aparece dinamicamente: se usa delegacion de eventos.
-    root.addEventListener('click', function (e) {
-      if (e.target.closest && e.target.closest('[data-restart]')) resetAll();
-    });
-
-    // Links dentro de la misma pagina (ej. las tarjetas de "Soluciones") a #planes-tienda, etc.
-    // Un <a href="#planes-tienda"> normal solo mueve el hash: no dispara el deep-link de abajo
-    // (eso corre una sola vez al cargar la pagina), asi que preseleccionamos la linea a mano.
-    document.querySelectorAll('a[href^="#planes-"]').forEach(function (link) {
-      var m = link.getAttribute('href').match(/^#planes-(agenda|tienda|resto|consulta|landing|institucional)$/);
-      if (!m) return;
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        selectLine(m[1], true);
-        history.replaceState(null, '', '#planes-' + m[1]);
-      });
-    });
-
-    // Deep-link: index-web.html y otras paginas enlazan a productos.html#planes-tienda, etc.
-    // Progressive enhancement: sin JS, todos los pasos y checkboxes quedan visibles (fallback de contenido completo).
-    // skipScroll=true: al cargar la pagina sin hash no hay que mover el scroll (goToStep hace
-    // scrollIntoView por defecto, y eso arrastraba la pagina entera hasta el configurador apenas
-    // cargaba, ya que ahora el configurador esta mas abajo en la pagina). Si hay hash, selectLine()
-    // de abajo si hace scroll a proposito, porque ese es un deep-link real.
-    resetAll(true);
-    // Preseleccion desde otras paginas: ?linea=agenda o enlaces con data-preselect-line.
-    function preselect(line) {
-      if (!LINE_NAMES[line]) return;
-      selectLine(line, true);
-    }
-
-    document.querySelectorAll('[data-preselect-line]').forEach(function (a) {
-      a.addEventListener('click', function (e) {
-        e.preventDefault();
-        preselect(a.getAttribute('data-preselect-line'));
-      });
-    });
-
-    try {
-      var qLine = new URLSearchParams(window.location.search).get('linea');
-      if (qLine) preselect(qLine);
-    } catch (err) { /* sin URLSearchParams: se ignora */ }
-
-    var hashId = window.location.hash.replace('#', '');
-    var hashMatch = hashId.match(/^planes-(agenda|tienda|resto|consulta|landing|institucional)$/);
-    if (hashMatch) {
-      selectLine(hashMatch[1], true);
-      history.replaceState(null, '', '#' + hashId);
-    }
   }
 
+  // ---- WhatsApp: solo aparece si site-config.js tiene un numero valido ----
+  function initWhatsApp() {
+    var number = String((window.CUADRA_SITE && window.CUADRA_SITE.whatsapp) || '').replace(/\D/g, '');
+    if (number.length < 8 || number.length > 15) return;
+    var text = encodeURIComponent('Hola, quiero solicitar una propuesta para mi negocio.');
+    document.querySelectorAll('[data-whatsapp]').forEach(function (el) {
+      el.setAttribute('href', 'https://wa.me/' + number + '?text=' + text);
+      el.hidden = false;
+    });
+    document.querySelectorAll('[data-whatsapp-block]').forEach(function (el) { el.hidden = false; });
+  }
 
   // ---- Init all ----
   // ---- Posicion de scroll al cambiar de pagina ----
@@ -857,57 +494,6 @@
     });
   }
 
-  // ---- Logo fijo: el color del trazo sigue la superficie que tiene detras ----
-  // El logo (.plano-hero__mark) queda fijo en pantalla (CSS). Con cada scroll se mira
-  // que fondo hay bajo su centro y se elige una tinta de la paleta con buen contraste:
-  // sobre oscuro, sage; sobre sage, negro; sobre claro (mist / warm white), verde.
-  function initLogoInk() {
-    var mark = document.querySelector('.plano-hero__mark');
-    if (!mark || window.getComputedStyle(mark).display === 'none') return;
-    var root = document.documentElement;
-    var last = '';
-    var queued = false;
-
-    function luminance(rgb) {
-      var c = rgb.map(function (v) {
-        v = v / 255;
-        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
-      });
-      return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
-    }
-
-    function surfaceAt(x, y) {
-      var el = document.elementFromPoint(x, y);
-      while (el) {
-        var m = window.getComputedStyle(el).backgroundColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
-        if (m && (m[4] === undefined || parseFloat(m[4]) > 0.5)) return [+m[1], +m[2], +m[3]];
-        el = el.parentElement;
-      }
-      return [15, 17, 17];
-    }
-
-    function update() {
-      queued = false;
-      var r = mark.getBoundingClientRect();
-      var l = luminance(surfaceAt(r.left + r.width / 2, r.top + r.height / 2));
-      var ink = l < 0.3 ? '#AFC8C2' : (l < 0.65 ? '#0F1111' : '#3E6B62');
-      if (ink !== last) {
-        last = ink;
-        root.style.setProperty('--logo-ink', ink);
-      }
-    }
-
-    function schedule() {
-      if (queued) return;
-      queued = true;
-      window.requestAnimationFrame(update);
-    }
-
-    window.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule);
-    update();
-  }
-
   function init() {
     initPageScroll();
     initNav();
@@ -915,9 +501,9 @@
     initScrollReveal();
     initForm();
     initContactDialog();
-    initPlanConfigurator();
+    initPrices();
+    initWhatsApp();
     initSmoothScroll();
-    initLogoInk();
   }
 
   if (document.readyState === 'loading') {

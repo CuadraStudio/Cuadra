@@ -224,11 +224,11 @@ a.ed-lettered__item:hover::before {
   animation: plano-draw 2400ms cubic-bezier(0.45, 0, 0.2, 1) forwards;
 }
 
-/* Secuencia del logo: la 1a mitad (escuadra) dura 1200 ms; la 2a mitad (dos barras) dura 2400 ms en total:
-   la barra superior arranca al terminar la escuadra y la inferior, a la mitad de la superior. */
-.plano-hero__mark path:nth-child(1) { animation-duration: 1200ms; animation-delay: 500ms; }
-.plano-hero__mark path:nth-child(2) { animation-duration: 1600ms; animation-delay: 1700ms; }
-.plano-hero__mark path:nth-child(3) { animation-duration: 1600ms; animation-delay: 2500ms; }
+/* Secuencia del logo: la misma que el teaser (index.html, seccion 14). Escuadra 950 ms; barra superior y
+   barra inferior 1333 ms cada una, con la inferior arrancando a la mitad de la superior (1350 + 667 = 2017 ms). */
+.plano-hero__mark path:nth-child(1) { animation-duration: 950ms; animation-delay: 400ms; }
+.plano-hero__mark path:nth-child(2) { animation-duration: 1333ms; animation-delay: 1350ms; }
+.plano-hero__mark path:nth-child(3) { animation-duration: 1333ms; animation-delay: 2017ms; }
 
 @keyframes plano-draw {
   to { stroke-dashoffset: 0; }
@@ -826,13 +826,8 @@ html {
   }
 }
 
-/* ---------- 12. Logo: 1ra visita a la home con la secuencia larga (3 figuras una tras otra);
-   repeticiones e interiores lo dibujan igual, pero con el trazo corto de Plano de manzana ---------- */
-.plano-subhero .plano-hero__mark path,
-html[data-logo-seen] .plano-hero:not(.plano-subhero) .plano-hero__mark path {
-  animation-duration: 2200ms;
-  animation-delay: 300ms;
-}
+/* ---------- 12. Logo: todas las paginas dibujan el logo con la secuencia del teaser (ver 2.1);
+   ya no hay variante corta para repeticiones ni interiores ---------- */
 
 /* ---------- 13. Logo como progreso del configurador (3 figuras = 3 pasos) ---------- */
 .plano-progress-logo {
@@ -1221,10 +1216,9 @@ html[data-logo-seen] .teaser-logo path {
   font-size: 0.875rem;
 }
 
-/* 20) Logo fijo al scroll: contorno grande y tenue a la derecha que acompana la lectura.
-   Va sobre el contenido (pointer-events: none) y por debajo del menu. Su tinta la fija
-   initLogoInk() en main.js segun la superficie; sin JS queda el acento de la seccion.
-   En celular se oculta (regla de la seccion 5). El teaser conserva su logo central. */
+/* 20) Logo fijo al scroll: contorno grande y tenue a la derecha. Solo se ve en el hero y en el pie
+   ("Escribinos"): el resto de las secciones tienen fondo opaco y z-index mayor, asi que lo tapan al
+   pasar por encima. En celular se oculta (regla de la seccion 5). El teaser conserva su logo central. */
 .plano-hero__mark,
 .plano-subhero .plano-hero__mark {
   position: fixed;
@@ -1232,15 +1226,89 @@ html[data-logo-seen] .teaser-logo path {
   right: 3%;
   width: min(36vw, 520px);
   transform: translateY(-50%);
-  stroke: var(--logo-ink, var(--ed-accent));
+  stroke: var(--ed-accent);
   opacity: 0.32;
-  z-index: 50;
-  transition: stroke 400ms var(--ease-out);
+  z-index: 1;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .plano-hero__mark,
-  .plano-subhero .plano-hero__mark {
-    transition: none;
-  }
+/* Capas: logo (1) < secciones con fondo, CTA y pie (2). El hero no tiene fondo propio ni z-index y su
+   contenido (.ed-container, z-index 1) va despues del logo en el HTML, asi que el texto queda encima.
+   El pie no tiene fondo propio: deja ver el logo, con su texto por encima. */
+.plano-home main > :not(.plano-hero),
+.plano-home .plano-cta-band,
+.plano-home .ed-footer {
+  position: relative;
+  z-index: 2;
+}
+
+.plano-home main > :not(.plano-hero) {
+  background-color: var(--ed-paper);
+}
+
+/* ============================================
+   Modelo visual (2026-10): inversion, lanzamiento y WhatsApp opcional
+   ============================================ */
+.plano-launch-note {
+  margin-top: var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--ed-border-strong);
+  color: var(--ed-ink-soft);
+  font-size: 0.9375rem;
+  max-width: 66ch;
+}
+
+.plano-launch-note strong {
+  color: var(--ed-ink);
+  font-weight: 600;
+}
+
+.plano-web__launch {
+  font-size: 0.9375rem;
+  color: var(--ed-ink-soft);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--ed-border-strong);
+}
+
+.plano-web__launch strong {
+  color: var(--ed-ink);
+  font-weight: 600;
+}
+
+.plano-web__price strong {
+  color: var(--ed-ink);
+  font-weight: 600;
+}
+
+.plano-care {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-7);
+  max-width: 70ch;
+  color: var(--ed-ink-soft);
+}
+
+.plano-care strong {
+  color: var(--ed-ink);
+  font-weight: 600;
+}
+
+/* Un elemento con [hidden] no debe mostrarse aunque su clase defina display. */
+[data-whatsapp][hidden] {
+  display: none !important;
+}
+
+.plano-web__price small {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ed-ink-soft);
+}
+
+.contact-form__legal {
+  font-size: 0.875rem;
+  color: var(--ed-muted, #A7AAAD);
+  margin-top: var(--space-3);
 }
