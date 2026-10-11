@@ -1,0 +1,8 @@
+Montserrat
+Copyright 2011 The Montserrat Project Authors (https://github.com/JulietaUla/Montserrat)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+Full license text and FAQ: https://openfontlicense.org
+
+File: montserrat-latin-var.woff2 - latin subset of the variable font, as served by Google Fonts
+(https://fonts.google.com/specimen/Montserrat). Downloaded 2026-10-11.
