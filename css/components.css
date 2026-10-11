@@ -33,7 +33,7 @@
   align-items: center;
   font-family: var(--font-display);
   font-size: 1.25rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-display);
   color: var(--color-text);
   text-decoration: none;
@@ -64,7 +64,7 @@
 .nav__link {
   font-family: var(--font-primary);
   font-size: 0.875rem;
-  font-weight: 300;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-interface);   /* short interface labels: 0.38em caps */
   color: var(--color-text-secondary);
@@ -164,7 +164,7 @@
 .nav__mobile-link {
   font-family: var(--font-display);
   font-size: 1.75rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-display);
   text-transform: uppercase;
   color: var(--color-text);
@@ -296,7 +296,7 @@
 .card__title {
   font-family: var(--font-display);
   font-size: 1.125rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-display);
   color: var(--color-text);
   margin-bottom: var(--space-2);
@@ -305,7 +305,7 @@
 .card__desc {
   font-family: var(--font-body);
   font-size: 0.875rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-body);
   color: var(--color-text-secondary);
   margin-bottom: var(--space-4);
@@ -434,7 +434,7 @@
   padding: 14px 18px;
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-body);
   color: var(--color-text);
   background: var(--color-bg-raised);
@@ -525,7 +525,7 @@
 .footer__copy {
   font-family: var(--font-body);
   font-size: 0.75rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-body);
   text-transform: none;
   color: var(--color-text-muted);
@@ -547,7 +547,7 @@
 .footer__link {
   font-family: var(--font-primary);
   font-size: 0.875rem;
-  font-weight: 300;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-interface);   /* short interface labels: 0.38em caps */
   color: var(--color-text-secondary);
@@ -644,7 +644,7 @@
 .contact-link__text {
   font-family: var(--font-body);
   font-size: 0.875rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-body);
   color: var(--color-text-secondary);
   word-break: break-all;
@@ -726,7 +726,7 @@
 .principle__title {
   font-family: var(--font-display);
   font-size: 1.125rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-display);
   text-transform: uppercase;
   color: var(--color-text);
@@ -835,7 +835,7 @@
 .pricing-card__price {
   font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-display);
   text-transform: uppercase;
   color: var(--color-text);
@@ -1128,7 +1128,7 @@
 .case-study__mockup-text {
   font-family: var(--font-display);
   font-size: 1.125rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-display);
   text-transform: uppercase;
   color: var(--color-text);
@@ -1170,7 +1170,7 @@
 
 .case-study__metric-value {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-interface);
   text-transform: uppercase;
   color: var(--color-accent-ink);

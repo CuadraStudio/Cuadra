@@ -34,7 +34,7 @@
 
 .stat-card__number {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1;
   color: var(--color-accent-ink);
@@ -46,7 +46,7 @@
 .stat-card__label {
   font-family: var(--font-primary);
   font-size: 0.875rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-body);
   color: var(--color-text-secondary);
 }
@@ -80,7 +80,7 @@
 
 .step-card__number {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   font-size: clamp(1.5rem, 3vw, 2rem);
   color: var(--color-accent-ink);
   letter-spacing: var(--letter-spacing-interface);
@@ -91,7 +91,7 @@
 .step-card__title {
   font-family: var(--font-display);
   font-size: 1.125rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-display);
   color: var(--color-text);
   margin-bottom: var(--space-3);
@@ -142,7 +142,7 @@
 .testimonial-card__quote {
   font-family: var(--font-body);
   font-size: 1.125rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-body);
   text-transform: none;
   color: var(--color-text);
@@ -229,7 +229,7 @@
 
 .about-header__title {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   font-size: clamp(2rem, 4.5vw, 3.5rem);
   line-height: 1.05;
   color: var(--color-text);
@@ -330,7 +330,7 @@
 .comparison-card__title {
   font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text);
   letter-spacing: var(--letter-spacing-display);
   margin-bottom: var(--space-6);
@@ -501,7 +501,7 @@
 
 .configurator__panel-title {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   letter-spacing: var(--letter-spacing-display);
   text-transform: uppercase;
@@ -609,7 +609,7 @@
 
 .line-choice__title {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.0625rem;
   letter-spacing: var(--letter-spacing-display);
   text-transform: uppercase;
@@ -668,7 +668,7 @@
 
 .plan-base__price {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.0625rem;
   letter-spacing: var(--letter-spacing-display);
   color: var(--color-text);
@@ -951,7 +951,7 @@
 
 .result-summary__value {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1rem;
   letter-spacing: var(--letter-spacing-display);
   color: var(--color-text);
@@ -1011,7 +1011,7 @@
 
 .configurator__summary-line {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.0625rem;
   letter-spacing: var(--letter-spacing-display);
   text-transform: uppercase;
@@ -1045,7 +1045,7 @@
 
 .configurator__summary-total-row strong {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text);
   white-space: nowrap;
 }
@@ -1066,7 +1066,7 @@
 
 .plans-block__title {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   line-height: 1.2;
   letter-spacing: var(--letter-spacing-display);
@@ -1284,7 +1284,7 @@
 
 .setup-card__title {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.125rem;
   line-height: 1.35;
   letter-spacing: var(--letter-spacing-display);
@@ -1339,7 +1339,7 @@
 /* ---- #setup: subtitulo y grilla "Qué necesitamos de vos" ---- */
 .setup-subtitle {
   font-family: var(--font-display);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.375rem;
   line-height: 1.2;
   letter-spacing: var(--letter-spacing-display);

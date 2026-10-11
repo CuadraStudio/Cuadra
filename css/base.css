@@ -23,7 +23,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.6;
   letter-spacing: var(--letter-spacing-body);
   -webkit-font-smoothing: antialiased;
@@ -59,9 +59,9 @@ svg {
 /* Typography base */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 300;
-  letter-spacing: var(--letter-spacing-display);
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-transform: none;
   overflow-wrap: break-word;
   text-wrap: balance;
   color: var(--color-text);
@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   font-family: var(--font-body);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-body);
   text-transform: none;
   overflow-wrap: break-word;
@@ -191,7 +191,7 @@ main:focus {
    privacidad.html). */
 .brand-wordmark {
   font-family: var(--font-primary);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: var(--letter-spacing-interface); /* 0.38em fijo (no cambia con la politica por-rol) */
   text-transform: uppercase;
 }

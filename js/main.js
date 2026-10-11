@@ -148,6 +148,7 @@
 
   // ---- Scroll reveal ----
   function initScrollReveal() {
+    window.CUADRA_REVEAL_OK = true;
     if (prefersReducedMotion) {
       // Show all reveal elements immediately
       var revealElements = document.querySelectorAll('.reveal');
@@ -262,11 +263,26 @@
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var formStatus = document.getElementById('form-status');
     var submitBtn = document.getElementById('submit-btn');
+
+    // Producto elegido en la web (?producto=landing|web|refresh|tienda): se muestra y viaja con el envio.
+    var productNames = { landing: 'Landing', web: 'Web (4 a 8 páginas)', refresh: 'Web Refresh', tienda: 'Tienda online' };
+    var productField = form.elements['producto'];
+    var productNote = document.querySelector('[data-product-note]');
+    if (productField && productNote) {
+      var productKey = (new URLSearchParams(window.location.search).get('producto') || '').toLowerCase();
+      if (productNames[productKey]) {
+        productField.value = productNames[productKey];
+        productNote.querySelector('[data-product-name]').textContent = productNames[productKey];
+        productNote.hidden = false;
+      }
+    }
+
     var controls = Array.prototype.filter.call(form.querySelectorAll('input, textarea, select'), function (el) {
-      return el.name && el.name.charAt(0) !== '_' && el.type !== 'hidden' && el.type !== 'submit';
+      return el.name && el.name.charAt(0) !== '_' && (el.type !== 'hidden' || el.hasAttribute('data-include')) && el.type !== 'submit';
     });
 
     function labelOf(el) {
+      if (el.type === 'hidden') return el.getAttribute('data-label') || el.name;
       var label = form.querySelector('label[for="' + el.id + '"]');
       return label ? label.textContent.replace(/\s*\(opcional\)\s*$/i, '').trim() : el.name;
     }
@@ -344,6 +360,7 @@
       });
       var who = valueOf('negocio') || valueOf('nombre');
       var subject = (form.getAttribute('data-subject') || 'Consulta desde la web') + ': ' + who;
+      if (valueOf('producto')) subject += ' · ' + valueOf('producto');
       var replyTo = valueOf('email') || valueOf('contacto');
       var replyEmail = emailRegex.test(valueOf('email')) ? valueOf('email') : (emailRegex.test(valueOf('contacto')) ? valueOf('contacto') : '');
 
@@ -494,6 +511,23 @@
     });
   }
 
+  // ---- Barra de propuesta en celular: aparece solo cuando no hay otro boton de propuesta a la vista ----
+  function initCtaBar() {
+    var bar = document.querySelector('.contact-fab');
+    var anchors = document.querySelectorAll('[data-cta-anchor]');
+    if (!bar || !anchors.length || !('IntersectionObserver' in window)) return;
+    var visibles = [];
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var i = visibles.indexOf(entry.target);
+        if (entry.isIntersecting && i === -1) visibles.push(entry.target);
+        if (!entry.isIntersecting && i > -1) visibles.splice(i, 1);
+      });
+      bar.classList.toggle('is-shown', visibles.length === 0);
+    });
+    anchors.forEach(function (el) { observer.observe(el); });
+  }
+
   function init() {
     initPageScroll();
     initNav();
@@ -503,6 +537,7 @@
     initContactDialog();
     initPrices();
     initWhatsApp();
+    initCtaBar();
     initSmoothScroll();
   }
 

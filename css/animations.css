@@ -5,16 +5,24 @@
    ============================================ */
 
 /* ---- Scroll reveal (discrete, no bounce) ---- */
-.reveal {
+/* Solo se oculta si site-config.js marco el <html> con .js. Sin JavaScript, o si main.js no llega
+   a iniciar (se agrega .no-reveal a los 3 s), todo el contenido queda visible. */
+.js .reveal {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity var(--duration-slow) var(--ease-out),
               transform var(--duration-slow) var(--ease-out);
 }
 
-.reveal--visible {
+.js .reveal--visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.no-reveal .reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
 /* Stagger support via custom property */
@@ -57,7 +65,8 @@
 
 /* ---- Respect reduced motion - show everything immediately (DS 22) ---- */
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .reveal,
+  .js .reveal {
     opacity: 1;
     transform: none;
     transition: none;

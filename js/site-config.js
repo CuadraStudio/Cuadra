@@ -42,6 +42,13 @@
 
   var root = document.documentElement;
 
+  // Marca el <html> para que el CSS oculte (y anime) el contenido solo cuando hay JavaScript.
+  root.classList.add('js');
+  // Red de seguridad: si main.js no llega a iniciar el reveal (bloqueado o con error), se muestra todo igual.
+  window.setTimeout(function () {
+    if (!window.CUADRA_REVEAL_OK) root.classList.add('no-reveal');
+  }, 3000);
+
   // Aviso discreto de "en construccion" (modo preview).
   function showConstructionNote() {
     if (!SITE.construction || document.querySelector('.teaser-logo')) return;

@@ -1312,3 +1312,134 @@ html[data-logo-seen] .teaser-logo path {
   color: var(--ed-muted, #A7AAAD);
   margin-top: var(--space-3);
 }
+
+/* ============================================
+   21) Fase 1 de la auditoria UX/UI (2026-10-11)
+   Pliegue, tamanos minimos, largo de linea, barra de propuesta en celular
+   y contenido visible aunque falle el JavaScript.
+   ============================================ */
+
+/* Hero compacto: titulo, bajada y boton dentro de los primeros ~700 px */
+.plano-hero { padding-block: var(--space-7) var(--space-9); }
+.plano-hero__title { font-size: clamp(2.25rem, 6.4vw, 4.75rem); max-width: 15ch; }
+.ed-hero__badges { margin-top: var(--space-6); }
+.ed-hero__coords { margin-top: var(--space-7); }
+.plano-subhero { padding-block: var(--space-7) var(--space-6); }
+.plano-subhero .plano-hero__title { font-size: clamp(2rem, 5vw, 3.75rem); max-width: 20ch; }
+
+/* El hero se anima solo con CSS: no espera al JavaScript (el titulo es el elemento mas grande de la pagina) */
+@keyframes ed-hero-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+
+.plano-hero .reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  animation: ed-hero-in var(--duration-slow) var(--ease-out) both;
+}
+
+/* Tamanos minimos y largo de linea (cuerpo >= 16 px, nada bajo 12 px, ~70 caracteres por linea) */
+.ed-metabar__inner { font-size: 0.75rem; }
+.ed-stepper__text { font-size: 1rem; }
+.ed-faq__item p { font-size: 1rem; max-width: 52ch; }
+.ed-section__lede { max-width: 52ch; }
+.plano-care p { max-width: 52ch; }
+.plano-launch-note { font-size: 1rem; max-width: 52ch; }
+.plano-web__launch { font-size: 1rem; }
+
+@media (min-width: 768px) {
+  .ed-stepper--5 .ed-stepper__text { font-size: 0.9375rem; max-width: 24ch; }
+}
+
+/* Numeros de los pasos: solidos, para que se lean */
+.ed-stepper__circle { color: var(--ed-accent); -webkit-text-stroke: 0; }
+
+/* Tarjetas oscuras: las lineas y el recuadro de lanzamiento no se veian (faltaba el borde claro) */
+.plano-web__card--featured { --ed-border-strong: rgba(242, 241, 237, 0.3); }
+
+/* Enlaces del pie: objetivo tactil de 44 px */
+.ed-footer__col a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding-block: 0;
+}
+
+/* Contacto: el formulario arranca arriba y muestra el producto elegido */
+.plano-page .ed-section { padding-block: var(--space-6) var(--space-9); }
+
+.form-product {
+  margin: 0 0 var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  border-left: 2px solid var(--ed-accent);
+  color: var(--ed-ink-soft);
+  font-size: 1rem;
+}
+
+.form-product[hidden] { display: none; }
+.form-product strong { color: var(--ed-ink); font-weight: 600; }
+.form-product a {
+  margin-left: var(--space-3);
+  color: var(--ed-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* Teaser: el boton principal debe quedar en la primera pantalla */
+.ed-hero--construction { padding-block: var(--space-6); }
+.ed-hero__actions { margin-top: var(--space-6); }
+
+/* Boton flotante: en escritorio no hace falta (el menu ya tiene el boton); en celular es una barra
+   con texto que aparece solo cuando no hay otro boton de propuesta a la vista (js/main.js, initCtaBar). */
+.contact-fab__label { display: none; }
+
+@media (min-width: 768px) {
+  .contact-fab { display: none; }
+}
+
+@media (max-width: 767px) {
+  .plano-hero { padding-block: var(--space-6) var(--space-8); }
+  .plano-subhero { padding-block: var(--space-6) var(--space-5); }
+  .ed-metabar,
+  .ed-hero__coords { display: none; }
+  .ed-footer { padding-bottom: calc(var(--space-7) + 56px); }
+
+  .contact-fab {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: 56px;
+    gap: var(--space-3);
+    border-radius: 0;
+    background: var(--color-sage);
+    color: var(--color-black);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+    transform: translateY(100%);
+    transition: transform 250ms var(--ease-out);
+  }
+
+  .contact-fab.is-shown { transform: translateY(0); }
+  .contact-fab:hover,
+  .contact-fab:active { transform: translateY(100%); background: var(--color-sage); }
+  .contact-fab.is-shown:hover,
+  .contact-fab.is-shown:active { transform: translateY(0); }
+  .contact-fab__label { display: inline; }
+  .contact-fab svg { width: 20px; height: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plano-hero .reveal { animation: none; }
+  .contact-fab { transition: none; }
+}
+
+/* Pie: los titulos de columna no bajan de 12 px; las negritas usan el peso 600 del sistema */
+.ed-footer__col-title { font-size: 0.75rem; }
+strong, b { font-weight: 600; }
