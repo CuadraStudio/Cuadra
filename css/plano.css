@@ -1443,3 +1443,126 @@ html[data-logo-seen] .teaser-logo path {
 /* Pie: los titulos de columna no bajan de 12 px; las negritas usan el peso 600 del sistema */
 .ed-footer__col-title { font-size: 0.75rem; }
 strong, b { font-weight: 600; }
+
+/* ============================================
+   22) Fase 2 de la auditoria UX/UI (2026-10-11)
+   Inversion mas corta: una cifra principal por tarjeta y el detalle
+   ("Que incluye", revisiones y extras) en bloques que se abren.
+   ============================================ */
+
+.plano-web--prices {
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.plano-web--prices .plano-web__card {
+  gap: var(--space-3);
+  padding: var(--space-6) var(--space-5);
+}
+
+.plano-web--prices .plano-web__price {
+  padding-top: var(--space-4);
+}
+
+.plano-web--prices .plano-web__price span {
+  font-size: clamp(2.25rem, 4.4vw, 3.25rem);
+}
+
+/* Bloques que se abren: mismo lenguaje que las preguntas frecuentes (+ que gira a x) */
+.plano-web__more,
+.plano-care__more {
+  border-top: 1px solid var(--ed-border-strong);
+}
+
+.plano-web__more summary,
+.plano-care__more summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 44px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--ed-ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.plano-web__more summary::-webkit-details-marker,
+.plano-care__more summary::-webkit-details-marker {
+  display: none;
+}
+
+.plano-web__more summary::after,
+.plano-care__more summary::after {
+  content: '+';
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--ed-accent);
+  transition: transform var(--transition-fast);
+}
+
+.plano-web__more[open] summary::after,
+.plano-care__more[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.plano-web__more .plano-web__list {
+  padding-bottom: var(--space-4);
+}
+
+.plano-care__more {
+  margin-top: var(--space-2);
+}
+
+.plano-care__more p {
+  margin-bottom: var(--space-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plano-web__more summary::after,
+  .plano-care__more summary::after { transition: none; }
+}
+
+/* 22b) Fase 2, celular: secciones y pasos mas compactos */
+@media (max-width: 767px) {
+  .ed-section { padding-block: var(--space-8); }
+
+  .ed-section__lede { margin-bottom: 0; }
+
+  /* Pasos: numero a la izquierda y texto a la derecha en vez de una columna alta */
+  .ed-stepper--5 {
+    gap: 0;
+    margin-top: var(--space-5);
+  }
+
+  .ed-stepper--5 .ed-stepper__item {
+    display: grid;
+    grid-template-columns: 3.25rem 1fr;
+    column-gap: var(--space-4);
+    align-items: start;
+    padding-block: var(--space-4);
+  }
+
+  .ed-stepper--5 .ed-stepper__circle {
+    grid-row: 1 / span 2;
+    font-size: 2.25rem;
+    margin: 0;
+  }
+
+  .ed-stepper--5 .ed-stepper__title { margin-bottom: 0; }
+
+  .plano-care { margin-top: var(--space-5); }
+}
+
+/* 22c) Fase 2, celular: pie en dos columnas (Paginas a la izquierda; Redes y Legal a la derecha) */
+@media (max-width: 639px) {
+  .ed-footer__cols {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4) var(--space-5);
+    margin-bottom: var(--space-6);
+  }
+
+  .ed-footer__col:first-child { grid-row: 1 / span 2; }
+}
