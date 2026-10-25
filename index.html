@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CUADRA | Webs a medida para negocios locales</title>
-  <script src="js/site-config.js?v=20261025g"></script>
-  <meta name="description" content="Webs a medida para negocios locales de Uruguay. Conocé una primera propuesta para tu marca antes de contratar; después, la publicamos y la mantenemos.">
+  <script src="/js/site-config.js?v=20261025h"></script>
+  <meta name="description" content="Webs a medida para negocios locales de Uruguay. Solicitá una primera propuesta para tu marca, sin costo y sin obligación.">
   <link rel="canonical" href="https://cuadrastudio.uy/">
-  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0F1111">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="CUADRA | Webs a medida para negocios locales">
-  <meta property="og:description" content="Tu negocio no es una plantilla. Tu web tampoco. Conocé una primera propuesta para tu marca antes de decidir.">
+  <meta property="og:description" content="Diseñamos webs a medida para negocios locales. Conocé una primera propuesta para tu marca antes de contratar.">
   <meta property="og:url" content="https://cuadrastudio.uy/">
   <meta property="og:locale" content="es_UY">
   <meta property="og:image" content="https://cuadrastudio.uy/img/og-image.png?v=20261011">
@@ -21,293 +20,82 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="CUADRA, webs a medida para negocios locales: Tu negocio no es una plantilla. Tu web tampoco.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CUADRA | Webs a medida para negocios locales">
-  <meta name="twitter:description" content="Tu negocio no es una plantilla. Tu web tampoco. Conocé una primera propuesta para tu marca antes de decidir.">
+  <meta name="twitter:title" content="CUADRA — Webs a medida para negocios locales | Sitio en construcción">
+  <meta name="twitter:description" content="Diseñamos webs a medida para negocios locales. Conocé una primera propuesta para tu marca antes de contratar.">
   <meta name="twitter:image" content="https://cuadrastudio.uy/img/og-image.png?v=20261011">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-  <!-- Fonts: Montserrat unica, servida desde el propio sitio (fonts/, ver css/site.css) -->
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CUADRA",
+    "url": "https://cuadrastudio.uy/",
+    "image": "https://cuadrastudio.uy/img/og-image.png",
+    "description": "CUADRA diseña y desarrolla webs a medida para negocios locales de Uruguay: propuesta visual previa, publicación y cuidado mensual.",
+    "email": "cuadrastudio.uy@gmail.com",
+    "sameAs": [
+      "https://www.instagram.com/cuadrastudio.uy"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "cuadrastudio.uy@gmail.com",
+      "areaServed": "UY",
+      "availableLanguage": "Spanish"
+    }
+  }
+  </script>
+
+  <!-- Fonts: Montserrat -->
   <link rel="preload" href="fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/site.css?v=20261025f">
-  <link rel="stylesheet" href="css/composition.css?v=20261025g">
+  <link rel="stylesheet" href="css/site.css?v=20261025h">
 </head>
-<body class="home-editorial plano-home composition-home">
+<body class="home-editorial plano-home plano-teaser">
 
   <!-- Skip link -->
   <a href="#contenido" class="skip-link">Saltar al contenido principal</a>
 
-  <!-- Navigation -->
-  <nav class="ed-nav" role="navigation" aria-label="Navegacion principal">
-    <div class="ed-nav__inner">
-      <a href="index.html" class="ed-nav__brand" aria-label="CUADRA - Inicio">
-        <img src="assets/cuadra-logo-white.svg" alt="">
-      </a>
-
-      <div class="ed-nav__links">
-        <a href="index.html#encaje" class="nav__link">Servicios</a>
-        <a href="index.html#proceso" class="nav__link">Cómo trabajamos</a>
-        <a href="index.html#inversion" class="nav__link">Inversión</a>
-        <a href="index.html#faq" class="nav__link">Preguntas</a>
-        <a href="contacto.html" class="nav__cta">Solicitar propuesta</a>
-      </div>
-
-
-      <button class="nav__hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu de navegacion">
-        <span class="nav__hamburger-line"></span>
-        <span class="nav__hamburger-line"></span>
-        <span class="nav__hamburger-line"></span>
-      </button>
-    </div>
-
-    <!-- Mobile menu -->
-    <div class="nav__mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu de navegacion">
-      <a href="index.html#encaje" class="nav__mobile-link">Servicios</a>
-      <a href="index.html#proceso" class="nav__mobile-link">Cómo trabajamos</a>
-      <a href="index.html#inversion" class="nav__mobile-link">Inversión</a>
-      <a href="index.html#faq" class="nav__mobile-link">Preguntas</a>
-      <a href="contacto.html" class="nav__mobile-link nav__mobile-link--cta">Solicitar propuesta</a>
-    </div>
-  </nav>
-
-  <div class="ed-shell">
-    <div class="ed-metabar">
-      <div class="ed-container ed-metabar__inner">
-        <span>CUADRA · 2026</span>
-        <span class="ed-metabar__status"><span class="ed-metabar__dot" aria-hidden="true"></span>Abiertos a nuevos proyectos</span>
-      </div>
-    </div>
-
+  <div class="ed-shell" style="padding-top: 0;">
     <main id="contenido" tabindex="-1">
 
-    <!-- 01 Hero: que hacemos y por que mirar -->
-    <header class="ed-hero plano-hero">
-      <div class="plano-hero__grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-      <svg class="plano-hero__mark" viewBox="0 0 285 77.73" aria-hidden="true" focusable="false"><g transform="translate(-6.5908,-64.092)"><path pathLength="1" d="M 6.5908052,64.091977 V 90.000002 H 32.498835 58.409197 84.317231 110.2276 v 25.910348 25.90802 h 25.90802 V 115.91035 90.000002 64.091977 H 110.2276 84.317231 58.409197 32.498835 Z"/><path pathLength="1" d="M 162.04598,64.091977 v 25.908025 h 25.90804 25.91036 25.90804 25.91036 25.90802 V 64.091977 h -25.90802 -25.91036 -25.90804 -25.91036 z"/><path pathLength="1" d="M 162.04598,115.91035 v 25.90802 h 25.90804 25.91036 25.90804 25.91036 25.90802 v -25.90802 h -25.90802 -25.91036 -25.90804 -25.91036 z"/></g></svg>
-      <div class="ed-container">
-        <div class="ed-hero__badge pill reveal">
-          <span class="ed-hero__badge-dot" aria-hidden="true"></span>
-          Estudio de diseño web · Montevideo
+      <!-- Hero — teaser, sitio en construccion. Sin nav: la home completa
+           (index-web.html, noindex) no se expone desde aca a proposito. El
+           boton principal abre el formulario de propuesta. -->
+      <header class="ed-hero ed-hero--construction hero--construction plano-hero">
+        <div class="ed-container ed-hero__center">
+          <a href="/" class="ed-nav__brand ed-hero__brand" aria-label="CUADRA">
+            <svg class="teaser-logo" viewBox="0 0 285 77.73" role="img" aria-label="CUADRA" focusable="false"><g transform="translate(-6.5908,-64.092)"><path pathLength="1" d="M 6.5908052,64.091977 V 90.000002 H 32.498835 58.409197 84.317231 110.2276 v 25.910348 25.90802 h 25.90802 V 115.91035 90.000002 64.091977 H 110.2276 84.317231 58.409197 32.498835 Z"/><path pathLength="1" d="M 162.04598,64.091977 v 25.908025 h 25.90804 25.91036 25.90804 25.91036 25.90802 V 64.091977 h -25.90802 -25.91036 -25.90804 -25.91036 z"/><path pathLength="1" d="M 162.04598,115.91035 v 25.90802 h 25.90804 25.91036 25.90804 25.91036 25.90802 v -25.90802 h -25.90802 -25.91036 -25.90804 -25.91036 z"/></g></svg>
+            <span>CUADRA</span>
+          </a>
+
+          <p class="ed-feature__eyebrow" style="margin: var(--space-6) 0 var(--space-3);">Próximamente</p>
+          <h1 class="ed-hero__title plano-hero__title reveal" style="margin-inline: auto;">Estamos construyendo <em>algo nuevo.</em></h1>
+
+          <div class="hero__rotator" aria-live="polite">
+            <p class="hero__rotator-line is-active">Tu negocio no es una plantilla. Tu web tampoco.</p>
+            <p class="hero__rotator-line">Webs a medida para negocios locales.</p>
+            <p class="hero__rotator-line">Mirá cómo podría verse antes de contratar.</p>
+            <p class="hero__rotator-line">Después, la publicamos y la mantenemos.</p>
+          </div>
+
+          <p class="ed-hero__subtitle reveal" style="margin: var(--space-5) auto 0;">Diseñamos webs a medida para negocios locales. Contanos sobre el tuyo y, si hay encaje, te mostramos una propuesta sin costo.</p>
+
+          <p class="ed-hero__actions">
+            <a href="/contacto.html" class="btn btn--primary"  data-cta-anchor>Solicitar propuesta</a>
+            <a href="https://www.instagram.com/cuadrastudio.uy" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Seguinos en Instagram</a>
+          </p>
+
+          <p class="ed-hero__coords" style="margin-inline: auto;">34.90°S / 56.16°W · Montevideo, Uruguay</p>
         </div>
-
-        <h1 class="ed-hero__title plano-hero__title reveal">Tu negocio no es una plantilla. <em>Tu web tampoco.</em></h1>
-
-        <div class="ed-hero__row">
-          <p class="ed-hero__subtitle reveal">Diseñamos webs a medida para negocios locales. Conocé una primera propuesta para tu marca antes de decidir. Después, nos encargamos de publicarla y mantenerla.</p>
-          <div class="plano-hero__ctas reveal"><a href="contacto.html" class="ed-hero__btn" data-cta-anchor>Solicitar propuesta</a><a href="index.html#proceso" class="ed-hero__link">Ver cómo trabajamos ↗</a></div>
-        </div>
-
-        <ul class="ed-hero__badges reveal">
-          <li class="pill">Propuesta inicial sin costo</li>
-        </ul>
-
-        <p class="ed-hero__coords">34.90°S / 56.16°W · Montevideo, Uruguay</p>
-      </div>
-    </header>
-
-    <!-- 02 Encaje: dos soluciones claras -->
-    <section id="encaje" class="ed-section section--mist plano-band plano-band--mist" aria-labelledby="encaje-title">
-      <div class="ed-container">
-        <div class="ed-section__head">
-          <span class="ed-section__index">01 —</span>
-          <h2 class="ed-section__label" id="encaje-title">Una web según lo que necesita tu negocio</h2>
-        </div>
-        <p class="ed-section__lede reveal">Según cómo trabaje tu negocio, la web tiene un trabajo distinto.</p>
-
-        <div class="plano-web composition-services reveal">
-          <article class="plano-web__card"><div class="composition-service-heading"><p class="plano-web__eyebrow">Servicios y reservas</p><h3 class="plano-web__title">Web para servicios y reservas</h3></div><div class="composition-service-body"><p class="plano-web__text">Barberías, peluquerías, estudios, consultorios. Tus clientes ven qué hacés y cuánto cuesta, y llegan a reservar sin dar vueltas.</p><ul class="plano-web__list">
-              <li>Servicios, equipo, precios y ubicación claros</li>
-              <li>Enlace a tu sistema de reservas: no lo reemplazamos</li>
-              <li>Pensada para el celular, desde donde te buscan</li>
-            </ul></div>
-          </article>
-          <article class="plano-web__card plano-web__card--featured"><div class="composition-service-heading"><p class="plano-web__eyebrow">Locales y marcas</p><h3 class="plano-web__title">Web para marcas y negocios locales</h3></div><div class="composition-service-body"><p class="plano-web__text">Cafeterías, restaurantes, comercios y marcas. Tu identidad, tu carta o catálogo, tus fotos y tu ubicación en un solo lugar.</p><ul class="plano-web__list">
-              <li>Una identidad propia, no una plantilla con tu logo</li>
-              <li>Carta o catálogo informativo, sin carrito ni cobros</li>
-              <li>Mapa, horarios y contacto siempre a mano</li>
-            </ul></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03 Proceso: reducir incertidumbre -->
-    <section id="proceso" class="ed-section" aria-labelledby="proceso-title">
-      <div class="ed-container composition-process">
-        <div class="ed-section__head">
-          <span class="ed-section__index">02 —</span>
-          <h2 class="ed-section__label" id="proceso-title">Cómo trabajamos</h2>
-        </div>
-        <p class="ed-section__lede reveal">Conocé una dirección visual antes de decidir. El desarrollo empieza cuando aceptás el presupuesto.</p>
-        <div class="structure-process-group composition-before reveal"><h3 class="structure-group-title">Antes de contratar</h3><ol class="structure-process" start="1">
-          <li><span class="structure-step-number" aria-hidden="true">01</span><div><h4>Conocemos tu negocio</h4><p>Nos contás qué necesitás. Confirmamos si podemos ayudarte y te explicamos el alcance y el precio de partida.</p></div></li>
-          <li><span class="structure-step-number" aria-hidden="true">02</span><div><h4>Ves una propuesta visual</h4><p>Si hay encaje, te mostramos una portada y una sección para tu marca, sin costo ni obligación de contratar.</p></div></li>
-        </ol></div>
-        <div class="structure-process-group reveal"><h3 class="structure-group-title">Si decidís avanzar</h3><ol class="structure-process" start="3">
-          <li><span class="structure-step-number" aria-hidden="true">03</span><div><h4>Acordamos y desarrollamos</h4><p>Aprobás el presupuesto escrito y abonás el anticipo. Con tus materiales construimos la web, con dos rondas de revisión dentro del alcance.</p></div></li>
-          <li><span class="structure-step-number" aria-hidden="true">04</span><div><h4>Publicamos y seguimos con vos</h4><p>Con tu aprobación y el saldo abonado, publicamos la web. Desde ahí empieza el cuidado mensual.</p></div></li>
-        </ol></div>
-        <p class="plano-care reveal"><strong>50% para iniciar · 50% antes de publicar.</strong> La mensualidad comienza al publicar.</p>
-        <div class="structure-actions reveal"><a href="contacto.html" class="ed-hero__btn">Solicitar propuesta</a><a href="#inversion" class="ed-hero__link">Ver inversión ↗</a></div>
-      </div>
-    </section>
-
-    <!-- 04 Inversion y cuidado -->
-    <section id="inversion" class="ed-section section--mist plano-band plano-band--mist" aria-labelledby="inversion-title">
-      <div class="ed-container">
-        <div class="ed-section__head">
-          <span class="ed-section__index">03 —</span>
-          <h2 class="ed-section__label" id="inversion-title">Inversión</h2>
-        </div>
-        <p class="ed-section__lede reveal">Estos son los precios base de implementación. Definimos el presupuesto final según las páginas, el contenido y las funcionalidades que incluya tu web. Todas nuestras webs son a medida y se adaptan al celular: cambia el alcance, no el cuidado del diseño. Todos los proyectos llevan mantenimiento mensual. Precios en dólares, sin IVA. Dominio estándar incluido, siempre a tu nombre.</p>
-        <div class="plano-web plano-web--prices composition-primary reveal">
-          <article class="plano-web__card">
-            <p class="plano-web__eyebrow">Web esencial</p>
-            <h3 class="plano-web__title">Una página a medida</h3>
-            <p class="plano-web__text">Todo lo importante de tu negocio en una página: presentación, servicios, ubicación y contacto. Si necesitás una o dos páginas adicionales, las presupuestamos.</p>
-            <details class="plano-web__more">
-              <summary>Qué incluye</summary>
-              <ul class="plano-web__list">
-                <li>Hasta 6 secciones, adaptada al celular</li>
-                <li>Contacto, mapa y enlace a reservas si corresponde</li>
-                <li>SEO técnico básico, política de privacidad y publicación</li>
-                <li>Hasta 2 páginas adicionales: <strong data-price="extraPage">USD 50</strong> cada una</li>
-              </ul>
-            </details>
-            <p class="plano-web__price"><small>Desde</small><span data-price="landing.list">USD 249</span> <em>+ <strong data-price="landing.monthly">USD 29</strong>/mes de mantenimiento, sin IVA</em></p>
-            <a href="contacto.html?producto=landing" class="ed-hero__btn" aria-label="Solicitar propuesta de Web esencial">Solicitar propuesta</a>
-          </article>
-          <article class="plano-web__card plano-web__card--featured">
-            <p class="plano-web__eyebrow">Web completa</p>
-            <h3 class="plano-web__title">De 4 a 8 páginas</h3>
-            <p class="plano-web__text">Un sitio de varias páginas para organizar tus servicios, equipo o sedes. Cada área tiene su propio espacio, con una estructura que definimos según tu negocio.</p>
-            <details class="plano-web__more">
-              <summary>Qué incluye</summary>
-              <ul class="plano-web__list">
-                <li>Home y de 3 a 7 páginas internas</li>
-                <li>Estructura pensada para que te encuentren y te entiendan</li>
-                <li>Todo lo incluido en Web esencial</li>
-              </ul>
-            </details>
-            <p class="plano-web__price"><small>Desde</small><span data-price="web.list">USD 399</span> <em>+ <strong data-price="web.monthly">USD 39</strong>/mes de mantenimiento, sin IVA</em></p>
-            <a href="contacto.html?producto=web" class="ed-hero__btn" aria-label="Solicitar propuesta de Web completa">Solicitar propuesta</a>
-          </article>
-        </div>
-        <h3 class="structure-group-title">¿Ya tenés web o querés vender productos?</h3>
-        <div class="plano-web plano-web--prices composition-secondary reveal">
-          <article class="plano-web__card plano-web__card--featured">
-            <p class="plano-web__eyebrow">Web Refresh</p>
-            <h3 class="plano-web__title">Rediseño de tu web actual</h3>
-            <p class="plano-web__text">Ya tenés web y no te representa: la rediseñamos con tu contenido.</p>
-            <details class="plano-web__more">
-              <summary>Qué incluye</summary>
-              <ul class="plano-web__list">
-                <li>Revisión breve de tu web y migración de tu contenido</li>
-                <li>Conservamos tu dominio y lo que ya funciona</li>
-                <li>Mismo cuidado mensual que una web nueva</li>
-              </ul>
-            </details>
-            <p class="plano-web__price"><small>Desde</small><span data-price="refresh.landingList">USD 199</span> <em>+ mantenimiento desde <strong data-price="landing.monthly">USD 29</strong>/mes, sin IVA</em></p>
-            <a href="contacto.html?producto=refresh" class="ed-hero__btn" aria-label="Solicitar propuesta de Web Refresh">Solicitar propuesta</a>
-          </article>
-          <article class="plano-web__card">
-            <p class="plano-web__eyebrow">Tienda con carrito</p>
-            <h3 class="plano-web__title">Tus productos, listos para recibir pedidos</h3>
-            <p class="plano-web__text">Tus clientes eligen productos, ajustan cantidades y arman su carrito. El pedido se envía por WhatsApp; definimos con vos cómo se confirma y se paga.</p>
-            <details class="plano-web__more">
-              <summary>Qué incluye</summary>
-              <ul class="plano-web__list">
-                <li>Web de hasta 4 páginas con tu identidad</li>
-                <li>Catálogo y carrito con cantidades, total y envío del pedido por WhatsApp</li>
-                <li>Si ya vendés en otra plataforma, la conectamos con tu web</li>
-                <li>Panel de pedidos e integración de pagos, como Mercado Pago: se evalúan y presupuestan aparte</li>
-              </ul>
-            </details>
-            <p class="plano-web__price"><small>Desde</small><span data-price="tienda.list">USD 599</span> <em>+ <strong data-price="tienda.monthly">USD 39</strong>/mes de mantenimiento, sin IVA</em></p>
-            <a href="contacto.html?producto=tienda" class="ed-hero__btn" aria-label="Solicitar propuesta de Tienda con carrito">Solicitar propuesta</a>
-          </article>
-        </div>
-
-      </div>
-    </section>
-
-    <section id="cuidado" class="ed-section" aria-labelledby="cuidado-title">
-      <div class="ed-container composition-care">
-        <div class="ed-section__head"><span class="ed-section__index">04 —</span><h2 class="ed-section__label" id="cuidado-title">Después de publicar, seguimos acá</h2></div>
-        <p class="ed-section__lede reveal">La mensualidad mantiene tu web alojada y cuidada. Si cambia un horario, un precio o una foto, podés pedirnos la actualización dentro del tiempo incluido.</p>
-        <div class="plano-care reveal">
-          <p><strong>Cuidado mensual.</strong> Alojamiento, HTTPS, monitoreo, corrección de fallos propios y hasta 30 minutos al mes de cambios menores (45 en Web). Soporte de lunes a viernes, de 9 a 18 h. Sin permanencia: avisás con 15 días.</p>
-          <details class="plano-care__more">
-            <summary>Revisiones, extras y costos aparte</summary>
-            <p>Un cambio menor es, por ejemplo, un horario, un precio o una foto. Incluimos dos rondas de revisión consolidada dentro del alcance aprobado. Nuevas secciones, idiomas, locales, fotografía y redacción extensa se presupuestan, y te avisamos antes de ejecutarlos.</p>
-            <p>Incluye el primer año de un dominio estándar y sus renovaciones mientras mantenés el servicio. Dominios premium y suscripciones de terceros, como agenda, correo o pagos, se presupuestan aparte.</p>
-          </details>
-        </div>
-
-        <div class="plano-care reveal"><p><strong>Tu web, bajo tu control.</strong> El dominio se registra a tu nombre. Al completar el pago recibís el código y los recursos, con los derechos acordados; los materiales de terceros conservan su licencia.</p><a href="#faq" class="ed-hero__link">Ver dudas sobre propiedad y cancelación ↗</a></div>
-      </div>
-    </section>
-
-    <!-- 05 Dudas -->
-    <section id="faq" class="ed-section plano-band plano-band--white" aria-labelledby="faq-title">
-      <div class="ed-container">
-        <div class="ed-section__head">
-          <span class="ed-section__index">05 —</span>
-          <h2 class="ed-section__label" id="faq-title">Preguntas frecuentes</h2>
-        </div>
-
-        <h3 class="structure-group-title">Antes de empezar</h3><div class="ed-faq reveal"><details class="ed-faq__item">
-            <summary>¿Qué incluye la propuesta gratuita?</summary>
-            <p>Una portada y una sección de tu web, con vista para celular si ayuda. Es una demostración: admite una devolución breve (no rondas ilimitadas) y no incluye código ni licencia de uso antes de contratar.</p>
-          </details>
-<details class="ed-faq__item">
-            <summary>¿Estoy obligado a contratar después?</summary>
-            <p>No. Si no contratás, cerramos sin presión. Tampoco usamos tu marca de forma pública sin tu autorización.</p>
-          </details>
-<details class="ed-faq__item">
-            <summary>¿Qué necesito aportar?</summary>
-            <p>Nombre y contacto; servicios, precios y horarios; logo y fotos que puedas usar; tus redes y enlaces de reservas; los datos del titular del dominio; y una persona que apruebe contenidos y cambios.</p>
-          </details>
-<details class="ed-faq__item">
-            <summary>¿Cuánto tarda?</summary>
-            <p>Nuestro objetivo es entregar en 7 a 10 días hábiles desde el anticipo y con los materiales completos, y lo confirmamos en cada presupuesto. Si los materiales llegan tarde, se reprograma.</p>
-          </details></div>
-        <h3 class="structure-group-title">Tu web y su continuidad</h3><div class="ed-faq reveal"><details class="ed-faq__item">
-            <summary>Ya uso un sistema de reservas, ¿lo reemplazan?</summary>
-            <p>No. Seguís usando el que tenés y tu web lleva a tus clientes hasta él con un enlace. Una conexión especial se presupuesta aparte.</p>
-          </details>
-<details class="ed-faq__item">
-            <summary>¿La web y el dominio son míos?</summary>
-            <p>El dominio se registra siempre a tu nombre y nunca lo retenemos. Al completarse el pago te entregamos el código y los recursos, con los derechos acordados; los materiales de terceros conservan su licencia.</p>
-          </details>
-<details class="ed-faq__item"><summary>¿Y si ya tengo dominio o alojamiento?</summary><p>Revisamos cómo aprovecharlos y lo dejamos definido en el presupuesto. Podés conservar tu dominio y conectarlo a la nueva web. Si mantenés tu propio alojamiento, evaluamos si sirve y acordamos el mantenimiento. No se descuentan automáticamente los servicios que ya pagaste.</p></details>
-<details class="ed-faq__item">
-            <summary>¿Puedo cancelar cuando quiera?</summary>
-            <p>Sí. Sin permanencia: avisás con 15 días antes de la renovación y el servicio sigue hasta el fin del período pagado. Conservás el dominio y asumís sus próximas renovaciones. Te entregamos el código y una guía de publicación; migrar con nosotros se presupuesta aparte.</p>
-          </details>
-<details class="ed-faq__item">
-            <summary>¿Prometen resultados en Google o más ventas?</summary>
-            <p>No. Construimos con buenas bases técnicas, también para buscadores, pero no prometemos posiciones en Google ni ventas. Sí aseguramos una web clara, cuidada y fácil de contactar.</p>
-          </details></div>
-
-        <a href="contacto.html" class="ed-hero__link" style="margin-top: var(--space-6);">Tengo otra pregunta ↗</a>
-      </div>
-    </section>
+      </header>
 
     </main>
-
-    <!-- CTA final -->
-    <section class="plano-cta-band" aria-labelledby="cta-title" data-cta-anchor>
-      <div class="ed-cta ed-container reveal">
-        <p class="ed-cta__eyebrow">— Empezá cuando quieras</p>
-        <p class="ed-cta__title" id="cta-title">Veamos cómo podría verse <em>tu negocio en la web</em>.</p>
-        <p class="ed-cta__text">Contanos qué hacés y qué querés lograr. Si hay encaje, te mostramos una primera propuesta sin costo ni obligación.</p>
-        <div class="plano-cta-actions"><a href="contacto.html" class="ed-cta__btn">Solicitar propuesta →</a><a href="#" class="ed-cta__btn ed-cta__btn--ghost" data-whatsapp target="_blank" rel="noopener noreferrer" hidden>Escribinos por WhatsApp ↗</a></div>
-      </div>
-    </section>
 
     <!-- Footer -->
     <footer class="ed-footer" role="contentinfo">
@@ -317,24 +105,10 @@
           <a href="mailto:cuadrastudio.uy@gmail.com" class="ed-footer__email">cuadrastudio.uy@gmail.com</a>
         </div>
 
-        <div class="ed-footer__cols">
-          <div class="ed-footer__col">
-            <p class="ed-footer__col-title">Páginas</p>
-            <a href="index.html">Inicio</a>
-            <a href="index.html#proceso">Cómo trabajamos</a>
-            <a href="index.html#inversion">Inversión</a>
-            <a href="index.html#cuidado">Cuidado mensual</a>
-            <a href="index.html#faq">Preguntas</a>
-            <a href="contacto.html">Solicitar propuesta</a>
-          </div>
+        <div class="ed-footer__cols" style="grid-template-columns: max-content;">
           <div class="ed-footer__col">
             <p class="ed-footer__col-title">Redes</p>
             <a href="https://www.instagram.com/cuadrastudio.uy" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
-          </div>
-          <div class="ed-footer__col">
-            <p class="ed-footer__col-title">Legal</p>
-            <a href="aviso-legal.html">Aviso legal</a>
-            <a href="privacidad.html">Privacidad</a>
           </div>
         </div>
 
@@ -346,9 +120,11 @@
     </footer>
   </div>
 
-  <!-- Boton flotante: contacto por email -->
-  <a href="contacto.html" class="contact-fab" aria-label="Solicitar propuesta"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg><span class="contact-fab__label">Solicitar propuesta</span></a>
+  <!-- Boton flotante: solicitar propuesta -->
+  <a href="/contacto.html" class="contact-fab"  aria-label="Solicitar propuesta"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg><span class="contact-fab__label">Solicitar propuesta</span></a>
 
-  <script src="js/main.js?v=20261025g" defer></script>
+
+
+  <script src="js/main.js?v=20261025h" defer></script>
 </body>
 </html>
