@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solicitar propuesta | CUADRA</title>
-  <script src="js/site-config.js?v=20261025c"></script>
+  <script src="js/site-config.js?v=20261025d"></script>
   <meta name="description" content="Contanos sobre tu negocio y qué querés lograr. Si hay encaje, te mostramos una primera propuesta para tu web sin costo y sin obligación.">
   <link rel="canonical" href="https://cuadrastudio.uy/contacto.html">
   <meta name="robots" content="index, follow">
@@ -25,7 +25,7 @@
   <link rel="preload" href="fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/site.css?v=20261025c">
+  <link rel="stylesheet" href="css/site.css?v=20261025d">
 </head>
 <body class="home-editorial plano-home plano-page">
 
@@ -91,7 +91,7 @@
       <div class="ed-container ed-contact-grid">
         <div>
           <h2 class="ed-section__label" id="form-title" style="margin-bottom: var(--space-5);">Contanos sobre tu negocio</h2>
-          <p class="structure-form-help">Para empezar, solo necesitamos tu nombre, el negocio y un medio para responderte. Los demás campos son opcionales.</p>
+          <p class="structure-form-help">Contanos quién sos, qué necesita tu negocio y qué te gustaría resolver. Instagram o web actual es opcional.</p>
           <form class="contact-form reveal" id="contact-form" data-subject="Propuesta solicitada" novalidate>
             <p class="form-product" data-product-note hidden>Consulta por: <strong data-product-name></strong><a href="contacto.html">Quitar</a></p>
             <div class="form-group">
@@ -109,22 +109,27 @@
               <input type="text" id="contacto" name="contacto" class="form-input" placeholder="099 123 456 o tu@email.com" required data-validate="contact" aria-describedby="contacto-error" aria-required="true">
               <span class="form-error" id="contacto-error" aria-live="polite"></span>
             </div>
-            <details class="structure-form-optional"><summary>Sumar información sobre tu negocio (opcional)</summary><div class="form-group">
-              <label for="rubro" class="form-label">Rubro (opcional)</label>
-              <input type="text" id="rubro" name="rubro" class="form-input" placeholder="Ej.: barbería, cafetería, estudio contable" aria-describedby="rubro-error">
-              <span class="form-error" id="rubro-error" aria-live="polite"></span>
+            <div class="form-group">
+              <label for="necesidad" class="form-label">¿Qué necesitás para tu web?</label>
+              <select id="necesidad" name="necesidad" class="form-input" required aria-required="true" aria-describedby="necesidad-error">
+                <option value="">Elegí una opción</option>
+                <option value="Crear una web nueva">Crear una web nueva</option>
+                <option value="Rediseñar una web existente">Rediseñar una web existente</option>
+                <option value="Mostrar un catálogo de productos">Mostrar un catálogo de productos</option>
+                <option value="Todavía no estoy seguro">Todavía no estoy seguro</option>
+              </select>
+              <span class="form-error" id="necesidad-error" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label for="objetivo" class="form-label">Contanos brevemente sobre tu negocio y qué te gustaría resolver</label>
+              <textarea id="objetivo" name="objetivo" class="form-textarea" placeholder="Por ejemplo: tengo una cafetería y quiero mostrar la carta, los horarios y cómo llegar…" required aria-required="true" aria-describedby="objetivo-error"></textarea>
+              <span class="form-error" id="objetivo-error" aria-live="polite"></span>
             </div>
             <div class="form-group">
               <label for="web" class="form-label">Instagram o web actual (opcional)</label>
               <input type="text" id="web" name="web" class="form-input" placeholder="@tunegocio o www.tunegocio.com" aria-describedby="web-error">
               <span class="form-error" id="web-error" aria-live="polite"></span>
             </div>
-            <div class="form-group">
-              <label for="objetivo" class="form-label">¿Qué querés lograr con tu web? (opcional)</label>
-              <textarea id="objetivo" name="objetivo" class="form-textarea" placeholder="Por ejemplo: que me encuentren, que reserven turno, mostrar mi carta…" aria-describedby="objetivo-error"></textarea>
-              <span class="form-error" id="objetivo-error" aria-live="polite"></span>
-            </div>
-            </details>
             <input type="hidden" name="producto" id="producto" data-include data-label="Producto de interés">
             <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="contact-form__status" id="form-status"></div>
@@ -195,6 +200,6 @@
     </footer>
   </div>
 
-  <script src="js/main.js?v=20261025c" defer></script>
+  <script src="js/main.js?v=20261025d" defer></script>
 </body>
 </html>
