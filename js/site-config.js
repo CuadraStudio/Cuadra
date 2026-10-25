@@ -28,7 +28,7 @@
       landing: { list: 249, monthly: 29 },
       web: { list: 399, monthly: 39 },
       refresh: { landingList: 199, webList: 319 },
-      tienda: { list: 449, monthly: 39 },
+      tienda: { list: 599, monthly: 39 },
       extraPage: 50
     },
 

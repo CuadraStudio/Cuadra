@@ -1,0 +1,135 @@
+/* Composicion aprobada 2026-10-25: bloques, contraste y profundidad. */
+.composition-home #encaje .composition-services { display: grid; grid-template-columns: 1fr; gap: 2rem; border: 0; }
+.composition-services .plano-web__card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  column-gap: clamp(2rem, 5vw, 5rem);
+  row-gap: 1rem;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  background: #F2F1ED;
+  border: 1px solid rgba(15,17,17,.16);
+  box-shadow: 0 16px 36px -20px rgba(15,17,17,.3);
+  --ed-ink: #0F1111;
+  --ed-ink-soft: #454B49;
+  --ed-accent: #42665D;
+  color: var(--ed-ink);
+}
+.composition-services .plano-web__card:nth-child(2) {
+  background: #292E2D;
+  --ed-ink: #F2F1ED;
+  --ed-ink-soft: #D8E2DF;
+  --ed-accent: #AFC8C2;
+  color: var(--ed-ink);
+  border-top: 3px solid #AFC8C2;
+}
+.composition-service-heading, .composition-service-body { min-width: 0; }
+.composition-service-heading .plano-web__eyebrow { margin-bottom: 1.5rem; }
+.composition-service-body .plano-web__text { margin-bottom: 1.5rem; }
+.composition-services .plano-web__eyebrow { grid-column: 1; grid-row: 1; }
+.composition-services .plano-web__title { grid-column: 1; grid-row: 2 / span 2; max-width: 16ch; font-size: clamp(2rem, 3.8vw, 3.25rem); line-height: 1.12; }
+.composition-services .plano-web__text { grid-column: 2; grid-row: 2; max-width: none; line-height: 1.7; }
+.composition-services .plano-web__list { grid-column: 2; grid-row: 3; line-height: 1.7; }
+
+.composition-process { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.3fr); column-gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+.composition-process > .ed-section__head { grid-column: 1; grid-row: 1; }
+.composition-process > .ed-section__lede { grid-column: 1; grid-row: 2; }
+.composition-process > .composition-before { grid-column: 2; grid-row: 1 / span 2; }
+.composition-process > .structure-process-group:not(.composition-before) { grid-column: 2; grid-row: 3 / span 2; }
+.composition-process > .plano-care { grid-column: 1; grid-row: 3; margin-top: 0; }
+.composition-process > .structure-actions { grid-column: 1; grid-row: 4; gap: 1.5rem; }
+.composition-process .structure-group-title { margin-top: 0; }
+.composition-process .structure-process { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; margin-bottom: 2.5rem; }
+.composition-process .structure-process li { padding-top: 1.5rem; }
+.composition-process .composition-before li:nth-child(2) {
+  background: #AFC8C2;
+  padding: 1.5rem;
+  border-top: 0;
+  --ed-ink: #0F1111;
+  --ed-ink-soft: #292E2D;
+  --ed-accent: #0F1111;
+}
+.composition-process .structure-actions .ed-hero__link { white-space: normal; }
+
+.composition-primary .plano-web__card { padding: clamp(1.5rem, 3.5vw, 3rem); }
+.composition-primary .plano-web__card:first-child { --ed-ink: #0F1111; --ed-ink-soft: #454B49; --ed-accent: #42665D; }
+.composition-primary .plano-web__title { font-size: clamp(2rem, 3.6vw, 3rem); }
+.composition-primary .plano-web__price span { font-size: clamp(3rem, 5vw, 4.5rem); }
+.composition-home #inversion .composition-secondary { display: grid; grid-template-columns: 1fr; gap: 1.75rem; background: transparent; }
+.composition-secondary .plano-web__card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 1rem 3rem;
+  padding: clamp(1.5rem, 3.5vw, 3rem);
+  border: 1px solid rgba(15,17,17,.18);
+  background: #F2F1ED;
+  box-shadow: 0 16px 36px -20px rgba(15,17,17,.3);
+  --ed-ink: #0F1111;
+  --ed-ink-soft: #454B49;
+  --ed-accent: #42665D;
+  --ed-border-strong: rgba(15,17,17,.25);
+}
+.composition-secondary .plano-web__card:first-child {
+  background: #292E2D;
+  --ed-ink: #F2F1ED;
+  --ed-ink-soft: #D8E2DF;
+  --ed-accent: #AFC8C2;
+  --ed-border-strong: rgba(242,241,237,.24);
+  color: var(--ed-ink);
+}
+.composition-secondary .plano-web__card:first-child .ed-hero__btn {
+  background: #AFC8C2;
+  color: #0F1111;
+}
+.composition-secondary .plano-web__card:first-child .ed-hero__btn:hover {
+  background: #F2F1ED;
+  color: #0F1111;
+}
+.composition-primary .plano-web__card {
+  box-shadow: 0 16px 36px -20px rgba(15,17,17,.3);
+  border-top: 3px solid #42665D;
+}
+.composition-primary .plano-web__card--featured { border-top-color: #AFC8C2; }
+.composition-process .structure-process li:not(:nth-child(2)) {
+  background: #1C2220;
+  padding: 1.5rem;
+  border: 1px solid rgba(242,241,237,.16);
+}
+.composition-process .structure-process-group:not(.composition-before) li:nth-child(2) {
+  background: #1C2220;
+  padding: 1.5rem;
+  border: 1px solid rgba(242,241,237,.16);
+}
+.composition-process .composition-before li:nth-child(2) { box-shadow: 0 12px 28px rgba(0,0,0,.18); }
+.composition-care > .plano-care { background: #292E2D; padding: 1.5rem; border: 1px solid rgba(242,241,237,.16); }
+.composition-care > .plano-care:last-child { background: #1C2220; border-left: 3px solid #AFC8C2; }
+.composition-secondary .plano-web__eyebrow,
+.composition-secondary .plano-web__title,
+.composition-secondary .plano-web__text,
+.composition-secondary .plano-web__more { grid-column: 1; }
+.composition-secondary .plano-web__title { font-size: clamp(1.5rem, 2.7vw, 2rem); }
+.composition-secondary .plano-web__price { grid-column: 2; grid-row: 1 / span 3; border-top: 0; padding-top: 0; margin: 0; }
+.composition-secondary .ed-hero__btn { grid-column: 2; grid-row: 4; justify-self: start; background: #0F1111; color: #F2F1ED; }
+.composition-secondary .plano-web__price span { font-size: 2.75rem; }
+
+.composition-care { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem 4rem; }
+.composition-care > .ed-section__head { grid-column: 1; grid-row: 1 / span 3; margin: 0; }
+.composition-care > .ed-section__lede,
+.composition-care > .plano-care { grid-column: 2; margin: 0; }
+.composition-care > .plano-care { border-top: 1px solid var(--ed-border-strong); padding-top: 1.5rem; }
+@media (max-width: 767px) {
+  .composition-services .plano-web__card,
+  .composition-process,
+  .composition-secondary .plano-web__card,
+  .composition-care { display: flex; flex-direction: column; }
+  .composition-services .plano-web__title { max-width: 20ch; }
+  .composition-process { gap: 1.5rem; }
+  .composition-process > .ed-section__head { order: 0; }
+  .composition-process > .ed-section__lede { order: 1; margin-bottom: 0; }
+  .composition-process > .composition-before { order: 2; }
+  .composition-process > .structure-process-group:not(.composition-before) { order: 3; }
+  .composition-process > .plano-care { order: 4; }
+  .composition-process > .structure-actions { order: 5; margin-top: 0; }
+  .composition-process .structure-process { margin-bottom: 0; }
+  .composition-secondary .plano-web__price { margin-top: 1rem; }
+  .composition-care { gap: 1.5rem; }
+}
