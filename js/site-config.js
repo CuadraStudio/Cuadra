@@ -24,13 +24,11 @@
     // Precios en USD, sin IVA. Fuente de verdad: Webs/docs/negocio/modelo-visual-productos.md.
     // main.js los vuelca en los elementos [data-price="producto.campo"]; el HTML trae el mismo
     // numero como texto por defecto (sin JS). Al cambiar un precio, cambiarlo aca y en el HTML.
-    // launchSlots: clientes por tipo de producto con precio de lanzamiento (con permiso para mostrar el proyecto).
-    launchSlots: 3,
     prices: {
-      landing: { list: 249, launch: 179, monthly: 29 },
-      web: { list: 399, launch: 319, monthly: 39 },
-      refresh: { landingList: 199, landingLaunch: 149, webList: 319, webLaunch: 249 },
-      tienda: { list: 449, launch: 359, monthly: 39 },
+      landing: { list: 249, monthly: 29 },
+      web: { list: 399, monthly: 39 },
+      refresh: { landingList: 199, webList: 319 },
+      tienda: { list: 449, monthly: 39 },
       extraPage: 50
     },
 

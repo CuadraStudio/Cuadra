@@ -2994,3 +2994,42 @@ strong, b { font-weight: 600; }
   margin-top: var(--space-3);
   font-size: 0.875rem;
 }
+
+/* Estructura de contenido: proceso, consulta y lectura legal. */
+.structure-group-title {
+  margin-top: var(--space-7);
+  margin-bottom: var(--space-4);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--ed-ink);
+}
+.structure-process {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+.structure-process li {
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  gap: var(--space-4);
+  border-top: 1px solid var(--ed-border-strong);
+  padding-top: var(--space-5);
+}
+.structure-step-number { font-size: 1.75rem; font-weight: 600; color: var(--ed-accent); }
+.structure-process h4 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; color: var(--ed-ink); margin-bottom: var(--space-3); }
+.structure-process p { color: var(--ed-ink-soft); line-height: 1.7; }
+.structure-actions { display: flex; gap: var(--space-5); align-items: center; flex-wrap: wrap; margin-top: var(--space-6); }
+.structure-form-help { color: var(--ed-ink-soft); line-height: 1.7; margin-bottom: var(--space-5); max-width: 55ch; }
+.structure-form-optional { border-top: 1px solid var(--ed-border-strong); }
+.structure-form-optional summary { cursor: pointer; padding-block: var(--space-4); line-height: 1.5; }
+.structure-legal-toc { border-block: 1px solid rgba(15,17,17,.18); padding-block: var(--space-5); margin-block: var(--space-6); }
+.structure-legal-toc a { display: inline-block; padding-block: .35rem; }
+.structure-related { margin-top: var(--space-7) !important; }
+.legal h2 { scroll-margin-top: 6rem; }
+.legal .ed-feature__eyebrow { color: #42665D; }
+@media (max-width: 767px) {
+  .structure-process { grid-template-columns: minmax(0, 1fr); }
+  .structure-actions .ed-hero__link { white-space: normal; }
+}

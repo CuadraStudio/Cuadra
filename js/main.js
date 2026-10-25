@@ -265,7 +265,7 @@
     var submitBtn = document.getElementById('submit-btn');
 
     // Producto elegido en la web (?producto=landing|web|refresh|tienda): se muestra y viaja con el envio.
-    var productNames = { landing: 'Landing', web: 'Web (4 a 8 páginas)', refresh: 'Web Refresh', tienda: 'Tienda online' };
+    var productNames = { landing: 'Landing', web: 'Web (4 a 8 páginas)', refresh: 'Web Refresh', tienda: 'Catálogo con pedidos por WhatsApp' };
     var productField = form.elements['producto'];
     var productNote = document.querySelector('[data-product-note]');
     if (productField && productNote) {
@@ -472,9 +472,6 @@
         return obj == null ? undefined : obj[key];
       }, prices);
       if (typeof value === 'number') el.textContent = 'USD ' + value;
-    });
-    document.querySelectorAll('[data-launch-slots]').forEach(function (el) {
-      if (typeof site.launchSlots === 'number') el.textContent = String(site.launchSlots);
     });
   }
 

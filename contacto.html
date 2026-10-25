@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solicitar propuesta | CUADRA</title>
-  <script src="/js/site-config.js?v=20261011j"></script>
+  <script src="js/site-config.js?v=20261025c"></script>
   <meta name="description" content="Contanos sobre tu negocio y qué querés lograr. Si hay encaje, te mostramos una primera propuesta para tu web sin costo y sin obligación.">
   <link rel="canonical" href="https://cuadrastudio.uy/contacto.html">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0F1111">
 
   <!-- Open Graph -->
@@ -25,7 +25,7 @@
   <link rel="preload" href="fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/site.css?v=20261011j">
+  <link rel="stylesheet" href="css/site.css?v=20261025c">
 </head>
 <body class="home-editorial plano-home plano-page">
 
@@ -35,15 +35,16 @@
   <!-- Navigation -->
   <nav class="ed-nav" role="navigation" aria-label="Navegacion principal">
     <div class="ed-nav__inner">
-      <a href="/" class="ed-nav__brand" aria-label="CUADRA - Inicio">
+      <a href="index.html" class="ed-nav__brand" aria-label="CUADRA - Inicio">
         <img src="assets/cuadra-logo-white.svg" alt="">
       </a>
 
       <div class="ed-nav__links">
-        <a href="/index-web.html#proceso" class="nav__link">Cómo trabajamos</a>
-        <a href="/index-web.html#inversion" class="nav__link">Inversión</a>
-        <a href="/index-web.html#faq" class="nav__link">Preguntas</a>
-        <a href="/contacto.html" class="nav__cta" aria-current="page">Solicitar propuesta</a>
+        <a href="index.html#encaje" class="nav__link">Servicios</a>
+        <a href="index.html#proceso" class="nav__link">Cómo trabajamos</a>
+        <a href="index.html#inversion" class="nav__link">Inversión</a>
+        <a href="index.html#faq" class="nav__link">Preguntas</a>
+        <a href="contacto.html" class="nav__cta" aria-current="page">Solicitar propuesta</a>
       </div>
 
 
@@ -56,10 +57,11 @@
 
     <!-- Mobile menu -->
     <div class="nav__mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu de navegacion">
-      <a href="/index-web.html#proceso" class="nav__mobile-link">Cómo trabajamos</a>
-      <a href="/index-web.html#inversion" class="nav__mobile-link">Inversión</a>
-      <a href="/index-web.html#faq" class="nav__mobile-link">Preguntas</a>
-      <a href="/contacto.html" class="nav__mobile-link nav__mobile-link--cta" aria-current="page">Solicitar propuesta</a>
+      <a href="index.html#encaje" class="nav__mobile-link">Servicios</a>
+      <a href="index.html#proceso" class="nav__mobile-link">Cómo trabajamos</a>
+      <a href="index.html#inversion" class="nav__mobile-link">Inversión</a>
+      <a href="index.html#faq" class="nav__mobile-link">Preguntas</a>
+      <a href="contacto.html" class="nav__mobile-link nav__mobile-link--cta" aria-current="page">Solicitar propuesta</a>
     </div>
   </nav>
 
@@ -79,8 +81,8 @@
       <svg class="plano-hero__mark" viewBox="0 0 285 77.73" aria-hidden="true" focusable="false"><g transform="translate(-6.5908,-64.092)"><path pathLength="1" d="M 6.5908052,64.091977 V 90.000002 H 32.498835 58.409197 84.317231 110.2276 v 25.910348 25.90802 h 25.90802 V 115.91035 90.000002 64.091977 H 110.2276 84.317231 58.409197 32.498835 Z"/><path pathLength="1" d="M 162.04598,64.091977 v 25.908025 h 25.90804 25.91036 25.90804 25.91036 25.90802 V 64.091977 h -25.90802 -25.91036 -25.90804 -25.91036 z"/><path pathLength="1" d="M 162.04598,115.91035 v 25.90802 h 25.90804 25.91036 25.90804 25.91036 25.90802 v -25.90802 h -25.90802 -25.91036 -25.90804 -25.91036 z"/></g></svg>
       <div class="ed-container">
         <p class="ed-feature__eyebrow reveal" style="margin-bottom: var(--space-3);">Solicitar propuesta</p>
-        <h1 class="ed-hero__title plano-hero__title reveal">Veamos cómo podría verse <em>tu negocio en la web.</em></h1>
-        <p class="ed-hero__subtitle reveal" style="margin-top: var(--space-5);">Contanos qué hacés y qué querés lograr. Si hay encaje, te mostramos una primera propuesta sin costo y sin obligación.</p>
+        <h1 class="ed-hero__title plano-hero__title reveal">Contanos sobre <em>tu negocio.</em></h1>
+        <p class="ed-hero__subtitle reveal" style="margin-top: var(--space-5);">Primero conversamos sobre lo que necesitás y el precio de partida. Si hay encaje, te mostramos una propuesta visual sin costo ni obligación de contratar.</p>
       </div>
     </header>
 
@@ -89,8 +91,9 @@
       <div class="ed-container ed-contact-grid">
         <div>
           <h2 class="ed-section__label" id="form-title" style="margin-bottom: var(--space-5);">Contanos sobre tu negocio</h2>
+          <p class="structure-form-help">Para empezar, solo necesitamos tu nombre, el negocio y un medio para responderte. Los demás campos son opcionales.</p>
           <form class="contact-form reveal" id="contact-form" data-subject="Propuesta solicitada" novalidate>
-            <p class="form-product" data-product-note hidden>Consulta por: <strong data-product-name></strong><a href="/contacto.html">Quitar</a></p>
+            <p class="form-product" data-product-note hidden>Consulta por: <strong data-product-name></strong><a href="contacto.html">Quitar</a></p>
             <div class="form-group">
               <label for="nombre" class="form-label">Nombre</label>
               <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Tu nombre" required autocomplete="name" aria-describedby="nombre-error" aria-required="true">
@@ -106,7 +109,7 @@
               <input type="text" id="contacto" name="contacto" class="form-input" placeholder="099 123 456 o tu@email.com" required data-validate="contact" aria-describedby="contacto-error" aria-required="true">
               <span class="form-error" id="contacto-error" aria-live="polite"></span>
             </div>
-            <div class="form-group">
+            <details class="structure-form-optional"><summary>Sumar información sobre tu negocio (opcional)</summary><div class="form-group">
               <label for="rubro" class="form-label">Rubro (opcional)</label>
               <input type="text" id="rubro" name="rubro" class="form-input" placeholder="Ej.: barbería, cafetería, estudio contable" aria-describedby="rubro-error">
               <span class="form-error" id="rubro-error" aria-live="polite"></span>
@@ -121,11 +124,12 @@
               <textarea id="objetivo" name="objetivo" class="form-textarea" placeholder="Por ejemplo: que me encuentren, que reserven turno, mostrar mi carta…" aria-describedby="objetivo-error"></textarea>
               <span class="form-error" id="objetivo-error" aria-live="polite"></span>
             </div>
+            </details>
             <input type="hidden" name="producto" id="producto" data-include data-label="Producto de interés">
             <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="contact-form__status" id="form-status"></div>
             <button type="submit" class="btn btn--primary btn--full" id="submit-btn">Solicitar propuesta</button>
-            <p class="contact-form__legal">Al enviar aceptás nuestra <a href="/privacidad.html">política de privacidad</a>: usamos tus datos solo para responderte.</p>
+            <p class="contact-form__legal">Al enviar aceptás nuestra <a href="privacidad.html">política de privacidad</a>: usamos tus datos solo para responderte.</p>
           </form>
         </div>
 
@@ -139,13 +143,14 @@
             <a href="#" class="ed-contact-side__value" data-whatsapp target="_blank" rel="noopener noreferrer" hidden>Escribinos por WhatsApp ↗</a>
           </div>
           <div class="ed-contact-side__block">
+            <p><a href="index.html#inversion">Consultar precios y cuidado mensual ↗</a></p>
             <p class="ed-contact-side__label">Ubicación</p>
             <p class="ed-contact-side__value">Montevideo, Uruguay</p>
           </div>
 
           <div class="ed-contact-side__quick">
             <p class="ed-contact-side__label">Qué pasa después</p>
-            <p>Te escribimos para conocer tu negocio y explicarte el precio de partida. Si hay encaje, preparamos una preview sin costo. Recién después, si te convence, pasamos al presupuesto.</p>
+            <p>Revisamos tu consulta y te contactamos para definir necesidad, alcance y precio orientativo. Si podemos ayudarte, preparamos una portada y una sección como propuesta visual. Solo desarrollamos la web cuando aceptás el presupuesto.</p>
           </div>
         </aside>
       </div>
@@ -164,11 +169,12 @@
         <div class="ed-footer__cols">
           <div class="ed-footer__col">
             <p class="ed-footer__col-title">Páginas</p>
-            <a href="/">Inicio</a>
-            <a href="/index-web.html#proceso">Cómo trabajamos</a>
-            <a href="/index-web.html#inversion">Inversión</a>
-            <a href="/index-web.html#faq">Preguntas</a>
-            <a href="/contacto.html">Solicitar propuesta</a>
+            <a href="index.html">Inicio</a>
+            <a href="index.html#proceso">Cómo trabajamos</a>
+            <a href="index.html#inversion">Inversión</a>
+            <a href="index.html#cuidado">Cuidado mensual</a>
+            <a href="index.html#faq">Preguntas</a>
+            <a href="contacto.html">Solicitar propuesta</a>
           </div>
           <div class="ed-footer__col">
             <p class="ed-footer__col-title">Redes</p>
@@ -176,8 +182,8 @@
           </div>
           <div class="ed-footer__col">
             <p class="ed-footer__col-title">Legal</p>
-            <a href="/aviso-legal.html">Aviso legal</a>
-            <a href="/privacidad.html">Privacidad</a>
+            <a href="aviso-legal.html">Aviso legal</a>
+            <a href="privacidad.html">Privacidad</a>
           </div>
         </div>
 
@@ -189,6 +195,6 @@
     </footer>
   </div>
 
-  <script src="js/main.js?v=20261011j" defer></script>
+  <script src="js/main.js?v=20261025c" defer></script>
 </body>
 </html>
