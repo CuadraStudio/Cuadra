@@ -300,7 +300,7 @@ a {
    (.btn, .card__link, etc. all define their own hover colors with higher
    specificity). Restricting the broad selector to non-button anchors keeps
    `.btn--primary:hover` text black on the sage hover background (AA ~12.7:1). */
-a:not(.btn):not(.skip-link):hover {
+a:where(:not(.btn, .skip-link, .ed-hero__btn, .ed-cta__btn, .nav__cta, .contact-fab)):hover {
   color: var(--color-accent-ink-hover);
 }
 
@@ -1132,6 +1132,7 @@ section > .container {
 
 .ed-hero__btn:hover {
   background: var(--ed-accent);
+  color: var(--color-black);
   transform: translateY(-1px);
 }
 
@@ -1363,6 +1364,7 @@ section > .container {
 
 .ed-cta__btn:hover {
   background: var(--ed-accent);
+  color: var(--color-black);
   transform: translateY(-1px);
 }
 
@@ -2004,6 +2006,7 @@ a.ed-contact-side__value:hover {
 
 .plano-cta-band .ed-cta__btn:hover {
   background: var(--color-graphite);
+  color: var(--color-white);
 }
 
 /* 2.6 Footer: mayor aire */
@@ -2283,6 +2286,16 @@ a.ed-contact-side__value:hover {
 
 .plano-web__card--featured .ed-hero__btn {
   background: var(--color-sage);
+  color: var(--color-black);
+}
+
+.plano-web__card .ed-hero__btn:hover {
+  background: var(--color-graphite);
+  color: var(--color-white);
+}
+
+.plano-web__card--featured .ed-hero__btn:hover {
+  background: var(--color-mist);
   color: var(--color-black);
 }
 
