@@ -2,7 +2,7 @@
  'use strict';
  const bar=document.createElement('aside');bar.className='cuadra-demo-bar';bar.setAttribute('aria-label','Demostración de Cuadra');
  const label=document.createElement('span');label.textContent='DEMO DE CUADRA · Sin pedidos ni pagos reales';
- const link=document.createElement('a');link.href='/contacto.html';link.textContent='Quiero una web para mi negocio ↗';bar.append(label,link);document.body.prepend(bar);
+ bar.append(label);document.body.prepend(bar);
  const size=()=>document.documentElement.style.setProperty('--demo-bar-height',bar.offsetHeight+'px');size();if(window.ResizeObserver)new ResizeObserver(size).observe(bar);
  function notice(){let n=document.querySelector('#cuadra-demo-notice');if(!n){n=document.createElement('p');n.id='cuadra-demo-notice';n.setAttribute('role','status');bar.append(n)}n.textContent='Es una demostración. No se envió ningún pedido ni mensaje.'}
  document.addEventListener('click',function(e){const a=e.target.closest('a');if(a&&/wa\.me|api\.whatsapp|admin(?:\.html)?|seguimiento(?:\.html)?/.test(a.getAttribute('href')||'')){e.preventDefault();e.stopImmediatePropagation();notice()}},true);
