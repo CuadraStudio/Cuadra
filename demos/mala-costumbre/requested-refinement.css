@@ -21,3 +21,7 @@
 }
 @media(max-width:360px){.cart-top h2{font-size:28px}.cart-top,.cart-scroll,.cart-bottom{padding-left:17px;padding-right:17px}.cart-line{grid-template-columns:60px minmax(0,1fr);gap:10px}.cart-thumb svg{width:60px;height:58px}.cart-line-bottom{gap:6px}.cart-stepper{width:118px}}
 @media(prefers-reduced-motion:reduce){.cart-line{transition:none}}
+
+/* Product cutout: the only shadow is rendered by CSS. */
+.workshop-photo{height:auto;overflow:visible;clip-path:none;padding:20px 0 26px;background:none}.workshop-photo img{width:100%;max-width:900px;height:auto;margin:0 auto;object-fit:contain;filter:drop-shadow(0 10px 10px rgba(55,40,14,.12))}
+@media(max-width:600px){.workshop-photo{height:auto;padding:12px 0 22px}.workshop-photo img{height:auto;object-fit:contain}}
