@@ -31,7 +31,7 @@
     const total = core.totals(cart);
     document.querySelectorAll('.cart-count').forEach(count => { count.textContent = total.count; });
     launcher.setAttribute('aria-label', `Abrir pedido, ${total.count} alfajores`);
-    inlineLauncher.setAttribute('aria-label', `Ver mi pedido, ${total.count} alfajores`);
+    inlineLauncher.setAttribute('aria-label', `Pedir, ${total.count} alfajores`);
     document.querySelector('.cart-amount').textContent = core.money(total.amount);
     document.querySelector('.cart-units').textContent = `${total.count} ${total.count === 1 ? 'alfajor' : 'alfajores'} · UYU`;
     document.querySelector('.cart-empty').hidden = total.count > 0;
@@ -65,15 +65,18 @@
     document.documentElement.classList.add('cart-open');
     launcher.setAttribute('aria-expanded', 'true');
     inlineLauncher.setAttribute('aria-expanded', 'true');
+    document.querySelectorAll('[data-open-order]').forEach(trigger => trigger.setAttribute('aria-expanded','true'));
     close.focus();
   }
   launcher.addEventListener('click', () => openCart(launcher));
   inlineLauncher.addEventListener('click', () => openCart(inlineLauncher));
+  document.querySelectorAll('[data-open-order]').forEach(trigger => trigger.addEventListener('click', () => openCart(trigger)));
   close.addEventListener('click', () => dialog.close());
   dialog.addEventListener('close', () => {
     document.documentElement.classList.remove('cart-open');
     launcher.setAttribute('aria-expanded', 'false');
     inlineLauncher.setAttribute('aria-expanded', 'false');
+    document.querySelectorAll('[data-open-order]').forEach(trigger => trigger.setAttribute('aria-expanded','false'));
     opener?.focus({preventScroll:true});
   });
   dialog.addEventListener('click', event => {
