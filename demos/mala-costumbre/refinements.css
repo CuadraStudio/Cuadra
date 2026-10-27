@@ -45,7 +45,7 @@
 .products{grid-template-columns:repeat(3,minmax(0,1fr));gap:3%;margin-top:30px}
 .product-stage{height:clamp(250px,23vw,340px)}
 .product-word{font-size:clamp(90px,9vw,140px);transform:scaleX(.8)}
-.product-visual{height:100%;width:100%;transform:none!important}
+.product-visual{height:100%;width:100%;transform:none}
 .product h2{font-size:clamp(23px,2.1vw,33px);margin-top:10px}
 .product p{font-size:11px;line-height:1.7}
 .product .product-price{margin-top:9px;font-size:18px;font-weight:800;letter-spacing:-.035em}

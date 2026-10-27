@@ -6,7 +6,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opa
 .hero-intro{width:100%;max-width:1200px;margin:0 auto}.hero h1{font-size:clamp(48px,6.4vw,100px);line-height:.97;letter-spacing:-.055em;max-width:calc(100% - 120px);margin:0 0 15px}.hero .eyebrow{font-size:10px;letter-spacing:.22em;margin:0}
 .products{width:100%;max-width:1200px;grid-template-columns:repeat(3,minmax(0,1fr));gap:5%;margin:25px auto 0}.product{min-width:0}.product-stage{height:clamp(205px,29svh,300px);position:relative;display:block;margin:0}
 .product .product-word{font-family:Anton,Impact,sans-serif;font-size:clamp(70px,7.2vw,112px);font-weight:400;line-height:1.12;letter-spacing:-.015em;transform:none;position:absolute;top:0;left:0;right:0;margin:0;text-align:center;color:var(--light);z-index:0}
-.product-visual{display:block;position:absolute;bottom:0;left:10%;width:80%;height:64%;overflow:hidden;filter:drop-shadow(0 7px 4px #133d671a);transform:none!important}
+.product-visual{display:block;position:absolute;bottom:0;left:10%;width:80%;height:64%;overflow:hidden;filter:drop-shadow(0 7px 4px #133d671a);transform:none}
 .discover{margin:19px auto 0;padding:10px 16px;font-size:10px;letter-spacing:.04em;font-weight:750;gap:12px}.discover span{font-size:21px;transition:transform .25s}.discover:hover span{transform:translateY(4px)}
 /* Slightly irregular edges recall an opened paper wrapper. */
 .slogan{position:relative;padding:22px 5% 18px;z-index:1}.slogan::before{content:"";position:absolute;left:0;right:0;top:-23px;height:25px;background:var(--butter);clip-path:polygon(0 55%,4% 42%,8% 60%,13% 32%,18% 51%,24% 40%,30% 58%,35% 29%,41% 48%,47% 37%,53% 55%,59% 31%,65% 48%,71% 36%,78% 56%,84% 32%,90% 49%,95% 34%,100% 53%,100% 100%,0 100%)}
