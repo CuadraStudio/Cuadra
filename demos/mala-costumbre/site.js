@@ -3,13 +3,15 @@
   const nav = document.querySelector('.menu-links');
   const menu = document.querySelector('.alfajor-menu');
   const label = document.querySelector('.menu-word');
+  const desktopNav = window.matchMedia('(min-width:601px)');
   function setOpen(open, restoreFocus = false) {
+    if (desktopNav.matches) open = false;
     document.body.classList.toggle('menu-open', open);
     button.setAttribute('aria-expanded', String(open));
     button.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
     label.firstChild.textContent = open ? 'Cerrar ' : 'Abrir menú ';
     label.querySelector('.menu-sign').textContent = open ? '−' : '+';
-    nav.inert = !open;
+    nav.inert = !desktopNav.matches && !open;
     if (restoreFocus) button.focus();
   }
   button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
@@ -32,4 +34,6 @@
   menu.addEventListener('focusout', event => {
     if (event.relatedTarget && !menu.contains(event.relatedTarget)) setOpen(false);
   });
+  desktopNav.addEventListener('change', () => setOpen(false));
+  setOpen(false);
 })();

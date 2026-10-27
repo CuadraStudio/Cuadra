@@ -11,6 +11,7 @@
   const submit = document.querySelector('.cart-submit');
   const clear = document.querySelector('.cart-clear');
   const toast = document.querySelector('.cart-toast');
+  const feedback = document.querySelector('.cart-feedback');
   let cart = [];
   let opener = launcher;
   let toastTimer;
@@ -18,8 +19,16 @@
   function announce(text) {
     toast.textContent = text;
     toast.classList.add('is-visible');
+    feedback.textContent = text;
+    feedback.hidden = false;
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2600);
+    toastTimer = setTimeout(() => { toast.classList.remove('is-visible'); feedback.hidden = true; }, 2600);
+  }
+  function bumpCounts() {
+    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    document.querySelectorAll('.cart-count').forEach(count => count.animate([
+      {transform:'scale(1)'}, {transform:'scale(1.25)',offset:.45}, {transform:'scale(1)'}
+    ], {duration:320,easing:'ease-out'}));
   }
   function save() {
     try { localStorage.setItem(key, JSON.stringify({version:1, items:cart})); } catch {}
@@ -34,12 +43,11 @@
     inlineLauncher.setAttribute('aria-label', `Pedir, ${total.count} alfajores`);
     document.querySelector('.cart-amount').textContent = core.money(total.amount);
     document.querySelector('.cart-units').textContent = `${total.count} ${total.count === 1 ? 'alfajor' : 'alfajores'} · UYU`;
-    document.querySelector('.cart-empty').hidden = total.count > 0;
     clear.hidden = total.count === 0;
     submit.disabled = total.count === 0;
     lines.innerHTML = core.catalog.map(p => {
       const quantity = cart.find(item => item.id === p.id)?.quantity || 0;
-      return `<article class="cart-line"><div class="cart-thumb">${productImage(p)}</div><div class="cart-line-copy"><h3>${p.name}</h3><p>${p.detail}</p><strong>${core.money(p.price)} <small>por unidad</small></strong><div class="cart-stepper" role="group" aria-label="Cantidad de ${p.name}"><button type="button" data-change="-1" data-id="${p.id}" data-key="minus-${p.id}" aria-label="Quitar una unidad de ${p.name}" ${quantity === 0 ? 'disabled' : ''}>−</button><span aria-label="${quantity} ${quantity === 1 ? 'unidad' : 'unidades'}">${quantity}</span><button type="button" data-change="1" data-id="${p.id}" data-key="plus-${p.id}" aria-label="Sumar una unidad de ${p.name}" ${quantity >= 99 ? 'disabled' : ''}>+</button></div>${quantity ? `<button type="button" class="cart-remove" data-remove="${p.id}" data-key="remove-${p.id}">Quitar ${p.name}</button>` : ''}</div></article>`;
+      return `<article class="cart-line${quantity === 0 ? ' is-zero' : ''}"><div class="cart-thumb">${productImage(p)}</div><div class="cart-line-copy"><h3>${p.name}</h3><p>${p.detail}</p><div class="cart-line-bottom"><strong>${core.money(p.price)}</strong><div class="cart-stepper" role="group" aria-label="Cantidad de ${p.name}"><button type="button" data-change="-1" data-id="${p.id}" data-key="minus-${p.id}" aria-label="Quitar una unidad de ${p.name}" ${quantity === 0 ? 'disabled' : ''}>−</button><span aria-label="${quantity} ${quantity === 1 ? 'unidad' : 'unidades'}">${quantity}</span><button type="button" data-change="1" data-id="${p.id}" data-key="plus-${p.id}" aria-label="Sumar una unidad de ${p.name}" ${quantity >= 99 ? 'disabled' : ''}>+</button></div></div></div></article>`;
     }).join('');
     if (focusKey) {
       const next = lines.querySelector(`[data-key="${focusKey}"]`);
@@ -87,14 +95,16 @@
     const id = button.dataset.add;
     const product = core.catalog.find(p => p.id === id);
     const quantity = cart.find(item => item.id === id)?.quantity || 0;
-    if (quantity < 99) { setQuantity(id, quantity+1); announce(`${product.name} sumado al pedido.`); }
+    if (quantity < 99) {
+      setQuantity(id, quantity+1);
+      announce(`Sumaste 1 ${product.name}`);
+      setTimeout(bumpCounts, 180);
+    }
     openCart(button);
   }));
   lines.addEventListener('click', event => {
-    const remove = event.target.closest('[data-remove]');
     const change = event.target.closest('[data-change]');
-    if (remove) { setQuantity(remove.dataset.remove, 0); close.focus(); announce('Alfajor quitado del pedido.'); }
-    else if (change) {
+    if (change) {
       const id = change.dataset.id;
       const quantity = cart.find(item => item.id === id)?.quantity || 0;
       setQuantity(id, quantity+Number(change.dataset.change), change.dataset.key);

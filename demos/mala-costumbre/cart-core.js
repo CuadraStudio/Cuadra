@@ -1,8 +1,8 @@
 (() => {
   const catalog = Object.freeze([
-    Object.freeze({id:'negro', name:'Negro', detail:'Classico de chocolate negro', price:130, x:0}),
-    Object.freeze({id:'blanco', name:'Blanco', detail:'Classico de chocolate blanco', price:130, x:724}),
-    Object.freeze({id:'mani', name:'Alfa Maní', detail:'Cobertura blanca con maní', price:160, x:1448})
+    Object.freeze({id:'negro', name:'Negro', detail:'Chocolate negro', price:130, x:0}),
+    Object.freeze({id:'blanco', name:'Blanco', detail:'Chocolate blanco', price:130, x:724}),
+    Object.freeze({id:'mani', name:'Maní', detail:'Cobertura blanca con maní', price:160, x:1448})
   ]);
   function normalize(items) {
     if (!Array.isArray(items)) return [];

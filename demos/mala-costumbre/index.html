@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="finish.css">
   <link rel="stylesheet" href="shopping.css">
   <link rel="stylesheet" href="mobile-refinement.css">
+  <link rel="stylesheet" href="requested-refinement.css">
   <script src="site.js" defer></script>
   <script src="cart-core.js" defer></script>
   <script src="shopping.js" defer></script>
@@ -55,20 +56,20 @@
           <button class="product-pick" type="button" data-add="blanco" aria-label="Sumar Blanco al pedido"><span aria-hidden="true">+</span></button>
         </article>
         <article class="product product-mani">
-          <div class="product-stage"><h2 class="product-word">MANÍ</h2><svg class="product-visual" viewBox="1448 100 724 550" role="img" aria-label="Alfa Maní, corte frontal con relleno visible"><defs><clipPath id="mani-front-crop"><rect x="1448" y="100" width="724" height="550"/></clipPath></defs><g clip-path="url(#mani-front-crop)"><image href="assets/tres-alfajores-frente-v5.webp" width="2172" height="724"/></g></svg></div>
-          <button class="product-pick" type="button" data-add="mani" aria-label="Sumar Alfa Maní al pedido"><span aria-hidden="true">+</span></button>
+          <div class="product-stage"><h2 class="product-word">MANÍ</h2><svg class="product-visual" viewBox="1448 100 724 550" role="img" aria-label="Maní, corte frontal con relleno visible"><defs><clipPath id="mani-front-crop"><rect x="1448" y="100" width="724" height="550"/></clipPath></defs><g clip-path="url(#mani-front-crop)"><image href="assets/tres-alfajores-frente-v5.webp" width="2172" height="724"/></g></svg></div>
+          <button class="product-pick" type="button" data-add="mani" aria-label="Sumar Maní al pedido"><span aria-hidden="true">+</span></button>
         </article>
       </div>
       <button type="button" class="gallery-arrow" data-gallery-step="-1" aria-label="Alfajor anterior">←</button><button type="button" class="gallery-arrow" data-gallery-step="1" aria-label="Alfajor siguiente">→</button>
       </div>
-      <div class="gallery-controls" aria-label="Elegir alfajor"><div class="gallery-tabs"><button type="button" data-gallery-index="0" aria-pressed="true">Negro</button><button type="button" data-gallery-index="1" aria-pressed="false">Blanco</button><button type="button" data-gallery-index="2" aria-pressed="false">Maní</button></div><p>Deslizá y elegí tu costumbre.</p><button class="gallery-cart" type="button" aria-haspopup="dialog" aria-controls="cart-dialog" aria-expanded="false">Pedir <span class="cart-count">0</span></button></div>
-      <div class="hero-actions"><button type="button" class="hero-order order-action" data-open-order aria-haspopup="dialog" aria-controls="cart-dialog" aria-expanded="false">Pedir <span aria-hidden="true">↗</span></button><a class="discover" href="#elaboracion" aria-label="Descubrí cómo los hacemos">Conocé la costumbre <span aria-hidden="true">↓</span></a></div>
+      <div class="gallery-controls" aria-label="Elegir alfajor"><div class="gallery-tabs"><button type="button" data-gallery-index="0" aria-pressed="true">Negro</button><button type="button" data-gallery-index="1" aria-pressed="false">Blanco</button><button type="button" data-gallery-index="2" aria-pressed="false">Maní</button></div><p>Deslizá para ver los sabores</p><button class="gallery-cart" type="button" aria-haspopup="dialog" aria-controls="cart-dialog" aria-expanded="false">Pedir <svg class="order-bag" viewBox="0 0 32 32" aria-hidden="true"><path d="M8 10h16l2 17H6L8 10Z M12 11V8a4 4 0 0 1 8 0v3"/></svg><span class="cart-count">0</span></button></div>
+      <div class="hero-actions"><button type="button" class="hero-order order-action" data-open-order aria-haspopup="dialog" aria-controls="cart-dialog" aria-expanded="false">Pedir <svg class="order-bag" viewBox="0 0 32 32" aria-hidden="true"><path d="M8 10h16l2 17H6L8 10Z M12 11V8a4 4 0 0 1 8 0v3"/></svg></button><a class="discover" href="#elaboracion" aria-label="Descubrí cómo los hacemos">Conocé la costumbre <span aria-hidden="true">↓</span></a></div>
     </section>
     <section class="workshop" id="elaboracion" aria-labelledby="brand-title">
       <div class="slogan"><p>Un mordisco y me vas a querer para siempre.</p></div>
       <div class="craft">
         <div class="craft-photo"><img src="assets/mano-alfajor-v1.webp" width="1536" height="1024" loading="lazy" alt="Mano con guante azul sosteniendo un alfajor antes de bañarlo en chocolate"></div>
-        <div class="craft-copy" id="marca"><p class="eyebrow">Hechos en Montevideo · Así los hacemos</p><h2 id="brand-title">Hay días<br>en los que solo<br>un dulce salva.</h2><p>Tapas de cacao. Dulce de leche. Y ese baño de chocolate que lo termina todo.</p><p>Alfajores artesanales para una pausa, un paseo o algo rico para compartir.</p><div class="workshop-actions"><button type="button" class="order-action" data-open-order aria-haspopup="dialog" aria-controls="cart-dialog" aria-expanded="false">Pedir <span aria-hidden="true">↗</span></button><a class="workshop-instagram" href="https://www.instagram.com/malacostumbre.uy/" target="_blank" rel="noopener noreferrer">Conocé la marca <span aria-hidden="true">↗</span></a></div></div>
+        <div class="craft-copy" id="marca"><p class="eyebrow">Hechos en Montevideo · Así los hacemos</p><h2 id="brand-title">La costumbre<br>empieza por adentro.</h2><p>Tapas de cacao. Dulce de leche. Y ese baño de chocolate que lo termina todo.</p><p>Alfajores artesanales para una pausa, un paseo o algo rico para compartir.</p><div class="workshop-actions"><button type="button" class="order-action" data-open-order aria-haspopup="dialog" aria-controls="cart-dialog" aria-expanded="false">Pedir <span aria-hidden="true">↗</span></button><a class="workshop-instagram" href="https://www.instagram.com/malacostumbre.uy/" target="_blank" rel="noopener noreferrer">Conocé la marca <span aria-hidden="true">↗</span></a></div></div>
       </div>
       <figure class="workshop-photo"><img src="assets/packaging-marca-v4.webp" width="1536" height="1024" loading="lazy" alt="Alfajores blanco y de chocolate con sus fajas amarilla y azul, sobre papel manteca y fondo azul de Mala Costumbre"></figure>
     </section>
@@ -76,7 +77,7 @@
   <footer id="pie" class="brand-footer" aria-label="Mala Costumbre">
     <div class="footer-topline"><span>Hechos en Montevideo.</span><span>Para volver a caer.</span></div>
     <div class="footer-main">
-      <div class="footer-farewell"><p class="eyebrow">Hay costumbres que se quedan.</p><h2>Hasta el próximo<br>mordisco.</h2><a class="footer-social" href="https://www.instagram.com/malacostumbre.uy/" target="_blank" rel="noopener noreferrer">Seguí la costumbre <span aria-hidden="true">↗</span></a></div>
+      <div class="footer-farewell"><p class="eyebrow">Hay costumbres que se quedan.</p><h2>Hasta el próximo<br>mordisco.</h2><div class="footer-actions"><a class="footer-social" href="https://www.instagram.com/malacostumbre.uy/" target="_blank" rel="noopener noreferrer">Seguí la costumbre <span aria-hidden="true">↗</span></a><button type="button" class="footer-order order-action" data-open-order aria-haspopup="dialog" aria-controls="cart-dialog" aria-expanded="false">Pedir <svg class="order-bag" viewBox="0 0 32 32" aria-hidden="true"><path d="M8 10h16l2 17H6L8 10Z M12 11V8a4 4 0 0 1 8 0v3"/></svg></button></div></div>
       <div class="footer-identity"><svg class="footer-doodle" viewBox="0 0 200 140" aria-hidden="true"><use href="assets/alfajor.svg#top"/><use href="assets/alfajor.svg#bottom"/></svg><a class="footer-logo" href="#inicio" aria-label="Mala Costumbre, volver al inicio"><svg viewBox="40 3 280 90" role="img" aria-label="Mala Costumbre"><image href="assets/propuesta-portada-v2.webp" width="1536" height="1024" filter="url(#logo-ink)"/></svg></a><p>Alfajores artesanales<br>Montevideo, Uruguay</p></div>
     </div>
     <div class="footer-bottom"><a class="back-top" href="#inicio">Otra vuelta <span aria-hidden="true">↑</span></a><a class="footer-handle" href="https://www.instagram.com/malacostumbre.uy/" target="_blank" rel="noopener noreferrer">@malacostumbre.uy</a><small>Demo de diseño por CuadraStudio · Sin pedidos ni pagos.</small></div>
@@ -84,9 +85,9 @@
   <button class="cart-launch" type="button" aria-haspopup="dialog" aria-controls="cart-dialog" aria-expanded="false"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 10h16l2 17H6L8 10Z M12 11V8a4 4 0 0 1 8 0v3"/></svg><span>Tu pedido</span><span class="cart-count">0</span></button>
   <div class="cart-toast" role="status" aria-live="polite"></div>
   <dialog id="cart-dialog" class="cart-sheet" aria-labelledby="cart-title">
-    <div class="cart-top"><div><p class="eyebrow">Una buena mala costumbre</p><h2 id="cart-title">Tu pedido.</h2></div><button type="button" class="cart-close" aria-label="Cerrar pedido">×</button></div>
-    <div class="cart-scroll"><div id="cart-builder"><p class="cart-intro">Elegí tus alfajores. El resto es tentación.</p><p class="cart-empty">Todavía no sumaste ninguno. Empezá por el que más te tiente.</p><div class="cart-lines"></div><button type="button" class="cart-clear" hidden>Vaciar pedido</button></div><div class="cart-receipt" hidden tabindex="-1"></div></div>
-    <div class="cart-bottom"><div class="cart-total" aria-live="polite" aria-atomic="true"><span>Total <small class="cart-units">0 alfajores</small></span><strong class="cart-amount">$0</strong></div><button type="button" class="cart-submit" disabled>Simular pedido <span aria-hidden="true">↗</span></button><p class="cart-demo">Es una demo. No se envían pedidos ni se realizan cobros.</p></div>
+    <div class="cart-top"><div><p class="eyebrow">Una buena mala costumbre</p><div class="cart-title-row"><h2 id="cart-title">Armá tu pedido.</h2><span class="cart-count" aria-label="Cantidad total de alfajores">0</span></div></div><button type="button" class="cart-close" aria-label="Cerrar pedido">×</button></div>
+    <div class="cart-scroll"><p class="cart-feedback" role="status" aria-live="polite" hidden></p><div id="cart-builder"><p class="cart-intro">Elegí tus alfajores. El resto es tentación.</p><div class="cart-lines"></div><button type="button" class="cart-clear" hidden>Vaciar pedido</button></div><div class="cart-receipt" hidden tabindex="-1"></div></div>
+    <div class="cart-bottom"><div class="cart-total" aria-live="polite" aria-atomic="true"><span>Total <small class="cart-units">0 alfajores</small></span><strong class="cart-amount">$0</strong></div><button type="button" class="cart-submit" disabled>Enviar pedido</button><p class="cart-demo">Es una demo. No se envían pedidos ni se realizan cobros.</p></div>
   </dialog>
 </body>
 </html>
