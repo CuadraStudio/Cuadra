@@ -1,7 +1,7 @@
 {
-  "repository": "https://github.com/CuadraStudio/morsa-web",
+  "commit": "9e0a8913682cb63de8eac13b3259330dc1c477ed",
+  "publishedPath": "/demos/morsa/",
   "branch": "main",
-  "commit": "fb67252",
-  "directory": "dist",
-  "publishedPath": "/demos/morsa/"
+  "repository": "https://github.com/CuadraStudio/morsa-web",
+  "directory": "dist"
 }
