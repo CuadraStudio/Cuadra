@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es-UY">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <base href="/demos/mala-costumbre/">
+  <title>Mala Costumbre — Alfajores artesanales · Montevideo</title>
+  <meta name="description" content="Negro o blanco. Una mala costumbre hecha alfajor en Montevideo.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#3975b8">
+  <link rel="icon" href="assets/alfajor.svg" type="image/svg+xml">
+  <link rel="preload" href="../../fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#alfajores">Ir al contenido</a>
+  <div class="demo-note">Propuesta de sitio · Mala Costumbre · Demo por CuadraStudio</div>
+  <header class="header" id="inicio">
+    <a class="brand" href="#inicio" aria-label="Mala Costumbre, inicio">
+      <svg viewBox="40 3 280 90" role="img" aria-label="Mala Costumbre"><defs><filter id="logo-ink" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 .224 0 0 0 0 .459 0 0 0 0 .722 -3 0 3 0 0"/></filter></defs><image href="assets/propuesta-portada-v2.webp" width="1536" height="1024" filter="url(#logo-ink)"/></svg>
+    </a>
+    <div class="alfajor-menu">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-links" aria-label="Abrir menú">
+        <span class="menu-word">MENÚ</span>
+        <svg class="menu-top" viewBox="0 0 200 83" aria-hidden="true"><use href="assets/alfajor.svg#top"/></svg>
+        <svg class="menu-bottom" viewBox="0 75 200 65" aria-hidden="true"><use href="assets/alfajor.svg#bottom"/></svg>
+      </button>
+      <nav id="menu-links" class="menu-links" aria-label="Navegación principal" inert>
+        <a href="#alfajores">Alfajores</a>
+        <a href="#elaboracion">Así los hacemos</a>
+        <a href="#marca">La marca</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero" id="alfajores" aria-labelledby="hero-title">
+      <div class="hero-intro"><h1 id="hero-title">Elegí tu<br>mala costumbre.</h1><p class="eyebrow">Alfajores artesanales · Montevideo</p></div>
+      <div class="products">
+        <article class="product product-dark">
+          <div class="product-stage"><span class="product-word" aria-hidden="true">NEGRO</span><img src="assets/classico-negro-corte-v1.webp" width="1672" height="941" alt="Corte del Classico negro: tapas de cacao, dulce de leche y cobertura de chocolate" fetchpriority="high"></div>
+          <h2>Classico negro</h2><p>El de chocolate negro.</p>
+        </article>
+        <article class="product product-white">
+          <div class="product-stage"><span class="product-word" aria-hidden="true">BLANCO</span><img src="assets/classico-blanco-corte-v1.webp" width="1171" height="1343" alt="Dos mitades del Classico blanco, con relleno de dulce de leche y cobertura blanca lisa" fetchpriority="high"></div>
+          <h2>Classico blanco</h2><p>El de chocolate blanco.</p>
+        </article>
+      </div>
+      <a class="discover" href="#elaboracion" aria-label="Descubrí cómo los hacemos">Conocé la costumbre <span aria-hidden="true">↓</span></a>
+    </section>
+    <div class="slogan"><p>Un mordisco y me vas a querer para siempre.</p></div>
+    <section class="craft" id="elaboracion" aria-labelledby="craft-title">
+      <div class="craft-photo"><img src="assets/elaboracion.webp" width="1170" height="2080" loading="lazy" alt="Alfajor durante la elaboración, antes de recibir su baño de chocolate"></div>
+      <div class="craft-copy"><p class="eyebrow">Así los hacemos</p><h2 id="craft-title">La costumbre<br>empieza<br>por adentro.</h2><p>Tapas de cacao. Dulce de leche. Y ese baño de chocolate que lo termina todo.</p><p>Alfajores artesanales, hechos en Montevideo. De esos que primero mirás por dentro y después querés probar.</p><a class="text-link" href="#alfajores">¿Negro o blanco? <span aria-hidden="true">↗</span></a></div>
+    </section>
+    <section class="brand-story" id="marca" aria-labelledby="brand-title">
+      <div class="brand-copy"><p class="eyebrow">Mala Costumbre · Montevideo, Uruguay</p><h2 id="brand-title">Hay días<br>en los que solo<br>un dulce salva.</h2><p>Una pausa, un paseo, algo rico para compartir. Siempre hay un momento para una mala costumbre.</p><a class="social-link" href="https://www.instagram.com/malacostumbre.uy/" target="_blank" rel="noopener noreferrer">Encontranos en Instagram <span aria-hidden="true">↗</span></a></div>
+      <div class="city-photo"><img src="assets/montevideo.webp" width="1215" height="2160" loading="lazy" alt="Alfajores Mala Costumbre en un banco de Montevideo, con su packaging azul y manteca"></div>
+    </section>
+  </main>
+  <footer><a class="footer-brand" href="#inicio">mala<br>costumbre</a><p>Alfajores artesanales<br>Montevideo, Uruguay</p><a href="https://www.instagram.com/malacostumbre.uy/" target="_blank" rel="noopener noreferrer">@malacostumbre.uy ↗</a><small>Demo de diseño por CuadraStudio. Sin pedidos ni pagos.</small></footer>
+</body>
+</html>
