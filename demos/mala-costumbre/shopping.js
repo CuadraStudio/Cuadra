@@ -3,6 +3,7 @@
   const key = 'cuadra.demo.mala-costumbre.cart.v1';
   const dialog = document.querySelector('#cart-dialog');
   const launcher = document.querySelector('.cart-launch');
+  const inlineLauncher = document.querySelector('.gallery-cart');
   const close = document.querySelector('.cart-close');
   const builder = document.querySelector('#cart-builder');
   const receipt = document.querySelector('.cart-receipt');
@@ -28,8 +29,9 @@
   }
   function render(focusKey) {
     const total = core.totals(cart);
-    document.querySelector('.cart-count').textContent = total.count;
+    document.querySelectorAll('.cart-count').forEach(count => { count.textContent = total.count; });
     launcher.setAttribute('aria-label', `Abrir pedido, ${total.count} alfajores`);
+    inlineLauncher.setAttribute('aria-label', `Ver mi pedido, ${total.count} alfajores`);
     document.querySelector('.cart-amount').textContent = core.money(total.amount);
     document.querySelector('.cart-units').textContent = `${total.count} ${total.count === 1 ? 'alfajor' : 'alfajores'} · UYU`;
     document.querySelector('.cart-empty').hidden = total.count > 0;
@@ -62,13 +64,16 @@
     dialog.showModal();
     document.documentElement.classList.add('cart-open');
     launcher.setAttribute('aria-expanded', 'true');
+    inlineLauncher.setAttribute('aria-expanded', 'true');
     close.focus();
   }
   launcher.addEventListener('click', () => openCart(launcher));
+  inlineLauncher.addEventListener('click', () => openCart(inlineLauncher));
   close.addEventListener('click', () => dialog.close());
   dialog.addEventListener('close', () => {
     document.documentElement.classList.remove('cart-open');
     launcher.setAttribute('aria-expanded', 'false');
+    inlineLauncher.setAttribute('aria-expanded', 'false');
     opener?.focus({preventScroll:true});
   });
   dialog.addEventListener('click', event => {
@@ -146,4 +151,8 @@
   });
   mobile.addEventListener('change', () => { gallery.scrollLeft=0; markActive(0); });
   markActive(0);
+  const heroObserver = new IntersectionObserver(entries => {
+    document.body.classList.toggle('hero-visible', entries[0].isIntersecting);
+  });
+  heroObserver.observe(document.querySelector('.hero'));
 })();
