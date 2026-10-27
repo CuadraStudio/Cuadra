@@ -32,3 +32,5 @@
 .hero-order{min-height:66px;padding:18px 35px!important;font-size:18px}
 .workshop-photo{padding:0;margin-top:0}.workshop{padding-bottom:20px}.workshop .craft{padding-bottom:20px}
 @media(max-width:600px){.gallery-controls .gallery-cart{min-height:62px;padding:16px 27px;font-size:18px;min-width:190px}.workshop-photo{padding:0;margin-top:0}.workshop{padding-bottom:12px}.workshop .craft{padding-bottom:12px}}
+
+.brand img,.footer-logo img{display:block;width:100%;height:auto}.footer-doodle{object-fit:contain;transform:none}
