@@ -34,3 +34,12 @@
 @media(max-width:600px){.gallery-controls .gallery-cart{min-height:62px;padding:16px 27px;font-size:18px;min-width:190px}.workshop-photo{padding:0;margin-top:0}.workshop{padding-bottom:12px}.workshop .craft{padding-bottom:12px}}
 
 .brand img,.footer-logo img{display:block;width:100%;height:auto}.footer-doodle{object-fit:contain;transform:none}
+/* Keep the add action inviting even before a flavor is selected. */
+@media(max-width:600px){
+ .cart-line.is-zero{opacity:1}
+ .cart-line.is-zero .cart-thumb{opacity:.82}
+ .cart-line.is-zero h3,.cart-line.is-zero .cart-line-copy>p,.cart-line.is-zero .cart-line-bottom>strong{opacity:.74}
+ .cart-line.is-zero .cart-stepper button[data-change="1"]{opacity:1}
+ .cart-bottom{width:100%;min-width:0;box-sizing:border-box;padding-left:24px;padding-right:24px}
+ .cart-total,.cart-submit{width:100%;min-width:0;box-sizing:border-box}
+}
