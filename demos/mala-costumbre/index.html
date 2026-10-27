@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <base href="/demos/mala-costumbre/">
   <title>Mala Costumbre — Alfajores artesanales · Montevideo</title>
-  <meta name="description" content="Negro o blanco. Una mala costumbre hecha alfajor en Montevideo.">
+  <meta name="description" content="Negro, blanco o maní. Una mala costumbre hecha alfajor en Montevideo.">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#3975b8">
   <link rel="icon" href="assets/alfajor.svg" type="image/svg+xml">
   <link rel="preload" href="../../fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/anton-regular.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="refinements.css">
+  <link rel="stylesheet" href="finish.css">
   <script src="site.js" defer></script>
 </head>
 <body>
@@ -40,16 +42,13 @@
       <div class="hero-intro"><h1 id="hero-title">Elegí tu<br>mala costumbre.</h1><p class="eyebrow">Alfajores artesanales · Montevideo</p></div>
       <div class="products">
         <article class="product product-dark">
-          <div class="product-stage"><span class="product-word" aria-hidden="true">NEGRO</span><svg class="product-visual" viewBox="0 100 724 550" role="img" aria-label="Classico negro, corte frontal con relleno visible"><defs><clipPath id="negro-front-crop"><rect x="0" y="100" width="724" height="550"/></clipPath></defs><g clip-path="url(#negro-front-crop)"><image href="assets/tres-alfajores-frente-v5.webp" width="2172" height="724"/></g></svg></div>
-          <h2>Classico negro</h2><p>Chocolate negro y dulce de leche.</p><p class="product-price">$130 <span>UYU</span></p>
+          <div class="product-stage"><h2 class="product-word">NEGRO</h2><svg class="product-visual" viewBox="0 100 724 550" role="img" aria-label="Classico negro, corte frontal con relleno visible"><defs><clipPath id="negro-front-crop"><rect x="0" y="100" width="724" height="550"/></clipPath></defs><g clip-path="url(#negro-front-crop)"><image href="assets/tres-alfajores-frente-v5.webp" width="2172" height="724"/></g></svg></div>
         </article>
         <article class="product product-white">
-          <div class="product-stage"><span class="product-word" aria-hidden="true">BLANCO</span><svg class="product-visual" viewBox="724 100 724 550" role="img" aria-label="Classico blanco, corte frontal con relleno visible"><defs><clipPath id="blanco-front-crop"><rect x="724" y="100" width="724" height="550"/></clipPath></defs><g clip-path="url(#blanco-front-crop)"><image href="assets/tres-alfajores-frente-v5.webp" width="2172" height="724"/></g></svg></div>
-          <h2>Classico blanco</h2><p>Chocolate blanco y dulce de leche.</p><p class="product-price">$130 <span>UYU</span></p>
+          <div class="product-stage"><h2 class="product-word">BLANCO</h2><svg class="product-visual" viewBox="724 100 724 550" role="img" aria-label="Classico blanco, corte frontal con relleno visible"><defs><clipPath id="blanco-front-crop"><rect x="724" y="100" width="724" height="550"/></clipPath></defs><g clip-path="url(#blanco-front-crop)"><image href="assets/tres-alfajores-frente-v5.webp" width="2172" height="724"/></g></svg></div>
         </article>
         <article class="product product-mani">
-          <div class="product-stage"><span class="product-word" aria-hidden="true">MANÍ</span><svg class="product-visual" viewBox="1448 100 724 550" role="img" aria-label="Alfa Maní, corte frontal con relleno visible"><defs><clipPath id="mani-front-crop"><rect x="1448" y="100" width="724" height="550"/></clipPath></defs><g clip-path="url(#mani-front-crop)"><image href="assets/tres-alfajores-frente-v5.webp" width="2172" height="724"/></g></svg></div>
-          <h2>Alfa Maní</h2><p>Cobertura blanca con maní.</p><p class="product-price">$160 <span>UYU</span></p>
+          <div class="product-stage"><h2 class="product-word">MANÍ</h2><svg class="product-visual" viewBox="1448 100 724 550" role="img" aria-label="Alfa Maní, corte frontal con relleno visible"><defs><clipPath id="mani-front-crop"><rect x="1448" y="100" width="724" height="550"/></clipPath></defs><g clip-path="url(#mani-front-crop)"><image href="assets/tres-alfajores-frente-v5.webp" width="2172" height="724"/></g></svg></div>
         </article>
       </div>
       <a class="discover" href="#elaboracion" aria-label="Descubrí cómo los hacemos">Conocé la costumbre <span aria-hidden="true">↓</span></a>
@@ -64,6 +63,13 @@
       <div class="city-photo"><img src="assets/montevideo-panoramica-v1.webp" width="1536" height="1024" loading="lazy" alt="Un alfajor Mala Costumbre en su envoltorio azul y manteca, sobre un banco de Montevideo"></div>
     </section>
   </main>
-  <footer><a class="footer-brand" href="#inicio">mala<br>costumbre</a><p>Alfajores artesanales<br>Montevideo, Uruguay</p><a href="https://www.instagram.com/malacostumbre.uy/" target="_blank" rel="noopener noreferrer">@malacostumbre.uy ↗</a><small>Demo de diseño por CuadraStudio. Sin pedidos ni pagos.</small></footer>
+  <footer id="pie" class="brand-footer" aria-label="Mala Costumbre">
+    <div class="footer-topline"><span>Hechos en Montevideo.</span><span>Para volver a caer.</span></div>
+    <div class="footer-main">
+      <div class="footer-farewell"><p class="eyebrow">Hay costumbres que se quedan.</p><h2>Hasta el próximo<br>mordisco.</h2><a class="footer-social" href="https://www.instagram.com/malacostumbre.uy/" target="_blank" rel="noopener noreferrer">Seguí la costumbre <span aria-hidden="true">↗</span></a></div>
+      <div class="footer-identity"><svg class="footer-doodle" viewBox="0 0 200 140" aria-hidden="true"><use href="assets/alfajor.svg#top"/><use href="assets/alfajor.svg#bottom"/></svg><a class="footer-logo" href="#inicio" aria-label="Mala Costumbre, volver al inicio"><svg viewBox="40 3 280 90" role="img" aria-label="Mala Costumbre"><image href="assets/propuesta-portada-v2.webp" width="1536" height="1024" filter="url(#logo-ink)"/></svg></a><p>Alfajores artesanales<br>Montevideo, Uruguay</p></div>
+    </div>
+    <div class="footer-bottom"><a class="back-top" href="#inicio">Otra vuelta <span aria-hidden="true">↑</span></a><a class="footer-handle" href="https://www.instagram.com/malacostumbre.uy/" target="_blank" rel="noopener noreferrer">@malacostumbre.uy</a><small>Demo de diseño por CuadraStudio · Sin pedidos ni pagos.</small></div>
+  </footer>
 </body>
 </html>
