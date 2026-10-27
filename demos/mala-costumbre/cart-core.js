@@ -1,7 +1,7 @@
 (() => {
   const catalog = Object.freeze([
-    Object.freeze({id:'negro', name:'Negro', detail:'Chocolate negro', price:130, x:0}),
-    Object.freeze({id:'blanco', name:'Blanco', detail:'Chocolate blanco', price:130, x:724}),
+    Object.freeze({id:'negro', name:'Negro', detail:'Tapas de cacao, dulce de leche y baño de chocolate negro', price:130, x:0}),
+    Object.freeze({id:'blanco', name:'Blanco', detail:'Tapas de cacao, dulce de leche y baño de chocolate blanco', price:130, x:724}),
     Object.freeze({id:'mani', name:'Maní', detail:'Cobertura blanca con maní', price:160, x:1448})
   ]);
   function normalize(items) {

@@ -25,3 +25,10 @@
 /* Product cutout: the only shadow is rendered by CSS. */
 .workshop-photo{height:auto;overflow:visible;clip-path:none;padding:20px 0 26px;background:none}.workshop-photo img{width:100%;max-width:900px;height:auto;margin:0 auto;object-fit:contain;filter:drop-shadow(0 10px 10px rgba(55,40,14,.12))}
 @media(max-width:600px){.workshop-photo{height:auto;padding:12px 0 22px}.workshop-photo img{height:auto;object-fit:contain}}
+
+/* Requested CTA hierarchy and tighter packaging spacing. */
+.footer-order{background:var(--ink);color:var(--butter);border-color:var(--ink)}
+.footer-social{background:transparent;color:var(--ink);border-color:var(--ink);box-shadow:none}
+.hero-order{min-height:66px;padding:18px 35px!important;font-size:18px}
+.workshop-photo{padding:0;margin-top:0}.workshop{padding-bottom:20px}.workshop .craft{padding-bottom:20px}
+@media(max-width:600px){.gallery-controls .gallery-cart{min-height:62px;padding:16px 27px;font-size:18px;min-width:190px}.workshop-photo{padding:0;margin-top:0}.workshop{padding-bottom:12px}.workshop .craft{padding-bottom:12px}}

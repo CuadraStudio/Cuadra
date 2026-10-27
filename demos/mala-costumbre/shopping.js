@@ -42,7 +42,7 @@
     launcher.setAttribute('aria-label', `Abrir pedido, ${total.count} alfajores`);
     inlineLauncher.setAttribute('aria-label', `Pedir, ${total.count} alfajores`);
     document.querySelector('.cart-amount').textContent = core.money(total.amount);
-    document.querySelector('.cart-units').textContent = `${total.count} ${total.count === 1 ? 'alfajor' : 'alfajores'} · UYU`;
+    document.querySelector('.cart-units').textContent = `${total.count} ${total.count === 1 ? 'alfajor' : 'alfajores'}`;
     clear.hidden = total.count === 0;
     submit.disabled = total.count === 0;
     lines.innerHTML = core.catalog.map(p => {
@@ -118,7 +118,7 @@
     builder.hidden = true;
     document.querySelector('.cart-bottom').hidden = true;
     receipt.hidden = false;
-    receipt.innerHTML = `<p class="eyebrow">Simulación completada</p><h3>Una muy buena<br>mala costumbre.</h3><ul>${total.lines.map(p => `<li><span>${p.quantity} × ${p.name}</span><strong>${core.money(p.total)}</strong></li>`).join('')}</ul><p class="receipt-total">Total <strong>${core.money(total.amount)} UYU</strong></p><p>Esto es una demostración. No se envió ningún pedido ni se realizó un cobro.</p><button type="button" class="receipt-back">Volver a mi pedido</button>`;
+    receipt.innerHTML = `<p class="eyebrow">Simulación completada</p><h3>Una muy buena<br>mala costumbre.</h3><ul>${total.lines.map(p => `<li><span>${p.quantity} × ${p.name}</span><strong>${core.money(p.total)}</strong></li>`).join('')}</ul><p class="receipt-total">Total <strong>${core.money(total.amount)}</strong></p><p>Esto es una demostración. No se envió ningún pedido ni se realizó un cobro.</p><button type="button" class="receipt-back">Volver a mi pedido</button>`;
     receipt.querySelector('.receipt-back').addEventListener('click', () => { resetReceipt(); close.focus(); });
     receipt.focus();
   });
