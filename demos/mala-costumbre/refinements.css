@@ -1,0 +1,42 @@
+.render-filters{position:absolute;pointer-events:none}
+.alfajor-menu{width:210px;border:1.5px solid var(--blue);border-radius:20px;top:7px;height:90px;box-shadow:0 2px 0 #175a9d12}
+.menu-toggle{height:87px;border-radius:19px;transition:background .25s}
+.menu-toggle:hover,.menu-toggle:focus-visible{background:#3975b80c}
+.menu-toggle svg{width:100px;left:8px}
+.menu-top{top:10px;height:45px}.menu-bottom{top:41px;height:34px}
+.menu-word{right:12px;top:31px;font-size:11px;letter-spacing:.035em;max-width:86px;display:flex;align-items:center;gap:8px;text-transform:uppercase;line-height:1.35;text-align:left}
+.menu-sign{font-size:25px;font-weight:400;line-height:1}
+.menu-open .alfajor-menu{height:298px;box-shadow:0 8px 20px #175a9d14}
+.menu-open .menu-top{transform:translate(45px,25px) rotate(-5deg)}
+.menu-open .menu-bottom{transform:translate(45px,195px)}
+.menu-open .menu-word{top:14px;right:12px;font-size:10px}
+.menu-open .menu-sign{font-size:20px}
+.menu-links{top:105px}
+.product-stage{height:clamp(350px,32vw,465px)}
+.product-visual{display:block;position:relative;width:100%;height:92%;overflow:hidden;filter:drop-shadow(0 9px 5px #133d6720);transition:transform .7s var(--ease)}
+.product-dark .product-visual{transform:rotate(-3deg)}
+.product-white .product-visual{transform:rotate(3deg)}
+.product-dark:hover .product-visual{transform:translateY(-6px) rotate(-4deg)}
+.product-white:hover .product-visual{transform:translateY(-6px) rotate(4deg)}
+.craft{grid-template-columns:52% 1fr;padding:50px 7% 50px 0;gap:5%;min-height:550px;overflow:hidden}
+.craft-photo{height:440px;max-height:none;overflow:visible;transform:none;margin-left:-7vw;display:flex;align-items:center}
+.craft-photo img{width:116%;height:100%;object-fit:contain;object-position:right center;filter:url(#cutout-alpha) drop-shadow(0 8px 5px #175a9d15);animation:hand-float 7s ease-in-out infinite}
+.craft-copy{max-width:490px}.craft-copy h2{font-size:clamp(38px,4.8vw,70px);margin:18px 0 22px}
+.craft-copy>p:not(.eyebrow){font-size:14px;line-height:1.8}.craft-copy .text-link{margin-top:14px}
+@keyframes hand-float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(.3deg)}}
+.mani{display:grid;grid-template-columns:40% 1fr;gap:6%;align-items:center;padding:45px 7% 65px;background:var(--butter);color:var(--ink);border-top:1px solid #175a9d22;overflow:hidden}
+.mani h2{font-family:Georgia,serif;font-size:clamp(48px,6.4vw,90px);letter-spacing:-.055em;line-height:1;margin:16px 0 20px}
+.mani-copy>p:not(.eyebrow):not(.mani-price){font-size:14px;line-height:1.8}
+.mani-price{font-size:32px;font-weight:850;letter-spacing:-.04em;margin:20px 0 0}.mani-price span{font-size:10px;font-weight:650;letter-spacing:.04em;display:block;margin-top:5px;text-transform:uppercase}
+.mani-visual{position:relative;height:400px;display:flex;align-items:flex-end;justify-content:center}
+.mani-visual>span{position:absolute;top:0;left:0;right:0;text-align:center;font:400 clamp(90px,12vw,170px)/1 Impact,'Arial Narrow',sans-serif;color:#3975b833}
+.mani-visual img{position:relative;width:100%;height:95%;object-fit:contain;filter:url(#cutout-alpha) drop-shadow(0 8px 5px #175a9d16);transform:rotate(3deg)}
+.brand-story{position:relative;isolation:isolate;display:block;padding:75px 7%;min-height:600px;overflow:hidden}
+.brand-story::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--blue) 0%,var(--blue) 29%,#3975b8f0 41%,#3975b8b8 52%,#3975b800 75%)}
+.brand-copy{position:relative;max-width:540px;width:49%;z-index:1}.brand-copy h2{font-size:clamp(40px,4.9vw,72px)}
+.brand-copy>p:not(.eyebrow){max-width:380px}
+.city-photo{position:absolute;inset:0 0 0 27%;height:100%;transform:none;z-index:-2;overflow:hidden}
+.city-photo img{object-fit:cover;object-position:70% 55%;width:100%;height:100%}
+@media(max-width:900px){.alfajor-menu{width:200px;right:3%}.craft{padding:45px 5% 45px 0;min-height:470px;gap:5%}.craft-photo{height:370px;margin-left:-7vw}.craft-copy h2{font-size:42px}.craft-copy>p:not(.eyebrow){font-size:12px}.mani{padding:45px 5%}.mani-visual{height:330px}.brand-story{padding:65px 5%;min-height:560px}.brand-copy{width:53%}.brand-copy h2{font-size:46px}.brand-copy>p:not(.eyebrow){font-size:13px}}
+@media(max-width:600px){.alfajor-menu{width:157px;right:3%;height:72px;top:7px;border-radius:16px}.menu-toggle{height:69px;border-radius:15px}.menu-toggle svg{width:75px;left:5px}.menu-top{top:9px;height:34px}.menu-bottom{top:32px;height:26px}.menu-word{font-size:9px;right:8px;top:22px;max-width:64px;gap:4px}.menu-sign{font-size:20px}.menu-open .alfajor-menu{height:280px}.menu-open .menu-top{transform:translate(33px,23px) rotate(-5deg)}.menu-open .menu-bottom{transform:translate(33px,202px)}.menu-open .menu-word{font-size:9px;top:9px}.menu-links{top:95px;gap:22px}.brand{width:165px}.product-stage{height:340px}.product-visual{width:100%;height:95%}.products{gap:0}.product-white{margin-top:35px}.craft{grid-template-columns:1fr;gap:0;padding:12px 0 45px;min-height:0}.craft-photo{height:290px;margin-left:-12vw;margin-right:5%;order:0}.craft-photo img{width:115%;height:100%;object-position:right center}.craft-copy{padding:0 7%;order:1;max-width:none}.craft-copy h2{font-size:46px;margin-top:15px}.craft-copy>p:not(.eyebrow){font-size:14px}.mani{grid-template-columns:1fr;padding:40px 7% 45px;gap:10px}.mani h2{font-size:62px}.mani-copy{position:relative;z-index:1}.mani-price{font-size:30px}.mani-visual{height:310px;margin:0 -3%}.mani-visual>span{font-size:140px;top:0}.mani-visual img{height:97%}.brand-story{padding:45px 7% 340px;min-height:800px}.brand-copy{width:100%;max-width:none}.brand-copy h2{font-size:48px}.brand-copy>p:not(.eyebrow){font-size:14px;max-width:330px}.brand-copy .social-link{margin-top:12px;font-size:12px}.city-photo{inset:40% 0 0;height:60%}.city-photo img{object-position:70% 65%}.brand-story::after{background:linear-gradient(180deg,var(--blue) 0%,var(--blue) 40%,#3975b8ed 48%,#3975b855 60%,#3975b800 75%)}.brand-copy .eyebrow{max-width:none;font-size:9px}}
+@media(prefers-reduced-motion:reduce){.craft-photo img{animation:none}.product-dark:hover .product-visual{transform:rotate(-3deg)}.product-white:hover .product-visual{transform:rotate(3deg)}}

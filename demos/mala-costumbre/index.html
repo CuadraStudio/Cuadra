@@ -11,9 +11,11 @@
   <link rel="icon" href="assets/alfajor.svg" type="image/svg+xml">
   <link rel="preload" href="../../fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="refinements.css">
   <script src="site.js" defer></script>
 </head>
 <body>
+  <svg class="render-filters" aria-hidden="true" width="0" height="0"><defs><filter id="cutout-alpha" color-interpolation-filters="sRGB"><feComponentTransfer><feFuncA type="linear" slope="8" intercept="-5.5"/></feComponentTransfer></filter></defs></svg>
   <a class="skip-link" href="#alfajores">Ir al contenido</a>
   <div class="demo-note">Propuesta de sitio · Mala Costumbre · Demo por CuadraStudio</div>
   <header class="header" id="inicio">
@@ -22,7 +24,7 @@
     </a>
     <div class="alfajor-menu">
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-links" aria-label="Abrir menú">
-        <span class="menu-word">MENÚ</span>
+        <span class="menu-word">Abrir menú <span class="menu-sign" aria-hidden="true">+</span></span>
         <svg class="menu-top" viewBox="0 0 200 83" aria-hidden="true"><use href="assets/alfajor.svg#top"/></svg>
         <svg class="menu-bottom" viewBox="0 75 200 65" aria-hidden="true"><use href="assets/alfajor.svg#bottom"/></svg>
       </button>
@@ -38,11 +40,11 @@
       <div class="hero-intro"><h1 id="hero-title">Elegí tu<br>mala costumbre.</h1><p class="eyebrow">Alfajores artesanales · Montevideo</p></div>
       <div class="products">
         <article class="product product-dark">
-          <div class="product-stage"><span class="product-word" aria-hidden="true">NEGRO</span><img src="assets/classico-negro-corte-v1.webp" width="1672" height="941" alt="Corte del Classico negro: tapas de cacao, dulce de leche y cobertura de chocolate" fetchpriority="high"></div>
+          <div class="product-stage"><span class="product-word" aria-hidden="true">NEGRO</span><svg class="product-visual" viewBox="0 140 865 760" role="img" aria-label="Classico negro entero y una mitad apoyada en diagonal, con cobertura quebradiza y dulce de leche"><defs><clipPath id="dark-product-crop"><rect x="0" y="140" width="865" height="760"/></clipPath></defs><g clip-path="url(#dark-product-crop)"><image href="assets/classicos-naturales-v4.webp" width="1536" height="1024" filter="url(#cutout-alpha)"/></g></svg></div>
           <h2>Classico negro</h2><p>El de chocolate negro.</p>
         </article>
         <article class="product product-white">
-          <div class="product-stage"><span class="product-word" aria-hidden="true">BLANCO</span><img src="assets/classico-blanco-corte-v1.webp" width="1171" height="1343" alt="Dos mitades del Classico blanco, con relleno de dulce de leche y cobertura blanca lisa" fetchpriority="high"></div>
+          <div class="product-stage"><span class="product-word" aria-hidden="true">BLANCO</span><svg class="product-visual" viewBox="880 140 656 760" role="img" aria-label="Classico blanco en dos mitades, visto en ángulo para apreciar su cobertura y relleno"><defs><clipPath id="white-product-crop"><rect x="880" y="140" width="656" height="760"/></clipPath></defs><g clip-path="url(#white-product-crop)"><image href="assets/classicos-naturales-v4.webp" width="1536" height="1024" filter="url(#cutout-alpha)"/></g></svg></div>
           <h2>Classico blanco</h2><p>El de chocolate blanco.</p>
         </article>
       </div>
@@ -50,12 +52,16 @@
     </section>
     <div class="slogan"><p>Un mordisco y me vas a querer para siempre.</p></div>
     <section class="craft" id="elaboracion" aria-labelledby="craft-title">
-      <div class="craft-photo"><img src="assets/elaboracion.webp" width="1170" height="2080" loading="lazy" alt="Alfajor durante la elaboración, antes de recibir su baño de chocolate"></div>
+      <div class="craft-photo"><img src="assets/mano-alfajor-v1.webp" width="1536" height="1024" loading="lazy" alt="Mano con guante azul sosteniendo un alfajor antes de bañarlo en chocolate"></div>
       <div class="craft-copy"><p class="eyebrow">Así los hacemos</p><h2 id="craft-title">La costumbre<br>empieza<br>por adentro.</h2><p>Tapas de cacao. Dulce de leche. Y ese baño de chocolate que lo termina todo.</p><p>Alfajores artesanales, hechos en Montevideo. De esos que primero mirás por dentro y después querés probar.</p><a class="text-link" href="#alfajores">¿Negro o blanco? <span aria-hidden="true">↗</span></a></div>
+    </section>
+    <section class="mani" id="alfa-mani" aria-labelledby="mani-title">
+      <div class="mani-copy"><p class="eyebrow">Otra mala costumbre</p><h2 id="mani-title">Alfa Maní.</h2><p>El de cobertura blanca con maní.<br>Una costumbre con otra textura.</p><p class="mani-price">$160 <span>UYU · por unidad</span></p></div>
+      <div class="mani-visual"><span aria-hidden="true">MANÍ</span><img src="assets/alfa-mani-v1.webp" width="1536" height="1024" loading="lazy" alt="Alfa Maní: alfajor entero y mitad cortada con cobertura blanca texturada y maní"></div>
     </section>
     <section class="brand-story" id="marca" aria-labelledby="brand-title">
       <div class="brand-copy"><p class="eyebrow">Mala Costumbre · Montevideo, Uruguay</p><h2 id="brand-title">Hay días<br>en los que solo<br>un dulce salva.</h2><p>Una pausa, un paseo, algo rico para compartir. Siempre hay un momento para una mala costumbre.</p><a class="social-link" href="https://www.instagram.com/malacostumbre.uy/" target="_blank" rel="noopener noreferrer">Encontranos en Instagram <span aria-hidden="true">↗</span></a></div>
-      <div class="city-photo"><img src="assets/montevideo.webp" width="1215" height="2160" loading="lazy" alt="Alfajores Mala Costumbre en un banco de Montevideo, con su packaging azul y manteca"></div>
+      <div class="city-photo"><img src="assets/montevideo-panoramica-v1.webp" width="1536" height="1024" loading="lazy" alt="Un alfajor Mala Costumbre en su envoltorio azul y manteca, sobre un banco de Montevideo"></div>
     </section>
   </main>
   <footer><a class="footer-brand" href="#inicio">mala<br>costumbre</a><p>Alfajores artesanales<br>Montevideo, Uruguay</p><a href="https://www.instagram.com/malacostumbre.uy/" target="_blank" rel="noopener noreferrer">@malacostumbre.uy ↗</a><small>Demo de diseño por CuadraStudio. Sin pedidos ni pagos.</small></footer>

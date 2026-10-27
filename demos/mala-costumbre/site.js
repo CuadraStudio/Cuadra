@@ -2,10 +2,13 @@
   const button = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.menu-links');
   const menu = document.querySelector('.alfajor-menu');
+  const label = document.querySelector('.menu-word');
   function setOpen(open, restoreFocus = false) {
     document.body.classList.toggle('menu-open', open);
     button.setAttribute('aria-expanded', String(open));
     button.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    label.firstChild.textContent = open ? 'Cerrar ' : 'Abrir menú ';
+    label.querySelector('.menu-sign').textContent = open ? '−' : '+';
     nav.inert = !open;
     if (restoreFocus) button.focus();
   }
