@@ -1,0 +1,49 @@
+/* Portada breve: marca, propuesta y un contacto principal. */
+.plano-teaser .ed-hero--construction {
+  padding-block: clamp(3rem, 8vh, 6rem);
+  min-height: 90svh;
+  display: grid;
+  align-items: center;
+}
+.plano-teaser .teaser-logo { width: clamp(220px, 30vw, 380px); }
+/* La portada reproduce el dibujo incluso si ya se vio el logo en esta sesión. */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-logo-seen] .plano-teaser .teaser-logo path {
+    fill: transparent;
+    stroke: var(--color-sage);
+    stroke-dashoffset: 1;
+    animation-name: plano-draw, teaser-fill;
+    animation-duration: 1900ms, 1000ms;
+    animation-timing-function: cubic-bezier(.45, 0, .2, 1), ease;
+    animation-fill-mode: forwards;
+  }
+  html[data-logo-seen] .plano-teaser .teaser-logo path:nth-child(1) { animation-duration: 950ms, 1000ms; animation-delay: 400ms, 3550ms; }
+  html[data-logo-seen] .plano-teaser .teaser-logo path:nth-child(2) { animation-duration: 1333ms, 1000ms; animation-delay: 1350ms, 3550ms; }
+  html[data-logo-seen] .plano-teaser .teaser-logo path:nth-child(3) { animation-duration: 1333ms, 1000ms; animation-delay: 2017ms, 3550ms; }
+}
+.plano-teaser .plano-hero__title { font-size: clamp(2.2rem, 5.5vw, 4.75rem); max-width: 19ch; }
+.plano-teaser .ed-hero__center .ed-hero__subtitle { max-width: 40ch; line-height: 1.6; }
+.construction-services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .35rem .65rem;
+  margin-top: 1.5rem;
+  color: #AFC8C2;
+  font-size: .875rem;
+  line-height: 1.7;
+}
+.plano-teaser .ed-hero__actions { align-items: center; gap: 1.5rem 2rem; }
+.construction-instagram {
+  color: #F2F1ED;
+  font-size: .875rem;
+  text-decoration: underline;
+  text-underline-offset: .3em;
+  text-decoration-color: #AFC8C2;
+}
+.construction-instagram:hover { color: #AFC8C2; }
+.construction-instagram:focus-visible { outline: 2px solid #AFC8C2; outline-offset: 6px; }
+@media (max-width: 480px) {
+  .plano-teaser .ed-hero__actions { flex-direction: column; }
+  .construction-services { font-size: .8rem; }
+}

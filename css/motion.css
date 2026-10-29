@@ -1,0 +1,86 @@
+/* Movimiento ambiental: luz suave, líneas y respuesta al interactuar. */
+.plano-hero::before,
+.composition-home .plano-cta-band::before {
+  content: "";
+  position: absolute;
+  width: min(85vw, 1000px);
+  aspect-ratio: 1;
+  right: -25%;
+  top: -55%;
+  background: radial-gradient(ellipse, rgba(175,200,194,.13), rgba(66,102,93,.05) 42%, transparent 68%);
+  pointer-events: none;
+  animation: cuadra-light 22s ease-in-out infinite alternate;
+}
+.plano-hero::after {
+  content: "";
+  position: absolute;
+  width: min(65vw, 750px);
+  aspect-ratio: 1;
+  left: -30%;
+  bottom: -70%;
+  background: radial-gradient(ellipse, rgba(175,200,194,.09), transparent 65%);
+  pointer-events: none;
+  animation: cuadra-light 28s ease-in-out -10s infinite alternate-reverse;
+}
+.plano-hero__grid i { position: relative; }
+.plano-hero__grid i::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100px;
+  background: linear-gradient(transparent, rgba(175,200,194,.55), transparent);
+  animation: cuadra-trace 12s ease-in-out infinite;
+}
+.plano-hero__grid i:nth-child(2n)::after { animation-delay: -7s; animation-duration: 17s; }
+.plano-hero__grid i:nth-child(3n)::after { animation-delay: -4s; }
+.composition-home .plano-cta-band { position: relative; overflow: hidden; }
+.composition-home .plano-cta-band > .ed-container { position: relative; z-index: 1; }
+.composition-home .plano-web__card {
+  transition: opacity 700ms ease, transform 700ms ease, translate 350ms ease, box-shadow 350ms ease, border-color 350ms ease;
+}
+.composition-home .ed-hero__btn,
+.composition-home .ed-cta__btn,
+.motion-contact .btn,
+.plano-teaser .btn { transition: translate 250ms ease, background-color 250ms ease, color 250ms ease, box-shadow 250ms ease; }
+@media (hover: hover) and (pointer: fine) {
+  .composition-home .plano-web__card:hover {
+    translate: 0 -5px;
+    box-shadow: 0 24px 42px -24px rgba(15,17,17,.5);
+    border-top-color: #42665D;
+  }
+  .composition-home .ed-hero__btn:hover,
+  .composition-home .ed-cta__btn:hover,
+  .motion-contact .btn:not(:disabled):hover,
+  .plano-teaser .btn:hover { translate: 0 -3px; box-shadow: 0 8px 22px rgba(0,0,0,.16); }
+}
+@keyframes cuadra-light {
+  from { transform: translate(-8%, 0) scale(.9); opacity: .55; }
+  to { transform: translate(-25%, 20%) scale(1.15); opacity: 1; }
+}
+@keyframes cuadra-trace {
+  0% { top: -100px; opacity: 0; }
+  12% { opacity: .7; }
+  75%, 100% { top: 100%; opacity: 0; }
+}
+@media (max-width: 767px) {
+  .plano-hero::before { width: 130vw; right: -60%; top: -15%; }
+  .plano-hero::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .plano-hero::before,
+  .plano-hero::after,
+  .composition-home .plano-cta-band::before { animation: none; opacity: .6; }
+  .plano-hero__grid i::after { display: none; }
+  .composition-home .plano-web__card,
+  .composition-home .plano-web__card:hover,
+  .composition-home .ed-hero__btn,
+  .composition-home .ed-hero__btn:hover,
+  .composition-home .ed-cta__btn,
+  .composition-home .ed-cta__btn:hover,
+  .motion-contact .btn,
+  .motion-contact .btn:not(:disabled):hover,
+  .plano-teaser .btn,
+  .plano-teaser .btn:hover { transition: none; translate: none; }
+}
