@@ -26,9 +26,9 @@
     // numero como texto por defecto (sin JS). Al cambiar un precio, cambiarlo aca y en el HTML.
     prices: {
       landing: { list: 249, monthly: 29 },
-      web: { list: 399, monthly: 39 },
-      refresh: { landingList: 199, webList: 319 },
-      tienda: { list: 599, monthly: 39 },
+      web: { list: 349, monthly: 39 },
+      refresh: { landingList: 180 },
+      tienda: { list: 449, monthly: 39 },
       extraPage: 50
     },
 

@@ -265,7 +265,7 @@
     var submitBtn = document.getElementById('submit-btn');
 
     // Producto elegido en la web (?producto=landing|web|refresh|tienda): se muestra y viaja con el envio.
-    var productNames = { landing: 'Web esencial', web: 'Web completa', refresh: 'Web Refresh', tienda: 'Tienda con carrito' };
+    var productNames = { landing: 'Web de marca · Una página', web: 'Web de marca · Varias páginas', refresh: 'Rediseño web', tienda: 'Catálogo y pedidos', herramientas: 'Herramientas a medida' };
     var productField = form.elements['producto'];
     var productNote = document.querySelector('[data-product-note]');
     if (productField && productNote) {
