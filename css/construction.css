@@ -1,4 +1,26 @@
 /* Portada breve: marca, propuesta y un contacto principal. */
+.construction-intro .plano-teaser .ed-hero__brand { visibility: hidden; transform-origin: center; }
+.construction-intro-ready .plano-teaser .ed-hero__brand { visibility: visible; }
+.construction-intro .plano-teaser .ed-hero__center > :not(.ed-hero__brand),
+.construction-intro .plano-teaser .ed-footer,
+.construction-intro .plano-teaser .contact-fab {
+  opacity: 0 !important;
+  visibility: hidden;
+  animation: none !important;
+}
+.construction-intro-done .plano-teaser .ed-hero__center > :not(.ed-hero__brand) {
+  animation: construction-content-in 750ms ease both;
+}
+.construction-intro-done .plano-teaser .ed-hero__subtitle { animation-delay: 120ms; }
+.construction-intro-done .plano-teaser .construction-services { animation-delay: 220ms; }
+.construction-intro-done .plano-teaser .ed-hero__actions { animation-delay: 320ms; }
+@keyframes construction-content-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .construction-intro-done .plano-teaser .ed-hero__center > :not(.ed-hero__brand) { animation: none; }
+}
 .plano-teaser .ed-hero--construction {
   padding-block: clamp(3rem, 8vh, 6rem);
   min-height: 90svh;
@@ -8,6 +30,9 @@
 .plano-teaser .teaser-logo { width: clamp(220px, 30vw, 380px); }
 /* La portada reproduce el dibujo incluso si ya se vio el logo en esta sesión. */
 @media (prefers-reduced-motion: no-preference) {
+  .construction-intro .plano-teaser .ed-hero__brand > span {
+    animation: construction-wordmark-in 1100ms cubic-bezier(.22,1,.36,1) 1800ms both;
+  }
   html[data-logo-seen] .plano-teaser .teaser-logo path {
     fill: transparent;
     stroke: var(--color-sage);
@@ -20,6 +45,10 @@
   html[data-logo-seen] .plano-teaser .teaser-logo path:nth-child(1) { animation-duration: 950ms, 1000ms; animation-delay: 400ms, 3550ms; }
   html[data-logo-seen] .plano-teaser .teaser-logo path:nth-child(2) { animation-duration: 1333ms, 1000ms; animation-delay: 1350ms, 3550ms; }
   html[data-logo-seen] .plano-teaser .teaser-logo path:nth-child(3) { animation-duration: 1333ms, 1000ms; animation-delay: 2017ms, 3550ms; }
+}
+@keyframes construction-wordmark-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
 }
 .plano-teaser .plano-hero__title { font-size: clamp(2.2rem, 5.5vw, 4.75rem); max-width: 19ch; }
 .plano-teaser .ed-hero__center .ed-hero__subtitle { max-width: 40ch; line-height: 1.6; }
