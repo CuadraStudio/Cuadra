@@ -1,4 +1,4 @@
-@font-face{font-family:Anton;src:url(assets/anton-regular.ttf) format("truetype");font-display:swap}
+@font-face{font-family:Anton;src:url(./anton-regular.ttf) format("truetype");font-display:swap}
 :root{--w:#a43c2c;--w2:#782a20;--y:#f7ebd7;--c:#f7ebd7;--k:#24170f;--l:#ddc6aa;--g:#684b3d}
 .frame{width:min(100% - 48px,1160px);margin-inline:auto}
 .brand-header{position:relative;display:block;padding:0;background:var(--w);color:var(--c)}
