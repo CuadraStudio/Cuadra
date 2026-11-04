@@ -74,3 +74,6 @@ section{padding:32px 16px}
 .tr{grid-template-columns:44px minmax(0,1fr)}.tr .acts{grid-column:1/-1;justify-content:flex-start}
 }
 @media(prefers-reduced-motion:reduce){.food-grid img{transition:none}}
+
+.whatsapp{display:flex;justify-content:center;background:var(--w);color:var(--c);margin-bottom:10px;text-align:center}
+.whatsapp:hover{background:var(--w2)}
